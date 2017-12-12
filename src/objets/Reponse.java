@@ -2,28 +2,28 @@ package objets;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Question")
-public class Réponse {
+public class Reponse {
 
-	String intitulé;
+	String intitule;
 	Boolean correct;
 	String justification;
 	
-	public Réponse() {
+	public Reponse() {
 		
 	}
 	
-	public Réponse (String mIntitulé, Boolean mCorrect, String mJustification) {
-		this.intitulé = mIntitulé;
+	public Reponse (String mIntitule, Boolean mCorrect, String mJustification) {
+		this.intitule = mIntitule;
 		this.correct = mCorrect;
 		this.justification = mJustification;
 	}
 
-	public String getIntitulé() {
-		return intitulé;
+	public String getIntitule() {
+		return intitule;
 	}
 	
-	public void setIntitulé(String intitulé) {
-		this.intitulé = intitulé;
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
 	}
 	
 	public Boolean getCorrect() {
@@ -54,6 +54,6 @@ public class Réponse {
 
 	@Override
 	public String toString() {
-		return  "Réponse: \n intitulé = " + intitulé + "\n Correct = " + correct + "\n Justification = " + justification;
+		return  "Reponse: \n intitule = " + intitule + "\n Correct = " + correct + "\n Justification = " + justification;
 	}
 }

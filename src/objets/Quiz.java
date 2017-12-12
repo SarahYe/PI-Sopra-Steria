@@ -56,12 +56,12 @@ public class Quiz {
        // for getting nice formatted output
        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
        
-       File XMLfile = new File("/Users/SarahYe/Desktop/PI Serious Game/quiz.xml");
+       File XMLfile = new File("Fichiers XML/quiz.xml");
        // Writing to XML file
        jaxbMarshaller.marshal(quiz, XMLfile);
        
        // Writing to console
-       System.out.println("Fichier XML créé :\n");
+       System.out.println("Fichier XML cree :\n");
        jaxbMarshaller.marshal(quiz, System.out);
        
       } catch (JAXBException e) {
@@ -76,7 +76,7 @@ public void convertirXMLToJava(Quiz quiz) {
 		   JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
 		   Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		   
-		   File XMLfile = new File("/Users/SarahYe/Desktop/PI Serious Game/quiz.xml");
+		   File XMLfile = new File("Fichiers XML/quiz.xml");
 		   // this will create Java object - quizz from the XML file
 		   Quiz quizz = (Quiz) jaxbUnmarshaller.unmarshal(XMLfile);
 		   
@@ -87,13 +87,13 @@ public void convertirXMLToJava(Quiz quiz) {
 		   int i = 0;
 		   for(Question q : listeQuestions) {
 			   i++;
-			   System.out.println("Question " + i + " : " + q.getIntutiléQuestion() + "\n");
+			   System.out.println("Question " + i + " : " + q.getIntutileQuestion() + "\n");
 
-			   ArrayList<Réponse> listeRéponses = q.getListeRéponses();
+			   ArrayList<Reponse> listeReponses = q.getListeReponses();
 			   int j = 0;
-			   for(Réponse r : listeRéponses) {
+			   for(Reponse r : listeReponses) {
 				   j++;
-				   System.out.println("Réponse " + j + " : " + r.getIntitulé() + " || "  + r.getCorrect() + " || " + r.getJustification() + "\n");
+				   System.out.println("Reponse " + j + " : " + r.getIntitule() + " || "  + r.getCorrect() + " || " + r.getJustification() + "\n");
 			   }
 		   }
 	  } catch (JAXBException e) {

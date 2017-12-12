@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Test">
+    <nom>Test</nom>
+    <Question>
+        <intutileQuestion>Question 1 ?</intutileQuestion>
+        <Reponses>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 1 !</intitule>
+                <justification>justification 1</justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 2 !</intitule>
+                <justification>justification 2</justification>
+            </Reponse>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>rep 3 !</intitule>
+                <justification>justification 3</justification>
+            </Reponse>
+        </Reponses>
+    </Question>
+    <Question>
+        <intutileQuestion>Question 2 ?</intutileQuestion>
+        <Reponses>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 1 !</intitule>
+                <justification>justification 1</justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 2 !</intitule>
+                <justification>justification 2</justification>
+            </Reponse>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>rep 3 !</intitule>
+                <justification>justification 3</justification>
+            </Reponse>
+        </Reponses>
+    </Question>
+</quiz>

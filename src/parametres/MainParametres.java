@@ -1,4 +1,4 @@
-package paramètres;
+package parametres;
 
 import objets.Question;
 import objets.Quiz;
@@ -24,24 +24,24 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class MainParamètres extends Application {
+public class MainParametres extends Application {
 
 	private TableView<String> table = new TableView<String>();
 	private ArrayList<Question> ListeQuestions = new ArrayList<Question>();
 	private final ObservableList<String> data =
 	        FXCollections.observableArrayList(
-	       		new Quiz ("Quizz n°1",ListeQuestions).getNom(),
-	       		new Quiz ("Quizz n°2",ListeQuestions).getNom(),
-	       		new Quiz ("Quizz n°3",ListeQuestions).getNom()
+	       		new Quiz ("Quizz ne1",ListeQuestions).getNom(),
+	       		new Quiz ("Quizz ne2",ListeQuestions).getNom(),
+	       		new Quiz ("Quizz ne3",ListeQuestions).getNom()
 	        );
 	
     public static void main(String[] args) {
-        Application.launch(MainParamètres.class, args);
+        Application.launch(MainParametres.class, args);
     }
     
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Page principale de paramétrage");
+        primaryStage.setTitle("Page principale de parametrage");
         Group root = new Group();
         Scene scene = new Scene(root, 600, 450, Color.WHITE);
         
@@ -51,12 +51,12 @@ public class MainParamètres extends Application {
  
         table.setEditable(true);
  
-        TableColumn<String, String> titreCol = new TableColumn<String, String>("Intitulé");
+        TableColumn<String, String> titreCol = new TableColumn<String, String>("Intitule");
         titreCol.setMinWidth(100);
         titreCol.setCellValueFactory(
         		data -> new SimpleStringProperty(data.getValue()));
-        //TableColumn<String, String> dateCol = new TableColumn<String, String>("Date de dernière modification");
-        //TableColumn<String, String> createurCol = new TableColumn<String, String>("Créateur");
+        //TableColumn<String, String> dateCol = new TableColumn<String, String>("Date de derniere modification");
+        //TableColumn<String, String> createurCol = new TableColumn<String, String>("Createur");
         
         //table.getColumns().addAll(titreCol, dateCol, createurCol);
         table.setItems(data);

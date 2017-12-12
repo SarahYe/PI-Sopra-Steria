@@ -6,39 +6,39 @@ import javax.xml.bind.annotation.*;
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Quiz")
 public class Question {
 	
-	String intituléQuestion;
+	String intituleQuestion;
 	//String fond;
-	ArrayList<Réponse> ListeRéponses;
+	ArrayList<Reponse> ListeReponses;
 	
 	public Question () {
 		
 	}
 	
-	public Question (String mQuestion, ArrayList<Réponse> mReponses) {
-		this.intituléQuestion = mQuestion;
-		this.ListeRéponses = mReponses;
+	public Question (String mQuestion, ArrayList<Reponse> mReponses) {
+		this.intituleQuestion = mQuestion;
+		this.ListeReponses = mReponses;
 	}
 	
 	@XmlElement
-	public String getIntutiléQuestion() {
-		return intituléQuestion;
+	public String getIntutileQuestion() {
+		return intituleQuestion;
 	}
 
 	//@XmlElement
-	public void setIntutiléQuestion(String intutiléQuestion) {
-		this.intituléQuestion = intutiléQuestion;
+	public void setIntutileQuestion(String intutileQuestion) {
+		this.intituleQuestion = intutileQuestion;
 	}
 	
-	@XmlElementWrapper(name = "Réponses")
-	@XmlElement (name = "Réponse")
-	public ArrayList<Réponse> getListeRéponses() {
-		return ListeRéponses;
+	@XmlElementWrapper(name = "Reponses")
+	@XmlElement (name = "Reponse")
+	public ArrayList<Reponse> getListeReponses() {
+		return ListeReponses;
 	}
 	
-	//@XmlElementWrapper(name = "Réponses")
-	//@XmlElement (name = "Réponse")
-	public void setListeRéponses(ArrayList<Réponse> réponses) {
-		this.ListeRéponses = réponses;
+	//@XmlElementWrapper(name = "Reponses")
+	//@XmlElement (name = "Reponse")
+	public void setListeReponses(ArrayList<Reponse> reponses) {
+		this.ListeReponses = reponses;
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class Question {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return  "Question : \n intitulé = " + intituléQuestion + "\n Réponses = " + ListeRéponses ;
+		return  "Question : \n intitule = " + intituleQuestion + "\n Reponses = " + ListeReponses ;
 	}
 	
 	

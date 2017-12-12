@@ -60,7 +60,7 @@ public class Quiz {
        jaxbMarshaller.marshal(quiz, XMLfile);
        
        // Writing to console
-       System.out.println("Fichier XML cr√©√© :\n");
+       System.out.println("Fichier XML crÈÈ :\n");
        jaxbMarshaller.marshal(quiz, System.out);
        
       } catch (JAXBException e) {
@@ -86,13 +86,13 @@ public void convertirXMLToJava(Quiz quiz) {
 		   int i = 0;
 		   for(Question q : listeQuestions) {
 			   i++;
-			   System.out.println("Question " + i + " : " + q.getIntutil√©Question() + "\n");
+			   System.out.println("Question " + i + " : " + q.getIntutilÈQuestion() + "\n");
 
-			   ArrayList<R√©ponse> listeR√©ponses = q.getListeR√©ponses();
+			   ArrayList<RÈponse> listeRÈponses = q.getListeRÈponses();
 			   int j = 0;
-			   for(R√©ponse r : listeR√©ponses) {
+			   for(RÈponse r : listeRÈponses) {
 				   j++;
-				   System.out.println("R√©ponse " + j + " : " + r.getIntitul√©() + " || "  + r.getCorrect() + " || " + r.getJustification() + "\n");
+				   System.out.println("RÈponse " + j + " : " + r.getIntitulÈ() + " || "  + r.getCorrect() + " || " + r.getJustification() + "\n");
 			   }
 		   }
 	  } catch (JAXBException e) {

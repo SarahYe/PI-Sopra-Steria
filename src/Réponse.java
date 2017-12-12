@@ -1,28 +1,28 @@
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Question")
-public class RÃ©ponse {
+public class Réponse {
 
-	String intitulÃ©;
+	String intitulé;
 	Boolean correct;
 	String justification;
 	
-	public RÃ©ponse() {
+	public Réponse() {
 		
 	}
 	
-	public RÃ©ponse (String mIntitulÃ©, Boolean mCorrect, String mJustification) {
-		this.intitulÃ© = mIntitulÃ©;
+	public Réponse (String mIntitulé, Boolean mCorrect, String mJustification) {
+		this.intitulé = mIntitulé;
 		this.correct = mCorrect;
 		this.justification = mJustification;
 	}
 
-	public String getIntitulÃ©() {
-		return intitulÃ©;
+	public String getIntitulé() {
+		return intitulé;
 	}
 	
-	public void setIntitulÃ©(String intitulÃ©) {
-		this.intitulÃ© = intitulÃ©;
+	public void setIntitulé(String intitulé) {
+		this.intitulé = intitulé;
 	}
 	
 	public Boolean getCorrect() {
@@ -53,6 +53,6 @@ public class RÃ©ponse {
 
 	@Override
 	public String toString() {
-		return  "RÃ©ponse: \n intitulÃ© = " + intitulÃ© + "\n Correct = " + correct + "\n Justification = " + justification;
+		return  "Réponse: \n intitulé = " + intitulé + "\n Correct = " + correct + "\n Justification = " + justification;
 	}
 }

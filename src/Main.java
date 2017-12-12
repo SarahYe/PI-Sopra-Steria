@@ -5,19 +5,19 @@ public class Main {
 	
 	 public static void main(String[] args) {
 		 
-		 RÃ©ponse reponse1 = new RÃ©ponse("rep 1 !", Boolean.FALSE, "justification 1");
-		 RÃ©ponse reponse2 = new RÃ©ponse("rep 2 !", Boolean.FALSE, "justification 2");
-		 RÃ©ponse reponse3 = new RÃ©ponse("rep 3 !", Boolean.TRUE, "justification 3");
+		 Réponse reponse1 = new Réponse("rep 1 !", Boolean.FALSE, "justification 1");
+		 Réponse reponse2 = new Réponse("rep 2 !", Boolean.FALSE, "justification 2");
+		 Réponse reponse3 = new Réponse("rep 3 !", Boolean.TRUE, "justification 3");
 		 
-		 ArrayList<RÃ©ponse> ListeRÃ©ponses = new ArrayList<RÃ©ponse>();
-		 ListeRÃ©ponses.add(reponse1);
-		 ListeRÃ©ponses.add(reponse2);
-		 ListeRÃ©ponses.add(reponse3);
+		 ArrayList<Réponse> ListeRéponses = new ArrayList<Réponse>();
+		 ListeRéponses.add(reponse1);
+		 ListeRéponses.add(reponse2);
+		 ListeRéponses.add(reponse3);
 	                
-	    Question question1 =  new Question("Question 1 ?", ListeRÃ©ponses);
+	    Question question1 =  new Question("Question 1 ?", ListeRéponses);
 	    //System.out.println(question.toString());
 	    
-	    Question question2 =  new Question("Question 2 ?", ListeRÃ©ponses);
+	    Question question2 =  new Question("Question 2 ?", ListeRéponses);
 	    
 	    ArrayList<Question> ListeQuestions = new ArrayList<Question>();
 		 ListeQuestions.add(question1);

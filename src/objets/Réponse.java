@@ -1,3 +1,4 @@
+package objets;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Question")

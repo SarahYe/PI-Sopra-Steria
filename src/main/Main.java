@@ -1,5 +1,10 @@
+package main;
 
 import java.util.ArrayList;
+
+import objets.Question;
+import objets.Quiz;
+import objets.Réponse;
 
 public class Main {
 	

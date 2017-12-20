@@ -3,18 +3,15 @@ package parametres;
 import objets.Question;
 import objets.Reponse;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,13 +27,13 @@ import javafx.stage.Stage;
 
 public class MainParametres extends Application {
 
-	private TableView<String> table = new TableView<String>();
+	private TableView<Question> table = new TableView<Question>();
 	private ArrayList<Reponse> ListeReponses = new ArrayList<Reponse>();
-	private final ObservableList<String> data =
+	private final ObservableList<Question> data =
 	        FXCollections.observableArrayList(
-	       		new Question ("Quel est l'intru parmis ces réponses ?",ListeReponses).getIntutileQuestion(),
-	       		new Question ("Quelle heure est-il ?",ListeReponses).getIntutileQuestion(),
-	       		new Question ("Quel est ... ?",ListeReponses).getIntutileQuestion()
+	       		new Question ("Quel est l'intru parmis ces réponses ?",ListeReponses),
+	       		new Question ("Quelle heure est-il ?",ListeReponses),
+	       		new Question ("Quel est ... ?",ListeReponses)
 	        );
 	
     public static void main(String[] args) {
@@ -55,16 +52,14 @@ public class MainParametres extends Application {
  
         table.setEditable(false);
  
-        TableColumn<String, String> titreCol = new TableColumn<String, String>("Intitulé des questions");
-        titreCol.setMinWidth(400);
+        TableColumn<Question, String> titreCol = new TableColumn<Question, String>("Intitulé des questions");
+        titreCol.setMinWidth(450);
         titreCol.setCellValueFactory(
-        		data -> new SimpleStringProperty(data.getValue()));
-        //TableColumn<String, String> dateCol = new TableColumn<String, String>("Date de derniere modification");
-        //TableColumn<String, String> createurCol = new TableColumn<String, String>("Createur");
+        		new PropertyValueFactory<Question,String>("intituleQuestion"));
         
         //table.getColumns().addAll(titreCol, dateCol, createurCol);
         table.setItems(data);
-        table.getColumns().addAll(titreCol);
+        table.getColumns().add(titreCol);
         
         
         final Button boutonAjout = new Button("Ajouter");
@@ -81,7 +76,7 @@ public class MainParametres extends Application {
                 Button btn = new Button("Enregistrer");
                 btn.setOnAction(new EventHandler<ActionEvent>() {
                 	    public void handle(ActionEvent e) {
-                	        data.add(textField.getText());
+                	        data.add(new Question(textField.getText(), ListeReponses));
                 	        Stage stage = (Stage) btn.getScene().getWindow();
                 	        stage.close();
                 	     }
@@ -105,12 +100,12 @@ public class MainParametres extends Application {
                 stage.setScene(new Scene(root2, 450, 450));
                 
                 Label label1 = new Label("Intitulé :");
-                TextField textField = new TextField (table.getSelectionModel().getSelectedItem());
+                TextField textField = new TextField (table.getSelectionModel().getSelectedItem().getIntituleQuestion());
                 Button btn = new Button("Enregistrer");
                 btn.setOnAction(new EventHandler<ActionEvent>() {
                 	    public void handle(ActionEvent e) {
                 	        int index = table.getSelectionModel().getSelectedIndex();
-                	        table.getItems().set(index, textField.getText());
+                	        table.getItems().set(index, new Question(textField.getText(), ListeReponses));
                 	        Stage stage = (Stage) btn.getScene().getWindow();
                 	        stage.close();
                 	     }
@@ -127,19 +122,22 @@ public class MainParametres extends Application {
         final Button boutonSupprimer = new Button("Supprimer");
         boutonSupprimer.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-            	 String selectedItem = table.getSelectionModel().getSelectedItem();
+            	 Question selectedItem = table.getSelectionModel().getSelectedItem();
             	 table.getItems().remove(selectedItem);
             }
         });
         
         HBox hb = new HBox();
+        boutonAjout.setMinWidth(100);
+        boutonModifier.setMinWidth(100);
+        boutonSupprimer.setMinWidth(100);
         hb.getChildren().addAll(boutonAjout, boutonModifier, boutonSupprimer);
-        hb.setSpacing(100);
-        hb.setPadding(new Insets(5, 0, 0, 10));
+        hb.setSpacing(75);
+        //hb.setPadding(new Insets(25, 0, 0, 25));
         
         final VBox vbox = new VBox();
-        vbox.setSpacing(5);
-        vbox.setPadding(new Insets(10, 0, 0, 10));
+        vbox.setSpacing(10);
+        vbox.setPadding(new Insets(25, 0, 0, 25));
         vbox.getChildren().addAll(label, table, hb);
  
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
@@ -149,5 +147,6 @@ public class MainParametres extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    
 }
 

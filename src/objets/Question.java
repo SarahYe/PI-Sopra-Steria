@@ -3,30 +3,27 @@ import java.util.ArrayList;
 
 import javax.xml.bind.annotation.*;
 
+import javafx.beans.property.SimpleStringProperty;
+
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Quiz")
 public class Question {
 	
-	String intituleQuestion;
-	//String fond;
-	ArrayList<Reponse> ListeReponses;
-	
-	public Question () {
-		
-	}
-	
-	public Question (String mQuestion, ArrayList<Reponse> mReponses) {
-		this.intituleQuestion = mQuestion;
-		this.ListeReponses = mReponses;
-	}
+	SimpleStringProperty intituleQuestion;
+    ArrayList<Reponse> ListeReponses;
+
+    public Question(String mName, ArrayList<Reponse> mReponses) {
+        this.intituleQuestion = new SimpleStringProperty(mName);
+        this.ListeReponses = mReponses;
+    }
 	
 	@XmlElement
-	public String getIntutileQuestion() {
-		return intituleQuestion;
+	public String getIntituleQuestion() {
+		return intituleQuestion.get();
 	}
 
 	//@XmlElement
-	public void setIntutileQuestion(String intutileQuestion) {
-		this.intituleQuestion = intutileQuestion;
+	public void setIntituleQuestion(String intutileQuestion) {
+		this.intituleQuestion.set(intutileQuestion);
 	}
 	
 	@XmlElementWrapper(name = "Reponses")

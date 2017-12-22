@@ -53,18 +53,19 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="756.0" VBox.vgrow="ALWAYS">
       <children>
-            <Label layoutX="135.0" layoutY="82.0" prefHeight="90.0" prefWidth="364.0" text="Intitulé de la question" />
-            <CheckBox layoutX="159.0" layoutY="172.0" mnemonicParsing="false" text="Reponse 1" />
-            <CheckBox layoutX="159.0" layoutY="237.0" mnemonicParsing="false" text="Reponse 2" />
-            <CheckBox layoutX="159.0" layoutY="303.0" mnemonicParsing="false" text="Reponse 3" />
-            <CheckBox layoutX="159.0" layoutY="378.0" mnemonicParsing="false" text="Reponse 4" />
-            <CheckBox layoutX="159.0" layoutY="452.0" mnemonicParsing="false" text="Reponse 5" />
-            <Button layoutX="740.0" layoutY="503.0" mnemonicParsing="false" text="Button" />
-            <Label fx:id="Justif1" layoutX="236.0" layoutY="199.0" text="Justication 1" />
-            <Label fx:id="Justif2" layoutX="236.0" layoutY="265.0" text="Justication 2" />
-            <Label fx:id="Justif3" layoutX="238.0" layoutY="330.0" text="Justication 3" />
-            <Label fx:id="Justif4" layoutX="241.0" layoutY="415.0" text="Justication 4" />
-            <Label fx:id="Justif5" layoutX="240.0" layoutY="503.0" text="Justication 5" />
+            <Label fx:id="intiQue" layoutX="135.0" layoutY="82.0" prefHeight="90.0" prefWidth="364.0" text="Intitulé de la question" />
+            <CheckBox fx:id="intiRep1" layoutX="159.0" layoutY="172.0" mnemonicParsing="false" text="Reponse 1" />
+            <CheckBox fx:id="intiRep2" layoutX="159.0" layoutY="237.0" mnemonicParsing="false" text="Reponse 2" />
+            <CheckBox fx:id="intiRep3" layoutX="159.0" layoutY="303.0" mnemonicParsing="false" text="Reponse 3" />
+            <CheckBox fx:id="intiRep4" layoutX="159.0" layoutY="378.0" mnemonicParsing="false" text="Reponse 4" />
+            <CheckBox fx:id="intiRep5" layoutX="159.0" layoutY="452.0" mnemonicParsing="false" text="Reponse 5" />
+            <Button layoutX="779.0" layoutY="544.0" mnemonicParsing="false" onAction="#ClickButtonValider" text="Valider" />
+            <Label fx:id="justif1" layoutX="236.0" layoutY="199.0" text="Justication 1" />
+            <Label fx:id="justif2" layoutX="236.0" layoutY="265.0" text="Justication 2" />
+            <Label fx:id="justif3" layoutX="238.0" layoutY="330.0" text="Justication 3" />
+            <Label fx:id="justif4" layoutX="241.0" layoutY="415.0" text="Justication 4" />
+            <Label fx:id="justif5" layoutX="240.0" layoutY="503.0" text="Justication 5" />
+            <Button fx:id="NextQueButton" layoutX="776.0" layoutY="603.0" mnemonicParsing="false" text="Question suivante" />
       </children>
     </AnchorPane>
   </children>

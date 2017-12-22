@@ -89,6 +89,12 @@ public class ViewQuestionController implements Initializable{
 	}
 	
 	@FXML
+	private void ClickBackHome(ActionEvent event){
+		Stage stage = (Stage)buttonNextQue.getScene().getWindow();
+		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/QuizAccueil.fxml"));
+	}
+	
+	@FXML
 	private void ClickButtonValider(ActionEvent event){
 		int cmptTrue=0;
 		boolean choice=Boolean.TRUE;

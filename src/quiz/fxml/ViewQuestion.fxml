@@ -3,55 +3,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="705.0" prefWidth="997.0" xmlns="http://javafx.com/javafx/8.0.91" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quiz.ViewQuestionController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefWidth="756.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <Label fx:id="intiQue" layoutX="135.0" layoutY="82.0" prefHeight="90.0" prefWidth="364.0" text="Intitulé de la question" />
             <CheckBox fx:id="intiRep1" layoutX="159.0" layoutY="172.0" mnemonicParsing="false" text="Reponse 1" />
@@ -59,13 +16,14 @@
             <CheckBox fx:id="intiRep3" layoutX="159.0" layoutY="303.0" mnemonicParsing="false" text="Reponse 3" />
             <CheckBox fx:id="intiRep4" layoutX="159.0" layoutY="378.0" mnemonicParsing="false" text="Reponse 4" />
             <CheckBox fx:id="intiRep5" layoutX="159.0" layoutY="452.0" mnemonicParsing="false" text="Reponse 5" />
-            <Button layoutX="779.0" layoutY="544.0" mnemonicParsing="false" onAction="#ClickButtonValider" text="Valider" />
+            <Button layoutX="793.0" layoutY="499.0" mnemonicParsing="false" onAction="#ClickButtonValider" text="Valider" />
             <Label fx:id="justif1" layoutX="236.0" layoutY="199.0" text="Justication 1" />
             <Label fx:id="justif2" layoutX="236.0" layoutY="265.0" text="Justication 2" />
             <Label fx:id="justif3" layoutX="238.0" layoutY="330.0" text="Justication 3" />
             <Label fx:id="justif4" layoutX="241.0" layoutY="415.0" text="Justication 4" />
             <Label fx:id="justif5" layoutX="240.0" layoutY="503.0" text="Justication 5" />
-            <Button fx:id="buttonNextQue" layoutX="776.0" layoutY="603.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" text="Question suivante" />
+            <Button fx:id="buttonNextQue" layoutX="764.0" layoutY="547.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" text="Question suivante" />
+            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBackHome" text="Retour à l'accueil" />
       </children>
     </AnchorPane>
   </children>

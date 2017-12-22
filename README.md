@@ -12,7 +12,7 @@ Une fois que l'on enregistre (bouton "Enregistrer"), on est renvoye sur l'interf
 Pour lancer le quiz, il suffit de cliquer sur "Jouer".
 Lorsque l'on selectionne une ou plusieurs reponses, la justification associee s'affiche une fois que l'on clique sur le bouton "valider".
 Si toutes les bonnes reponses, et uniquement elles, ont ete cochees, un bouton "question suivante" s'affiche, permettant de passer a la suivante.
-NB : seule la premiere question s'affiche en boucle pour l'instant, bug en cours de correction
+Une fois que toutes les questions ont ete posees, le quiz redirige vers la page d'accueil.
 
 Le fichier XML est utilise pour stocker tout le contenu relatif au quiz, c'est a dire le contenu des differentes questions, reponses ainsi que leurs justifications associees.
 L'interface du quiz lit le fichier xml pour afficher les differentes questions tandis que l'interface de parametrage s'occupe de remplir le fichier xml avec le contenu fourni par l'utilisateur.

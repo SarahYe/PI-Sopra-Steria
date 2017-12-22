@@ -1,4 +1,5 @@
 package quiz;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import objets.Quiz;
 import parametres.MainParametres;
 
 public class QuizAccueilController implements Initializable{
@@ -27,16 +29,17 @@ public class QuizAccueilController implements Initializable{
 	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
-    	
-		
-		
 		
 	}
 	
 	@FXML
-	protected void ClickButtonJouer(ActionEvent event) {
+	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		Stage stage = (Stage)buttonJouer.getScene().getWindow();
-		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
+		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
+		new JFxUtils().loadQuestion(new Quiz(), 0,stage);
+		
+		
+		
 		
 	}
 	

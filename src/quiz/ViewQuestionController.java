@@ -1,5 +1,6 @@
 package quiz;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -20,6 +21,7 @@ public class ViewQuestionController implements Initializable{
 	
 	//a revoir comment transmettre l'objet quiz dans cette classe + le remplir pour test
 	private Quiz quiz=new Quiz();
+	private int cmpt;
 	private Question question;
 	
 	
@@ -33,19 +35,30 @@ public class ViewQuestionController implements Initializable{
 	@FXML
 	private Label intiQue;
 	
-	
+	public void initData(Quiz quiz,int cmpt){
+		this.cmpt=cmpt;
+		this.quiz=quiz;
+		//System.out.println("cmpt="+cmpt);
+		quiz=quiz.convertirXMLToJava(quiz);
+		//System.out.println("taille du quiz : "+quiz.getListeQuestions().size()+"  ; cmpt = "+cmpt);
+		if(quiz.getListeQuestions().size()==cmpt){
+			Stage stage = (Stage)buttonNextQue.getScene().getWindow();
+			stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/QuizAccueil.fxml"));
+		}else {
+			buttonNextQue.setVisible(Boolean.FALSE);
+			question=quiz.getListeQuestions().get(cmpt);
+			remplissageContentQuestion(question);
+		}
+    	
+    	
+	}
 	
 	
 	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
     	//remplissageQuizPourTest();
-		quiz=quiz.convertirXMLToJava(quiz);
-		//System.out.println("taille du quiz : "+quiz.getListeQuestions().size());
-    	
-    	buttonNextQue.setVisible(Boolean.FALSE);
-		question=quiz.getListeQuestions().get(0);
-		remplissageContentQuestion(question);
+		
     	
 	}
 	
@@ -152,9 +165,10 @@ public class ViewQuestionController implements Initializable{
 	}
 
 	@FXML
-	private void ClickButtonNextQue(ActionEvent event){
+	private void ClickButtonNextQue(ActionEvent event) throws IOException{
 		Stage stage = (Stage)buttonNextQue.getScene().getWindow();
-		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
+		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
+		new JFxUtils().loadQuestion(quiz, cmpt+1,stage);
 	}
 	
 	private void remplissageQuizPourTest(){

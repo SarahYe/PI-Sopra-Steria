@@ -66,7 +66,6 @@ public class MainParametres extends Application {
         for (int i = 0; i < quiz2.getListeQuestions().size(); i++){
         	data.add(quiz2.getListeQuestions().get(i));
         }
-        System.out.println("DATA : "+data);
         
         /* CONTENU DE LA PAGE */
         final Label label = new Label("Liste des questions");
@@ -156,7 +155,6 @@ public class MainParametres extends Application {
                 	    	listeReponses.add(rep1);
                 	    	listeReponses.add(rep2);
                 	    	data.add(new Question(textField.getText(), listeReponses));
-                	    	System.out.println("\n DATA : "+data);
                 	    	Stage stage = (Stage) btn.getScene().getWindow();
                 	        stage.close();
                 	     }

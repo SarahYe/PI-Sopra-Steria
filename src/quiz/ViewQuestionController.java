@@ -170,7 +170,7 @@ public class ViewQuestionController implements Initializable{
 		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
 		new JFxUtils().loadQuestion(quiz, cmpt+1,stage);
 	}
-	
+	/*
 	private void remplissageQuizPourTest(){
 		Reponse rep1 = new Reponse("rep 1 !", Boolean.TRUE, "justif1");
 		Reponse rep2 = new Reponse("rep 2 !", Boolean.FALSE, "justif3");
@@ -188,7 +188,7 @@ public class ViewQuestionController implements Initializable{
 	   questions.add(question1);questions.add(question1);
 	   quiz.setListeQuestions(questions);
 	   
-	}
+	}*/
 	
 
 }

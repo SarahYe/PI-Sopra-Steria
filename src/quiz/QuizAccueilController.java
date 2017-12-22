@@ -3,17 +3,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import javax.sound.midi.ControllerEventListener;
-
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.paint.Stop;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import objets.Quiz;
 import parametres.MainParametres;
 
@@ -67,7 +62,7 @@ public class QuizAccueilController implements Initializable{
 		//com.sun.javafx.application.tkExit();*/
 		
 		
-		String[] args = null;
+		//String[] args = null;
 		new MainParametres().start(stage);;
 			
 	}

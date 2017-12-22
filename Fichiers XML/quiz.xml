@@ -2,7 +2,7 @@
 <quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Test">
     <nom>Test</nom>
     <Question>
-        <intutileQuestion>Question 1 ?</intutileQuestion>
+        <intituleQuestion>Question 1 ?</intituleQuestion>
         <Reponses>
             <Reponse>
                 <correct>false</correct>
@@ -22,7 +22,7 @@
         </Reponses>
     </Question>
     <Question>
-        <intutileQuestion>Question 2 ?</intutileQuestion>
+        <intituleQuestion>Question 2 ?</intituleQuestion>
         <Reponses>
             <Reponse>
                 <correct>false</correct>

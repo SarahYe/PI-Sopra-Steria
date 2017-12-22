@@ -1,7 +1,9 @@
 package parametres;
 
 import objets.Question;
+import objets.Quiz;
 import objets.Reponse;
+import quiz.MainQuiz;
 
 import java.util.ArrayList;
 
@@ -44,7 +46,7 @@ public class MainParametres extends Application {
     
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Page principale de parametrage");
+        primaryStage.setTitle("Page principale de paramétrage");
         Group root = new Group();
         Scene scene = new Scene(root, 500, 500, Color.WHITE);
         
@@ -61,6 +63,31 @@ public class MainParametres extends Application {
         /* CONTENU DE LA PAGE */
         final Label label = new Label("Liste des questions");
         label.setFont(new Font("Arial", 20));
+        Button btnSave = new Button("Enregistrer");
+        btnSave.setMinWidth(100);
+        btnSave.setOnAction(new EventHandler<ActionEvent>() {
+    	    public void handle(ActionEvent e) {
+    	    	
+    	    	ArrayList<Question> listeQuestions = new ArrayList<Question>();
+    	        for(int i = 0; i < data.size(); i++){
+    	        	listeQuestions.add(data.get(i));
+    	        }
+    	        Quiz quiz = new Quiz ("Nom du quiz", listeQuestions); 
+    			quiz.convertirJavaToXML(quiz);
+    	    	
+    	        Stage stage = (Stage) btnSave.getScene().getWindow();
+    	        stage.close();
+    	        try {
+					new MainQuiz().start(stage);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+    	     }
+    	 });
+        HBox hbTop = new HBox();
+        hbTop.getChildren().addAll(label, btnSave);
+        hbTop.setSpacing(175);
  
         table.setEditable(false);
  
@@ -219,20 +246,12 @@ public class MainParametres extends Application {
         final VBox vbox = new VBox();
         vbox.setSpacing(10);
         vbox.setPadding(new Insets(25, 0, 0, 25));
-        vbox.getChildren().addAll(label, table, hb);
+        vbox.getChildren().addAll(hbTop, table, hb);
  
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
        
         /* FIN DU CONTENU DE LA PAGE */
-        
-        /*
-        ArrayList<Question> listeQuestions = new ArrayList<Question>();
-        for(int i = 0; i < data.size(); i++){
-        	listeQuestions.add(data.get(i));
-        }
-        Quiz quiz = new Quiz ("Nom du quiz", listeQuestions); 
-		quiz.convertirJavaToXML(quiz);
-		*/
+
         
         primaryStage.setScene(scene);
         primaryStage.show();

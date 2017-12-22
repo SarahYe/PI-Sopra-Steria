@@ -49,12 +49,20 @@ public class Quiz {
 	public void convertirJavaToXML(Quiz quiz) {
 		
 		try {
-    		// create JAXB context and initializing Marshaller
+			
+			// Retire les éléments "intituleQuestionProperty" avant la création du fichier XML
+			for(int i = 0; i < quiz.getListeQuestions().size(); i++){
+				quiz.getListeQuestions().get(i).setIntituleQuestionProperty(null);
+			}		
+			
+    	// create JAXB context and initializing Marshaller
        JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
        Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
        
        // for getting nice formatted output
+       jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
        jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+       
        
        File XMLfile = new File("Fichiers XML/quiz.xml");
        // Writing to XML file

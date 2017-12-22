@@ -32,7 +32,7 @@ import javafx.stage.Stage;
 public class MainParametres extends Application {
 
 	private TableView<Question> table = new TableView<Question>();
-	private ArrayList<Reponse> ListeReponses = new ArrayList<Reponse>();
+	//private ArrayList<Reponse> ListeReponses = new ArrayList<Reponse>();
 	
 	private final ObservableList<Question> data =
 	        FXCollections.observableArrayList(
@@ -176,6 +176,10 @@ public class MainParametres extends Application {
         boutonModifier.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
   
+            	if(table.getSelectionModel().isEmpty()){
+            		return;
+            	}
+            	
             	Group root2 = new Group();
             	Stage stage = new Stage();
                 stage.setTitle("Modifier une question");
@@ -239,8 +243,13 @@ public class MainParametres extends Application {
         final Button boutonSupprimer = new Button("Supprimer");
         boutonSupprimer.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-            	 Question selectedItem = table.getSelectionModel().getSelectedItem();
-            	 table.getItems().remove(selectedItem);
+            	
+            	if(table.getSelectionModel().isEmpty()){
+            		return;
+            	}
+            	
+            	Question selectedItem = table.getSelectionModel().getSelectedItem();
+            	table.getItems().remove(selectedItem);
             }
         });
         

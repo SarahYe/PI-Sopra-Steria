@@ -27,8 +27,8 @@ public class Question {
 		return intituleQuestion;
 	}
     
-	public String getIntituleQuestionProperty() {
-		return intituleQuestionProperty.get();
+	public SimpleStringProperty getIntituleQuestionProperty() {
+		return intituleQuestionProperty;
 	}
 
 	//@XmlElement

@@ -7,8 +7,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import objets.Question;
 import objets.Quiz;
 import objets.Reponse;
@@ -21,8 +24,8 @@ public class ViewQuestionController implements Initializable{
 	
 	
 	
-	//@FXML
-	//private Button 
+	@FXML
+	private Button buttonNextQue;
 	@FXML
 	private Label justif1,justif2,justif3,justif4,justif5;
 	@FXML
@@ -38,6 +41,7 @@ public class ViewQuestionController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
     	remplissageQuizPourTest();
     	
+    	buttonNextQue.setVisible(Boolean.FALSE);
 		question=quiz.getListeQuestions().get(0);
 		remplissageContentQuestion(question);
     	
@@ -134,10 +138,16 @@ public class ViewQuestionController implements Initializable{
 				cmptTrue--;
 		}
 		
-		
+		if(cmptTrue==00 && choice)
+			buttonNextQue.setVisible(Boolean.TRUE);
 		
 	}
-	
+
+	@FXML
+	private void ClickButtonNextQue(ActionEvent event){
+		Stage stage = (Stage)buttonNextQue.getScene().getWindow();
+		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
+	}
 	
 	private void remplissageQuizPourTest(){
 		Reponse rep1 = new Reponse("rep 1 !", Boolean.TRUE, "justif1");

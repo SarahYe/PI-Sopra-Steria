@@ -51,9 +51,9 @@ public class Quiz {
 		try {
 			
 			// Retire les éléments "intituleQuestionProperty" avant la création du fichier XML
-			for(int i = 0; i < quiz.getListeQuestions().size(); i++){
+			/*for(int i = 0; i < quiz.getListeQuestions().size(); i++){
 				quiz.getListeQuestions().get(i).setIntituleQuestionProperty(null);
-			}		
+			}*/		
 			
     	// create JAXB context and initializing Marshaller
        JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
@@ -78,7 +78,7 @@ public class Quiz {
 		
 	}
 	
-public void convertirXMLToJava(Quiz quiz) {
+public Quiz convertirXMLToJava(Quiz quiz) {
 	
 	try {
 		   JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
@@ -104,10 +104,14 @@ public void convertirXMLToJava(Quiz quiz) {
 				   System.out.println("Reponse " + j + " : " + r.getIntitule() + " || "  + r.getCorrect() + " || " + r.getJustification() + "\n");
 			   }
 		   }
+		   
+		   return quizz;
+		   
 	  } catch (JAXBException e) {
 		  e.printStackTrace();
 	  }
 	
+	return quiz;
 	}
 	
 }

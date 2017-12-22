@@ -36,8 +36,8 @@ public class MainParametres extends Application {
 	
 	private final ObservableList<Question> data =
 	        FXCollections.observableArrayList(
-	       		new Question ("Quel est l'intru parmis ces réponses ?",ListeReponses),
-	       		new Question ("Quelle heure est-il ?",ListeReponses)
+	       		//new Question ("Quel est l'intru parmis ces réponses ?",ListeReponses),
+	       		//new Question ("Quelle heure est-il ?",ListeReponses)
 	        );
 	
     public static void main(String[] args) {
@@ -50,7 +50,7 @@ public class MainParametres extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 500, 500, Color.WHITE);
         
-        ArrayList<Reponse> ListeReponses1 = new ArrayList<Reponse>();
+        /*ArrayList<Reponse> ListeReponses1 = new ArrayList<Reponse>();
         ListeReponses1.add(new Reponse("pomme de terre", true, "il s'agit en effet de la bonne réponse !"));
         ListeReponses1.add(new Reponse("patate", false, "bien sûr que non, c'était la pomme de terre !"));
         data.set(0, new Question ("Quel est l'intru parmis ces réponses ?",ListeReponses1));
@@ -58,7 +58,15 @@ public class MainParametres extends Application {
         ArrayList<Reponse> ListeReponses2 = new ArrayList<Reponse>();
         ListeReponses2.add(new Reponse("42", true, "Vous n'avez pas compris la question, mais bonne réponse !"));
         ListeReponses2.add(new Reponse("patate ?", true, "Pourquoi pas."));
-        data.set(1, new Question ("Quelle heure est-il ?",ListeReponses2));
+        data.set(1, new Question ("Quelle heure est-il ?",ListeReponses2));*/
+        
+        ArrayList<Question> list = new ArrayList<Question>();
+        Quiz quiz = new Quiz("Nom du quiz",list);
+        Quiz quiz2 = quiz.convertirXMLToJava(quiz);
+        for (int i = 0; i < quiz2.getListeQuestions().size(); i++){
+        	data.add(quiz2.getListeQuestions().get(i));
+        }
+        System.out.println("DATA : "+data);
         
         /* CONTENU DE LA PAGE */
         final Label label = new Label("Liste des questions");
@@ -148,7 +156,8 @@ public class MainParametres extends Application {
                 	    	listeReponses.add(rep1);
                 	    	listeReponses.add(rep2);
                 	    	data.add(new Question(textField.getText(), listeReponses));
-                	        Stage stage = (Stage) btn.getScene().getWindow();
+                	    	System.out.println("\n DATA : "+data);
+                	    	Stage stage = (Stage) btn.getScene().getWindow();
                 	        stage.close();
                 	     }
                 	 });

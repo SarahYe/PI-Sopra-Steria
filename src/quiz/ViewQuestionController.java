@@ -39,7 +39,9 @@ public class ViewQuestionController implements Initializable{
 	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
-    	remplissageQuizPourTest();
+    	//remplissageQuizPourTest();
+		quiz=quiz.convertirXMLToJava(quiz);
+		//System.out.println("taille du quiz : "+quiz.getListeQuestions().size());
     	
     	buttonNextQue.setVisible(Boolean.FALSE);
 		question=quiz.getListeQuestions().get(0);

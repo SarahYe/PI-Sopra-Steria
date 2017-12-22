@@ -88,7 +88,7 @@ public void convertirXMLToJava(Quiz quiz) {
 		   for(Question q : listeQuestions) {
 			   i++;
 			   System.out.println("Question " + i + " : " + q.getIntituleQuestion() + "\n");
-
+			   
 			   ArrayList<Reponse> listeReponses = q.getListeReponses();
 			   int j = 0;
 			   for(Reponse r : listeReponses) {

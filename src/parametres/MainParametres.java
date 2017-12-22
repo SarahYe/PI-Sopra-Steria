@@ -145,7 +145,7 @@ public class MainParametres extends Application {
                 stage.setTitle("Modifier une question");
                 stage.setScene(new Scene(root2, 450, 450));
                 
-                Label label1 = new Label("Intitulé :");
+                Label label1 = new Label("Intitulé de la question :");
                 TextField textField = new TextField (table.getSelectionModel().getSelectedItem().getIntituleQuestion());
                 HBox hb = new HBox();
                 hb.getChildren().addAll(label1, textField);
@@ -224,6 +224,15 @@ public class MainParametres extends Application {
         ((Group) scene.getRoot()).getChildren().addAll(vbox);
        
         /* FIN DU CONTENU DE LA PAGE */
+        
+        /*
+        ArrayList<Question> listeQuestions = new ArrayList<Question>();
+        for(int i = 0; i < data.size(); i++){
+        	listeQuestions.add(data.get(i));
+        }
+        Quiz quiz = new Quiz ("Nom du quiz", listeQuestions); 
+		quiz.convertirJavaToXML(quiz);
+		*/
         
         primaryStage.setScene(scene);
         primaryStage.show();

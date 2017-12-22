@@ -8,22 +8,36 @@ import javafx.beans.property.SimpleStringProperty;
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Quiz")
 public class Question {
 	
-	SimpleStringProperty intituleQuestion;
+	String intituleQuestion;
     ArrayList<Reponse> ListeReponses;
+    SimpleStringProperty intituleQuestionProperty;
 
+    public Question () {
+    	
+    }
+    
     public Question(String mName, ArrayList<Reponse> mReponses) {
-        this.intituleQuestion = new SimpleStringProperty(mName);
+    	this.intituleQuestion = mName;
         this.ListeReponses = mReponses;
+        this.intituleQuestionProperty = new SimpleStringProperty(mName);
     }
 	
-	@XmlElement
-	public String getIntituleQuestion() {
-		return intituleQuestion.get();
+    @XmlElement
+    public String getIntituleQuestion() {
+		return intituleQuestion;
+	}
+    
+	public String getIntituleQuestionProperty() {
+		return intituleQuestionProperty.get();
 	}
 
 	//@XmlElement
-	public void setIntituleQuestion(String intutileQuestion) {
-		this.intituleQuestion.set(intutileQuestion);
+	public void setIntituleQuestion(String intituleQuestion) {
+		this.intituleQuestion = intituleQuestion;
+	}
+	
+	public void setIntituleQuestionProperty(String intituleQuestion) {
+		this.intituleQuestionProperty.set(intituleQuestion);
 	}
 	
 	@XmlElementWrapper(name = "Reponses")

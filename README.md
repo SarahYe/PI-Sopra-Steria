@@ -1,13 +1,16 @@
-# Projet industriel Serious Game en partenariat avec Sopra Steria Est
+# Projet industriel Serious Game
 
 Ce projet s'inscrit dans le cadre du PI mené par les étudiants de TELECOM Nancy en collaboration avec la Division Est de Sopra Steria. Il consiste à réaliser une application dite "blanche" permettant la création de serious games.
 
 ## Préréquis :
 
 Environnement de travail :  Eclipse IDE for Java Developers
+
 Version Java : 1.8
 
 ## Exécution :
+
+Après avoir cloner le projet, il faut l'importer comme un projet existant sous Eclispe.
 
 ##### Lancer un quiz :
 Dans le package *quiz*, exécutez la classe **MainQuiz** puis cliquez sur "Jouer".

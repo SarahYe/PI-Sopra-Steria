@@ -1,18 +1,32 @@
-# PI-Sopra-Steria
-Projet industriel 3A TELECOM Nancy
+# Projet industriel Serious Game en partenariat avec Sopra Steria Est
 
-Execution :
-Pour lancer le quiz, sur eclipse il faut executer la classe MainQuiz situe dans le package quiz.
-Il est possible de lancer directement l'interface de parametrage en executant la classe MainParametres situe dans le package parametres.
+Ce projet s'inscrit dans le cadre du PI mené par les étudiants de TELECOM Nancy en collaboration avec la Division Est de Sopra Steria. Il consiste à réaliser une application dite "blanche" permettant la création de serious games.
 
-Il est possible d'aller sur l'interface de parametrage en cliquant sur le bouton "parametrage" situe sur l'ecran d'accueil du quiz.
-Depuis cette interface, il est possible d'ajouter, modifier ou supprimer les questions deja presentes.
-Une fois que l'on enregistre (bouton "Enregistrer"), on est renvoye sur l'interface d'accueil du quiz.
+## Préréquis :
 
-Pour lancer le quiz, il suffit de cliquer sur "Jouer".
-Lorsque l'on selectionne une ou plusieurs reponses, la justification associee s'affiche une fois que l'on clique sur le bouton "valider".
-Si toutes les bonnes reponses, et uniquement elles, ont ete cochees, un bouton "question suivante" s'affiche, permettant de passer a la suivante.
-Une fois que toutes les questions ont ete posees, le quiz redirige vers la page d'accueil.
+Environnement de travail :  Eclipse IDE for Java Developers
+Version Java : 1.8
 
-Le fichier XML est utilise pour stocker tout le contenu relatif au quiz, c'est a dire le contenu des differentes questions, reponses ainsi que leurs justifications associees.
-L'interface du quiz lit le fichier xml pour afficher les differentes questions tandis que l'interface de parametrage s'occupe de remplir le fichier xml avec le contenu fourni par l'utilisateur.
+## Exécution :
+
+##### Lancer un quiz :
+Dans le package *quiz*, exécutez la classe **MainQuiz** puis cliquez sur "Jouer".
+Lorsque l'on sélectionne une ou plusieurs réponses, la justification associée s'affiche après avoir "Valider". Le passage à la question suivante se fait après la sélection de toutes les bonnes réponses.
+
+Depuis l'écran d'accueil, il est également possible d'accéder à l'interface de paramétrage grâce au bouton "paramétrage".
+
+##### Lancer le paramétrage :
+Dans le package *parametres*, exécuter la classe **MainParametres**.
+
+*Fonctionnalités:*
+  * Ajouter une question
+  * Modifier une question existante
+  * Supprimer une question
+
+Pour chaque question, il faut : un intitulé, les différents choix de réponse, une justification pour chacune des réponses (non obligatoire) ainsi que l'indication de ou des bonne(s) réponse(s).
+
+## Auteurs :
+
+* Maël CLOUET
+* Antoine SOCHALA
+* Sarah YESUFU

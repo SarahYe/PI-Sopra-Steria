@@ -1,4 +1,4 @@
-package quiz;
+package controleurs;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -11,7 +11,6 @@ public class ViewScoreController implements Initializable{
     public void initialize(URL url, ResourceBundle rb) {
     	
 		
-		
-		
+	
 	}
 }

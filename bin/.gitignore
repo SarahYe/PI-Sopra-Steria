@@ -1,5 +1,8 @@
 /main/
-/objets/
-/paramètres/
-/xml/
 /parametres/
+/quiz/
+/modeles/
+/xml/
+/vues/
+/controleurs/
+/fxml/

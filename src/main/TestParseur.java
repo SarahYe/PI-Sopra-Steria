@@ -2,11 +2,11 @@ package main;
 
 import java.util.ArrayList;
 
-import objets.Question;
-import objets.Quiz;
-import objets.Reponse;
+import modeles.Question;
+import modeles.Quiz;
+import modeles.Reponse;
 
-public class Main {
+public class TestParseur {
 	
 	 public static void main(String[] args) {
 		 
@@ -30,7 +30,8 @@ public class Main {
 		 
 		 Quiz quiz = new Quiz ("Test",ListeQuestions);
 	    
-		 quiz.convertirJavaToXML(quiz);
+		 //quiz.convertirJavaToXML(quiz, "FichiersDeConfig/quiz.xml");
+		 quiz.convertirXMLToJava("FichiersDeConfig/quiz.xml");
 	  }
 	     
 

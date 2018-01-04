@@ -1,4 +1,5 @@
-package objets;
+package modeles;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Question")
@@ -7,12 +8,12 @@ public class Reponse {
 	String intitule;
 	Boolean correct;
 	String justification;
-	
+
 	public Reponse() {
-		
+
 	}
-	
-	public Reponse (String mIntitule, Boolean mCorrect, String mJustification) {
+
+	public Reponse(String mIntitule, Boolean mCorrect, String mJustification) {
 		this.intitule = mIntitule;
 		this.correct = mCorrect;
 		this.justification = mJustification;
@@ -21,27 +22,27 @@ public class Reponse {
 	public String getIntitule() {
 		return intitule;
 	}
-	
+
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
 	}
-	
+
 	public Boolean getCorrect() {
 		return correct;
 	}
-	
+
 	public void setCorrect(Boolean correct) {
 		this.correct = correct;
 	}
-	
+
 	public String getJustification() {
 		return justification;
 	}
-	
+
 	public void setJustification(String justification) {
 		this.justification = justification;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return super.hashCode();
@@ -54,6 +55,6 @@ public class Reponse {
 
 	@Override
 	public String toString() {
-		return  "Reponse: \n intitule = " + intitule + "\n Correct = " + correct + "\n Justification = " + justification;
+		return "Reponse: \n intitule = " + intitule + "\n Correct = " + correct + "\n Justification = " + justification;
 	}
 }

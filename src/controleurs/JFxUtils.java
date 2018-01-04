@@ -30,7 +30,7 @@ public class JFxUtils {
 	}
 
 	public Stage loadQuestion(Quiz quiz, int cmpt, Stage stage) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("vues/ViewQuestion.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewQuestion.fxml"));
 
 		stage.setScene(new Scene((Pane) loader.load()));
 

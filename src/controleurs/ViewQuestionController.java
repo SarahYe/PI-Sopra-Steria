@@ -43,7 +43,7 @@ public class ViewQuestionController implements Initializable {
 		// cmpt = "+cmpt);
 		if (quiz.getListeQuestions().size() == cmpt) {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			stage.getScene().setRoot((Parent) JFxUtils.loadFxml("vues/QuizAccueil.fxml"));
+			stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
 		} else {
 			buttonNextQue.setVisible(Boolean.FALSE);
 			question = quiz.getListeQuestions().get(cmpt);
@@ -102,7 +102,7 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
 		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("vues/QuizAccueil.fxml"));
+		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
 	}
 
 	@FXML

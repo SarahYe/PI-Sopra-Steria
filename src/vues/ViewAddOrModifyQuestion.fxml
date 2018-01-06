@@ -17,13 +17,13 @@
 	        <Insets bottom="0" left="25.0" right="0" top="25.0" />
 	      </padding>
 	    
-	   		<HBox spacing="10">
+	   		<HBox alignment="BASELINE_LEFT" spacing="10">
 		      	<Label text="Intitulé de la question :" />
 		      	<TextField fx:id="textFieldQuestion" />
 	      	</HBox>
 	      	
 	      	<VBox>
-	      		<HBox spacing="10">
+	      		<HBox alignment="BASELINE_LEFT" spacing="10">
 			      	<Label text="Intitulé de la réponse 1 :" />
 			      	<TextField fx:id="textFieldRep1" />
 		      	</HBox>
@@ -32,7 +32,7 @@
 	      	</VBox>
 	      		
 	      	<VBox>
-	      		<HBox spacing="10">
+	      		<HBox alignment="BASELINE_LEFT" spacing="10">
 			      	<Label text="Intitulé de la réponse 2 :" />
 			      	<TextField fx:id="textFieldRep2" />
 		      	</HBox>
@@ -40,8 +40,10 @@
 		      	<TextArea fx:id="textAreaRep2" maxHeight="60.0" maxWidth="400.0" />
 	      	</VBox>
 	      	
-	      	<Button fx:id="btn" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
-			
+	      	<HBox alignment="BASELINE_LEFT" spacing="15">
+	      		<Button fx:id="btn" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
+				<Label fx:id="errorLabel" visible="false" style="-fx-text-fill: red;" />
+			</HBox>
       	
       	</VBox>
       

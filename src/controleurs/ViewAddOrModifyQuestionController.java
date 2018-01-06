@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -27,6 +28,8 @@ public class ViewAddOrModifyQuestionController {
 	private CheckBox checkBoxRep1;
 	@FXML
 	private CheckBox checkBoxRep2;
+	@FXML
+	private Label errorLabel;
 	@FXML
 	private TextArea textAreaRep1;
 	@FXML
@@ -65,6 +68,24 @@ public class ViewAddOrModifyQuestionController {
 	
 	@FXML
 	protected void ClickButtonSave(ActionEvent event) throws IOException {
+		
+		if(textFieldQuestion.getText().isEmpty()){
+			errorLabel.setText("Intitulé de la question vide !");
+			errorLabel.setVisible(true);
+			return;	
+		}
+		
+		if(textFieldRep1.getText().isEmpty() || textFieldRep2.getText().isEmpty()){
+			errorLabel.setText("Intitulé(s) de réponse(s) vide(s) !");
+			errorLabel.setVisible(true);
+			return;	
+		}
+		
+		if(!checkBoxRep1.isSelected() && !checkBoxRep2.isSelected()){
+			errorLabel.setText("Cocher une bonne réponse !");
+			errorLabel.setVisible(true);
+			return;
+		}
 		
 		if(modifyQuestionInterface){
 			

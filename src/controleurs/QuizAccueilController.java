@@ -47,7 +47,7 @@ public class QuizAccueilController implements Initializable{
 	}
 
 	@FXML
-	protected void ClickButtonParametrage(ActionEvent event) {
+	protected void ClickButtonParametrage(ActionEvent event) throws IOException {
 		
 		Stage stage = (Stage)ButtonParametrage.getScene().getWindow();
 		//ouverture de l'interface de parametrage

@@ -12,6 +12,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import modeles.Question;
 import modeles.Quiz;
@@ -33,6 +35,8 @@ public class ViewQuestionController implements Initializable {
 	private CheckBox intiRep1, intiRep2, intiRep3, intiRep4, intiRep5;
 	@FXML
 	private Label intiQue;
+	@FXML
+	private ProgressBar progQuiz;
 
 	public void initData(Quiz quiz, int cmpt) {
 		this.cmpt = cmpt;
@@ -48,8 +52,8 @@ public class ViewQuestionController implements Initializable {
 			buttonNextQue.setVisible(Boolean.FALSE);
 			question = quiz.getListeQuestions().get(cmpt);
 			remplissageContentQuestion(question);
+			progQuiz.setProgress((double)cmpt/quiz.getListeQuestions().size());
 		}
-
 	}
 
 	@Override
@@ -117,42 +121,62 @@ public class ViewQuestionController implements Initializable {
 		ArrayList<Reponse> reponses = question.getListeReponses();
 		if (reponses.size() > 0 && intiRep1.isSelected()) {
 			justif1.setVisible(Boolean.TRUE);
-			if (!reponses.get(0).getCorrect())
+			if (!reponses.get(0).getCorrect()){
 				choice = Boolean.FALSE;
-			else
+				intiRep1.setTextFill(Color.RED);
+			}
+			else{
 				cmptTrue--;
+				intiRep1.setTextFill(Color.GREEN);
+			}
 		}
 
 		if (reponses.size() > 1 && intiRep2.isSelected()) {
 			justif2.setVisible(Boolean.TRUE);
-			if (!reponses.get(1).getCorrect())
+			if (!reponses.get(1).getCorrect()){
 				choice = Boolean.FALSE;
-			else
+				intiRep2.setTextFill(Color.RED);
+			}
+			else{
 				cmptTrue--;
+				intiRep2.setTextFill(Color.GREEN);
+			}
 		}
 
 		if (reponses.size() > 2 && intiRep3.isSelected()) {
 			justif3.setVisible(Boolean.TRUE);
-			if (!reponses.get(2).getCorrect())
+			if (!reponses.get(2).getCorrect()){
 				choice = Boolean.FALSE;
-			else
+				intiRep3.setTextFill(Color.RED);
+			}
+			else{
 				cmptTrue--;
+				intiRep3.setTextFill(Color.GREEN);
+			}
 		}
 
 		if (reponses.size() > 3 && intiRep4.isSelected()) {
 			justif4.setVisible(Boolean.TRUE);
-			if (!reponses.get(3).getCorrect())
+			if (!reponses.get(3).getCorrect()){
 				choice = Boolean.FALSE;
-			else
+				intiRep4.setTextFill(Color.RED);
+			}
+			else{
 				cmptTrue--;
+				intiRep4.setTextFill(Color.GREEN);
+			}
 		}
 
 		if (reponses.size() > 4 && intiRep5.isSelected()) {
 			justif5.setVisible(Boolean.TRUE);
-			if (!reponses.get(4).getCorrect())
+			if (!reponses.get(4).getCorrect()){
 				choice = Boolean.FALSE;
-			else
+				intiRep5.setTextFill(Color.RED);
+			}
+			else{
 				cmptTrue--;
+				intiRep1.setTextFill(Color.GREEN);
+			}
 		}
 
 		if (cmptTrue == 00 && choice)

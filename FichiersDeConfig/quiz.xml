@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Test">
-    <nom>Test</nom>
+<quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Nom du quiz">
+    <nom>Nom du quiz</nom>
     <Question>
         <intituleQuestion>Question 1 ?</intituleQuestion>
         <Reponses>
             <Reponse>
-                <correct>false</correct>
+                <correct>true</correct>
                 <intitule>rep 1 !</intitule>
                 <justification>justification 1</justification>
             </Reponse>
@@ -13,11 +13,6 @@
                 <correct>false</correct>
                 <intitule>rep 2 !</intitule>
                 <justification>justification 2</justification>
-            </Reponse>
-            <Reponse>
-                <correct>true</correct>
-                <intitule>rep 3 !</intitule>
-                <justification>justification 3</justification>
             </Reponse>
         </Reponses>
     </Question>
@@ -30,14 +25,49 @@
                 <justification>justification 1</justification>
             </Reponse>
             <Reponse>
-                <correct>false</correct>
+                <correct>true</correct>
                 <intitule>rep 2 !</intitule>
                 <justification>justification 2</justification>
             </Reponse>
             <Reponse>
+                <correct>false</correct>
+                <intitule>rep 3 !</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 4 !</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 5 !</intitule>
+                <justification></justification>
+            </Reponse>
+        </Reponses>
+    </Question>
+    <Question>
+        <intituleQuestion>Question 3 ?</intituleQuestion>
+        <Reponses>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 1 !</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 2 !</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
                 <correct>true</correct>
                 <intitule>rep 3 !</intitule>
-                <justification>justification 3</justification>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>rep 4 !</intitule>
+                <justification></justification>
             </Reponse>
         </Reponses>
     </Question>

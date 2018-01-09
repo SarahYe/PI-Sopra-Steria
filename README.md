@@ -13,13 +13,11 @@ Version Java : 1.8
 Après avoir cloner le projet, il faut l'importer comme un projet existant sous Eclispe.
 
 ##### Lancer un quiz :
-Dans le package *quiz*, exécutez la classe **MainQuiz** puis cliquez sur "Jouer".
+Dans le package *main*, exécutez la classe **MainQuiz** puis cliquez sur "Jouer".
 Lorsque l'on sélectionne une ou plusieurs réponses, la justification associée s'affiche après avoir "Valider". Le passage à la question suivante se fait après la sélection de toutes les bonnes réponses.
 
-Depuis l'écran d'accueil, il est également possible d'accéder à l'interface de paramétrage grâce au bouton "paramétrage".
-
 ##### Lancer le paramétrage :
-Dans le package *parametres*, exécuter la classe **MainParametres**.
+Dans le package *main*, exécuter la classe **MainParametres**.
 
 *Fonctionnalités:*
   * Ajouter une question

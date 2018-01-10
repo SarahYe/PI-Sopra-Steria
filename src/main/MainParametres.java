@@ -15,7 +15,7 @@ public class MainParametres extends Application {
 
 	public void start(Stage primaryStage) throws IOException {
 		
-		primaryStage.setTitle("Page principale de paramétrage");
+		primaryStage.setTitle("Page principale de parametrage");
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewMainParametres.fxml"));
 

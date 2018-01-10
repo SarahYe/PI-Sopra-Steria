@@ -2,72 +2,62 @@
 <quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Nom du quiz">
     <nom>Nom du quiz</nom>
     <Question>
-        <intituleQuestion>Question 1 ?</intituleQuestion>
+        <intituleQuestion>Dans la cuisine, ma casserole pleine d’huile est enflammée. Comment vais-je éteindre ce type de feu ?</intituleQuestion>
         <Reponses>
             <Reponse>
-                <correct>true</correct>
-                <intitule>rep 1 !</intitule>
-                <justification>justification 1</justification>
+                <correct>false</correct>
+                <intitule>Je coupe le gaz</intitule>
+                <justification>Mauvaise réponse !</justification>
             </Reponse>
             <Reponse>
                 <correct>false</correct>
-                <intitule>rep 2 !</intitule>
-                <justification>justification 2</justification>
+                <intitule>Je mets de l'eau</intitule>
+                <justification>Mauvaise réponse !</justification>
+            </Reponse>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>Je mets le couvercle</intitule>
+                <justification>Il faut étouffer le feu soit avec le couvercle soit avec un linge épais et humide. Attention, il ne faut surtout pas mettre d’eau .</justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>Je jette la casserole par la fenêtre</intitule>
+                <justification>Mauvaise réponse !</justification>
             </Reponse>
         </Reponses>
     </Question>
     <Question>
-        <intituleQuestion>Question 2 ?</intituleQuestion>
+        <intituleQuestion>Jusqu’à combien de degrés peuvent monter les fumées d’un incendie ?</intituleQuestion>
         <Reponses>
             <Reponse>
                 <correct>false</correct>
-                <intitule>rep 1 !</intitule>
-                <justification>justification 1</justification>
+                <intitule>10-20°</intitule>
+                <justification>Mauvaise réponse </justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>50-100°</intitule>
+                <justification>Mauvaise réponse </justification>
             </Reponse>
             <Reponse>
                 <correct>true</correct>
-                <intitule>rep 2 !</intitule>
-                <justification>justification 2</justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>rep 3 !</intitule>
-                <justification></justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>rep 4 !</intitule>
-                <justification></justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>rep 5 !</intitule>
-                <justification></justification>
+                <intitule>400-500°</intitule>
+                <justification>Bonne réponse ! les fumées d’un incendie atteignent rapidement les températures de 400 à 500 °. En plus d’être chaudes, elles sont extrêmement toxiques</justification>
             </Reponse>
         </Reponses>
     </Question>
     <Question>
-        <intituleQuestion>Question 3 ?</intituleQuestion>
+        <intituleQuestion>Il y a le feu dans les étages inférieurs et de la fumée dans la cage d’escalier, que dois-je faire ?</intituleQuestion>
         <Reponses>
             <Reponse>
                 <correct>false</correct>
-                <intitule>rep 1 !</intitule>
-                <justification></justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>rep 2 !</intitule>
-                <justification></justification>
+                <intitule>Je saute par la fenêtre</intitule>
+                <justification>Mauvaise réponse</justification>
             </Reponse>
             <Reponse>
                 <correct>true</correct>
-                <intitule>rep 3 !</intitule>
-                <justification></justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>rep 4 !</intitule>
-                <justification></justification>
+                <intitule>Je ferme les portes et les fenêtres et j’attends les pompiers</intitule>
+                <justification>Si la fumée se trouve dans la cage d’escalier, il est préférable de rester chez soi après s’être signalé aux pompiers. Il faut fermer les portes et les fenêtres pour éviter les appels d’air, se baisser, mettre un linge humide sous la porte et sur le visage. Le fait d’arroser une porte la rend coupe-feu pendant 30 minutes.</justification>
             </Reponse>
         </Reponses>
     </Question>

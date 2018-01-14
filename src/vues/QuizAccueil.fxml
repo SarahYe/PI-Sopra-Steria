@@ -1,19 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.QuizAccueilController">
+<AnchorPane id="anchorpane_id" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="794.0" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.QuizAccueilController">
    <children>
-      <Label alignment="CENTER" layoutX="407.0" layoutY="36.0" prefHeight="45.0" prefWidth="146.0" text="Bienvenue" />
-      <Label alignment="CENTER" layoutX="363.0" layoutY="92.0" prefHeight="89.0" prefWidth="234.0" stylesheets="@../../Ressources/CSS/texte_incurve.css" text="Serious Game Test 1">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="140.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-3.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage4.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="524.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-2.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage5.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="610.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-10.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage7.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="254.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-15.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="698.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@../../Ressources/Images/Logo_Sopra_Steria.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-11.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage3.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="411.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage2.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="316.0" layoutY="35.0" prefHeight="45.0" prefWidth="221.0" text="Bienvenue sur" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="35.0">
          <font>
-            <Font size="18.0" />
+            <Font name="Snell Roundhand" size="35.0" />
+         </font></Label>
+      <Label id="degrade_titre" alignment="CENTER" layoutX="148.0" layoutY="74.0" prefHeight="101.0" prefWidth="378.0" rotate="-14.0" stylesheets="@../../Ressources/CSS/degrade_titre.css" text="SeriouSécurité" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="74.0">
+         <font>
+            <Font name="Trattatello" size="96.0" />
          </font>
+         <rotationAxis>
+            <Point3D x="2.0" y="10.0" z="4.0" />
+         </rotationAxis>
       </Label>
-      <Button fx:id="buttonJouer" layoutX="458.0" layoutY="236.0" mnemonicParsing="false" onAction="#ClickButtonJouer" text="Jouer" />
+      <Button fx:id="buttonJouer" layoutX="280.0" layoutY="275.0" mnemonicParsing="false" onAction="#ClickButtonJouer" prefHeight="51.0" prefWidth="211.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Jouer" textFill="WHITE" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Button>
       <Button fx:id="ButtonParametrage" disable="true" layoutX="439.0" layoutY="329.0" mnemonicParsing="false" onAction="#ClickButtonParametrage" text="Paramétrage" visible="false" />
       <Button fx:id="buttonScore" layoutX="278.0" layoutY="223.0" mnemonicParsing="false" onAction="#ClickButtonScore" text="Score" visible="false" />
    </children>

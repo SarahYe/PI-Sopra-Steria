@@ -41,7 +41,7 @@
 			</TableView>
 			
 			<HBox spacing="75">
-				<Button fx:id="boutonAjout" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonAdd" text="Ajouter" />
+				<Button fx:id="boutonAjout" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonAdd" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" />
 				<Button fx:id="boutonModifier" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" text="Modifier" />
 				<Button fx:id="boutonSupprimer" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" text="Supprimer" />
 			</HBox>

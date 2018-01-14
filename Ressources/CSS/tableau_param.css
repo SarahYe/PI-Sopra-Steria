@@ -1,0 +1,77 @@
+/** file: reaper.css
+    place in same directory as RowStyledTable.java */
+/*.root                             { -fx-font: 18px "Comic Sans MS";    }
+.column-header-background         { -fx-background-color: azure;       }
+.willPayRow                       { -fx-background-color: palegreen;   }
+.wontPayRow                       { -fx-background-color: coral;       }
+.willPayCell                      { -fx-background-color: forestgreen; }
+.wontPayCell                      { -fx-background-color: firebrick;   }
+.table-row-cell:empty             { -fx-background-color: cornsilk;    }
+.table-row-cell:empty .table-cell { -fx-border-width:     0px;         }*/
+
+.tableView {
+ -fx-font-size: 8.0pt;
+ -fx-background-color: linear-gradient(white, #EDEFFF); 
+}
+
+.text-field.error,.table-cell.error { 
+    -fx-border-color: red ; 
+    -fx-border-width: 2px ; 
+    -fx-background-image:url('fail.png'); 
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: right center; 
+} 
+.text-field,.table-cell { 
+    -fx-border-width: 0px ; 
+    -fx-background-image:none; 
+    -fx-background-repeat: no-repeat; 
+    -fx-background-position: right center; 
+}
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0.0;
+    -fx-background-insets: 0.0;
+    -fx-padding: 0.0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow, 
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0.0;
+    -fx-background-insets: 0.0;
+    -fx-padding: 0.0;
+    -fx-shape: null;
+}
+
+.tableView {
+ -fx-font-size: 8.0pt;
+ -fx-background-color: linear-gradient(white, #EDEFFF); 
+}
+
+.table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: #FFE3C1;
+    -fx-background-insets: 0.0, 0.0 0.0 0.0 0.0;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.table-view:focused .table-row-cell:filled:selected {
+    -fx-background-color: #BCD4E5;
+    -fx-background-insets: 0.0, 0.0 0.0 0.0 0.0;
+    -fx-text-fill: -fx-selection-bar-text;
+    -fx-table-cell-border-color: #E0F2FF;
+}
+
+.table-view .column-header {
+ -fx-font-weight: bold;
+   -fx-background-color: #FFF5EF;
+}
+
+.table-view .column-header .text {
+  -fx-underline: true;
+}
+
+.table-cell {
+    -fx-alignment: BASELINE_CENTER;
+ }

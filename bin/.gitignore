@@ -1,8 +1,3 @@
-/main/
-/parametres/
-/quiz/
-/modeles/
-/xml/
-/vues/
 /controleurs/
-/fxml/
+/vues/
+/main/

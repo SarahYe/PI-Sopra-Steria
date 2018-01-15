@@ -1,0 +1,28 @@
+/*#boutonRetour {
+	-fx-border:none;
+	-fx-padding:6px 0 6px 0;
+	-fx-border-radius:75%;
+	-fx-border-bottom:3px solid #4753f3;
+	-fx-font:bold 13px;
+	-fx-color:#555;
+	-fx-background:#fff;
+}*/
+
+#boutonRetour {
+    -fx-border:none;
+	-fx-padding:6px 0 6px 0;
+	-fx-border-radius:75%;
+	-fx-border-bottom:3px solid #4753f3;
+	-fx-font:bold 13px;
+	-fx-color:#555;
+	-fx-background:#fff;
+}
+
+#boutonRetour:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+#boutonRetour:pressed, #boutonRetour:default:hover:pressed {
+  -fx-background-color: white;
+  -fx-text-fill: #1d1d1d;
+}

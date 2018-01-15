@@ -57,7 +57,7 @@
             <Point3D x="2.0" y="10.0" z="4.0" />
          </rotationAxis>
       </Label>
-      <Button fx:id="buttonJouer" layoutX="280.0" layoutY="275.0" mnemonicParsing="false" onAction="#ClickButtonJouer" prefHeight="51.0" prefWidth="211.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Jouer" textFill="WHITE" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="280.0">
+      <Button fx:id="buttonJouer" layoutX="286.0" layoutY="267.0" mnemonicParsing="false" onAction="#ClickButtonJouer" prefHeight="51.0" prefWidth="211.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Jouer" textFill="WHITE" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="291.5" AnchorPane.rightAnchor="291.5">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Button>

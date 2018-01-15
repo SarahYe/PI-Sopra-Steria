@@ -26,6 +26,13 @@ Dans le package *main*, exécuter la classe **MainParametres**.
 
 Pour chaque question, il faut : un intitulé, les différents choix de réponse, une justification pour chacune des réponses (non obligatoire) ainsi que l'indication de ou des bonne(s) réponse(s).
 
+##### Tester le jeu "chassez les intrus" utilisant Slick2D :
+Dans le package *slickGames*, exécuter la classe **MainOddWordOutGame**.
+
+*Fonctionnalités en cours de d�veloppement*
+
+Contient actuellement : une interface.
+
 ## Auteurs :
 
 * Maël CLOUET

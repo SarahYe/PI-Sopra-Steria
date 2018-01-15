@@ -1,27 +1,27 @@
 package main;
 
 import java.io.IOException;
-import controleurs.ViewMainParametresController;
+import controleurs.ViewParametresQuizController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainParametres extends Application {
+public class ParametresQuiz extends Application {
 
 	public static void main(String[] args) {
-		Application.launch(MainParametres.class, args);
+		Application.launch(ParametresQuiz.class, args);
 	}
 
 	public void start(Stage primaryStage) throws IOException {
 		
 		primaryStage.setTitle("Page principale de parametrage");
 		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewMainParametres.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
 
 		primaryStage.setScene(new Scene(loader.load()));
 
-		ViewMainParametresController controller = loader.<ViewMainParametresController>getController();
+		ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
 		controller.initData(controller);
 		
 		primaryStage.show();

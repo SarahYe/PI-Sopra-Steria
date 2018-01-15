@@ -9,7 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import main.MainParametres;
+import main.ParametresQuiz;
 import modeles.Quiz;
 
 public class QuizAccueilController implements Initializable{
@@ -63,7 +63,7 @@ public class QuizAccueilController implements Initializable{
 
 
 		//String[] args = null;
-		new MainParametres().start(stage);;
+		new ParametresQuiz().start(stage);;
 
 	}
 

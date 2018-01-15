@@ -15,9 +15,9 @@ import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 
-public class ViewMainParametresController{
+public class ViewParametresQuizController{
 
-	private ViewMainParametresController mainController;
+	private ViewParametresQuizController mainController;
 	
 	@FXML
 	private Button btnSave;
@@ -31,7 +31,7 @@ public class ViewMainParametresController{
 	private TableView<Question> table;
 
 	
-	public void initData(ViewMainParametresController controller) {
+	public void initData(ViewParametresQuizController controller) {
 		
 		mainController = controller;
 		

@@ -23,7 +23,7 @@ public class ViewAddOrModifyQuestionController {
 
 	private boolean modifyQuestionInterface;
 	private TableViewSelectionModel<Question> tableViewSelectionModel;
-	private ViewMainParametresController mainController;
+	private ViewParametresQuizController mainController;
 
 	
 	@FXML
@@ -72,7 +72,7 @@ public class ViewAddOrModifyQuestionController {
 	private VBox VBoxRep5;
 	
 	
-	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel, ViewMainParametresController controller) {
+	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel, ViewParametresQuizController controller) {
 		
 		this.modifyQuestionInterface = modifyQuestionInterface;
 		this.tableViewSelectionModel = tableViewSelectionModel;

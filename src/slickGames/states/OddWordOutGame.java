@@ -1,4 +1,4 @@
-package slickGames;
+package slickGames.states;
 
 
 import java.awt.Font;
@@ -10,6 +10,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.FontUtils;
+
+import slickGames.MainOddWordOutGame;
 
 //import slickGames.FontUtils;
 

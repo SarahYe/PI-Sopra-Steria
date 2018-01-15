@@ -1,4 +1,4 @@
-package slickGames;
+package slickGames.utils;
 
 import java.awt.Font;
 import java.awt.FontFormatException;

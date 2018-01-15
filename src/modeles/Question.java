@@ -1,53 +1,56 @@
 package modeles;
+
 import java.util.ArrayList;
 
-import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import javafx.beans.property.SimpleStringProperty;
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Quiz")
 public class Question {
-	
-	String intituleQuestion;
-    ArrayList<Reponse> ListeReponses;
-    SimpleStringProperty intituleQuestionProperty;
 
-    public Question () {
-    	
-    }
-    
-    public Question(String mName, ArrayList<Reponse> mReponses) {
-    	this.intituleQuestion = mName;
-        this.ListeReponses = mReponses;
-        this.intituleQuestionProperty = new SimpleStringProperty(mName);
-    }
-	
-    @XmlElement
-    public String getIntituleQuestion() {
+	String intituleQuestion;
+	ArrayList<Reponse> ListeReponses;
+	SimpleStringProperty intituleQuestionProperty;
+
+	public Question() {
+
+	}
+
+	public Question(String mName, ArrayList<Reponse> mReponses) {
+		this.intituleQuestion = mName;
+		this.ListeReponses = mReponses;
+		this.intituleQuestionProperty = new SimpleStringProperty(mName);
+	}
+
+	@XmlElement
+	public String getIntituleQuestion() {
 		return intituleQuestion;
 	}
-    
+
 	public SimpleStringProperty getIntituleQuestionProperty() {
 		return intituleQuestionProperty;
 	}
 
-	//@XmlElement
+	// @XmlElement
 	public void setIntituleQuestion(String intituleQuestion) {
 		this.intituleQuestion = intituleQuestion;
 	}
-	
+
 	public void setIntituleQuestionProperty(String intituleQuestion) {
 		this.intituleQuestionProperty.set(intituleQuestion);
 	}
-	
+
 	@XmlElementWrapper(name = "Reponses")
-	@XmlElement (name = "Reponse")
+	@XmlElement(name = "Reponse")
 	public ArrayList<Reponse> getListeReponses() {
 		return ListeReponses;
 	}
-	
-	//@XmlElementWrapper(name = "Reponses")
-	//@XmlElement (name = "Reponse")
+
+	// @XmlElementWrapper(name = "Reponses")
+	// @XmlElement (name = "Reponse")
 	public void setListeReponses(ArrayList<Reponse> reponses) {
 		this.ListeReponses = reponses;
 	}
@@ -65,9 +68,7 @@ public class Question {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return  "Question : \n intitule = " + intituleQuestion + "\n Reponses = " + ListeReponses ;
+		return "Question : \n intitule = " + intituleQuestion + "\n Reponses = " + ListeReponses;
 	}
-	
-	
 
 }

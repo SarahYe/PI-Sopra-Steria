@@ -1,6 +1,7 @@
 package main;
 
 import java.io.IOException;
+
 import controleurs.ViewParametresQuizController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,19 +15,16 @@ public class ParametresQuiz extends Application {
 	}
 
 	public void start(Stage primaryStage) throws IOException {
-		
-		primaryStage.setTitle("Page principale de parametrage");
-		
+
+		primaryStage.setTitle("Paramétrage d'un quiz");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
-
 		primaryStage.setScene(new Scene(loader.load()));
-
 		ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
+
 		controller.initData(controller);
-		
 		primaryStage.show();
-		
 		primaryStage.sizeToScene();
+
 	}
 
 }

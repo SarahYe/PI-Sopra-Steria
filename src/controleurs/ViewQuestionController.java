@@ -30,7 +30,7 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private Button buttonNextQue;
 	@FXML
-	//private Label justif1, justif2, justif3, justif4, justif5;
+	// private Label justif1, justif2, justif3, justif4, justif5;
 	private Label justification;
 	@FXML
 	private CheckBox intiRep1, intiRep2, intiRep3, intiRep4, intiRep5;
@@ -53,7 +53,7 @@ public class ViewQuestionController implements Initializable {
 			buttonNextQue.setVisible(Boolean.FALSE);
 			question = quiz.getListeQuestions().get(cmpt);
 			remplissageContentQuestion(question);
-			progQuiz.setProgress((double)cmpt/quiz.getListeQuestions().size());
+			progQuiz.setProgress((double) cmpt / quiz.getListeQuestions().size());
 		}
 	}
 
@@ -64,7 +64,7 @@ public class ViewQuestionController implements Initializable {
 	}
 
 	private void remplissageContentQuestion(Question question) {
-		
+
 		intiQue.setText(question.getIntituleQuestion());
 		ArrayList<Reponse> reponses = question.getListeReponses();
 
@@ -74,47 +74,47 @@ public class ViewQuestionController implements Initializable {
 			justification.setText(reponses.get(0).getJustification());
 		} else
 			intiRep1.setVisible(Boolean.FALSE);
-		//justif1.setVisible(Boolean.FALSE);
+		// justif1.setVisible(Boolean.FALSE);
 		justification.setVisible(Boolean.FALSE);
 
 		if (reponses.size() > 1) {
 			intiRep2.setText(reponses.get(1).getIntitule());
-			//justif2.setText(reponses.get(1).getJustification());
+			// justif2.setText(reponses.get(1).getJustification());
 			justification.setText("");
 			justification.setText(reponses.get(1).getJustification());
 		} else
 			intiRep2.setVisible(Boolean.FALSE);
-		//justif2.setVisible(Boolean.FALSE);
+		// justif2.setVisible(Boolean.FALSE);
 		justification.setVisible(Boolean.FALSE);
-		
+
 		if (reponses.size() > 2) {
 			intiRep3.setText(reponses.get(2).getIntitule());
-			//justif3.setText(reponses.get(2).getJustification());
+			// justif3.setText(reponses.get(2).getJustification());
 			justification.setText("");
 			justification.setText(reponses.get(0).getJustification());
 		} else
 			intiRep3.setVisible(Boolean.FALSE);
-		//justif3.setVisible(Boolean.FALSE);
+		// justif3.setVisible(Boolean.FALSE);
 		justification.setVisible(Boolean.FALSE);
 
 		if (reponses.size() > 3) {
 			intiRep4.setText(reponses.get(3).getIntitule());
-			//justif4.setText(reponses.get(3).getJustification());
+			// justif4.setText(reponses.get(3).getJustification());
 			justification.setText("");
 			justification.setText(reponses.get(0).getJustification());
 		} else
 			intiRep4.setVisible(Boolean.FALSE);
-		//justif4.setVisible(Boolean.FALSE);
+		// justif4.setVisible(Boolean.FALSE);
 		justification.setVisible(Boolean.FALSE);
 
 		if (reponses.size() > 4) {
 			intiRep5.setText(reponses.get(4).getIntitule());
-			//justif5.setText(reponses.get(4).getJustification());
+			// justif5.setText(reponses.get(4).getJustification());
 			justification.setText("");
 			justification.setText(reponses.get(0).getJustification());
 		} else
 			intiRep5.setVisible(Boolean.FALSE);
-		//justif5.setVisible(Boolean.FALSE);
+		// justif5.setVisible(Boolean.FALSE);
 		justification.setVisible(Boolean.FALSE);
 
 	}
@@ -136,65 +136,60 @@ public class ViewQuestionController implements Initializable {
 
 		ArrayList<Reponse> reponses = question.getListeReponses();
 		if (reponses.size() > 0 && intiRep1.isSelected()) {
-			//justif1.setVisible(Boolean.TRUE);
+			// justif1.setVisible(Boolean.TRUE);
 			justification.setVisible(Boolean.TRUE);
-			if (!reponses.get(0).getCorrect()){
+			if (!reponses.get(0).getCorrect()) {
 				choice = Boolean.FALSE;
 				intiRep1.setTextFill(Color.RED);
-			}
-			else{
+			} else {
 				cmptTrue--;
 				intiRep1.setTextFill(Color.GREEN);
 			}
 		}
 
 		if (reponses.size() > 1 && intiRep2.isSelected()) {
-			//justif2.setVisible(Boolean.TRUE);
+			// justif2.setVisible(Boolean.TRUE);
 			justification.setVisible(Boolean.TRUE);
-			if (!reponses.get(1).getCorrect()){
+			if (!reponses.get(1).getCorrect()) {
 				choice = Boolean.FALSE;
 				intiRep2.setTextFill(Color.RED);
-			}
-			else{
+			} else {
 				cmptTrue--;
 				intiRep2.setTextFill(Color.GREEN);
 			}
 		}
 
 		if (reponses.size() > 2 && intiRep3.isSelected()) {
-			//justif3.setVisible(Boolean.TRUE);
+			// justif3.setVisible(Boolean.TRUE);
 			justification.setVisible(Boolean.TRUE);
-			if (!reponses.get(2).getCorrect()){
+			if (!reponses.get(2).getCorrect()) {
 				choice = Boolean.FALSE;
 				intiRep3.setTextFill(Color.RED);
-			}
-			else{
+			} else {
 				cmptTrue--;
 				intiRep3.setTextFill(Color.GREEN);
 			}
 		}
 
 		if (reponses.size() > 3 && intiRep4.isSelected()) {
-			//justif4.setVisible(Boolean.TRUE);
+			// justif4.setVisible(Boolean.TRUE);
 			justification.setVisible(Boolean.TRUE);
-			if (!reponses.get(3).getCorrect()){
+			if (!reponses.get(3).getCorrect()) {
 				choice = Boolean.FALSE;
 				intiRep4.setTextFill(Color.RED);
-			}
-			else{
+			} else {
 				cmptTrue--;
 				intiRep4.setTextFill(Color.GREEN);
 			}
 		}
 
 		if (reponses.size() > 4 && intiRep5.isSelected()) {
-			//justif5.setVisible(Boolean.TRUE);
+			// justif5.setVisible(Boolean.TRUE);
 			justification.setVisible(Boolean.TRUE);
-			if (!reponses.get(4).getCorrect()){
+			if (!reponses.get(4).getCorrect()) {
 				choice = Boolean.FALSE;
 				intiRep5.setTextFill(Color.RED);
-			}
-			else{
+			} else {
 				cmptTrue--;
 				intiRep1.setTextFill(Color.GREEN);
 			}

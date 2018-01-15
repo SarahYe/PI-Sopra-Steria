@@ -167,13 +167,13 @@ public class ViewAddOrModifyQuestionController {
 	protected void ClickButtonSave(ActionEvent event) throws IOException {
 		
 		if(textFieldQuestion.getText().isEmpty()){
-			errorLabel.setText("Intitulé de la question vide !");
+			errorLabel.setText("Intitulï¿½ de la question vide !");
 			errorLabel.setVisible(true);			
 			return;	
 		}
 		
 		if(textFieldRep1.getText().isEmpty() || textFieldRep2.getText().isEmpty() || (VBoxRep3.isManaged() && textFieldRep3.getText().isEmpty()) || (VBoxRep4.isManaged() && textFieldRep4.getText().isEmpty()) || (VBoxRep5.isManaged() && textFieldRep5.getText().isEmpty())){
-			errorLabel.setText("Intitulé(s) de réponse(s) vide(s) !");
+			errorLabel.setText("Intitulï¿½(s) de rï¿½ponse(s) vide(s) !");
 			errorLabel.setVisible(true);
 			return;	
 		}
@@ -181,22 +181,22 @@ public class ViewAddOrModifyQuestionController {
 		String nbrReponses = ComboBoxNbrQuestion.getValue();
 		if(!checkBoxRep1.isSelected() && !checkBoxRep2.isSelected()){
 			if(nbrReponses.equals("5") && !checkBoxRep3.isSelected() && !checkBoxRep4.isSelected() && !checkBoxRep5.isSelected()){
-				errorLabel.setText("Cocher une bonne réponse !");
+				errorLabel.setText("Cochez une bonne rï¿½ponse !");
 				errorLabel.setVisible(true);
 				return;
 			}
 			if(nbrReponses.equals("4") && !checkBoxRep3.isSelected() && !checkBoxRep4.isSelected()){
-				errorLabel.setText("Cocher une bonne réponse !");
+				errorLabel.setText("Cochez une bonne rï¿½ponse !");
 				errorLabel.setVisible(true);
 				return;
 			}
 			if(nbrReponses.equals("3") && !checkBoxRep3.isSelected()){
-				errorLabel.setText("Cocher une bonne réponse !");
+				errorLabel.setText("Cochez une bonne rï¿½ponse !");
 				errorLabel.setVisible(true);
 				return;
 			}
 			if(nbrReponses.equals("2")){
-				errorLabel.setText("Cocher une bonne réponse !");
+				errorLabel.setText("Cochez une bonne rï¿½ponse !");
 				errorLabel.setVisible(true);
 				return;
 			}			

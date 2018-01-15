@@ -31,7 +31,6 @@ public class QuizAccueilController implements Initializable{
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		
 		Stage stage = (Stage)buttonJouer.getScene().getWindow();
-		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("fxml/ViewQuestion.fxml"));
 		new JFxUtils().loadQuestion(new Quiz(), 0,stage);
 		
 	}

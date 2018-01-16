@@ -29,13 +29,13 @@ public class QuizAccueilController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-
+		jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
 	}
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonJouer.getScene().getWindow();
-		jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
+		//jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
 		new JFxUtils().loadQuestion(new Quiz(), 0, stage);
 	}
 

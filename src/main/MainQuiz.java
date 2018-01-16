@@ -13,7 +13,6 @@ public class MainQuiz extends Application {
 
 		// Font.loadFont(getClass().getResourceAsStream("./Ressources/Polices/GoodMorning.ttf"),
 		// 12);
-
 		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"), 850, 650));
 		stage.setTitle("SeriousSécurité");
 		stage.show();

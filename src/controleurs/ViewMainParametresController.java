@@ -24,11 +24,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class ViewMainParametresController implements Initializable{
 	
@@ -47,6 +51,7 @@ public class ViewMainParametresController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		System.out.println("ouverture page MainParametre");
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
@@ -116,8 +121,22 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_ConfBlc(ActionEvent event) throws IOException {
-		AnchorPane newPane = FXMLLoader.load(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
+		FXMLLoader loader =new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
+		ScrollPane newPane = loader.load();
 		AP_ConfBlc.getChildren().setAll(newPane);
+		ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
+
+		controller.initData(controller);
+		
+		/*Parent root;
+		FXMLLoader loader =new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
+		loader.setController(loader.getController());
+		root = loader.load();
+        Scene scene = new Scene(root, 300, 250);
+        Stage stage = new Stage();
+        stage.setTitle("It works!");
+        stage.setScene(scene);
+        stage.show();*/
 		
 	}
 	
@@ -159,7 +178,7 @@ public class ViewMainParametresController implements Initializable{
 		TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
 		Transformer XML_Transformeur = XML_Fabrique_Transformeur.newTransformer();
 		DOMSource source = new DOMSource(XML_Document);
-		StreamResult resultat = new StreamResult(new File("XML_résultat.xml"));
+		StreamResult resultat = new StreamResult(new File("chronologie.xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
 		

@@ -46,7 +46,7 @@ public class QuizAccueilController implements Initializable {
 		stage.sizeToScene();
 	}
 
-	public void jouerAudio(String son) {
+	public static void jouerAudio(String son) {
 		InputStream in;
 		try {
 			in = new FileInputStream(son);

@@ -78,15 +78,17 @@ public class ViewParametresQuizController {
 
 	@FXML
 	protected void ClickButtonAdd(ActionEvent event) throws IOException {
-		Stage stage = new Stage();
-		stage.setTitle("Nouvelle question");
-		// FXMLLoader loader = new
-		// FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
-		// stage.setScene(new Scene(loader.load()));
-		// ViewAddOrModifyQuestionController controller =
-		// loader.<ViewAddOrModifyQuestionController>getController();
-		ScrollPane newPane = FXMLLoader.load(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
+		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
+		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
+		controller.initData(false, null, mainController);
+		
+		//Stage stage = new Stage();
+		//stage.setTitle("Nouvelle question");
+		// FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
+		// stage.setScene(new Scene(loader.load()));
 		// ViewAddOrModifyQuestionController controller =
 		// newPane.<ViewAddOrModifyQuestionController>getController();
 		// controller.initData(false, null, mainController);
@@ -99,9 +101,15 @@ public class ViewParametresQuizController {
 			return;
 		}
 
-		Stage stage = new Stage();
-		stage.setTitle("Modifier une question");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
+		ScrollPane newPane = loader.load();
+		AP_ParamQuestion.getChildren().setAll(newPane);
+		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
+		controller.initData(true, table.getSelectionModel(), mainController);
+		
 		/*
+		 * Stage stage = new Stage();
+		stage.setTitle("Modifier une question");
 		 * FXMLLoader loader = new
 		 * FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
 		 * stage.setScene(new Scene(loader.load())); ViewAddOrModifyQuestionController
@@ -109,10 +117,6 @@ public class ViewParametresQuizController {
 		 * controller.initData(true, table.getSelectionModel(), mainController);
 		 * stage.show();
 		 */
-
-		ScrollPane newPane = FXMLLoader.load(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
-		AP_ParamQuestion.getChildren().setAll(newPane);
-		// appel du controleeur de ViewAddOrModifyQuestion.fxml
 	}
 
 	@FXML

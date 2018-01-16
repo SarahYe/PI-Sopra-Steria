@@ -14,7 +14,7 @@
 
 <AnchorPane id="anchorpane_id" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
    <children>
-      <ImageView disable="true" fitHeight="333.0" fitWidth="703.0" layoutX="70.0" layoutY="168.0" opacity="0.17" pickOnBounds="true" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
+      <ImageView disable="true" fitHeight="333.0" fitWidth="703.0" layoutX="70.0" layoutY="168.0" opacity="0.39" pickOnBounds="true" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0">
          <image>
             <Image url="@../../Ressources/Images/secu.jpg" />
          </image>
@@ -74,7 +74,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button id="boutonRetour" layoutX="19.0" layoutY="47.0" mnemonicParsing="false" onAction="#ClickBackHome" prefHeight="58.0" prefWidth="115.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="&lt; Accueil" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0">
+      <Button id="boutonRetour" layoutX="19.0" layoutY="47.0" mnemonicParsing="false" onAction="#ClickBackHome" prefHeight="28.0" prefWidth="115.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="&lt; Accueil" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -82,29 +82,39 @@
             <InnerShadow />
          </effect>
       </Button>
-      <ProgressBar fx:id="progQuiz" layoutX="578.0" layoutY="146.0" prefHeight="26.0" prefWidth="222.0" progress="0.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="146.0" />
-      <Label id="degrade_titre" alignment="CENTER" layoutX="108.0" layoutY="-10.0" prefHeight="184.0" prefWidth="751.0" rotate="-2.9" stylesheets="@../../Ressources/CSS/degrade_titre.css" text="SeriouSécurité" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="-20.0">
+      <ProgressBar fx:id="progQuiz" layoutX="578.0" layoutY="146.0" prefHeight="26.0" prefWidth="222.0" progress="0.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="130.0" />
+      <Label id="degrade_titre" alignment="CENTER" layoutX="108.0" layoutY="-10.0" prefHeight="184.0" prefWidth="751.0" rotate="-2.9" stylesheets="@../../Ressources/CSS/degrade_titre.css" text="SeriouSécurité" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="-40.0">
          <font>
-            <Font name="Trattatello" size="96.0" />
+            <Font name="Trattatello" size="64.0" />
          </font>
          <effect>
             <DropShadow />
          </effect>
       </Label>
-      <Separator layoutX="53.0" layoutY="139.0" prefHeight="0.0" prefWidth="739.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="130.0">
+      <Separator layoutX="53.0" layoutY="139.0" prefHeight="0.0" prefWidth="739.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="90.0">
          <effect>
             <DropShadow />
          </effect>
       </Separator>
-      <ImageView fx:id="faux" fitHeight="65.0" fitWidth="59.0" layoutX="511.0" layoutY="584.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="faux" fitHeight="65.0" fitWidth="59.0" layoutX="511.0" layoutY="584.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../Ressources/Images/faux.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="86.0" layoutX="502.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="86.0" layoutX="502.0" layoutY="575.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../Ressources/Images/vrai.png" />
          </image>
       </ImageView>
+      <Label layoutX="484.0" layoutY="134.0" text="Question" AnchorPane.rightAnchor="305.0" AnchorPane.topAnchor="132.5">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="progression" layoutX="548.0" layoutY="136.0" text="1/2" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="133.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

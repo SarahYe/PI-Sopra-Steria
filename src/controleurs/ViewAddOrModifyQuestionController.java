@@ -227,8 +227,8 @@ public class ViewAddOrModifyQuestionController {
 			mainController.addQuestion(textFieldQuestion.getText(), listeReponses);		
 		}	
 		
-		Stage stage = (Stage) btn.getScene().getWindow();
-		stage.close();
+		//Stage stage = (Stage) btn.getScene().getWindow();
+		//stage.close();
 		
 	}	
 	

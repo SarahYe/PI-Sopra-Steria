@@ -20,9 +20,13 @@ Lorsque l'on sélectionne une ou plusieurs réponses, la justification associée s'
 Dans le package *main*, exécuter la classe **MainParametres**.
 
 *Fonctionnalités:*
-  * Ajouter une question
-  * Modifier une question existante
-  * Supprimer une question
+  * Ajouter un bloc dans la liste
+  * Supprimer un bloc selectionné dans la liste
+  * Changer l'ordre des blocs dans la liste avec les boutons *up* et *down*
+  * Afficher l'interface de configuration du bloc selectionné (seul l'interface du quiz est disponible actuellement)
+  	* Ajouter une question
+  	* Modifier une question existante
+  	* Supprimer une question
 
 Pour chaque question, il faut : un intitulé, les différents choix de réponse, une justification pour chacune des réponses (non obligatoire) ainsi que l'indication de ou des bonne(s) réponse(s).
 

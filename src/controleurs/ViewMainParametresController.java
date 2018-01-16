@@ -45,6 +45,7 @@ public class ViewMainParametresController implements Initializable{
 	@FXML
 	private ListView LV_BlcList;
 	private ArrayList<String> listTypeBlocs=new ArrayList<String>();
+	private ArrayList<String> listFxmlBlocs=new ArrayList<String>();
 	private ArrayList<Integer> listCmptBloc=new ArrayList<Integer>();
 	@FXML
 	private AnchorPane AP_ConfBlc;
@@ -55,6 +56,8 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
+		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
+		listFxmlBlocs.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
 		for (int i=0;i<6;i++)
 			listCmptBloc.add(0);
 	}
@@ -121,22 +124,25 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_ConfBlc(ActionEvent event) throws IOException {
-		FXMLLoader loader =new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
-		ScrollPane newPane = loader.load();
-		AP_ConfBlc.getChildren().setAll(newPane);
-		ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
+		int index = LV_BlcList.getSelectionModel().getSelectedIndex();
+		String fxml = null;
+		for (int i=0;i< listTypeBlocs.size();i++){
+			if(((String)LV_BlcList.getItems().get(index)).contains(listTypeBlocs.get(i))){
+				fxml=listFxmlBlocs.get(i);
+				break;
+			}
+		}
+		if(fxml.endsWith("fxml")){
+			FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
+			ScrollPane newPane = loader.load();
+			AP_ConfBlc.getChildren().setAll(newPane);
+			ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
 
-		controller.initData(controller);
+			controller.initData(controller);
+		} else {
+			System.out.println("La page de cofiguration de ce bloc n'est pas encore implémentée");
+		}
 		
-		/*Parent root;
-		FXMLLoader loader =new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
-		loader.setController(loader.getController());
-		root = loader.load();
-        Scene scene = new Scene(root, 300, 250);
-        Stage stage = new Stage();
-        stage.setTitle("It works!");
-        stage.setScene(scene);
-        stage.show();*/
 		
 	}
 	

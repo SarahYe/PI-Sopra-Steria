@@ -34,7 +34,7 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="778.0" prefWidth="670.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.23711340206185566" orientation="VERTICAL" prefHeight="778.0" prefWidth="670.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                            <children>
@@ -63,7 +63,7 @@
                            <children>
                               <ScrollPane prefHeight="385.0" prefWidth="715.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <content>
-                                  <AnchorPane fx:id="AP_ConfBlc" minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="706.0" />
+                                  <AnchorPane fx:id="AP_ConfBlc" minHeight="0.0" minWidth="0.0" />
                                 </content>
                               </ScrollPane>
                            </children></AnchorPane>

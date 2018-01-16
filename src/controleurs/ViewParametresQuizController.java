@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.MainQuiz;
@@ -32,6 +33,10 @@ public class ViewParametresQuizController implements Initializable{
 	private Button boutonModifier;
 	@FXML
 	private Button boutonSupprimer;
+	@FXML
+	private Button questionUp;
+	@FXML
+	private Button questionDown;
 	@FXML
 	private TableView<Question> table;
 	@FXML
@@ -144,6 +149,27 @@ public class ViewParametresQuizController implements Initializable{
 		table.getItems().remove(selectedItem);
 	}
 
+	@FXML
+	private void ClickButtonUp (ActionEvent event) {
+		int index = table.getSelectionModel().getSelectedIndex();
+		if (index > 0){
+			Question buff = table.getItems().get(index-1);
+			table.getItems().set(index-1, table.getItems().get(index));
+			table.getItems().set(index, buff);
+			table.getSelectionModel().select(index-1);
+		}
+	}
+	
+	@FXML
+	private void ClickButtonDown (ActionEvent event) {
+		int index = table.getSelectionModel().getSelectedIndex();
+		if (index < table.getItems().size()){
+			Question buff = table.getItems().get(index+1);
+			table.getItems().set(index + 1, table.getItems().get(index));
+			table.getItems().set(index, buff);
+			table.getSelectionModel().select(index + 1);
+		}
+	}
 	
 
 }

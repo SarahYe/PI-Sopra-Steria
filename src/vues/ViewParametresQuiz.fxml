@@ -8,6 +8,8 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -25,7 +27,7 @@
                		         	</font>
                		      	</Label>
                	      	
-                  	      	<TableView fx:id="table" layoutX="10.0" layoutY="51.0" prefHeight="500.0" prefWidth="330.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.bottomAnchor="118.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+                  	      	<TableView fx:id="table" layoutX="10.0" layoutY="51.0" prefHeight="448.0" prefWidth="323.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
                				<columns>
                			    	<TableColumn minWidth="330.0" prefWidth="288.22083282470703" text="Intitulé des questions">
                			         	<cellValueFactory>
@@ -39,9 +41,27 @@
                				</items>   
                			</TableView>
             				<Button fx:id="boutonAjout" layoutX="10.0" layoutY="600.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" />
+                        <Button fx:id="questionUp" layoutX="87.0" layoutY="539.0" mnemonicParsing="false" onAction="#ClickButtonUp">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Ressources/Images/up.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
             				<Button fx:id="boutonModifier" layoutX="110.0" layoutY="600.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="110.0" />
             				<Button fx:id="boutonSupprimer" layoutX="230.0" layoutY="600.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="230.0" />
                   		      	<Button fx:id="btnSave" layoutX="100.0" layoutY="650.0" minWidth="150.0" mnemonicParsing="false" onAction="#ClickButtonSave" stylesheets="@../../Ressources/CSS/button_hover.css" text="Enregistrer et Tester" textFill="WHITE" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="100.0" />
+                        <Button fx:id="questionDown" layoutX="189.0" layoutY="539.0" mnemonicParsing="false" onAction="#ClickButtonDown">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Ressources/Images/down.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                      </children>
                   </AnchorPane>
                   <ScrollPane fx:id="AP_">

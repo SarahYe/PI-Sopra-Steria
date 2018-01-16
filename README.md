@@ -31,7 +31,10 @@ Dans le package *slickGames*, exécuter la classe **MainOddWordOutGame**.
 
 *Fonctionnalités en cours de développement*
 
-Contient actuellement : une interface.
+*Fonctionnalités actuelles :*
+  * Affichage d'une question et défilement des réponses
+  * Manipulation des éléments réponses (flèches droite et gauche du clavier uniquement !)
+  * Disparition des réponses s'elles touchent un bord de la fenêtre de jeu
 
 ## Auteurs :
 

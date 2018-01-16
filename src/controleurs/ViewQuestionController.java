@@ -181,12 +181,12 @@ public class ViewQuestionController implements Initializable {
 			faux.setVisible(true);
 
 			if (cmptTrue == 00 && choice) {
-				QuizAccueilController.jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/succes.wav");
+				QuizAccueilController.jouerAudio("././Ressources/Sons/succes.wav");
 				buttonNextQue.setVisible(Boolean.TRUE);
 				faux.setVisible(false);
 				vrai.setVisible(true);
 			} else {
-				QuizAccueilController.jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/echec.wav");
+				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav");
 			}
 		}
 	}

@@ -29,7 +29,7 @@ public class QuizAccueilController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
+		jouerAudio("././Ressources/Sons/Jouer.wav");
 	}
 
 	@FXML

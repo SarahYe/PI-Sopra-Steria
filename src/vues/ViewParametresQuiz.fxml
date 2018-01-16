@@ -38,7 +38,7 @@
 				  	</FXCollections>
                				</items>   
                			</TableView>
-            				<Button fx:id="boutonAjout" layoutX="10.0" layoutY="600.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #32cdcd#32cdcd;" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" />
+            				<Button fx:id="boutonAjout" layoutX="10.0" layoutY="600.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" />
             				<Button fx:id="boutonModifier" layoutX="110.0" layoutY="600.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="110.0" />
             				<Button fx:id="boutonSupprimer" layoutX="230.0" layoutY="600.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="230.0" />
                   		      	<Button fx:id="btnSave" layoutX="100.0" layoutY="650.0" minWidth="150.0" mnemonicParsing="false" onAction="#ClickButtonSave" stylesheets="@../../Ressources/CSS/button_hover.css" text="Enregistrer et Tester" textFill="WHITE" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="100.0" />

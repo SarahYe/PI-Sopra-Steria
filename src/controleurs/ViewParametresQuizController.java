@@ -1,12 +1,15 @@
 package controleurs;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
@@ -17,7 +20,7 @@ import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 
-public class ViewParametresQuizController {
+public class ViewParametresQuizController implements Initializable{
 
 	private ViewParametresQuizController mainController;
 
@@ -33,8 +36,20 @@ public class ViewParametresQuizController {
 	private TableView<Question> table;
 	@FXML
 	private AnchorPane AP_ParamQuestion;
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		ArrayList<Question> list = new ArrayList<Question>();
+		Quiz quiz = new Quiz("Nom du quiz", list);
+		Quiz quiz2 = quiz.convertirXMLToJava("FichiersDeConfig/quiz.xml");
+		ObservableList<Question> data = table.getItems();
+		for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
+			data.add(quiz2.getListeQuestions().get(i));
+		}
+	}
 
-	public void initData(ViewParametresQuizController controller) {
+	/*public void initData(ViewParametresQuizController controller) {
 		mainController = controller;
 
 		ArrayList<Question> list = new ArrayList<Question>();
@@ -44,7 +59,7 @@ public class ViewParametresQuizController {
 		for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
 			data.add(quiz2.getListeQuestions().get(i));
 		}
-	}
+	}*/
 
 	public void setQuestion(int index, String intitule, ArrayList<Reponse> listeReponses) {
 		table.getItems().set(index, new Question(intitule, listeReponses));
@@ -82,8 +97,8 @@ public class ViewParametresQuizController {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
-		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
-		controller.initData(false, null, mainController);
+		//ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
+		//controller.initData(false, null, mainController);
 		
 		//Stage stage = new Stage();
 		//stage.setTitle("Nouvelle question");
@@ -105,7 +120,7 @@ public class ViewParametresQuizController {
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
-		controller.initData(true, table.getSelectionModel(), mainController);
+		controller.initData(true, table.getSelectionModel());
 		
 		/*
 		 * Stage stage = new Stage();
@@ -128,5 +143,7 @@ public class ViewParametresQuizController {
 		Question selectedItem = table.getSelectionModel().getSelectedItem();
 		table.getItems().remove(selectedItem);
 	}
+
+	
 
 }

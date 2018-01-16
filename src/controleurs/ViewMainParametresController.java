@@ -29,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
@@ -49,6 +50,8 @@ public class ViewMainParametresController implements Initializable{
 	private ArrayList<Integer> listCmptBloc=new ArrayList<Integer>();
 	@FXML
 	private AnchorPane AP_ConfBlc;
+	@FXML
+	private TextField TF_GameName;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -136,9 +139,9 @@ public class ViewMainParametresController implements Initializable{
 			FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
 			ScrollPane newPane = loader.load();
 			AP_ConfBlc.getChildren().setAll(newPane);
-			ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
-
-			controller.initData(controller);
+			
+			//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
+			//controller.initData(controller);
 		} else {
 			System.out.println("La page de cofiguration de ce bloc n'est pas encore implémentée");
 		}
@@ -153,7 +156,7 @@ public class ViewMainParametresController implements Initializable{
 		DocumentBuilder XML_Constructeur = XML_Fabrique_Constructeur.newDocumentBuilder();
  
 		Document XML_Document = XML_Constructeur.newDocument();
-		Element documentation = XML_Document.createElement("Documentation");
+		Element documentation = XML_Document.createElement("SeriousGame");
 		XML_Document.appendChild(documentation);
 
 		Element site = XML_Document.createElement("Site");
@@ -184,7 +187,7 @@ public class ViewMainParametresController implements Initializable{
 		TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
 		Transformer XML_Transformeur = XML_Fabrique_Transformeur.newTransformer();
 		DOMSource source = new DOMSource(XML_Document);
-		StreamResult resultat = new StreamResult(new File("chronologie.xml"));
+		StreamResult resultat = new StreamResult(new File("chronologie_" +TF_GameName.getText()  + ".xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
 		

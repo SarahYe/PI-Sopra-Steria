@@ -19,9 +19,9 @@ public class ParametresQuiz extends Application {
 		primaryStage.setTitle("Paramétrage d'un quiz");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
 		primaryStage.setScene(new Scene(loader.load()));
-		ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
+		//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
 
-		controller.initData(controller);
+		//controller.initData(controller);
 		primaryStage.show();
 		primaryStage.sizeToScene();
 

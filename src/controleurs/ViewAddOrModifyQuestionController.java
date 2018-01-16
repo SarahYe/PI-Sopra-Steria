@@ -1,12 +1,15 @@
 package controleurs;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -19,7 +22,7 @@ import javafx.stage.Stage;
 import modeles.Question;
 import modeles.Reponse;
 
-public class ViewAddOrModifyQuestionController {
+public class ViewAddOrModifyQuestionController implements Initializable{
 
 	private boolean modifyQuestionInterface;
 	private TableViewSelectionModel<Question> tableViewSelectionModel;
@@ -71,12 +74,17 @@ public class ViewAddOrModifyQuestionController {
 	@FXML 
 	private VBox VBoxRep5;
 	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		initData(false,null);
+	}
 	
-	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel, ViewParametresQuizController controller) {
+	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel) {
 		
 		this.modifyQuestionInterface = modifyQuestionInterface;
 		this.tableViewSelectionModel = tableViewSelectionModel;
-		mainController = controller;
+		//mainController = controller;
 		
 		if(this.modifyQuestionInterface){
 			
@@ -230,6 +238,6 @@ public class ViewAddOrModifyQuestionController {
 		//Stage stage = (Stage) btn.getScene().getWindow();
 		//stage.close();
 		
-	}	
+	}
 	
 }

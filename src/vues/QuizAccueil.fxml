@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorpane_id" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.QuizAccueilController">
+<AnchorPane id="anchorpane_id" prefHeight="700.0" prefWidth="850.0" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.QuizAccueilController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="140.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-3.0">
          <image>

@@ -2,7 +2,6 @@ package main;
 
 import java.io.IOException;
 
-import controleurs.ViewParametresQuizController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

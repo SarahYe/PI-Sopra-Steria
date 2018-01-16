@@ -37,7 +37,7 @@
                   <Image url="@../../Ressources/Images/personnage5.png" />
                </image>
             </ImageView>
-            <Button layoutX="692.0" layoutY="577.0" mnemonicParsing="false" onAction="#validerExplication" stylesheets="@../../Ressources/CSS/button_hover.css" text="Valider" />
+            <Button fx:id="validerExplication" layoutX="692.0" layoutY="577.0" mnemonicParsing="false" onAction="#validerExplication" stylesheets="@../../Ressources/CSS/button_hover.css" text="Valider" visible="false" />
             <Label layoutX="507.0" layoutY="584.0" prefHeight="17.0" prefWidth="272.0" text="Source" AnchorPane.rightAnchor="80.0" />
          </children></AnchorPane>
   </content>

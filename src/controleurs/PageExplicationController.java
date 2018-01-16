@@ -46,6 +46,7 @@ public class PageExplicationController implements Initializable {
 		public void initialize(URL location, ResourceBundle resources) {
 	    		champTitre.setVisible(false);
 	    		champExplication.setVisible(false);
+	    		validerExplication.setVisible(false);
 		}
 
 	    @FXML
@@ -75,6 +76,7 @@ public class PageExplicationController implements Initializable {
 		    explication.setVisible(false);
 	    		champExplication.setText(explication.getText());
 	    		champExplication.setVisible(true);
+	    		validerExplication.setVisible(true);
 	    }
 	    
 	    @FXML
@@ -82,5 +84,6 @@ public class PageExplicationController implements Initializable {
 		    		champExplication.setVisible(false);
 		    		explication.setText(champExplication.getText());
 		    		explication.setVisible(true);
+		    		validerExplication.setVisible(false);
 	    }
 }

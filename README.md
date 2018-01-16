@@ -1,33 +1,40 @@
 # Projet industriel Serious Game
 
-Ce projet s'inscrit dans le cadre du PI menÃ© par les Ã©tudiants de TELECOM Nancy en collaboration avec la Division Est de Sopra Steria. Il consiste Ã  rÃ©aliser une application dite "blanche" permettant la crÃ©ation de serious games.
+Ce projet s'inscrit dans le cadre du PI mené par les étudiants de TELECOM Nancy en collaboration avec la Division Est de Sopra Steria. Il consiste à réaliser une application dite "blanche" permettant la création de serious games.
 
-## PrÃ©rÃ©quis :
+## Préréquis :
 
 Environnement de travail :  Eclipse IDE for Java Developers
 
 Version Java : 1.8
 
-## ExÃ©cution :
+## Exécution :
 
-AprÃ¨s avoir cloner le projet, il faut l'importer comme un projet existant sous Eclispe.
+Après avoir cloner le projet, il faut l'importer comme un projet existant sous Eclispe.
 
 ##### Lancer un quiz :
-Dans le package *main*, exÃ©cutez la classe **MainQuiz** puis cliquez sur "Jouer".
-Lorsque l'on sÃ©lectionne une ou plusieurs rÃ©ponses, la justification associÃ©e s'affiche aprÃ¨s avoir "Valider". Le passage Ã  la question suivante se fait aprÃ¨s la sÃ©lection de toutes les bonnes rÃ©ponses.
+Dans le package *main*, exécutez la classe **MainQuiz** puis cliquez sur "Jouer".
+Lorsque l'on sélectionne une ou plusieurs réponses, la justification associée s'affiche après avoir "Valider". Le passage à  la question suivante se fait après la sélection de toutes les bonnes réponses.
 
-##### Lancer le paramÃ©trage :
-Dans le package *main*, exÃ©cuter la classe **MainParametres**.
+##### Lancer le paramétrage :
+Dans le package *main*, exécuter la classe **MainParametres**.
 
-*FonctionnalitÃ©s:*
+*Fonctionnalités:*
   * Ajouter une question
   * Modifier une question existante
   * Supprimer une question
 
-Pour chaque question, il faut : un intitulÃ©, les diffÃ©rents choix de rÃ©ponse, une justification pour chacune des rÃ©ponses (non obligatoire) ainsi que l'indication de ou des bonne(s) rÃ©ponse(s).
+Pour chaque question, il faut : un intitulé, les différents choix de réponse, une justification pour chacune des réponses (non obligatoire) ainsi que l'indication de ou des bonne(s) réponse(s).
+
+##### Tester le jeu "chassez les intrus" utilisant Slick2D :
+Dans le package *slickGames*, exécuter la classe **MainOddWordOutGame**.
+
+*Fonctionnalités en cours de développement*
+
+Contient actuellement : une interface.
 
 ## Auteurs :
 
-* MaÃ«l CLOUET
+* Maël CLOUET
 * Antoine SOCHALA
 * Sarah YESUFU

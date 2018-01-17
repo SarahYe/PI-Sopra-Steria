@@ -171,8 +171,8 @@ public class ViewMainParametresController implements Initializable{
 			}
 			Element type = XML_Document.createElement(listXMLBlocs.get(cmpt));
 			seriousGame.appendChild(type);
-			Attr attribut1 = XML_Document.createAttribute("path");
-			attribut1.setValue(listFxmlBlocs.get(cmpt));
+			Attr attribut1 = XML_Document.createAttribute("pathXML");
+			attribut1.setValue("path du fichier xml correspondant");
 			type.setAttributeNode(attribut1);
 		}
 		
@@ -206,7 +206,6 @@ public class ViewMainParametresController implements Initializable{
 			resultat = new StreamResult(new File("chronologie_" +"DefaultName"+ ".xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
-		
 	}
 
 }

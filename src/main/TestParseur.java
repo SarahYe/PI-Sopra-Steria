@@ -4,15 +4,28 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
+import modeles.Explication;
+import modeles.Reponse;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
 public class TestParseur {
 
 	public static void main(String[] args) {
+		
+		 ArrayList<String> ListeLiens = new ArrayList<String>();
+		 ListeLiens.add("lien1");
+		 ListeLiens.add("lien2");
+		 ListeLiens.add("lien3");
+		 
+		 Explication explication1 = new Explication("Explication 1 ?", "Contenu", "Source", ListeLiens);
+		 
+		 explication1.convertirJavaToXML(explication1, "FichiersDeConfig/explication.xml");
+		// quiz.convertirXMLToJava("FichiersDeConfig/explication.xml");
 
-		InputStream in;
+		/*InputStream in;
 		try {
 			in = new FileInputStream("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
 			AudioStream as = new AudioStream(in);
@@ -23,7 +36,7 @@ public class TestParseur {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 		/*
 		 * Reponse reponse1 = new Reponse("rep 1 !", Boolean.FALSE, "justification 1");

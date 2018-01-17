@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.StateBasedGame;
 
+import controleurs.QuizAccueilController;
 import slickGames.MainOddWordOutGame;
 import slickGames.states.OddWordOutGame;
 
@@ -18,23 +19,22 @@ public class EntiteReponse {
 
 	float x,y;
 	int width,height,direction;
-	double speedX,speedY,timeDeploy;
-	boolean alreadyDead, movingByUser, deployed;
+	double speedX,speedY,deployDelay;
+	boolean correct,deployed;
 	long pastTime = 0;
-	Shape hitbox;
 	Image sprite;
 	String textReponse;
 	
-	public EntiteReponse(String textReponse, float x) throws SlickException{
+	public EntiteReponse(String textReponse, Boolean correct, float x) throws SlickException{
 		this.textReponse = textReponse;
 		this.x = x;
 		this.direction = 0;
 		this.sprite = new Image("./Ressources/Images/rectangleReponse2.png");
-		this.alreadyDead = false;
-		this.movingByUser = false;
-		this.speedY=0.035;
+		this.speedY = 0.035;
+		this.correct = correct;
+		this.deployed = false;
 		Random rand = new Random();
-		timeDeploy = rand.nextInt(3)+2.5;
+		deployDelay = rand.nextInt(3)+2.5;
 	}
 	
 	public float getX(){
@@ -65,28 +65,12 @@ public class EntiteReponse {
 		return height;
 	}
 	
-	public boolean isAlreadyDead(){
-		return alreadyDead;
-	}
-	
-	public Shape getShape(){
-		return hitbox;
-	}
-	
-	public Shape getHitbox(){
-		return hitbox;
-	}
-	
 	public Image getSprite(){
 		return sprite;
 	}
 	
 	public String getTextReponse(){
 		return textReponse;
-	}
-	
-	public boolean isMovingByUser(){
-		return movingByUser;
 	}
 	
 	public boolean isDeployed(){
@@ -120,18 +104,6 @@ public class EntiteReponse {
 	public void setSpeedY(float speedY) {
 		this.speedY = speedY;
 	}
-
-	public void setAlreadyDead(boolean alreadyDead) {
-		this.alreadyDead = alreadyDead;
-	}
-
-	public void setShape(Shape hitbox){
-		this.hitbox = hitbox;
-	}
-	
-	public void setHitbox(Shape hitbox) {
-		this.hitbox = hitbox;
-	}
 	
 	public void setSprite(Image sprite) {
 		this.sprite = sprite;
@@ -141,18 +113,13 @@ public class EntiteReponse {
 		this.textReponse = textReponse;
 	}
 	
-	public void setMovingByUser(boolean movingByUser){
-		this.movingByUser = movingByUser;
-	}
-	
 	public void setDeployed(boolean deployed){
 		this.deployed = deployed;
 	}
 
 	public void move(int dt){
 		x += speedX*dt;
-		y += speedY*dt;
-		//hitbox.setLocation((float)x, (float)y);	
+		y += speedY*dt;	
 	}
 		
 	public void die(){	
@@ -160,19 +127,35 @@ public class EntiteReponse {
 	}
 	
 	public void checkForCollision(){	
-		if(x+width > MainOddWordOutGame.longueur || y+height > MainOddWordOutGame.hauteur || x < 0){
+		if(x+width > MainOddWordOutGame.longueur){
+			if(this.correct){
+				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f);
+			} else {
+				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f);
+			}
 			die();
-		}	
+		}
+		if(x < 0){
+			if(!this.correct){
+				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f);
+			} else {
+				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f);
+			}
+			die();
+		}
+		if(y+height > MainOddWordOutGame.hauteur){
+			OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f);
+			die();
+		}		
 	}
 	
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		checkForCollision();
 		move(delta);
-		//if(alreadyDead) die();
 	}
 	
 	public boolean isReadyToDeploy(long delta) {
-	    if(pastTime < timeDeploy * 1000) {
+	    if(pastTime < deployDelay * 1000) {
 	        pastTime += delta;
 	        return false;
 	    }else{

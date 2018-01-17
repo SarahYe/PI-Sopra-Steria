@@ -2,9 +2,13 @@ package slickGames.states;
 
 
 import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import javax.sound.sampled.*;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -16,6 +20,8 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.FontUtils;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
@@ -40,21 +46,24 @@ public class OddWordOutGame extends BasicGameState {
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
 		ArrayList<Question> ListeQuestions = new ArrayList<Question>();
-		Quiz quiz = new Quiz ("Test",ListeQuestions);
+		Quiz quiz = new Quiz ("",ListeQuestions);
 		this.quiz = quiz.convertirXMLToJava("FichiersDeConfig/slickGame.xml");
 		
 		listeReponses = this.quiz.getListeQuestions().get(0).getListeReponses();
 		Random rand = new Random();
 		previousReponse = rand.nextInt(listeReponses.size());
 		String intitule = listeReponses.get(previousReponse).getIntitule();
+		Boolean correct = listeReponses.get(previousReponse).getCorrect();
 		int max = MainOddWordOutGame.longueur-250;
 		int min = 150;
-		int randomNum = rand.nextInt((max - min) + 1) + min;
-		reponses.add(new EntiteReponse(intitule, randomNum));
+		int xPos = rand.nextInt((max - min) + 1) + min;
+		reponses.add(new EntiteReponse(intitule, correct, xPos));
 		reponseSelected = reponses.get(0);
 		
 		flecheVerte = new Image("./Ressources/Images/flecheVerte1.png");
 		flecheRouge = new Image("./Ressources/Images/flecheRouge1.png");
+		
+		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f);
 	}
 
 	@Override
@@ -143,10 +152,11 @@ public class OddWordOutGame extends BasicGameState {
 				    reponses.get(i).update(container, game, delta);
 						
 					String intitule = listeReponses.get(randomReponse).getIntitule();
+					Boolean correct = listeReponses.get(randomReponse).getCorrect();
 					int max = MainOddWordOutGame.longueur-250;
 					int min = 150;
 					int randomNum = rand.nextInt((max - min) + 1) + min;
-					reponses.add(new EntiteReponse(intitule, randomNum));
+					reponses.add(new EntiteReponse(intitule, correct, randomNum));
 								
 			    }
 	    	} else {
@@ -160,7 +170,6 @@ public class OddWordOutGame extends BasicGameState {
 		switch (key){
 		case Input.KEY_LEFT:
 			if(reponseSelected.getY() > 100){
-				reponseSelected.setMovingByUser(true);
 				reponseSelected.setDirection(-1);
 				reponseSelected.setSpeedX(-0.15);
 			}
@@ -173,7 +182,6 @@ public class OddWordOutGame extends BasicGameState {
 			break;
 		case Input.KEY_RIGHT:
 			if(reponseSelected.getY() > 100){
-				reponseSelected.setMovingByUser(true);
 				reponseSelected.setDirection(1);
 				reponseSelected.setSpeedX(0.15);
 			}
@@ -197,7 +205,6 @@ public class OddWordOutGame extends BasicGameState {
 				e.printStackTrace();
 			}
 			if(reponseSelected.getDirection() == -1){
-				reponseSelected.setMovingByUser(false);
 				reponseSelected.setDirection(0);
 				reponseSelected.setSpeedX(0);
 			}	
@@ -210,11 +217,27 @@ public class OddWordOutGame extends BasicGameState {
 				e.printStackTrace();
 			}
 			if(reponseSelected.getDirection() == 1){
-				reponseSelected.setMovingByUser(false);
 				reponseSelected.setDirection(0);
 				reponseSelected.setSpeedX(0);
 			}	
 			break;
+		}
+	}
+	
+	public static void jouerAudio(String son, float volumeReduced){
+		try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(volumeReduced); // Reduce volume by 10 decibels.
+			clip.start();
+		} catch (UnsupportedAudioFileException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	

@@ -2,22 +2,47 @@
 <quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Test">
     <nom>Test</nom>
     <Question>
-        <intituleQuestion>Dans un chantier, quels �quipements suis-je susceptible de porter ? � vous de faire le tri !</intituleQuestion>
+        <intituleQuestion>Dans un chantier, quels équipements suis-je susceptible de porter ? À vous de faire le tri !</intituleQuestion>
         <Reponses>
             <Reponse>
                 <correct>true</correct>
                 <intitule>Un casque</intitule>
-                <justification>justification 1</justification>
+                <justification></justification>
             </Reponse>
             <Reponse>
                 <correct>true</correct>
                 <intitule>Un gilet</intitule>
-                <justification>justification 2</justification>
+                <justification></justification>
             </Reponse>
             <Reponse>
                 <correct>false</correct>
                 <intitule>Des lunettes de soleil</intitule>
-                <justification>justification 3</justification>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>Des chaussures de sécurité</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>Des tongs</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>Une combinaison</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>Des coquilles anti-bruit</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>Une casquette</intitule>
+                <justification></justification>
             </Reponse>
         </Reponses>
     </Question>

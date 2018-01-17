@@ -20,13 +20,20 @@ public class MainOddWordOutGame extends StateBasedGame{
 	
 	public static void main(String[] args) throws SlickException {
 			
-		  /*Reponse reponse1 = new Reponse("Un casque", Boolean.TRUE, "justification 1");
-		  Reponse reponse2 = new Reponse("Un gilet", Boolean.TRUE, "justification 2");
-		  Reponse reponse3 = new Reponse("Des lunettes de soleil", Boolean.FALSE, "justification 3");
+		  /*Reponse reponse1 = new Reponse("Un casque", Boolean.TRUE, "");
+		  Reponse reponse2 = new Reponse("Un gilet", Boolean.TRUE, "");
+		  Reponse reponse3 = new Reponse("Des lunettes de soleil", Boolean.FALSE, "");
+		  Reponse reponse4 = new Reponse("Des chaussures de sécurité", Boolean.TRUE, "");
+		  Reponse reponse5 = new Reponse("Des tongs", Boolean.FALSE, "");
+		  Reponse reponse6 = new Reponse("Une combinaison", Boolean.TRUE, "");
+		  Reponse reponse7 = new Reponse("Des coquilles anti-bruit", Boolean.TRUE, "");
+		  Reponse reponse8 = new Reponse("Une casquette", Boolean.FALSE, "");
 		  
 		  ArrayList<Reponse> ListeReponses = new ArrayList<Reponse>();
 		  ListeReponses.add(reponse1); ListeReponses.add(reponse2);
-		  ListeReponses.add(reponse3);
+		  ListeReponses.add(reponse3); ListeReponses.add(reponse4);
+		  ListeReponses.add(reponse5); ListeReponses.add(reponse6);
+		  ListeReponses.add(reponse7); ListeReponses.add(reponse8);
 		  
 		  Question question1 = new Question("Dans un chantier, quels équipements suis-je susceptible de porter ? À vous de faire le tri !", ListeReponses);
 		  

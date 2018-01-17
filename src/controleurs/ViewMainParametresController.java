@@ -47,6 +47,7 @@ public class ViewMainParametresController implements Initializable{
 	private ListView LV_BlcList;
 	private ArrayList<String> listTypeBlocs=new ArrayList<String>();
 	private ArrayList<String> listFxmlBlocs=new ArrayList<String>();
+	private ArrayList<String> listXMLBlocs=new ArrayList<String>();
 	private ArrayList<Integer> listCmptBloc=new ArrayList<Integer>();
 	@FXML
 	private AnchorPane AP_ConfBlc;
@@ -61,6 +62,8 @@ public class ViewMainParametresController implements Initializable{
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
 		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
 		listFxmlBlocs.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
+		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
+		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
 		for (int i=0;i<6;i++)
 			listCmptBloc.add(0);
 	}
@@ -151,20 +154,29 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_SaveGame(ActionEvent event) throws ParserConfigurationException, TransformerException {
+		
 		//Creation du fichier XML et des differentes instances
 		DocumentBuilderFactory XML_Fabrique_Constructeur = DocumentBuilderFactory.newInstance();
 		DocumentBuilder XML_Constructeur = XML_Fabrique_Constructeur.newDocumentBuilder();
  
 		Document XML_Document = XML_Constructeur.newDocument();
-		Element documentation = XML_Document.createElement("SeriousGame");
-		XML_Document.appendChild(documentation);
+		Element seriousGame = XML_Document.createElement("SeriousGame");
+		XML_Document.appendChild(seriousGame);
 
-		Element site = XML_Document.createElement("Site");
-		documentation.appendChild(site);
-		Attr attribut1 = XML_Document.createAttribute("Wiki");
-		attribut1.setValue("Wikibooks");
-		site.setAttributeNode(attribut1);
+		for (int i=0; i<LV_BlcList.getItems().size();i++){
+			int cmpt=0;
+			for(int j=0; j<listTypeBlocs.size();j++){
+				if (((String) LV_BlcList.getItems().get(i)).contains(listTypeBlocs.get(j)))
+					cmpt=j;
+			}
+			Element type = XML_Document.createElement(listXMLBlocs.get(cmpt));
+			seriousGame.appendChild(type);
+			Attr attribut1 = XML_Document.createAttribute("path");
+			attribut1.setValue(listFxmlBlocs.get(cmpt));
+			type.setAttributeNode(attribut1);
+		}
 		
+		/*
 		Element livre = XML_Document.createElement("Livre");
 		site.appendChild(livre);
 		Attr attribut2 = XML_Document.createAttribute("Wikilivre");
@@ -181,13 +193,17 @@ public class ViewMainParametresController implements Initializable{
  
 		Element example = XML_Document.createElement("Exemple");
 		example.appendChild(XML_Document.createTextNode("XML"));
-		livre.appendChild(example);
+		livre.appendChild(example);*/
 
 		//Enregistrement du fichier xml
 		TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
 		Transformer XML_Transformeur = XML_Fabrique_Transformeur.newTransformer();
 		DOMSource source = new DOMSource(XML_Document);
-		StreamResult resultat = new StreamResult(new File("chronologie_" +TF_GameName.getText()  + ".xml"));
+		StreamResult resultat;
+		if(!TF_GameName.getText().equals(""))
+			resultat = new StreamResult(new File("chronologie_" +TF_GameName.getText()  + ".xml"));
+		else 
+			resultat = new StreamResult(new File("chronologie_" +"DefaultName"+ ".xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
 		

@@ -24,7 +24,7 @@
                   </Button>
                   <Button layoutX="88.0" layoutY="78.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Tester" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="78.0" />
                   <Label layoutX="21.0" layoutY="119.0" prefHeight="19.0" prefWidth="39.0" text="nom : " />
-                  <TextField layoutX="76.0" layoutY="116.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="20.0" />
+                  <TextField fx:id="TF_GameName" layoutX="76.0" layoutY="116.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="20.0" />
                   <ListView fx:id="LV_BlcList" layoutX="19.0" layoutY="155.0" prefHeight="430.0" prefWidth="200.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="17.0" />
                   <Button layoutX="41.0" layoutY="593.0" mnemonicParsing="false" onAction="#ClickBT_UpBlc" text="Up" AnchorPane.leftAnchor="41.0" />
                   <Button layoutX="151.0" layoutY="593.0" mnemonicParsing="false" onAction="#ClickBT_DownBlc" text="Down" AnchorPane.rightAnchor="41.0" />

@@ -13,21 +13,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement
-@XmlType(propOrder = { "titre", "contenu", "source", "listeLiens" })
+@XmlType(propOrder = { "titre", "contenu", "source", "listeLiens", "listeImages" })
 public class Explication {
-	
+
 	String titre;
 	String contenu;
 	String source;
 	ArrayList<String> listeLiens;
-	
+	ArrayList<String> listeImages;
+
 	public Explication() {}
-	
-	public Explication(String mTitre, String mContenu, String mSource, ArrayList<String> mLiens) {
+
+	public Explication(String mTitre, String mContenu, String mSource, ArrayList<String> mLiens, ArrayList<String> mImages) {
 		this.titre = mTitre;
 		this.contenu = mContenu;
 		this.source = mSource;
 		this.listeLiens = mLiens;
+		this.listeImages = mImages;
 	}
 
 	@XmlElement
@@ -57,8 +59,8 @@ public class Explication {
 		this.source = source;
 	}
 
-	 @XmlElementWrapper(name = "Liens")
-	 @XmlElement(name = "Lien")
+	@XmlElementWrapper(name = "Liens")
+	@XmlElement(name = "Lien")
 	public ArrayList<String> getListeLiens() {
 		return listeLiens;
 	}
@@ -67,34 +69,41 @@ public class Explication {
 		this.listeLiens = listeLiens;
 	}
 	
+	@XmlElementWrapper(name = "Images")
+	@XmlElement(name = "Image")
+	public ArrayList<String> getListeImages() {
+		return listeImages;
+	}
+
+	public void setListeImages(ArrayList<String> listeImages) {
+		this.listeImages = listeImages;
+	}
+
 	public void convertirJavaToXML(Explication explication, String nomFichier) {
 		try {
 
-			// create JAXB context and initializing Marshaller
 			JAXBContext jaxbContext = JAXBContext.newInstance(Explication.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-			// for getting nice formatted output
 			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
 			File XMLfile = new File(nomFichier);
-			// Writing to XML file
 			jaxbMarshaller.marshal(explication, XMLfile);
 
 			// Writing to console
-			System.out.println("Fichier XML cree :\n");
-			jaxbMarshaller.marshal(explication, System.out);
+			//System.out.println("Fichier XML cree :\n");
+			//jaxbMarshaller.marshal(explication, System.out);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public Explication convertirXMLToJava(String nomFichier) {
 
 		Explication explication = new Explication();
-		
+
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Explication.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();

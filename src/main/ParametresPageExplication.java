@@ -6,13 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class PageExplication extends Application {
+public class ParametresPageExplication extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("../vues/PageExplication.fxml"), 850, 650));
-		stage.setTitle("SeriousSécurité");
+		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("../vues/PageExplicationParametrage.fxml"), 850, 650));
+		stage.setTitle("Paramétrage d'une page d'explication");
 		stage.show();
 		stage.sizeToScene();
 	}

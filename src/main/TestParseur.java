@@ -20,9 +20,9 @@ public class TestParseur {
 		 ListeLiens.add("lien2");
 		 ListeLiens.add("lien3");
 		 
-		 Explication explication1 = new Explication("Explication 1 ?", "Contenu", "Source", ListeLiens);
+		// Explication explication1 = new Explication("Explication 1 ?", "Contenu", "Source", ListeLiens);
 		 
-		 explication1.convertirJavaToXML(explication1, "FichiersDeConfig/explication.xml");
+		// explication1.convertirJavaToXML(explication1, "FichiersDeConfig/explication.xml");
 		// quiz.convertirXMLToJava("FichiersDeConfig/explication.xml");
 
 		/*InputStream in;

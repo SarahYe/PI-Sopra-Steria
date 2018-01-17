@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <explication>
-    <titre>Cliquez moi</titre>
+    <titre>CLIQUEZ MOI</titre>
     <contenu>Explication
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. </contenu>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. 
+
+Blabla  blablablablablabla</contenu>
     <source>YESUFU Sarah</source>
     <Liens>
-        <Lien>https://github.com/SarahYe/PI-Sopra-Steria</Lien>
+        <Lien>https://trello.com/b/s1c8gf2a/sprint-2</Lien>
     </Liens>
+    <Images>
+        <Image>Ressources/Images/icone_image.png</Image>
+        <Image>Ressources/Images/icone_image.png</Image>
+    </Images>
 </explication>

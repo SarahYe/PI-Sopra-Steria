@@ -1,5 +1,7 @@
 package slickGames.entite;
 
+import java.util.Random;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -16,21 +18,23 @@ public class EntiteReponse {
 
 	float x,y;
 	int width,height,direction;
-	double speedX,speedY;
-	boolean alreadyDead, movingByUser;
+	double speedX,speedY,timeDeploy;
+	boolean alreadyDead, movingByUser, deployed;
+	long pastTime = 0;
 	Shape hitbox;
 	Image sprite;
 	String textReponse;
 	
-	public EntiteReponse(String textReponse, float x, float y) throws SlickException{
+	public EntiteReponse(String textReponse, float x) throws SlickException{
 		this.textReponse = textReponse;
 		this.x = x;
-		this.y = y;
 		this.direction = 0;
 		this.sprite = new Image("./Ressources/Images/rectangleReponse2.png");
 		this.alreadyDead = false;
 		this.movingByUser = false;
 		this.speedY=0.035;
+		Random rand = new Random();
+		timeDeploy = rand.nextInt(3)+2.5;
 	}
 	
 	public float getX(){
@@ -84,6 +88,10 @@ public class EntiteReponse {
 	public boolean isMovingByUser(){
 		return movingByUser;
 	}
+	
+	public boolean isDeployed(){
+		return deployed;
+	}
 
 	public void setX(float x) {
 		this.x = x;
@@ -136,6 +144,10 @@ public class EntiteReponse {
 	public void setMovingByUser(boolean movingByUser){
 		this.movingByUser = movingByUser;
 	}
+	
+	public void setDeployed(boolean deployed){
+		this.deployed = deployed;
+	}
 
 	public void move(int dt){
 		x += speedX*dt;
@@ -157,6 +169,16 @@ public class EntiteReponse {
 		checkForCollision();
 		move(delta);
 		//if(alreadyDead) die();
+	}
+	
+	public boolean isReadyToDeploy(long delta) {
+	    if(pastTime < timeDeploy * 1000) {
+	        pastTime += delta;
+	        return false;
+	    }else{
+	        pastTime = 0;
+	        return true;
+	    }
 	}
 	
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {

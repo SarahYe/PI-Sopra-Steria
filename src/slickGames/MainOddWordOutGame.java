@@ -20,7 +20,7 @@ public class MainOddWordOutGame extends StateBasedGame{
 	
 	public static void main(String[] args) throws SlickException {
 			
-		  Reponse reponse1 = new Reponse("Un casque", Boolean.TRUE, "justification 1");
+		  /*Reponse reponse1 = new Reponse("Un casque", Boolean.TRUE, "justification 1");
 		  Reponse reponse2 = new Reponse("Un gilet", Boolean.TRUE, "justification 2");
 		  Reponse reponse3 = new Reponse("Des lunettes de soleil", Boolean.FALSE, "justification 3");
 		  
@@ -37,7 +37,7 @@ public class MainOddWordOutGame extends StateBasedGame{
 		  
 		  quiz.convertirJavaToXML(quiz, "FichiersDeConfig/slickGame.xml");
 		  //quiz.convertirXMLToJava("FichiersDeConfig/slickGame.xml");
-		 
+		 */
 		
 		AppGameContainer app = new AppGameContainer(new MainOddWordOutGame(),longueur, hauteur, false);
 		app.setTargetFrameRate(60);

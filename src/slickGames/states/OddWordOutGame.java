@@ -28,10 +28,13 @@ public class OddWordOutGame extends BasicGameState {
 	
 	public static int ID = 2;
 	public static ArrayList<EntiteReponse> reponses = new ArrayList<EntiteReponse>();
+	public long previousTime = 0;
 	public Image flecheVerte;
 	public Image flecheRouge;
 	public EntiteReponse reponseSelected;
 	public Quiz quiz;
+	public ArrayList<Reponse> listeReponses;
+	public int previousReponse;
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
@@ -39,18 +42,16 @@ public class OddWordOutGame extends BasicGameState {
 		ArrayList<Question> ListeQuestions = new ArrayList<Question>();
 		Quiz quiz = new Quiz ("Test",ListeQuestions);
 		this.quiz = quiz.convertirXMLToJava("FichiersDeConfig/slickGame.xml");
-		ArrayList<Reponse> listeReponses = this.quiz.getListeQuestions().get(0).getListeReponses();
-		int nombreReponses = listeReponses.size();
-		System.out.println(listeReponses);
-		for (int i = 0; i < nombreReponses; i++){
-			String intitule = listeReponses.get(i).getIntitule();
-			int max = MainOddWordOutGame.longueur-250;
-			int min = 150;
-			Random rand = new Random();;
-			int randomNum = rand.nextInt((max - min) + 1) + min;
-			reponses.add(new EntiteReponse(intitule, randomNum, -150+i*80));
-		}
-		reponseSelected = reponses.get(nombreReponses-1);
+		
+		listeReponses = this.quiz.getListeQuestions().get(0).getListeReponses();
+		Random rand = new Random();
+		previousReponse = rand.nextInt(listeReponses.size());
+		String intitule = listeReponses.get(previousReponse).getIntitule();
+		int max = MainOddWordOutGame.longueur-250;
+		int min = 150;
+		int randomNum = rand.nextInt((max - min) + 1) + min;
+		reponses.add(new EntiteReponse(intitule, randomNum));
+		reponseSelected = reponses.get(0);
 		
 		flecheVerte = new Image("./Ressources/Images/flecheVerte1.png");
 		flecheRouge = new Image("./Ressources/Images/flecheRouge1.png");
@@ -117,11 +118,41 @@ public class OddWordOutGame extends BasicGameState {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		
-		for (int i = 0; i < reponses.size(); i++){
-			reponseSelected = reponses.get(i);
-			reponses.get(i).update(container, game, delta);
-			
-		}
+		long tmp = System.currentTimeMillis();
+	    long customDelta = tmp - previousTime;
+	    previousTime = tmp;
+	    
+	    if(reponses.size() > 0){
+	    	reponseSelected = reponses.get(0);
+	    }    
+		
+	    for (int i = 0; i < reponses.size(); i++){
+	    	if(!reponses.get(i).isDeployed()){
+	    		if (reponses.get(i).isReadyToDeploy(customDelta)){	    	
+					Random rand = new Random();
+					int randomReponse = rand.nextInt(listeReponses.size());
+					while(randomReponse == previousReponse){
+						randomReponse = rand.nextInt(listeReponses.size());
+					}
+					
+					previousReponse = randomReponse;
+						
+					reponses.get(i).setY(50);
+				    reponses.get(i).setDeployed(true);			    	
+				    	
+				    reponses.get(i).update(container, game, delta);
+						
+					String intitule = listeReponses.get(randomReponse).getIntitule();
+					int max = MainOddWordOutGame.longueur-250;
+					int min = 150;
+					int randomNum = rand.nextInt((max - min) + 1) + min;
+					reponses.add(new EntiteReponse(intitule, randomNum));
+								
+			    }
+	    	} else {
+	    		reponses.get(i).update(container, game, delta);
+	    	}	
+	    }    
 			
 	}
 	

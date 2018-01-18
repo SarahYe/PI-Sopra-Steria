@@ -39,7 +39,7 @@
                <graphic>
                   <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Ressources/Images/personnage5.png" />
+                        <Image url="@../../Ressources/Images/icone_image.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -48,7 +48,7 @@
                <graphic>
                   <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Ressources/Images/personnage3.png" />
+                        <Image url="@../../Ressources/Images/icone_image.png" />
                      </image>
                   </ImageView>
                </graphic>

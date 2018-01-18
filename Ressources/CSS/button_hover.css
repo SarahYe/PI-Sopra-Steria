@@ -3,5 +3,8 @@
 }
 
 .button {
--fx-background-color: #32cdcd;
+	-fx-background-color: #32cdcd;
+	-fx-background-radius: 100;
+	-fx-border-color : #adebad;
+	-fx-border-radius: 100;
 }

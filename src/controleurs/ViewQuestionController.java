@@ -43,6 +43,9 @@ public class ViewQuestionController implements Initializable {
 	private ImageView vrai;
 	@FXML
 	private ImageView faux;
+	@FXML
+	private ImageView bulle;
+
 
 	public void initData(Quiz quiz, int cmpt) {
 		this.cmpt = cmpt;
@@ -64,6 +67,7 @@ public class ViewQuestionController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
+		bulle.setVisible(false);
 	}
 
 	private void remplissageContentQuestion(Question question) {
@@ -116,6 +120,7 @@ public class ViewQuestionController implements Initializable {
 		int cmptTrue = 0;
 		boolean choice = Boolean.TRUE;
 
+		bulle.setVisible(true);
 		justification.setVisible(Boolean.TRUE);
 		justification.setText("");
 		

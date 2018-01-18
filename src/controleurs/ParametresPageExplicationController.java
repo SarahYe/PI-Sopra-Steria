@@ -84,7 +84,7 @@ public class ParametresPageExplicationController implements Initializable {
 		boutonImage2.setDisable(true);
 		messageImage.setVisible(false);
 
-		initData(false);
+		initData(true);
 		
 		/*Explication expl = new Explication();
 		Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
@@ -234,7 +234,8 @@ public class ParametresPageExplicationController implements Initializable {
 			//Popup pour le nom du fichier
 			TextInputDialog dialog = new TextInputDialog("");
 			dialog.setTitle("Enregistrement du fichier de configuration");
-			dialog.setContentText("Entrez le nom du fichier de configuration (sans l'extension) :");
+			dialog.setHeaderText("Entrez le nom du fichier de configuration (sans l'extension)");
+			//dialog.setContentText("Entrez le nom du fichier de configuration (sans l'extension) :");
 			
 			Optional<String> result = dialog.showAndWait();
 			if (result.isPresent()){

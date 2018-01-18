@@ -9,7 +9,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus massa est, 
         <Lien>(Lien) https://github.com/SarahYe/PI-Sopra-Steria</Lien>
     </Liens>
     <Images>
-        <Image>Ressources/Images/flecheVerte.png</Image>
-        <Image>Ressources/Images/flecheVerteP.png</Image>
+        <Image>Ressources/Images/boutonVertP.png</Image>
+        <Image>Ressources/Images/boutonRouge.png</Image>
     </Images>
 </explication>

@@ -1,11 +1,19 @@
 package controleurs;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -30,7 +38,7 @@ public class QuizAccueilController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		jouerAudio("././Ressources/Sons/Jouer.wav");
+		jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 
 	@FXML
@@ -60,6 +68,22 @@ public class QuizAccueilController implements Initializable {
 		}
 	}
 
+	public static void jouerAudio(String son, float volumeReduced){
+		try {
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
+			Clip clip = AudioSystem.getClip();
+			clip.open(audioInputStream);
+			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			gainControl.setValue(volumeReduced); // Reduce volume by 10 decibels.
+			clip.start();
+		} catch (UnsupportedAudioFileException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	@FXML
 	protected void ClickButtonParametrage(ActionEvent event) throws IOException {
 		Stage stage = (Stage) ButtonParametrage.getScene().getWindow();

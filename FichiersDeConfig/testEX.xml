@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<explication>
+    <titre>Cliquez moi pour modifier</titre>
+    <contenu>Explication</contenu>
+    <source>Source</source>
+    <Liens>
+        <Lien>Lien</Lien>
+    </Liens>
+    <Images>
+        <Image>Ressources/Images/down.png</Image>
+        <Image>Ressources/Images/up.png</Image>
+    </Images>
+</explication>

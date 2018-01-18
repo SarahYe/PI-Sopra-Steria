@@ -45,13 +45,8 @@
     -fx-shape: null;
 }
 
-.tableView {
- -fx-font-size: 8.0pt;
- -fx-background-color: linear-gradient(white, #EDEFFF); 
-}
-
 .table-view:row-selection .table-row-cell:filled:hover {
-    -fx-background-color: #FFE3C1;
+    -fx-background-color: #BCD4E5;
     -fx-background-insets: 0.0, 0.0 0.0 0.0 0.0;
     -fx-text-fill: -fx-text-inner-color;
 }
@@ -65,11 +60,7 @@
 
 .table-view .column-header {
  -fx-font-weight: bold;
-   -fx-background-color: #FFF5EF;
-}
-
-.table-view .column-header .text {
-  -fx-underline: true;
+   -fx-background-color: #808080;
 }
 
 .table-cell {

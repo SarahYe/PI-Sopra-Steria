@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <explication>
-    <titre>CLIQUEZ MOI</titre>
-    <contenu>Explication
+    <titre>(Titre) Cliquez moi pour modifier</titre>
+    <contenu>(Explication)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. 
-
-Blabla  blablablablablabla</contenu>
-    <source>YESUFU Sarah</source>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus massa est, id mattis purus dapibus nec. Curabitur nec efficitur leo. Praesent ac lacus vitae justo cursus semper. Fusce rhoncus, neque tristique rutrum dignissim, erat tortor condimentum sem, laoreet rutrum tortor mi sollicitudin libero. Phasellus maximus enim sed bibendum volutpat. Aenean tristique luctus tellus, at pellentesque nisl. Pellentesque sodales nunc ac viverra efficitur. Morbi imperdiet, elit luctus tristique convallis, dui elit eleifend quam, in lobortis justo dolor sed tortor. Vivamus congue, eros a pharetra congue, mi neque eleifend ex, vitae lobortis ipsum leo vitae diam. Cras efficitur vel turpis eget vestibulum. Maecenas egestas semper lorem. Proin ullamcorper felis at vestibulum rutrum. Fusce molestie risus ac varius rutrum. Ut cursus ac arcu eu malesuada. Integer vehicula, leo ut hendrerit sagittis, magna odio interdum est, id placerat odio mi in lacus.</contenu>
+    <source>(Source) YESUFU Sarah</source>
     <Liens>
-        <Lien>https://trello.com/b/s1c8gf2a/sprint-2</Lien>
+        <Lien>(Lien) https://github.com/SarahYe/PI-Sopra-Steria</Lien>
     </Liens>
     <Images>
-        <Image>Ressources/Images/icone_image.png</Image>
-        <Image>Ressources/Images/icone_image.png</Image>
+        <Image>Ressources/Images/flecheVerte.png</Image>
+        <Image>Ressources/Images/flecheVerteP.png</Image>
     </Images>
 </explication>

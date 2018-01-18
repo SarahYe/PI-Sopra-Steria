@@ -7,6 +7,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -20,62 +21,50 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.StageStyle;
 import modeles.Explication;
 
 public class ParametresPageExplicationController implements Initializable {
+	
+	private boolean modifierExplication;
 
 	@FXML
 	private ImageView fondEcran;
-
 	@FXML
 	private TextField champTitre;
-
 	@FXML
 	private TextField champSource;
-
 	@FXML
 	private TextArea champExplication;
-
 	@FXML
 	private TextArea champHyperlien;
-
 	@FXML
 	private Label theme;
-
 	@FXML
 	private Label erreur;
-
 	@FXML
 	private Label messageImage;
-
 	@FXML
 	private Label explication;
-
 	@FXML
 	private Label source;
-
 	@FXML
 	private Label label1;
-
 	@FXML
 	private Hyperlink hyperlien;
-
 	@FXML
 	private ImageView image1;
-
 	@FXML
 	private ImageView image2;
-
 	@FXML
 	private Button enregistrer;
-
 	@FXML
 	private Button boutonImage1;
-
 	@FXML
 	private Button boutonImage2;
 
@@ -84,6 +73,7 @@ public class ParametresPageExplicationController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		champTitre.setVisible(false);
 		champExplication.setVisible(false);
 		champHyperlien.setVisible(false);
@@ -94,7 +84,9 @@ public class ParametresPageExplicationController implements Initializable {
 		boutonImage2.setDisable(true);
 		messageImage.setVisible(false);
 
-		Explication expl = new Explication();
+		initData(false);
+		
+		/*Explication expl = new Explication();
 		Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
 
 		theme.setText(explXml.getTitre());
@@ -112,7 +104,40 @@ public class ParametresPageExplicationController implements Initializable {
 			image2.setImage(chargerImage(explXml.getListeImages().get(1)));
 		}
 
-		hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
+		hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));*/
+	}
+	
+	public void initData(boolean modification) {
+		this.modifierExplication = modification;
+		
+		if (this.modifierExplication) {
+			Explication expl = new Explication();
+			Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
+
+			theme.setText(explXml.getTitre());
+			explication.setText(explXml.getContenu());
+			source.setText(explXml.getSource());
+
+			if (explXml.getListeImages().size() == 0) {
+				image1.setImage(chargerImage(cheminImage1));
+				image2.setImage(chargerImage(cheminImage2));
+			} else if (explXml.getListeImages().size() == 1) {
+				image1.setImage(chargerImage(explXml.getListeImages().get(0)));
+				image2.setImage(chargerImage(cheminImage2));
+			} else {
+				image1.setImage(chargerImage(explXml.getListeImages().get(0)));
+				image2.setImage(chargerImage(explXml.getListeImages().get(1)));
+			}
+
+			hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
+		} else {
+			theme.setText("Cliquez moi pour modifier");
+			explication.setText("Explication");
+			source.setText("Source");
+			image1.setImage(chargerImage(cheminImage1));
+			image2.setImage(chargerImage(cheminImage2));
+			hyperlien.setText("Lien");
+		}
 	}
 
 	@FXML
@@ -205,6 +230,16 @@ public class ParametresPageExplicationController implements Initializable {
 		if (champExplication.getText().length() == 0)
 			erreur.setVisible(true);
 		else {
+			
+			//Popup pour le nom du fichier
+			TextInputDialog dialog = new TextInputDialog("");
+			dialog.setTitle("Enregistrement du fichier de configuration");
+			dialog.setContentText("Entrez le nom du fichier de configuration (sans l'extension) :");
+			
+			Optional<String> result = dialog.showAndWait();
+			if (result.isPresent()){
+			    System.out.println("Nom entré: " + result.get());
+			}
 			// éléments invisibles
 			champTitre.setVisible(false);
 			champExplication.setVisible(false);
@@ -257,16 +292,42 @@ public class ParametresPageExplicationController implements Initializable {
 			Explication objetExplication = new Explication(theme.getText(), explication.getText(), source.getText(),
 					ListeLiens, ListeImages);
 			objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/explication.xml");
+			//objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/" + result.get() +".xml");
 		}
 
+	}
+	
+	public void setTitre(String mTitre) {
+		theme.setText(mTitre);
+	}
+
+	public void setExplication(String mExplication) {
+		explication.setText(mExplication);
+	}
+	
+	public void setSource(String mSource) {
+		source.setText(mSource);
+	}
+	
+	public void setLien(String mlien) {
+		hyperlien.setText(mlien);
+	}
+	
+	public void setImage1(String chemin) {
+		image1.setImage(chargerImage(chemin));
+	}
+	
+	public void setImage2(String chemin) {
+		image2.setImage(chargerImage(chemin));
 	}
 
 	public static Image chargerImage(String chemin) {
 		File file = new File(chemin);
 		Image image = new Image(file.toURI().toString());
 		return image;
-
 	}
+	
+	
 	/*
 	 * @FXML void validerTitre(KeyEvent event) {
 	 * 

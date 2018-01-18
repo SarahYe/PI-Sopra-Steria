@@ -23,25 +23,18 @@ public class PageExplicationController implements Initializable {
 
 	@FXML
 	private ImageView fondEcran;
-
 	@FXML
 	private Label theme;
-
 	@FXML
 	private Label explication;
-
 	@FXML
 	private Label source;
-
 	@FXML
 	private Label label1;
-
 	@FXML
 	private Hyperlink hyperlien;
-
 	@FXML
 	private ImageView image1;
-
 	@FXML
 	private ImageView image2;
 
@@ -65,7 +58,7 @@ public class PageExplicationController implements Initializable {
 		} else
 			image2.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(1)));
 		
-		System.out.println(explXml.getListeLiens().size());
+		//System.out.println(explXml.getListeLiens().size());
 		if (explXml.getListeLiens().contains("Aucun lien") || explXml.getListeLiens().isEmpty()) {
 			label1.setVisible(false);
 			hyperlien.setVisible(false);
@@ -85,5 +78,4 @@ public class PageExplicationController implements Initializable {
 		    e.printStackTrace();
 		}*/
 	}
-
 }

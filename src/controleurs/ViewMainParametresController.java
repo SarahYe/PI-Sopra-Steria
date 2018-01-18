@@ -26,7 +26,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -124,8 +127,13 @@ public class ViewMainParametresController implements Initializable{
 	 */
 	@FXML
 	private void ClickBT_SuprBlc(ActionEvent event) {
-		LV_BlcList.getSelectionModel().getSelectedItem();
-		LV_BlcList.getItems().remove(LV_BlcList.getSelectionModel().getSelectedItem());
+		//LV_BlcList.getSelectionModel().getSelectedItem();
+		Alert alert = new Alert(AlertType.CONFIRMATION, "Supprimer le bloc \"" +LV_BlcList.getSelectionModel().getSelectedItem() + "\" ?", ButtonType.YES, ButtonType.NO);
+		alert.showAndWait();
+		
+		if (alert.getResult() == ButtonType.YES) {
+			LV_BlcList.getItems().remove(LV_BlcList.getSelectionModel().getSelectedItem());
+		}
 	}
 	
 	@FXML
@@ -200,12 +208,18 @@ public class ViewMainParametresController implements Initializable{
 		Transformer XML_Transformeur = XML_Fabrique_Transformeur.newTransformer();
 		DOMSource source = new DOMSource(XML_Document);
 		StreamResult resultat;
+		String nomJeu;
 		if(!TF_GameName.getText().equals(""))
-			resultat = new StreamResult(new File("chronologie_" +TF_GameName.getText()  + ".xml"));
+			nomJeu=TF_GameName.getText();
 		else 
-			resultat = new StreamResult(new File("chronologie_" +"DefaultName"+ ".xml"));
+			nomJeu="DefaultName";
+		resultat = new StreamResult(new File("chronologie_" +nomJeu  + ".xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
+		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a été enregistré.\n\nSon contenu a été enregistré au chemin : \""+ System.getProperty("user.dir")+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
+		alert.setHeaderText("Information concernant l'enregistrement");
+		alert.showAndWait();
+		
 	}
 
 }

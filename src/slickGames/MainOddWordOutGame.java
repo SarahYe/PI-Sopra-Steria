@@ -51,6 +51,7 @@ public class MainOddWordOutGame extends StateBasedGame{
 		app.setVSync(true);
 		app.setShowFPS(true);
 		app.start();
+	
 	}
 	
 

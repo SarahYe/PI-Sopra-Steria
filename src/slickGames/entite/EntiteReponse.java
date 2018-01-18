@@ -25,16 +25,16 @@ public class EntiteReponse {
 	Image sprite;
 	String textReponse;
 	
-	public EntiteReponse(String textReponse, Boolean correct, float x) throws SlickException{
+	public EntiteReponse(String textReponse, Boolean correct, float x, double fallingSpeed, double minDeployDelay) throws SlickException{
 		this.textReponse = textReponse;
 		this.x = x;
 		this.direction = 0;
 		this.sprite = new Image("./Ressources/Images/rectangleReponse2.png");
-		this.speedY = 0.035;
+		this.speedY = fallingSpeed;
 		this.correct = correct;
 		this.deployed = false;
 		Random rand = new Random();
-		deployDelay = rand.nextInt(3)+2.5;
+		deployDelay = rand.nextInt(6)*0.25+minDeployDelay;
 	}
 	
 	public float getX(){
@@ -123,28 +123,46 @@ public class EntiteReponse {
 	}
 		
 	public void die(){	
-		OddWordOutGame.reponses.remove(this);		
+		OddWordOutGame.reponses.remove(this);
+		OddWordOutGame.decreaseDeployDelay();
 	}
 	
 	public void checkForCollision(){	
 		if(x+width > MainOddWordOutGame.longueur){
 			if(this.correct){
-				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f);
+				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f, false);
+				OddWordOutGame.score += 50;
+				OddWordOutGame.chrono += 5000;
+				OddWordOutGame.increaseSidesSpeed();
+				OddWordOutGame.increaseFallingSpeed(0.003);
 			} else {
-				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f);
+				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f, false);
+				OddWordOutGame.score -= 25;
+				OddWordOutGame.chrono -= 25000;
+				OddWordOutGame.increaseFallingSpeed(0.005);
 			}
 			die();
 		}
 		if(x < 0){
 			if(!this.correct){
-				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f);
+				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f, false);
+				OddWordOutGame.score += 50;
+				OddWordOutGame.chrono += 5000;
+				OddWordOutGame.increaseSidesSpeed();
+				OddWordOutGame.increaseFallingSpeed(0.003);
 			} else {
-				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f);
+				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f, false);
+				OddWordOutGame.score -= 25;
+				OddWordOutGame.chrono -= 25000;
+				OddWordOutGame.increaseFallingSpeed(0.005);
 			}
 			die();
 		}
 		if(y+height > MainOddWordOutGame.hauteur){
-			OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f);
+			OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f, false);
+			OddWordOutGame.score -= 25;
+			OddWordOutGame.chrono -= 20000;
+			OddWordOutGame.increaseFallingSpeed(0.005);
 			die();
 		}		
 	}

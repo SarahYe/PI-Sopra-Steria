@@ -20,8 +20,6 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.util.FontUtils;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
@@ -34,6 +32,14 @@ public class OddWordOutGame extends BasicGameState {
 	
 	public static int ID = 2;
 	public static ArrayList<EntiteReponse> reponses = new ArrayList<EntiteReponse>();
+	public static int score = 0;
+	public static int posYRedArrow = 120;
+	public static int posYGreenArrow = 120;
+	public static double fallingSpeed = 0.035;
+	public static double minDeployDelay = 1.75;
+	public static double sidesSpeed = 0.2;
+	public static long chrono = 45000L;
+	public static Clip backgroundClip;
 	public long previousTime = 0;
 	public Image flecheVerte;
 	public Image flecheRouge;
@@ -57,13 +63,13 @@ public class OddWordOutGame extends BasicGameState {
 		int max = MainOddWordOutGame.longueur-250;
 		int min = 150;
 		int xPos = rand.nextInt((max - min) + 1) + min;
-		reponses.add(new EntiteReponse(intitule, correct, xPos));
+		reponses.add(new EntiteReponse(intitule, correct, xPos, fallingSpeed, minDeployDelay));
 		reponseSelected = reponses.get(0);
 		
-		flecheVerte = new Image("./Ressources/Images/flecheVerte1.png");
-		flecheRouge = new Image("./Ressources/Images/flecheRouge1.png");
+		flecheVerte = new Image("./Ressources/Images/flecheVerte.png");
+		flecheRouge = new Image("./Ressources/Images/flecheRouge.png");
 		
-		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f);
+		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f, true);
 	}
 
 	@Override
@@ -83,11 +89,11 @@ public class OddWordOutGame extends BasicGameState {
 		g.fillRect(0, 0, MainOddWordOutGame.longueur, 40);
 		
 		Image titre = new Image("./Ressources/Images/titreSeriousGame.png");
-		g.drawImage(titre, (MainOddWordOutGame.longueur - titre.getWidth())/2, 0);
-		
+		g.drawImage(titre, (MainOddWordOutGame.longueur - titre.getWidth())/2, 0);		
+
 		g.setColor(Color.black);
 		
-		g.drawString("Score : 0 points", MainOddWordOutGame.longueur - g.getFont().getWidth("Score : 0 points") - 20, 10);
+		g.drawString("Score : "+score+" points", MainOddWordOutGame.longueur - g.getFont().getWidth("Score : "+score+" points") - 20, 10);
 		
 		Image personnage = new Image("./Ressources/Images/personnage1.png");
 		personnage.draw(0, 45, 0.35f);
@@ -103,8 +109,20 @@ public class OddWordOutGame extends BasicGameState {
 		g.setColor(Color.green);
 		g.fillRect(MainOddWordOutGame.longueur - 6, 40, 6, MainOddWordOutGame.hauteur);
 				
-		g.drawImage(flecheVerte, (MainOddWordOutGame.longueur/2)+10, MainOddWordOutGame.hauteur-100);	
-		g.drawImage(flecheRouge, (MainOddWordOutGame.longueur/2)-flecheRouge.getWidth()-10, MainOddWordOutGame.hauteur-100);		
+		flecheVerte.draw((MainOddWordOutGame.longueur/2)+15, MainOddWordOutGame.hauteur-posYGreenArrow, 0.65f);
+		flecheRouge.draw((MainOddWordOutGame.longueur/2)-15-flecheRouge.getWidth()*65/100, MainOddWordOutGame.hauteur-posYRedArrow, 0.65f);
+		//g.drawImage(flecheVerte, (MainOddWordOutGame.longueur/2)+10, MainOddWordOutGame.hauteur-100);	
+		//g.drawImage(flecheRouge, (MainOddWordOutGame.longueur/2)-flecheRouge.getWidth()-10, MainOddWordOutGame.hauteur-100);		
+	
+		int mins = (int) chrono / (60*1000);
+	    int remainder = (int) chrono/1000 - mins * 60;
+	    int secs = remainder;
+	    if(secs <0){ secs = 0; }
+	    String timer = mins+" : ";
+	    if (secs >=0 && secs <10) { timer += "0"; }
+	    timer += secs;
+	    g.setColor(Color.red);
+		g.drawString(timer, (MainOddWordOutGame.longueur-g.getFont().getWidth(timer))/2, MainOddWordOutGame.hauteur-40);
 	}
 	
 	public static void drawStrings(String text, int x, int y, Graphics g)
@@ -127,9 +145,16 @@ public class OddWordOutGame extends BasicGameState {
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		
+		if(chrono < 0){
+			container.pause();
+			backgroundClip.close();			
+		}
+		
 		long tmp = System.currentTimeMillis();
 	    long customDelta = tmp - previousTime;
 	    previousTime = tmp;
+	    
+	    chrono -= delta;
 	    
 	    if(reponses.size() > 0){
 	    	reponseSelected = reponses.get(0);
@@ -156,7 +181,7 @@ public class OddWordOutGame extends BasicGameState {
 					int max = MainOddWordOutGame.longueur-250;
 					int min = 150;
 					int randomNum = rand.nextInt((max - min) + 1) + min;
-					reponses.add(new EntiteReponse(intitule, correct, randomNum));
+					reponses.add(new EntiteReponse(intitule, correct, randomNum, fallingSpeed, minDeployDelay));
 								
 			    }
 	    	} else {
@@ -171,10 +196,11 @@ public class OddWordOutGame extends BasicGameState {
 		case Input.KEY_LEFT:
 			if(reponseSelected.getY() > 100){
 				reponseSelected.setDirection(-1);
-				reponseSelected.setSpeedX(-0.15);
+				reponseSelected.setSpeedX(-sidesSpeed);
 			}
 			try {
-				flecheRouge = new Image("./Ressources/Images/flecheRouge2.png");
+				flecheRouge = new Image("./Ressources/Images/flecheRougeP.png");
+				posYRedArrow = 110;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -183,10 +209,11 @@ public class OddWordOutGame extends BasicGameState {
 		case Input.KEY_RIGHT:
 			if(reponseSelected.getY() > 100){
 				reponseSelected.setDirection(1);
-				reponseSelected.setSpeedX(0.15);
+				reponseSelected.setSpeedX(sidesSpeed);
 			}
 			try {
-				flecheVerte = new Image("./Ressources/Images/flecheVerte2.png");
+				flecheVerte = new Image("./Ressources/Images/flecheVerteP.png");
+				posYGreenArrow = 110;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -199,7 +226,8 @@ public class OddWordOutGame extends BasicGameState {
 		switch (key) {	
 		case Input.KEY_LEFT:
 			try {
-				flecheRouge = new Image("./Ressources/Images/flecheRouge1.png");
+				flecheRouge = new Image("./Ressources/Images/flecheRouge.png");
+				posYRedArrow = 120;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -211,7 +239,8 @@ public class OddWordOutGame extends BasicGameState {
 			break;
 		case Input.KEY_RIGHT:
 			try {
-				flecheVerte = new Image("./Ressources/Images/flecheVerte1.png");
+				flecheVerte = new Image("./Ressources/Images/flecheVerte.png");
+				posYGreenArrow = 120;
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -224,20 +253,42 @@ public class OddWordOutGame extends BasicGameState {
 		}
 	}
 	
-	public static void jouerAudio(String son, float volumeReduced){
+	public static void jouerAudio(String son, float volumeReduced, boolean backgroundMusic){
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
 			Clip clip = AudioSystem.getClip();
 			clip.open(audioInputStream);
+			if(backgroundMusic){
+				clip.loop(Clip.LOOP_CONTINUOUSLY);
+				backgroundClip = clip;
+			}
 			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 			gainControl.setValue(volumeReduced); // Reduce volume by 10 decibels.
 			clip.start();
+			
 		} catch (UnsupportedAudioFileException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (LineUnavailableException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+	}
+	
+	public static void increaseFallingSpeed(double speedAdded){
+		for (int i = 0; i < reponses.size(); i++){
+			reponses.get(i).setSpeedY((float) (reponses.get(i).getSpeedY()+speedAdded));		
+		}
+		fallingSpeed += speedAdded;	
+	}
+	
+	public static void increaseSidesSpeed(){
+		sidesSpeed += 0.005;	
+	}
+	
+	public static void decreaseDeployDelay(){
+		if(minDeployDelay > 0.75){
+			minDeployDelay -= 0.1;
 		}
 	}
 	

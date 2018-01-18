@@ -8,31 +8,60 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="780.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewMainParametresController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewMainParametresController">
    <children>
       <SplitPane dividerPositions="0.19832985386221294" prefHeight="780.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="778.0" prefWidth="188.0">
                <children>
-                  <Button layoutX="61.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_SaveGame" prefHeight="50.0" prefWidth="127.0" text="Enregistrer" textFill="PURPLE" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="14.0">
+                  <Button layoutX="61.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_SaveGame" stylesheets="@../../Ressources/CSS/button_hover.css" text="Enregistrer" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="14.0">
                      <font>
-                        <Font name="Cambria Bold" size="19.0" />
+                        <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button layoutX="88.0" layoutY="78.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="73.0" text="Tester" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="78.0" />
-                  <Label layoutX="21.0" layoutY="119.0" prefHeight="19.0" prefWidth="39.0" text="Nom : " />
-                  <TextField fx:id="TF_GameName" layoutX="76.0" layoutY="116.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="20.0" />
-                  <ListView fx:id="LV_BlcList" layoutX="19.0" layoutY="155.0" prefHeight="349.0" prefWidth="220.0" AnchorPane.leftAnchor="19.0" AnchorPane.rightAnchor="17.0" />
-                  <Button layoutX="40.0" layoutY="523.0" mnemonicParsing="false" onAction="#ClickBT_UpBlc" text="Haut" AnchorPane.leftAnchor="40.0" />
-                  <Button layoutX="178.0" layoutY="523.0" mnemonicParsing="false" onAction="#ClickBT_DownBlc" text="Bas" AnchorPane.rightAnchor="43.0" />
-                  <Button layoutX="84.0" layoutY="555.0" mnemonicParsing="false" onAction="#ClickBT_SuprBlc" prefHeight="25.0" prefWidth="91.0" text="Supprimer" textFill="RED" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="81.0" />
-                  <Button layoutX="72.0" layoutY="612.0" maxWidth="150.0" mnemonicParsing="false" onAction="#ClickBT_ConfBlc" prefHeight="25.0" prefWidth="59.0" text="Configurer" textFill="PURPLE" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="68.0">
+                  <Button layoutX="88.0" layoutY="78.0" mnemonicParsing="false" stylesheets="@../../Ressources/CSS/button_hover.css" text="Tester" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0">
                      <font>
-                        <Font size="16.0" />
-                     </font></Button>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="21.0" layoutY="119.0" text="Entrez le nom de votre serious game :" wrapText="true" AnchorPane.leftAnchor="20.0" />
+                  <Label layoutX="29.0" layoutY="182.0" text="Votre chronologie :" AnchorPane.leftAnchor="20.0" />
+                  <TextField fx:id="TF_GameName" layoutX="52.0" layoutY="140.0" prefHeight="27.0" prefWidth="31.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  <ListView fx:id="LV_BlcList" layoutX="19.0" layoutY="206.0" prefHeight="347.0" prefWidth="146.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+                  <Button layoutX="34.0" layoutY="574.0" mnemonicParsing="false" onAction="#ClickBT_UpBlc" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="575.0">
+                     <graphic>
+                        <ImageView fitHeight="57.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Ressources/Images/up.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="100.0" layoutY="575.0" mnemonicParsing="false" onAction="#ClickBT_DownBlc" prefHeight="22.0" prefWidth="27.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="575.0">
+                     <graphic>
+                        <ImageView fitHeight="57.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Ressources/Images/down.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button layoutX="97.0" layoutY="695.0" mnemonicParsing="false" onAction="#ClickBT_SuprBlc" style="-fx-background-color: RED; -fx-background-radius: 10;" text="Supprimer" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="700.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="69.0" layoutY="635.0" mnemonicParsing="false" onAction="#ClickBT_ConfBlc" stylesheets="@../../Ressources/CSS/button_hover.css" text="Configurer" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="635.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="778.0" prefWidth="736.0">
@@ -45,19 +74,19 @@
                                 <content>
                                   <AnchorPane prefHeight="188.0" prefWidth="800.0">
                                        <children>
-                                          <Button fx:id="BT_AjtBlc" layoutX="709.0" layoutY="144.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="56.0" prefWidth="99.0" text="Ajouter" textFill="#7200ff" AnchorPane.bottomAnchor="19.0" AnchorPane.rightAnchor="-14.0">
+                                          <Button fx:id="BT_AjtBlc" layoutX="420.0" layoutY="112.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="281.0">
                                              <font>
                                                 <Font name="System Bold" size="20.0" />
                                              </font>
                                           </Button>
-                                          <ToggleButton fx:id="TBT_BlcQuiz" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Jeu Quiz" wrapText="true">
+                                          <ToggleButton fx:id="TBT_BlcQuiz" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Jeu Quiz" textAlignment="CENTER" wrapText="true">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="blocs" />
                                              </toggleGroup>
                                           </ToggleButton>
-                                          <ToggleButton fx:id="TBT_BlcAccueil" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Accueil" toggleGroup="$blocs" />
+                                          <ToggleButton fx:id="TBT_BlcAccueil" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Accueil" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                           <ToggleButton layoutX="138.0" layoutY="14.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Jeu Cherche l'Intrus" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
-                                          <ToggleButton fx:id="TBT_BlcPNJ" layoutX="138.0" layoutY="94.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Dialogue PNJ" toggleGroup="$blocs" />
+                                          <ToggleButton fx:id="TBT_BlcPNJ" layoutX="138.0" layoutY="94.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Dialogue PNJ" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                           <ToggleButton fx:id="TBT_BlcScr" layoutX="259.0" layoutY="14.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Score/Resultat Jeu" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                           <ToggleButton fx:id="TBT_BlcExpl" layoutX="259.0" layoutY="94.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="98.0" text="Page d'explication" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                        </children>
@@ -73,7 +102,8 @@
                                   <AnchorPane fx:id="AP_ConfBlc" minHeight="0.0" minWidth="0.0" />
                                 </content>
                               </ScrollPane>
-                           </children></AnchorPane>
+                           </children>
+                        </AnchorPane>
                     </items>
                   </SplitPane>
                </children>

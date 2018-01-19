@@ -11,7 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Shape;
 import org.newdawn.slick.state.StateBasedGame;
 
-import controleurs.bloc.QuizAccueilController;
+import controleurs.QuizAccueilController;
 import slickGames.MainOddWordOutGame;
 import slickGames.states.OddWordOutGame;
 

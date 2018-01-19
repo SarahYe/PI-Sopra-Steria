@@ -1,4 +1,4 @@
-package main.parametrage;
+package main;
 
 import controleurs.JFxUtils;
 import javafx.application.Application;
@@ -6,17 +6,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainParametres extends Application {
-	
+public class MainExplication extends Application {
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("../vues/ViewMainParametres.fxml"), 960, 780));
-		stage.setTitle("Configuration d'un serious game");
+
+		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationFxml("../vues/PageExplication.fxml","FichiersDeConfig/explication.xml"), 850, 650));
+		stage.setTitle("SériousSécurité");
 		stage.show();
 		stage.sizeToScene();
-		stage.setMaximized(true);
-		
 	}
 
 	/**

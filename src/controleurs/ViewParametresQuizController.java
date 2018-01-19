@@ -1,4 +1,4 @@
-package controleurs.parametrage;
+package controleurs;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.bloc.MainQuiz;
+import main.MainQuiz;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;

@@ -1,4 +1,4 @@
-package main.parametrage;
+package main;
 
 import java.io.IOException;
 

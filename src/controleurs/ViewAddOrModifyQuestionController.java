@@ -1,4 +1,4 @@
-package controleurs.parametrage;
+package controleurs;
 
 import java.io.IOException;
 import java.net.URL;

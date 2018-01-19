@@ -1,4 +1,4 @@
-package main.bloc;
+package main;
 
 import controleurs.JFxUtils;
 import javafx.application.Application;
@@ -6,18 +6,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class MainQuiz extends Application {
+public class ParametresPageExplication extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		//System.setProperty( "file.encoding", "UTF-8" );
 
-		// Font.loadFont(getClass().getResourceAsStream("./Ressources/Polices/GoodMorning.ttf"),
-		// 12);
-		
-		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml","FichiersDeConfig/quiz.xml"), 850, 650));
-		stage.setTitle("SeriousSécurité");
+		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationParamFxml("../vues/PageExplicationParametrage.fxml","FichiersDeConfig/explication.xml"), 850, 650));
+		stage.setTitle("Paramétrage d'une page d'explication");
 		stage.show();
 		stage.sizeToScene();
 	}
@@ -29,5 +24,4 @@ public class MainQuiz extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-
 }

@@ -140,13 +140,28 @@ public class ViewMainParametresController implements Initializable{
 	private void ClickBT_ConfBlc(ActionEvent event) throws IOException {
 		int index = LV_BlcList.getSelectionModel().getSelectedIndex();
 		String fxml = null;
+		int cmpt=-1;
 		for (int i=0;i< listTypeBlocs.size();i++){
 			if(((String)LV_BlcList.getItems().get(index)).contains(listTypeBlocs.get(i))){
 				fxml=listFxmlBlocs.get(i);
+				cmpt=i;
 				break;
 			}
 		}
 		if(fxml.endsWith("fxml")){
+			 switch (cmpt) {
+			 	case 0 : /*stage.setScene(new Scene((Parent) JFxUtils.loadParamQuiz("../vues/ViewParametresQuiz.fxml","FichiersDeConfig/quiz.xml"), 850, 650));
+				stage.setTitle("SeriousSÃ©curitÃ©");
+				stage.show();
+				stage.sizeToScene();*/
+			 	case 1 :
+			 	case 2 :
+			 	case 3 :
+			 	case 4 :
+			 	case 5 :
+			 	case 6 :
+			 	default :
+			 }
 			FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
 			ScrollPane newPane = loader.load();
 			AP_ConfBlc.getChildren().setAll(newPane);
@@ -154,10 +169,10 @@ public class ViewMainParametresController implements Initializable{
 			//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
 			//controller.initData(controller);
 		} else {
-			System.out.println("La page de cofiguration de ce bloc n'est pas encore implémentée");
+			Alert alert = new Alert(AlertType.INFORMATION, "La page de configuration de ce bloc n'est pas encore implémentée", ButtonType.OK);
+			alert.showAndWait();
+			//System.out.println("La page de configuration de ce bloc n'est pas encore implémentée");
 		}
-		
-		
 	}
 	
 	@FXML
@@ -207,12 +222,13 @@ public class ViewMainParametresController implements Initializable{
 		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a été enregistré.\n\nSon contenu a été enregistré au chemin : \""+ System.getProperty("user.dir")+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
 		alert.setHeaderText("Information concernant l'enregistrement");
 		alert.showAndWait();
-		
 	}
 	
 	@FXML
 	private void ClickBT_TestGame(ActionEvent event){
 		String bloc0=(String) LV_BlcList.getItems().get(0);
+		
+		
 		
 	}
 	

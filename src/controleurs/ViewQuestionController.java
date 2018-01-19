@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -119,8 +120,13 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
+		
+		
+		
+		
 		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
+		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml), 850, 650));
+		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
 	}
 
 	@FXML

@@ -1,5 +1,6 @@
 package controleurs;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -45,24 +46,31 @@ public class ViewQuestionController implements Initializable {
 	private ImageView faux;
 	@FXML
 	private ImageView bulle;
-
+	private String xml="";
 
 	public void initData(Quiz quiz, int cmpt) {
 		this.cmpt = cmpt;
 		this.quiz = quiz;
+		
+		File f =  new File(xml);
+		if (f.exists()){
+			quiz = quiz.convertirXMLToJava(xml);
 
-		quiz = quiz.convertirXMLToJava("FichiersDeConfig/quiz.xml");
-
-		if (quiz.getListeQuestions().size() == cmpt) {
-			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
+			if (quiz.getListeQuestions().size() == cmpt) {
+				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+				stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
+			} else {
+				buttonNextQue.setVisible(Boolean.FALSE);
+				question = quiz.getListeQuestions().get(cmpt);
+				remplissageContentQuestion(question);
+				progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
+				progQuiz.setProgress((double) cmpt / quiz.getListeQuestions().size());
+			}
 		} else {
-			buttonNextQue.setVisible(Boolean.FALSE);
-			question = quiz.getListeQuestions().get(cmpt);
-			remplissageContentQuestion(question);
-			progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
-			progQuiz.setProgress((double) cmpt / quiz.getListeQuestions().size());
+			System.out.println("xml : "+xml);
 		}
+
+		
 	}
 
 	@Override
@@ -199,7 +207,11 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private void ClickButtonNextQue(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		new JFxUtils().loadQuestion(quiz, cmpt + 1, stage);
+		new JFxUtils().loadQuestion(quiz, cmpt + 1, stage,xml);
+	}
+
+	public void setXML(String xml) {
+		this.xml=xml;
 	}
 
 }

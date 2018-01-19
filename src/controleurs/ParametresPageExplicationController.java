@@ -84,7 +84,7 @@ public class ParametresPageExplicationController implements Initializable {
 		boutonImage2.setDisable(true);
 		messageImage.setVisible(false);
 
-		initData(true);
+		//initData(true);
 		
 		/*Explication expl = new Explication();
 		Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
@@ -107,7 +107,15 @@ public class ParametresPageExplicationController implements Initializable {
 		hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));*/
 	}
 	
-	public void initData(boolean modification) {
+	public void initData(String fichierXML) {
+		File f =  new File(fichierXML);
+		if (f.exists()) 
+			System.out.print("found");
+		else 
+			System.out.print("not found");
+	}
+	
+	/*public void initData(boolean modification) {
 		this.modifierExplication = modification;
 		
 		if (this.modifierExplication) {
@@ -139,7 +147,7 @@ public class ParametresPageExplicationController implements Initializable {
 			hyperlien.setText("Lien");
 		}
 	}
-
+*/
 	@FXML
 	void changerImage1(ActionEvent event) throws IOException {
 

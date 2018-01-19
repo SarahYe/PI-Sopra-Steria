@@ -35,17 +35,22 @@ public class QuizAccueilController implements Initializable {
 	private Button ButtonParametrage;
 	@FXML
 	private Button buttonScore;
+	private String xml="";
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
+	}
+	
+	public void setXML(String xml) {
+		this.xml=xml;
 	}
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonJouer.getScene().getWindow();
 		//jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
-		new JFxUtils().loadQuestion(new Quiz(), 0, stage);
+		new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml);
 	}
 
 	@FXML

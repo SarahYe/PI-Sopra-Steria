@@ -35,9 +35,9 @@ public class OddWordOutGame extends BasicGameState {
 	public static int score = 0;
 	public static int posYRedArrow = 120;
 	public static int posYGreenArrow = 120;
-	public static double fallingSpeed = 0.035;
+	public static double fallingSpeed = 0.04;
 	public static double minDeployDelay = 1.75;
-	public static double sidesSpeed = 0.2;
+	public static double sidesSpeed = 2;
 	public static long chrono = 45000L;
 	public static Clip backgroundClip;
 	public long previousTime = 0;
@@ -282,13 +282,13 @@ public class OddWordOutGame extends BasicGameState {
 		fallingSpeed += speedAdded;	
 	}
 	
-	public static void increaseSidesSpeed(){
+	/*public static void increaseSidesSpeed(){
 		sidesSpeed += 0.005;	
-	}
+	}*/
 	
 	public static void decreaseDeployDelay(){
-		if(minDeployDelay > 0.75){
-			minDeployDelay -= 0.1;
+		if(minDeployDelay > 0.3){
+			minDeployDelay -= 0.025;
 		}
 	}
 	

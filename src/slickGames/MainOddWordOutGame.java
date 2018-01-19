@@ -15,8 +15,8 @@ import slickGames.states.OddWordOutGame;
 
 public class MainOddWordOutGame extends StateBasedGame{
 	
-	public static int longueur=800;
-	public static int hauteur=580;
+	public static int longueur=850;
+	public static int hauteur=650;
 	
 	public static void main(String[] args) throws SlickException {
 			

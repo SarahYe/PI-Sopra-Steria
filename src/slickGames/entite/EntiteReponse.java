@@ -34,7 +34,7 @@ public class EntiteReponse {
 		this.correct = correct;
 		this.deployed = false;
 		Random rand = new Random();
-		deployDelay = rand.nextInt(6)*0.25+minDeployDelay;
+		deployDelay = rand.nextInt(4)*0.25+minDeployDelay;
 	}
 	
 	public float getX(){
@@ -124,17 +124,17 @@ public class EntiteReponse {
 		
 	public void die(){	
 		OddWordOutGame.reponses.remove(this);
-		OddWordOutGame.decreaseDeployDelay();
 	}
 	
 	public void checkForCollision(){	
-		if(x+width > MainOddWordOutGame.longueur){
+		if(x+width-11 > MainOddWordOutGame.longueur){
 			if(this.correct){
 				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f, false);
 				OddWordOutGame.score += 50;
 				OddWordOutGame.chrono += 5000;
-				OddWordOutGame.increaseSidesSpeed();
+				//OddWordOutGame.increaseSidesSpeed();
 				OddWordOutGame.increaseFallingSpeed(0.003);
+				OddWordOutGame.decreaseDeployDelay();
 			} else {
 				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f, false);
 				OddWordOutGame.score -= 25;
@@ -148,8 +148,9 @@ public class EntiteReponse {
 				OddWordOutGame.jouerAudio("./Ressources/Sons/succes1.wav", -18.0f, false);
 				OddWordOutGame.score += 50;
 				OddWordOutGame.chrono += 5000;
-				OddWordOutGame.increaseSidesSpeed();
+				//OddWordOutGame.increaseSidesSpeed();
 				OddWordOutGame.increaseFallingSpeed(0.003);
+				OddWordOutGame.decreaseDeployDelay();
 			} else {
 				OddWordOutGame.jouerAudio("./Ressources/Sons/echec1.wav", -18.0f, false);
 				OddWordOutGame.score -= 25;

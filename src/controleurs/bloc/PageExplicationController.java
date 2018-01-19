@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.bloc;
 
 import java.awt.Desktop;
 import java.io.File;
@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 
+import controleurs.parametrage.ParametresPageExplicationController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

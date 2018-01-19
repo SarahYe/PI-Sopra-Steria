@@ -1,4 +1,4 @@
-package main;
+package main.bloc;
 
 import controleurs.JFxUtils;
 import javafx.application.Application;

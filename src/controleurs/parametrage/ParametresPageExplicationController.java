@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.parametrage;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

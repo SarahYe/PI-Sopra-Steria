@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.bloc;
 
 import java.net.URL;
 import java.util.ResourceBundle;

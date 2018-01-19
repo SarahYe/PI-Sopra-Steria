@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.bloc;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import controleurs.JFxUtils;
+import controleurs.bloc.QuizAccueilController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,8 +21,6 @@ import javafx.stage.Stage;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
-
-import controleurs.QuizAccueilController;
 
 public class ViewQuestionController implements Initializable {
 

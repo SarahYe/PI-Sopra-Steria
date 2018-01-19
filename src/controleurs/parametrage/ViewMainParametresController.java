@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.parametrage;
 
 
 import java.io.File;

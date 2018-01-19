@@ -1,4 +1,4 @@
-package controleurs;
+package controleurs.bloc;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,13 +15,14 @@ import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import controleurs.JFxUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
-import main.ParametresQuiz;
+import main.parametrage.ParametresQuiz;
 import modeles.Quiz;
 
 import sun.audio.AudioPlayer;

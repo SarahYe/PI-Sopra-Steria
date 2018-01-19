@@ -67,6 +67,8 @@ public class ParametresPageExplicationController implements Initializable {
 	private Button boutonImage1;
 	@FXML
 	private Button boutonImage2;
+	
+	private String xml;
 
 	String cheminImage1 = "Ressources/Images/icone_image.png";
 	String cheminImage2 = "Ressources/Images/icone_image.png";
@@ -83,36 +85,35 @@ public class ParametresPageExplicationController implements Initializable {
 		boutonImage1.setDisable(true);
 		boutonImage2.setDisable(true);
 		messageImage.setVisible(false);
-
-		//initData(true);
 		
-		/*Explication expl = new Explication();
-		Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
-
-		theme.setText(explXml.getTitre());
-		explication.setText(explXml.getContenu());
-		source.setText(explXml.getSource());
-
-		if (explXml.getListeImages().size() == 0) {
-			image1.setImage(chargerImage(cheminImage1));
-			image2.setImage(chargerImage(cheminImage2));
-		} else if (explXml.getListeImages().size() == 1) {
-			image1.setImage(chargerImage(explXml.getListeImages().get(0)));
-			image2.setImage(chargerImage(cheminImage2));
-		} else {
-			image1.setImage(chargerImage(explXml.getListeImages().get(0)));
-			image2.setImage(chargerImage(explXml.getListeImages().get(1)));
-		}
-
-		hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));*/
 	}
 	
-	public void initData(String fichierXML) {
-		File f =  new File(fichierXML);
-		if (f.exists()) 
-			System.out.print("found");
-		else 
-			System.out.print("not found");
+	public void initData() {
+		File f =  new File(xml);
+		if (f.exists()) {
+			Explication expl = new Explication();
+			Explication explXml = expl.convertirXMLToJava(xml);
+
+			theme.setText(explXml.getTitre());
+			explication.setText(explXml.getContenu());
+			source.setText(explXml.getSource());
+
+			if (explXml.getListeImages().size() == 0) {
+				image1.setImage(chargerImage(cheminImage1));
+				image2.setImage(chargerImage(cheminImage2));
+			} else if (explXml.getListeImages().size() == 1) {
+				image1.setImage(chargerImage(explXml.getListeImages().get(0)));
+				image2.setImage(chargerImage(cheminImage2));
+			} else {
+				image1.setImage(chargerImage(explXml.getListeImages().get(0)));
+				image2.setImage(chargerImage(explXml.getListeImages().get(1)));
+			}
+
+			hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
+		} else
+			System.out.println("xml :" + xml);
+		
+		
 	}
 	
 	/*public void initData(boolean modification) {
@@ -334,6 +335,11 @@ public class ParametresPageExplicationController implements Initializable {
 		File file = new File(chemin);
 		Image image = new Image(file.toURI().toString());
 		return image;
+	}
+
+	public void setXML(String xml) {
+		this.xml=xml;
+		
 	}
 	
 	

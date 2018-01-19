@@ -42,14 +42,42 @@ public class JFxUtils {
 		}
 	}
 	
-	public Node loadFirstQuestion(String fxml, String xml) throws IOException {
-
+	public static Node loadExplicationFxml(String fxml,String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			ViewQuestionController controller = loader.<ViewQuestionController>getController();
+			PageExplicationController controller = loader.<PageExplicationController>getController();
 			controller.setXML(xml);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
+	
+	public static Node loadExplicationParamFxml(String fxml,String xml) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ParametresPageExplicationController controller = loader.<ParametresPageExplicationController>getController();
+			controller.setXML(xml);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
+	
+	public static Node loadParamQuiz(String fxml,String xml) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
+			controller.setXML(xml);
+			controller.initData();
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
@@ -68,17 +96,7 @@ public class JFxUtils {
 		stage.show();
 		return stage;
 	}
-
-	public Stage loadExplication(String fichierXML, Stage stage) throws IOException {
-
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/PageExplicationParametrage.fxml"));
-		stage.setScene(new Scene((Pane) loader.load()));
-
-		ParametresPageExplicationController controller = loader.<ParametresPageExplicationController>getController();
-		controller.initData(fichierXML);
-
-		stage.show();
-		return stage;
-	}
+	
+	
 
 }

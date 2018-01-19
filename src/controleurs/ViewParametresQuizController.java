@@ -1,5 +1,6 @@
 package controleurs;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import modeles.Reponse;
 
 public class ViewParametresQuizController implements Initializable{
 
-	private ViewParametresQuizController mainController;
+	
 
 	@FXML
 	private Button btnSave;
@@ -40,30 +41,35 @@ public class ViewParametresQuizController implements Initializable{
 	private TableView<Question> table;
 	@FXML
 	private AnchorPane AP_ParamQuestion;
+	private String xml;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		/*// TODO Auto-generated method stub
 		ArrayList<Question> list = new ArrayList<Question>();
 		Quiz quiz = new Quiz("Nom du quiz", list);
 		Quiz quiz2 = quiz.convertirXMLToJava("FichiersDeConfig/quiz.xml");
 		ObservableList<Question> data = table.getItems();
 		for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
 			data.add(quiz2.getListeQuestions().get(i));
-		}
+		}*/
 	}
 
-	/*public void initData(ViewParametresQuizController controller) {
-		mainController = controller;
+	public void initData() {
+		File f =  new File(xml);
+		if (f.exists()) {
+			ArrayList<Question> list = new ArrayList<Question>();
+			Quiz quiz = new Quiz("Nom du quiz", list);
+			Quiz quiz2 = quiz.convertirXMLToJava(xml);
+			ObservableList<Question> data = table.getItems();
+			for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
+				data.add(quiz2.getListeQuestions().get(i));
+			}
+		} else 
+			System.out.println("xml : "+ xml);
 
-		ArrayList<Question> list = new ArrayList<Question>();
-		Quiz quiz = new Quiz("Nom du quiz", list);
-		Quiz quiz2 = quiz.convertirXMLToJava("FichiersDeConfig/quiz.xml");
-		ObservableList<Question> data = table.getItems();
-		for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
-			data.add(quiz2.getListeQuestions().get(i));
-		}
-	}*/
+		
+	}
 
 	public void setQuestion(int index, String intitule, ArrayList<Reponse> listeReponses) {
 		table.getItems().set(index, new Question(intitule, listeReponses));
@@ -101,8 +107,8 @@ public class ViewParametresQuizController implements Initializable{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
-		//ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
-		//controller.initData(false, null, mainController);
+		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
+		controller.initData(false, null, this);
 		
 		//Stage stage = new Stage();
 		//stage.setTitle("Nouvelle question");
@@ -124,7 +130,7 @@ public class ViewParametresQuizController implements Initializable{
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
-		controller.initData(true, table.getSelectionModel());
+		controller.initData(true, table.getSelectionModel(),this);
 		
 		/*
 		 * Stage stage = new Stage();
@@ -168,6 +174,11 @@ public class ViewParametresQuizController implements Initializable{
 			table.getItems().set(index, buff);
 			table.getSelectionModel().select(index + 1);
 		}
+	}
+
+	public void setXML(String xml) {
+		this.xml=xml;
+		
 	}
 	
 

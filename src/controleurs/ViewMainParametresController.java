@@ -64,7 +64,7 @@ public class ViewMainParametresController implements Initializable{
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
 		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
-		listFxmlBlocs.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
+		listFxmlBlocs.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("../vues/PageExplicationParametrage.fxml");
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
 		for (int i=0;i<6;i++)
@@ -189,19 +189,7 @@ public class ViewMainParametresController implements Initializable{
 		site.appendChild(livre);
 		Attr attribut2 = XML_Document.createAttribute("Wikilivre");
 		attribut2.setValue("Java");
-		livre.setAttributeNode(attribut2);
-
-		Element page1 = XML_Document.createElement("Page1");
-		page1.appendChild(XML_Document.createTextNode("Introduction"));
-		livre.appendChild(page1);
-
-		Element page2 = XML_Document.createElement("Page2");
-		page2.appendChild(XML_Document.createTextNode("Bases du langage"));
-		livre.appendChild(page2);		
- 
-		Element example = XML_Document.createElement("Exemple");
-		example.appendChild(XML_Document.createTextNode("XML"));
-		livre.appendChild(example);*/
+		livre.setAttributeNode(attribut2);*/
 
 		//Enregistrement du fichier xml
 		TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
@@ -221,5 +209,12 @@ public class ViewMainParametresController implements Initializable{
 		alert.showAndWait();
 		
 	}
+	
+	@FXML
+	private void ClickBT_TestGame(ActionEvent event){
+		String bloc0=(String) LV_BlcList.getItems().get(0);
+		
+	}
+	
 
 }

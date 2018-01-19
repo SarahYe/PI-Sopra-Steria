@@ -1,6 +1,7 @@
 package controleurs;
 
 import java.awt.Desktop;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -37,33 +38,41 @@ public class PageExplicationController implements Initializable {
 	private ImageView image1;
 	@FXML
 	private ImageView image2;
+	private String xml="";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+	}
+	
+	public void initData(){
+		Explication expl = new Explication();
+		File f =  new File(xml);
+		if (f.exists()){
+			Explication explXml = expl.convertirXMLToJava(xml);
 
-		Explication expl = new Explication(); 
-		Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
-
-		theme.setText(explXml.getTitre());
-		explication.setText(explXml.getContenu());
-		source.setText(explXml.getSource());
-		
-		if (explXml.getListeImages().get(0).contains("icone_image.png")) {
-			image1.setVisible(false);
-		} else
-			image1.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(0)));
-		
-		if (explXml.getListeImages().get(1).contains("icone_image.png")) {
-			image2.setVisible(false);
-		} else
-			image2.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(1)));
-		
-		//System.out.println(explXml.getListeLiens().size());
-		if (explXml.getListeLiens().contains("Aucun lien") || explXml.getListeLiens().isEmpty()) {
-			label1.setVisible(false);
-			hyperlien.setVisible(false);
-		} else
-			hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
+			theme.setText(explXml.getTitre());
+			explication.setText(explXml.getContenu());
+			source.setText(explXml.getSource());
+			
+			if (explXml.getListeImages().get(0).contains("icone_image.png")) {
+				image1.setVisible(false);
+			} else
+				image1.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(0)));
+			
+			if (explXml.getListeImages().get(1).contains("icone_image.png")) {
+				image2.setVisible(false);
+			} else
+				image2.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(1)));
+			
+			//System.out.println(explXml.getListeLiens().size());
+			if (explXml.getListeLiens().contains("Aucun lien") || explXml.getListeLiens().isEmpty()) {
+				label1.setVisible(false);
+				hyperlien.setVisible(false);
+			} else
+				hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
+		} else 
+			System.out.println("xml :"+xml);
 	}
 	
 	@FXML
@@ -77,5 +86,10 @@ public class PageExplicationController implements Initializable {
 		} catch (URISyntaxException e) {
 		    e.printStackTrace();
 		}*/
+	}
+
+	public void setXML(String xml) {
+		this.xml=xml;
+		
 	}
 }

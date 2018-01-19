@@ -77,14 +77,14 @@ public class ViewAddOrModifyQuestionController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		initData(false,null);
+		//initData(false,null);
 	}
 	
-	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel) {
+	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel,ViewParametresQuizController controller) {
 		
 		this.modifyQuestionInterface = modifyQuestionInterface;
 		this.tableViewSelectionModel = tableViewSelectionModel;
-		//mainController = controller;
+		mainController = controller;
 		
 		if(this.modifyQuestionInterface){
 			

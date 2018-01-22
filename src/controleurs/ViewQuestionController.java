@@ -32,13 +32,47 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private Button buttonNextQue;
 	@FXML
+	private Button reponse1;
+	@FXML
+	private Button reponse1P;
+	@FXML
+	private Button reponse2;
+	@FXML
+	private Button reponse2P;
+	@FXML
+	private Button reponse3;
+	@FXML
+	private Button reponse3P;
+	@FXML
+	private Button reponse4;
+	@FXML
+	private Button reponse4P;
+	@FXML
+	private Button reponse5;
+	@FXML
+	private Button reponse5P;
+	@FXML
+	private Button valider;
+	@FXML
+	private Button validerP;
+	@FXML
 	private Label justification;
+	@FXML
+	private Label reponse1L;
+	@FXML
+	private Label reponse2L;
+	@FXML
+	private Label reponse3L;
+	@FXML
+	private Label reponse4L;
+	@FXML
+	private Label reponse5L;
 	@FXML
 	private CheckBox intiRep1, intiRep2, intiRep3, intiRep4, intiRep5;
 	@FXML
 	private Label intiQue;
-	@FXML
-	private Label progression;
+	//@FXML
+	//private Label progression;
 	@FXML
 	private ProgressBar progQuiz;
 	@FXML
@@ -47,6 +81,7 @@ public class ViewQuestionController implements Initializable {
 	private ImageView faux;
 	@FXML
 	private ImageView bulle;
+	
 	private String xml="";
 
 	public void initData(Quiz quiz, int cmpt) {
@@ -64,7 +99,7 @@ public class ViewQuestionController implements Initializable {
 				buttonNextQue.setVisible(Boolean.FALSE);
 				question = quiz.getListeQuestions().get(cmpt);
 				remplissageContentQuestion(question);
-				progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
+				//progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
 				progQuiz.setProgress((double) cmpt / quiz.getListeQuestions().size());
 			}
 		} else {
@@ -120,10 +155,6 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
-		
-		
-		
-		
 		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml), 850, 650));
 		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));

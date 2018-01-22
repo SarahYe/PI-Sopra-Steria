@@ -1,4 +1,4 @@
 #anchorpane_id {
 /*-fx-background-color: #ebebe0;*/
--fx-background-color: white;
+-fx-background-image: radial-gradient(circle, red, yellow, green);
 }

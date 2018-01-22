@@ -5,121 +5,264 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorpane_id" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #e4cbb4#e4cbb4;" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
    <children>
-      <ImageView fx:id="personnage" fitHeight="170.0" fitWidth="157.0" layoutX="21.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <ImageView fitHeight="97.0" fitWidth="849.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../Ressources/Images/personnage4.png" />
+            <Image url="@../../Ressources/Images/fond.png" />
          </image>
-      </ImageView>
-      <ImageView fx:id="bulle" fitHeight="135.0" fitWidth="274.0" layoutX="135.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="337.0">
-         <image>
-            <Image url="@../../Ressources/Images/bulle2.png" />
-         </image>
-      </ImageView>
-      <AnchorPane layoutX="50.0" layoutY="187.0" prefHeight="313.0" prefWidth="750.0" style="-fx-background-color: #cc6600#cc6600; -fx-background-radius: 50;" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="187.0">
          <effect>
-            <Bloom />
+            <Reflection />
          </effect>
-      </AnchorPane>
-      <Label fx:id="justification" layoutX="200.0" layoutY="560.0" prefHeight="115.0" prefWidth="341.0" text="Justification" visible="false" wrapText="true" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="309.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Label>
-      <CheckBox fx:id="intiRep1" layoutX="158.0" layoutY="270.0" mnemonicParsing="false" text="Reponse 1" wrapText="true" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="intiRep2" layoutX="159.0" layoutY="315.0" mnemonicParsing="false" text="Reponse 2" wrapText="true" AnchorPane.bottomAnchor="353.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="intiRep3" layoutX="159.0" layoutY="360.0" mnemonicParsing="false" text="Reponse 3" wrapText="true" AnchorPane.bottomAnchor="308.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="intiRep4" layoutX="159.0" layoutY="405.0" mnemonicParsing="false" text="Reponse 4" wrapText="true" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
-         </font>
-      </CheckBox>
-      <CheckBox fx:id="intiRep5" layoutX="159.0" layoutY="450.0" mnemonicParsing="false" text="Reponse 5" wrapText="true" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
-         </font>
-      </CheckBox>
-      <Label fx:id="intiQue" layoutX="68.0" layoutY="170.0" text="Intitulé de question" textFill="#000000e5" wrapText="true" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="75.0">
-         <font>
-            <Font name="Apple Casual" size="24.0" />
-         </font>
-      </Label>
-      <Button layoutX="361.5" layoutY="514.0" mnemonicParsing="false" onAction="#ClickButtonValider" prefHeight="41.0" prefWidth="127.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Valider" textFill="WHITE" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="361.5" AnchorPane.rightAnchor="361.5">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Button>
-      <Button fx:id="buttonNextQue" layoutX="594.0" layoutY="528.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" prefHeight="42.0" prefWidth="184.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Question suivante" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
-         <font>
-            <Font name="System Bold" size="17.0" />
-         </font>
-      </Button>
-      <Button id="boutonRetour" layoutX="19.0" layoutY="47.0" mnemonicParsing="false" onAction="#ClickBackHome" prefHeight="28.0" prefWidth="115.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="&lt; Accueil" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0">
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="860.0" layoutY="113.0" opacity="0.8" pickOnBounds="true">
+         <image>
+            <Image url="@../../Ressources/Images/fond.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="954.0" layoutX="-26.0" layoutY="243.0" opacity="0.8" pickOnBounds="true">
+         <image>
+            <Image url="@../../Ressources/Images/fond.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="931.0" layoutX="-29.0" layoutY="378.0" opacity="0.8" pickOnBounds="true">
+         <image>
+            <Image url="@../../Ressources/Images/fond.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="1033.0" layoutX="-53.0" layoutY="512.0" opacity="0.8" pickOnBounds="true">
+         <image>
+            <Image url="@../../Ressources/Images/fond.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="135.0" fitWidth="1033.0" layoutX="-76.0" layoutY="647.0" opacity="0.8" pickOnBounds="true">
+         <image>
+            <Image url="@../../Ressources/Images/fond.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="94.0" fitWidth="362.0" layoutX="260.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Ressources/Images/SeriousSecurity.png" />
+         </image>
+      </ImageView>
+      <Button id="boutonRetour" layoutX="25.0" layoutY="3.0" mnemonicParsing="false" onAction="#ClickBackHome" prefHeight="28.0" prefWidth="115.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="3.0">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
          <effect>
             <InnerShadow />
          </effect>
+         <graphic>
+            <ImageView fitHeight="86.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Images/home.png" />
+               </image>
+            </ImageView>
+         </graphic>
       </Button>
-      <ProgressBar fx:id="progQuiz" layoutX="578.0" layoutY="146.0" prefHeight="35.0" prefWidth="436.0" progress="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="130.0" />
-      <Label id="degrade_titre" alignment="CENTER" layoutX="108.0" layoutY="-10.0" prefHeight="184.0" prefWidth="751.0" rotate="-2.9" stylesheets="@../../Ressources/CSS/degrade_titre.css" text="SeriouSécurité" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="-40.0">
-         <font>
-            <Font name="Trattatello" size="64.0" />
-         </font>
+      <AnchorPane layoutX="51.0" layoutY="119.0" prefHeight="540.0" prefWidth="750.0" style="-fx-background-color: #47d147;" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="119.0">
          <effect>
-            <DropShadow />
+            <DropShadow color="#756d6d" offsetX="5.0" offsetY="10.0" />
          </effect>
-      </Label>
-      <Separator layoutX="53.0" layoutY="139.0" prefHeight="0.0" prefWidth="739.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="90.0">
+         <children>
+            <ImageView disable="true" fitHeight="323.0" fitWidth="751.0" layoutX="-2.0" layoutY="50.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+               <image>
+                  <Image url="@../../Ressources/Images/bulle3.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="intiQue" layoutX="26.0" layoutY="57.0" text="Intitulé de question" textFill="#000000e5" wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="20.0">
+               <font>
+                  <Font name="Arial Bold" size="20.0" />
+               </font>
+            </Label>
+            <CheckBox fx:id="intiRep1" layoutX="100.0" layoutY="115.0" mnemonicParsing="false" text="Reponse 1" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="intiRep2" layoutX="100.0" layoutY="155.0" mnemonicParsing="false" text="Reponse 2" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="intiRep3" layoutX="100.0" layoutY="195.0" mnemonicParsing="false" text="Reponse 3" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="intiRep4" layoutX="100.0" layoutY="235.0" mnemonicParsing="false" text="Reponse 4" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </CheckBox>
+            <CheckBox fx:id="intiRep5" layoutX="100.0" layoutY="275.0" mnemonicParsing="false" text="Reponse 5" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </CheckBox>
+            <Button fx:id="reponse1" layoutX="87.0" layoutY="127.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="17.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/boutonJaune.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="reponse1L" layoutX="160.0" layoutY="144.0" text="Reponse 1" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="reponse2" layoutX="87.0" layoutY="177.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="17.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/boutonJaune.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="reponse2L" layoutX="160.0" layoutY="194.0" text="Reponse 2" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="reponse3" layoutX="87.0" layoutY="227.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="17.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/boutonJaune.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="reponse3L" layoutX="160.0" layoutY="244.0" text="Reponse 3" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="reponse4" layoutX="87.0" layoutY="277.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="17.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/boutonJaune.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="reponse4L" layoutX="160.0" layoutY="294.0" text="Reponse 4" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="reponse5" layoutX="87.0" layoutY="327.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="17.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="44.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/boutonJaune.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="reponse5L" layoutX="160.0" layoutY="341.0" text="Reponse 5" visible="false" wrapText="true">
+               <font>
+                  <Font name="Arial" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonNextQue" layoutX="616.0" layoutY="450.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" prefHeight="77.0" prefWidth="149.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-15.0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="114.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/suivant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="valider" layoutX="309.0" layoutY="320.0" mnemonicParsing="false" onAction="#ClickButtonValider" prefHeight="77.0" prefWidth="151.0" style="-fx-background-color: transparent;" textFill="WHITE" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="299.0">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="114.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/valider.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Button fx:id="validerP" layoutX="361.0" layoutY="514.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: transparent;" text="P" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="361.5" AnchorPane.rightAnchor="361.5">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="24.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="59.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Images/boutonBleu2P.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <ImageView fx:id="bulle" disable="true" fitHeight="177.0" fitWidth="466.0" layoutX="192.0" layoutY="507.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
+         <image>
+            <Image url="@../../Ressources/Images/bulle3.png" />
+         </image>
+      </ImageView>
+      <ProgressBar fx:id="progQuiz" layoutX="76.0" layoutY="146.0" opacity="0.89" prefHeight="35.0" prefWidth="697.0" progress="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="130.0" />
+      <Separator layoutY="139.0" prefHeight="48.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
          <effect>
             <DropShadow />
          </effect>
       </Separator>
-      <ImageView fx:id="faux" fitHeight="99.0" fitWidth="87.0" layoutX="537.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true" rotate="-56.3" visible="false" AnchorPane.bottomAnchor="35.121498107910156" AnchorPane.rightAnchor="226.0">
+      <ImageView fx:id="faux" fitHeight="99.0" fitWidth="87.0" layoutX="550.0" layoutY="538.7941589355469" pickOnBounds="true" preserveRatio="true" rotate="-56.3" visible="false" AnchorPane.bottomAnchor="69.32733917236328" AnchorPane.rightAnchor="213.0">
          <image>
             <Image url="@../../Ressources/Images/croixRouge.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="106.0" layoutX="544.0" layoutY="578.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="207.30612182617188">
+      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="106.0" layoutX="547.0000915527344" layoutY="545.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="204.3060302734375">
          <image>
             <Image url="@../../Ressources/Images/checkVert.png" />
          </image>
       </ImageView>
-      <Label layoutX="454.0" layoutY="133.0" prefHeight="29.0" prefWidth="106.0" text="Question" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="133.0">
+      <ImageView fx:id="personnage" fitHeight="256.0" fitWidth="194.0" layoutX="21.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnageQuestion.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label fx:id="justification" layoutX="223.0" layoutY="506.0" prefHeight="129.0" prefWidth="326.0" text="Justification" visible="false" wrapText="true">
          <font>
-            <Font name="Apple Casual" size="28.0" />
-         </font>
-      </Label>
-      <Label fx:id="progression" layoutX="124.0" layoutY="133.0" prefHeight="31.0" prefWidth="44.0" text="1/2" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="682.0" AnchorPane.topAnchor="133.0">
-         <font>
-            <Font name="Apple Casual" size="28.0" />
-         </font>
-      </Label>
-      <Label fx:id="progression1" layoutX="172.0" layoutY="132.0" prefHeight="29.0" prefWidth="41.0" text=":" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="670.0" AnchorPane.topAnchor="132.0">
-         <font>
-            <Font name="Apple Casual" size="28.0" />
+            <Font size="20.0" />
          </font>
       </Label>
    </children>

@@ -31,7 +31,7 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private Button buttonNextQue;
-	@FXML
+/*	@FXML
 	private Button reponse1;
 	@FXML
 	private Button reponse1P;
@@ -50,14 +50,14 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private Button reponse5;
 	@FXML
-	private Button reponse5P;
+	private Button reponse5P;*/
 	@FXML
 	private Button valider;
 	@FXML
 	private Button validerP;
 	@FXML
 	private Label justification;
-	@FXML
+/*	@FXML
 	private Label reponse1L;
 	@FXML
 	private Label reponse2L;
@@ -66,7 +66,7 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private Label reponse4L;
 	@FXML
-	private Label reponse5L;
+	private Label reponse5L;*/
 	@FXML
 	private CheckBox intiRep1, intiRep2, intiRep3, intiRep4, intiRep5;
 	@FXML

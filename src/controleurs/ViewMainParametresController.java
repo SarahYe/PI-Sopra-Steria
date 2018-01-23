@@ -68,7 +68,7 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
-		listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add(" ");
+		listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("../vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add(" ");
 		listFxmlBlocsParam.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("../vues/PageExplicationParametrage.fxml");
 		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
 		listFxmlBlocs.add("../vues/QuizAccueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("../vues/PageExplication.fxml");
@@ -184,6 +184,12 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_SaveGame(ActionEvent event) throws ParserConfigurationException, TransformerException {
+		//récupération du nom du jeu entré
+		String nomJeu;
+		if(!TF_GameName.getText().equals(""))
+			nomJeu=TF_GameName.getText();
+		else 
+			nomJeu="DefaultName";
 		
 		//Creation du fichier XML et des differentes instances
 		DocumentBuilderFactory XML_Fabrique_Constructeur = DocumentBuilderFactory.newInstance();
@@ -202,7 +208,9 @@ public class ViewMainParametresController implements Initializable{
 			Element type = XML_Document.createElement(listXMLBlocs.get(cmpt));
 			seriousGame.appendChild(type);
 			Attr attribut1 = XML_Document.createAttribute("pathXML");
-			attribut1.setValue("path du fichier xml correspondant");
+			String path="Games/"+nomJeu;
+			
+			attribut1.setValue(path+"/"+LV_BlcList.getItems().get(i));
 			type.setAttributeNode(attribut1);
 		}
 		
@@ -218,11 +226,7 @@ public class ViewMainParametresController implements Initializable{
 		Transformer XML_Transformeur = XML_Fabrique_Transformeur.newTransformer();
 		DOMSource source = new DOMSource(XML_Document);
 		StreamResult resultat;
-		String nomJeu;
-		if(!TF_GameName.getText().equals(""))
-			nomJeu=TF_GameName.getText();
-		else 
-			nomJeu="DefaultName";
+		
 		resultat = new StreamResult(new File("Games/temp/chronologie_" +nomJeu  + ".xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
@@ -233,7 +237,11 @@ public class ViewMainParametresController implements Initializable{
 		
 		//Renommage du dossier du jeu
 		File dir = new File("Games/temp");
-	    File newDir = new File(dir.getParent() + "\\" + nomJeu);
+	    File newDir = new File(dir.getParent() + "/" + nomJeu);
+	    if(newDir.isDirectory())
+	    	newDir.delete();
+	    Boolean rename=dir.renameTo(newDir);
+	    System.out.println("Rename dir ? :"+rename);
 	}
 	
 	@FXML

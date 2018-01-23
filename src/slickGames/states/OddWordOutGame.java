@@ -40,6 +40,7 @@ public class OddWordOutGame extends BasicGameState {
 	public static double sidesSpeed = 2;
 	public static long chrono = 45000L;
 	public static Clip backgroundClip;
+	public static boolean gameFinished = false;
 	public long previousTime = 0;
 	public Image flecheVerte;
 	public Image flecheRouge;
@@ -77,13 +78,15 @@ public class OddWordOutGame extends BasicGameState {
 		// TODO Auto-generated method stub
 		
 		//fontConfirmText = FontUtils.loadCustomFont("PressStart2P.ttf",Font.PLAIN,20);
-		
+				
 		g.setBackground(new Color(230, 242, 255));
 		
 		g.setColor(Color.black);
-		for (int i = 0; i < reponses.size(); i++){
-			reponses.get(i).render(container, game, g);
-		}
+		if (chrono > 0){
+			for (int i = 0; i < reponses.size(); i++){
+				reponses.get(i).render(container, game, g);
+			}
+		}		
 		
 		g.setColor(new Color(153, 202, 255));
 		g.fillRect(0, 0, MainOddWordOutGame.longueur, 40);
@@ -123,6 +126,36 @@ public class OddWordOutGame extends BasicGameState {
 	    timer += secs;
 	    g.setColor(Color.red);
 		g.drawString(timer, (MainOddWordOutGame.longueur-g.getFont().getWidth(timer))/2, MainOddWordOutGame.hauteur-40);
+	
+		if(chrono < 0){
+			container.pause();
+			backgroundClip.close();
+			gameFinished = true;
+			
+			Image img = new Image("./Ressources/Images/rectangleReponse2.png");
+			
+			String str1 = "Game Over";
+			String str2 = "Votre score : "+score;
+			String str3 = "PRESS ENTER TO EXIT";
+			
+			float middleXstr1 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str1))/2;
+			float middleYstr1 = (MainOddWordOutGame.hauteur-g.getFont().getHeight(str1))/2-50;
+			float middleXstr2 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str2))/2;
+			float middleYstr2 = (MainOddWordOutGame.hauteur-g.getFont().getHeight(str2))/2;
+			float middleXstr3 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str3))/2;
+			float middleYstr3 = (MainOddWordOutGame.hauteur-g.getFont().getHeight(str3))/2+30;
+			img.draw(middleXstr2-35, middleXstr2-20-32, g.getFont().getWidth(str2)+70, g.getFont().getHeight(str2)+80);
+			g.setColor(Color.black);
+			g.drawString(str1, middleXstr1, middleYstr1);
+			if(score > 0){
+				g.setColor(Color.green);
+			} else {
+				g.setColor(Color.red);
+			}
+			g.drawString(str2, middleXstr2, middleYstr2);
+			g.setColor(Color.white);
+			g.drawString(str3, middleXstr3, middleYstr3);		
+		}
 	}
 	
 	public static void drawStrings(String text, int x, int y, Graphics g)
@@ -144,11 +177,6 @@ public class OddWordOutGame extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
-		
-		if(chrono < 0){
-			container.pause();
-			backgroundClip.close();			
-		}
 		
 		long tmp = System.currentTimeMillis();
 	    long customDelta = tmp - previousTime;
@@ -217,6 +245,11 @@ public class OddWordOutGame extends BasicGameState {
 			} catch (SlickException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}
+			break;
+		case Input.KEY_ENTER:
+			if(gameFinished){
+				System.exit(0);
 			}
 			break;
 		}

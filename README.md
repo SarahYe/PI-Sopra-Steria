@@ -1,47 +1,70 @@
 # Projet industriel Serious Game
 
-Ce projet s'inscrit dans le cadre du PI mené par les étudiants de TELECOM Nancy en collaboration avec la Division Est de Sopra Steria. Il consiste à réaliser une application dite "blanche" permettant la création de serious games.
+Ce projet s'inscrit dans le cadre du PI menÃ© par les Ã©tudiants de TELECOM Nancy en collaboration avec la Division Est de Sopra Steria. Il consiste Ã  rÃ©aliser une application adaptable et rÃ©utilisable permettant la crÃ©ation de serious games.
 
-## Préréquis :
+## PrÃ©rÃ©quis :
 
-Environnement de travail :  Eclipse IDE for Java Developers
+Environnement de travail :  Eclipse IDE for Java Developers, Scene Builder
 
 Version Java : 1.8
 
-## Exécution :
+## Technologies utilisÃ©es :
 
-Après avoir cloner le projet, il faut l'importer comme un projet existant sous Eclispe.
+ * Java
+ * Slick2D
+ * FXML
+ * XML
+
+## ExÃ©cution :
+
+AprÃ¨s avoir cloner le projet, il faut l'importer comme un projet existant sous Eclispe.
+
+##### Lancer la configuration d'un serious game :
+Dans le package *main*, exÃ©cuter la classe **MainParametres**.
+
+*FonctionnalitÃ©s:*
+  * Nommer le serious game
+  * Ajouter les "blocs" nÃ©cessaires Ã  son scÃ©nario
+  * Supprimer un bloc prÃ©alablement choisi
+  * Configurer un bloc
+  * Intervertir des blocs dans son scÃ©nario avec les boutons *up* et *down*
+  * Tester le serious game scÃ©narisÃ©
+  
+Pour l'instant, les blocs paramÃ©trables disponibles sont les suivants:
+  * Quiz
+  * Page explicative
+  * Jeu de tri intitulÃ© "Chassez l'intrus"
+
+##### ParamÃ©trer un quiz :
+Dans le package *main*, exÃ©cutez la classe **ParametresQuiz**.
+*FonctionnalitÃ©s:*
+  * Ajouter une question
+  * Supprimer  une question
+  * Changer l'ordre des questions dans la liste avec les boutons *up* et *down*
+  * Tester le quiz
+
+Pour chaque question, il faut : un intitulÃ©, les diffÃ©rents choix de rÃ©ponse, une justification pour chacune des rÃ©ponses (non obligatoire) ainsi que l'indication d'au moins une bonne rÃ©ponse.
 
 ##### Lancer un quiz :
-Dans le package *main*, exécutez la classe **MainQuiz** puis cliquez sur "Jouer".
-Lorsque l'on sélectionne une ou plusieurs réponses, la justification associée s'affiche après avoir "Valider". Le passage à  la question suivante se fait après la sélection de toutes les bonnes réponses.
+Dans le package *main*, exÃ©cutez la classe **MainQuiz** puis cliquez sur "Jouer".
+Lorsque l'on sÃ©lectionne une ou plusieurs rÃ©ponses, la justification associÃ©e s'affiche aprÃ¨s avoir "Valider". Le passage Ã Â  la question suivante se fait aprÃ¨s la sÃ©lection de toutes les bonnes rÃ©ponses.
 
-##### Lancer le paramétrage :
-Dans le package *main*, exécuter la classe **MainParametres**.
+##### ParamÃ©trer un jeu de tri :
+Dans le package *main*, exÃ©cutez la classe **ParametresOddWordOutGame**.
+*FonctionnalitÃ©s:*
+  * Ajouter une question
+  * Entrer une liste de mauvaises et de bonnes rÃ©ponses
+ Â * Supprimer une bonne ou mauvaise rÃ©ponse entrÃ©e
+ Â 
+##### Lancer le jeu de tri:
+Dans le package *slickGames*, exÃ©cuter la classe **MainOddWordOutGame**.
 
-*Fonctionnalités:*
-  * Ajouter un bloc dans la liste
-  * Supprimer un bloc selectionné dans la liste
-  * Changer l'ordre des blocs dans la liste avec les boutons *up* et *down*
-  * Afficher l'interface de configuration du bloc selectionné (seul l'interface du quiz est disponible actuellement)
-  	* Ajouter une question
-  	* Modifier une question existante
-  	* Supprimer une question
+*Fonctionnement du jeu*
 
-Pour chaque question, il faut : un intitulé, les différents choix de réponse, une justification pour chacune des réponses (non obligatoire) ainsi que l'indication de ou des bonne(s) réponse(s).
 
-##### Tester le jeu "chassez les intrus" utilisant Slick2D :
-Dans le package *slickGames*, exécuter la classe **MainOddWordOutGame**.
-
-*Fonctionnalités en cours de développement*
-
-*Fonctionnalités actuelles :*
-  * Affichage d'une question et défilement des réponses
-  * Manipulation des éléments réponses (flèches droite et gauche du clavier uniquement !)
-  * Disparition des réponses s'elles touchent un bord de la fenêtre de jeu
 
 ## Auteurs :
 
-* Maël CLOUET
+* MaÃ«l CLOUET
 * Antoine SOCHALA
 * Sarah YESUFU

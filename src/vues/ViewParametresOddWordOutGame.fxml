@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="448.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresOddWordOutGameController">
+   <content>
+   		<VBox spacing="20">
+   		  <padding>
+	        <Insets bottom="0" left="25.0" right="0" top="25.0" />
+	      </padding>
+	    
+	   		<HBox alignment="BASELINE_LEFT" spacing="10">
+	   			<padding>
+			      <Insets bottom="5.0" left="0" right="0" top="0" />
+			    </padding>
+		      	<Label text="Intitulé de la question :" />
+		      	<TextField fx:id="textFieldQuestion" HBox.hgrow="ALWAYS" />
+	      	</HBox>
+	      	
+	      	<HBox alignment="BASELINE_LEFT" spacing="20">
+	      		<VBox spacing="10">
+		      		<TableView fx:id="tableBReps" layoutX="10.0" layoutY="51.0" prefHeight="448.0" prefWidth="323.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+	               		<columns>
+	               			<TableColumn fx:id="TableColumnBReps" minWidth="330.0" prefWidth="288.22083282470703" text="Bonnes réponses">
+		               			<cellValueFactory>
+	                       		</cellValueFactory>
+	               			</TableColumn>
+	               		</columns>   
+	               	</TableView>
+	               	<HBox spacing="10">
+				          <TextField fx:id="TextFieldBRep" promptText="Bonne réponse"
+				               prefWidth="150" HBox.hgrow="ALWAYS"/>
+				          <Button text="Ajouter" onAction="#ClickButtonAddGoodAnswer"/>
+				          <Button text="Supprimer" onAction="#ClickButtonSupprGoodAnswer"/>
+				     </HBox>
+               	</VBox>
+               	<VBox spacing="10">
+	               	<TableView fx:id="tableMReps" layoutX="10.0" layoutY="51.0" prefHeight="448.0" prefWidth="323.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+	               		<columns>
+	               			<TableColumn fx:id="TableColumnMReps" minWidth="330.0" prefWidth="288.22083282470703" text="Mauvaises réponses">
+	               				<cellValueFactory>
+	                       		</cellValueFactory>
+	               			</TableColumn>
+	               		</columns>   
+	               	</TableView>
+	               	<HBox spacing="10">
+				          <TextField fx:id="TextFieldMRep" promptText="Mauvaise réponse"
+				               prefWidth="150" HBox.hgrow="ALWAYS"/>
+				          <Button text="Ajouter" onAction="#ClickButtonAddBadAnswer"/>
+				          <Button text="Supprimer" onAction="#ClickButtonSupprBadAnswer"/>
+				     </HBox>
+               	</VBox>
+	      	</HBox>
+  	
+	      	<HBox alignment="BASELINE_LEFT" spacing="15">
+	      		<padding>
+			      <Insets bottom="25.0" left="0" right="0" top="0" />
+			    </padding>
+	      		<Button fx:id="btn" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
+				<Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
+			</HBox>	
+      	
+      	</VBox>
+      
+      
+   </content>
+</ScrollPane>

@@ -83,6 +83,20 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
+	
+	public static Node loadParamOddWordOutGame(String fxml,String xml) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewParametresOddWordOutGameController controller = loader.<ViewParametresOddWordOutGameController>getController();
+			controller.setXML(xml);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
 
 	public Stage loadQuestion(Quiz quiz, int cmpt, Stage stage, String xml) throws IOException {
 

@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
    <children>
       <ImageView fitHeight="97.0" fitWidth="849.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -80,7 +81,7 @@
             </ImageView>
             <Label fx:id="intiQue" layoutX="26.0" layoutY="57.0" text="Intitulé de question" textFill="#000000e5" wrapText="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="20.0">
                <font>
-                  <Font name="Arial Bold" size="20.0" />
+                  <Font name="Arial Bold" size="22.0" />
                </font>
             </Label>
             <CheckBox fx:id="intiRep1" layoutX="100.0" layoutY="115.0" mnemonicParsing="false" text="Reponse 1" wrapText="true">
@@ -219,18 +220,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <Button fx:id="validerP" layoutX="361.0" layoutY="514.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="127.0" style="-fx-background-color: transparent;" text="P" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="147.0" AnchorPane.leftAnchor="361.5" AnchorPane.rightAnchor="361.5">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="24.0" />
-         </font>
-         <graphic>
-            <ImageView fitHeight="59.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Ressources/Images/boutonBleu2P.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
       <ImageView fx:id="bulle" disable="true" fitHeight="177.0" fitWidth="466.0" layoutX="192.0" layoutY="507.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true">
          <image>
             <Image url="@../../Ressources/Images/bulle3.png" />
@@ -254,7 +243,7 @@
       </ImageView>
       <ImageView fx:id="personnage" fitHeight="256.0" fitWidth="194.0" layoutX="21.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <image>
-            <Image url="@../../Ressources/Images/personnageQuestion.png" />
+            <Image url="@../../Ressources/Images/perso.png" />
          </image>
          <effect>
             <DropShadow />

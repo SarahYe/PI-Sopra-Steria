@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="anchorpane_id" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #e4cbb4#e4cbb4;" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
+   <children>
+      <ImageView fx:id="personnage" fitHeight="170.0" fitWidth="157.0" layoutX="21.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@../../Ressources/Images/personnage4.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bulle" fitHeight="135.0" fitWidth="274.0" layoutX="135.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="337.0">
+         <image>
+            <Image url="@../../Ressources/Images/bulle2.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="50.0" layoutY="187.0" prefHeight="313.0" prefWidth="750.0" style="-fx-background-color: #cc6600#cc6600; -fx-background-radius: 50;" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="187.0">
+         <effect>
+            <Bloom />
+         </effect>
+      </AnchorPane>
+      <Label fx:id="justification" layoutX="200.0" layoutY="560.0" prefHeight="115.0" prefWidth="341.0" text="Justification" visible="false" wrapText="true" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="309.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="intiRep1" layoutX="158.0" layoutY="270.0" mnemonicParsing="false" text="Reponse 1" wrapText="true" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="intiRep2" layoutX="159.0" layoutY="315.0" mnemonicParsing="false" text="Reponse 2" wrapText="true" AnchorPane.bottomAnchor="353.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="intiRep3" layoutX="159.0" layoutY="360.0" mnemonicParsing="false" text="Reponse 3" wrapText="true" AnchorPane.bottomAnchor="308.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="intiRep4" layoutX="159.0" layoutY="405.0" mnemonicParsing="false" text="Reponse 4" wrapText="true" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="intiRep5" layoutX="159.0" layoutY="450.0" mnemonicParsing="false" text="Reponse 5" wrapText="true" AnchorPane.bottomAnchor="218.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="80.0">
+         <font>
+            <Font name="Apple SD Gothic Neo Regular" size="20.0" />
+         </font>
+      </CheckBox>
+      <Label fx:id="intiQue" layoutX="68.0" layoutY="170.0" text="Intitulé de question" textFill="#000000e5" wrapText="true" AnchorPane.bottomAnchor="445.0" AnchorPane.leftAnchor="68.0" AnchorPane.rightAnchor="75.0">
+         <font>
+            <Font name="Apple Casual" size="24.0" />
+         </font>
+      </Label>
+      <Button layoutX="361.5" layoutY="514.0" mnemonicParsing="false" onAction="#ClickButtonValider" prefHeight="41.0" prefWidth="127.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Valider" textFill="WHITE" AnchorPane.bottomAnchor="140.0" AnchorPane.leftAnchor="361.5" AnchorPane.rightAnchor="361.5">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonNextQue" layoutX="594.0" layoutY="528.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" prefHeight="42.0" prefWidth="184.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Question suivante" textFill="WHITE" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button id="boutonRetour" layoutX="19.0" layoutY="47.0" mnemonicParsing="false" onAction="#ClickBackHome" prefHeight="28.0" prefWidth="115.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="&lt; Accueil" textFill="WHITE" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Button>
+      <ProgressBar fx:id="progQuiz" layoutX="578.0" layoutY="146.0" prefHeight="35.0" prefWidth="436.0" progress="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="249.0" AnchorPane.topAnchor="130.0" />
+      <Label id="degrade_titre" alignment="CENTER" layoutX="108.0" layoutY="-10.0" prefHeight="184.0" prefWidth="751.0" rotate="-2.9" stylesheets="@../../Ressources/CSS/degrade_titre.css" text="SeriouSécurité" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" wrapText="true" AnchorPane.leftAnchor="108.0" AnchorPane.rightAnchor="92.0" AnchorPane.topAnchor="-40.0">
+         <font>
+            <Font name="Trattatello" size="64.0" />
+         </font>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <Separator layoutX="53.0" layoutY="139.0" prefHeight="0.0" prefWidth="739.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="90.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Separator>
+      <ImageView fx:id="faux" fitHeight="99.0" fitWidth="87.0" layoutX="537.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true" rotate="-56.3" visible="false" AnchorPane.bottomAnchor="35.121498107910156" AnchorPane.rightAnchor="226.0">
+         <image>
+            <Image url="@../../Ressources/Images/croixRouge.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="106.0" layoutX="544.0" layoutY="578.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="44.0" AnchorPane.rightAnchor="207.30612182617188">
+         <image>
+            <Image url="@../../Ressources/Images/checkVert.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="454.0" layoutY="133.0" prefHeight="29.0" prefWidth="106.0" text="Question" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="133.0">
+         <font>
+            <Font name="Apple Casual" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="progression" layoutX="124.0" layoutY="133.0" prefHeight="31.0" prefWidth="44.0" text="1/2" AnchorPane.leftAnchor="124.0" AnchorPane.rightAnchor="682.0" AnchorPane.topAnchor="133.0">
+         <font>
+            <Font name="Apple Casual" size="28.0" />
+         </font>
+      </Label>
+      <Label fx:id="progression1" layoutX="172.0" layoutY="132.0" prefHeight="29.0" prefWidth="41.0" text=":" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="670.0" AnchorPane.topAnchor="132.0">
+         <font>
+            <Font name="Apple Casual" size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

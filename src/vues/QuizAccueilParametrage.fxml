@@ -1,67 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Point3D?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorpane_id" prefHeight="700.0" prefWidth="850.0" stylesheets="@../../Ressources/CSS/anchor_background.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.QuizAccueilController">
+<AnchorPane id="anchorpane_id" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: #FF4500#FF4500; -fx-background-color: linear-gradient(to bottom, red, orange);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.QuizAccueilController">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="140.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-3.0">
-         <image>
-            <Image url="@../../Ressources/Images/personnage4.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="524.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-2.0">
-         <image>
-            <Image url="@../../Ressources/Images/personnage5.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="610.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-10.0">
-         <image>
-            <Image url="@../../Ressources/Images/personnage7.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="254.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-15.0">
-         <image>
-            <Image url="@../../Ressources/Images/personnage1.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="698.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <image>
             <Image url="@../../Ressources/Images/Logo_Sopra_Steria.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1.0" layoutY="390.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-11.0">
-         <image>
-            <Image url="@../../Ressources/Images/personnage3.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="411.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0">
-         <image>
-            <Image url="@../../Ressources/Images/personnage2.png" />
-         </image>
-      </ImageView>
-      <Label alignment="CENTER" layoutX="316.0" layoutY="35.0" prefHeight="45.0" prefWidth="221.0" text="Bienvenue sur" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="35.0">
-         <font>
-            <Font name="Snell Roundhand" size="35.0" />
-         </font></Label>
-      <Label id="degrade_titre" alignment="CENTER" layoutX="148.0" layoutY="74.0" prefHeight="101.0" prefWidth="378.0" rotate="-14.0" stylesheets="@../../Ressources/CSS/degrade_titre.css" text="SeriouSécurité" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="152.0" AnchorPane.topAnchor="74.0">
-         <font>
-            <Font name="Trattatello" size="96.0" />
-         </font>
-         <rotationAxis>
-            <Point3D x="2.0" y="10.0" z="4.0" />
-         </rotationAxis>
-      </Label>
-      <Button fx:id="buttonJouer" layoutX="286.0" layoutY="267.0" mnemonicParsing="false" onAction="#ClickButtonJouer" prefHeight="51.0" prefWidth="211.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Jouer" textFill="WHITE" AnchorPane.bottomAnchor="211.0" AnchorPane.leftAnchor="291.5" AnchorPane.rightAnchor="291.5">
+      <Button fx:id="buttonJouer" layoutX="261.0" layoutY="351.0" mnemonicParsing="false" onAction="#ClickButtonJouer" prefHeight="128.0" prefWidth="329.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" AnchorPane.bottomAnchor="156.0" AnchorPane.leftAnchor="261.0" AnchorPane.rightAnchor="260.0">
          <font>
             <Font name="System Bold" size="24.0" />
-         </font></Button>
-      <Button fx:id="ButtonParametrage" disable="true" layoutX="439.0" layoutY="329.0" mnemonicParsing="false" onAction="#ClickButtonParametrage" text="Paramétrage" visible="false" />
-      <Button fx:id="buttonScore" layoutX="278.0" layoutY="223.0" mnemonicParsing="false" onAction="#ClickButtonScore" text="Score" visible="false" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="110.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Images/jouer.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.9970414201183432">
+               <stops>
+                  <Stop color="#fa5c20" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Button>
+      <ImageView fitHeight="208.0" fitWidth="735.0" layoutX="82.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="57.5" AnchorPane.rightAnchor="57.5">
+         <image>
+            <Image url="@../../Ressources/Images/SeriousSecurity.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

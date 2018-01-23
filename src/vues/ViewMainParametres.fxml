@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
@@ -29,8 +30,14 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="21.0" layoutY="119.0" text="Entrez le nom de votre serious game :" wrapText="true" AnchorPane.leftAnchor="20.0" />
-                  <Label layoutX="29.0" layoutY="182.0" text="Votre chronologie :" AnchorPane.leftAnchor="20.0" />
+                  <Label alignment="CENTER" layoutX="21.0" layoutY="119.0" text="Entrez le nom de votre serious game :" wrapText="true" AnchorPane.leftAnchor="20.0">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
+                  <Label alignment="CENTER" layoutX="6.0" layoutY="182.0" prefHeight="16.0" prefWidth="161.0" text="Scénario" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <font>
+                        <Font name="Arial Bold" size="13.0" />
+                     </font></Label>
                   <TextField fx:id="TF_GameName" layoutX="52.0" layoutY="140.0" prefHeight="27.0" prefWidth="31.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <ListView fx:id="LV_BlcList" layoutX="19.0" layoutY="206.0" prefHeight="245.0" prefWidth="147.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
                   <Button layoutX="35.0" layoutY="479.0" mnemonicParsing="false" onAction="#ClickBT_UpBlc" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="479.0">
@@ -61,6 +68,8 @@
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <Separator layoutY="180.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <Separator layoutY="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="778.0" prefWidth="736.0">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Test">
-    <nom>Test</nom>
+<quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Nom du quiz">
+    <nom>Nom du quiz</nom>
     <Question>
         <intituleQuestion>Dans un chantier, quels équipements suis-je susceptible de porter ? À vous de faire le tri !</intituleQuestion>
         <Reponses>
@@ -15,18 +15,8 @@
                 <justification></justification>
             </Reponse>
             <Reponse>
-                <correct>false</correct>
-                <intitule>Des lunettes de soleil</intitule>
-                <justification></justification>
-            </Reponse>
-            <Reponse>
                 <correct>true</correct>
                 <intitule>Des chaussures de sécurité</intitule>
-                <justification></justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>Des tongs</intitule>
                 <justification></justification>
             </Reponse>
             <Reponse>
@@ -37,6 +27,16 @@
             <Reponse>
                 <correct>true</correct>
                 <intitule>Des coquilles anti-bruit</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>Des lunettes de soleil</intitule>
+                <justification></justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>Des tongs</intitule>
                 <justification></justification>
             </Reponse>
             <Reponse>

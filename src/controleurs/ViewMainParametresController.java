@@ -59,6 +59,9 @@ public class ViewMainParametresController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//création du dossier temporaire où seront enregistrer tout les xml
+		File dir = new File ("Games/temp");
+		dir.mkdirs();
 		System.out.println("ouverture page MainParametre");
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
@@ -216,19 +219,22 @@ public class ViewMainParametresController implements Initializable{
 			nomJeu=TF_GameName.getText();
 		else 
 			nomJeu="DefaultName";
-		resultat = new StreamResult(new File("chronologie_" +nomJeu  + ".xml"));
+		resultat = new StreamResult(new File("Games/temp/chronologie_" +nomJeu  + ".xml"));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a été généré !");
-		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a été enregistré.\n\nSon contenu a été enregistré au chemin : \""+ System.getProperty("user.dir")+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
+		
+		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a été enregistré.\n\nSon contenu a été enregistré au chemin : \""+ System.getProperty("user.dir")+"\\Games\\"+nomJeu+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
 		alert.setHeaderText("Information concernant l'enregistrement");
 		alert.showAndWait();
+		
+		//Renommage du dossier du jeu
+		File dir = new File("Games/temp");
+	    File newDir = new File(dir.getParent() + "\\" + nomJeu);
 	}
 	
 	@FXML
 	private void ClickBT_TestGame(ActionEvent event){
 		String bloc0=(String) LV_BlcList.getItems().get(0);
-		
-		
 		
 	}
 	

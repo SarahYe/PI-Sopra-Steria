@@ -24,6 +24,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -49,6 +50,7 @@ public class ViewMainParametresController implements Initializable{
 	@FXML
 	private ListView LV_BlcList;
 	private ArrayList<String> listTypeBlocs=new ArrayList<String>();
+	private ArrayList<String> listFxmlBlocsParam=new ArrayList<String>();
 	private ArrayList<String> listFxmlBlocs=new ArrayList<String>();
 	private ArrayList<String> listXMLBlocs=new ArrayList<String>();
 	private ArrayList<Integer> listCmptBloc=new ArrayList<Integer>();
@@ -66,8 +68,10 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
+		listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add(" ");
+		listFxmlBlocsParam.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("../vues/PageExplicationParametrage.fxml");
 		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
-		listFxmlBlocs.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("../vues/PageExplicationParametrage.fxml");
+		listFxmlBlocs.add("../vues/QuizAccueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("../vues/PageExplication.fxml");
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
 		for (int i=0;i<6;i++)
@@ -146,7 +150,7 @@ public class ViewMainParametresController implements Initializable{
 		int cmpt=-1;
 		for (int i=0;i< listTypeBlocs.size();i++){
 			if(((String)LV_BlcList.getItems().get(index)).contains(listTypeBlocs.get(i))){
-				fxml=listFxmlBlocs.get(i);
+				fxml=listFxmlBlocsParam.get(i);
 				cmpt=i;
 				break;
 			}
@@ -234,8 +238,62 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_TestGame(ActionEvent event){
-		String bloc0=(String) LV_BlcList.getItems().get(0);
-		
+		if(LV_BlcList.getItems().size()>0){
+			String bloc0=(String) LV_BlcList.getItems().get(0);
+			String fxml = null;
+			int cmpt=-1;
+			for (int i=0;i< listTypeBlocs.size();i++){
+				if(bloc0.contains(listTypeBlocs.get(i))){
+					cmpt=i;
+					fxml=listFxmlBlocs.get(i);
+					break;
+				}
+			}
+			
+			FXMLLoader loader = new FXMLLoader();
+			if(fxml.endsWith("fxml")){
+				 switch (cmpt) {
+				 	case 0 : 
+				 	case 1 :
+				 	case 2 :
+				 	case 3 :
+				 	case 4 :
+						try {
+							loader.setLocation(JFxUtils.class.getResource(fxml));
+							AnchorPane newPane = loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+							QuizAccueilController controller = loader.<QuizAccueilController>getController();
+							controller.setXML("FichiersDeConfig/quiz.xml");
+							AP_ConfBlc.getChildren().setAll(newPane);
+						} catch (IOException e) {
+							throw new IllegalStateException("cannot load FXML screen", e);
+						}
+						
+				 	case 5 :
+				 	case 6 :
+						try {
+							loader.setLocation(JFxUtils.class.getResource(fxml));
+							ScrollPane newPane = loader.load(main.MainParametres.class.getResource(fxml).openStream());
+							PageExplicationController controller = loader.<PageExplicationController>getController();
+							controller.setXML("FichiersDeConfig/explication.xml");
+							controller.initData();
+							AP_ConfBlc.getChildren().setAll(newPane);
+						} catch (IOException e) {
+							throw new IllegalStateException("cannot load FXML screen", e);
+						}
+						
+				 	default :
+				 }
+			}
+			
+			//FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
+			//ScrollPane newPane = loader.load();
+			
+		} else{
+			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est présent dans la chronologie", ButtonType.OK);
+			alert.setHeaderText("Information concernant le test");
+			alert.showAndWait();
+		}
+			
 	}
 	
 

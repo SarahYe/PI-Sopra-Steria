@@ -1,6 +1,7 @@
 package controleurs;
 
-import java.awt.Desktop;
+
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -13,11 +14,16 @@ import com.sun.javafx.application.HostServicesDelegate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 import modeles.Explication;
 
 public class PageExplicationController implements Initializable {
@@ -38,7 +44,12 @@ public class PageExplicationController implements Initializable {
 	private ImageView image1;
 	@FXML
 	private ImageView image2;
+	@FXML
+	private Button buttonSuivant;
 	private String xml="";
+	private boolean soloBloc=true;
+	private int cmptChronologie=0;
+	private String xmlChronologie="";
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -95,6 +106,23 @@ public class PageExplicationController implements Initializable {
 	
 	@FXML
 	private void ClickBT_Suivant(ActionEvent event){
-		System.out.println("cc");
+		if(soloBloc){
+			Stage stage = (Stage) buttonSuivant.getScene().getWindow();
+			stage.close();
+		} else {
+			Stage stage = (Stage) buttonSuivant.getScene().getWindow();
+			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie);
+			if (node!=null){
+				stage.setScene(new Scene((Parent) node, 850, 650));
+			} else {
+				stage.close();
+			}
+		}
+	}
+
+	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+		this.soloBloc=soloBloc;
+		this.cmptChronologie=cmptChronologie;
+		this.xmlChronologie=xmlChronologie;
 	}
 }

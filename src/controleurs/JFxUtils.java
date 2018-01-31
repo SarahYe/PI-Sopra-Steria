@@ -66,12 +66,13 @@ public class JFxUtils {
 		return stage;
 	}
 	
-	public static Node loadExplicationFxml(String fxml,String xml) {
+	public static Node loadExplicationFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			PageExplicationController controller = loader.<PageExplicationController>getController();
+			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
 			controller.setXML(xml);
 			controller.initData();
 			return root;
@@ -139,15 +140,17 @@ public class JFxUtils {
 			    public void endElement(String uri, String localName, String qName) throws SAXException {}
 			   });  
 			  } catch (Exception e) { System.err.println(e); System.exit(1); }
-		
-		switch (names.get(cmptChronologie)){
-			case "Quiz" : return loadQuizFxml("../vues/QuizAccueil.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
-			case "PageExpl" :
-			case "DiagPNJ" :
-			case "Accueil" :
-			case "Intrus" :
-			case "Score" :
+		if (cmptChronologie<names.size()){
+			switch (names.get(cmptChronologie)){
+				case "Quiz" : return loadQuizFxml("../vues/QuizAccueil.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
+				case "PageExpl" : return loadExplicationFxml("../vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
+				case "DiagPNJ" :
+				case "Accueil" :
+				case "Intrus" :
+				case "Score" :
+			}
 		}
+		
 		
 		return null;
 	}

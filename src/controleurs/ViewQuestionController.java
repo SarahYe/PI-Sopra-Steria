@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -101,7 +102,13 @@ public class ViewQuestionController implements Initializable {
 					stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
 				} else {
 					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-					stage.setScene(new Scene((Parent) JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie), 850, 650));
+					Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie);
+					if (node!=null){
+						stage.setScene(new Scene((Parent) node, 850, 650));
+					} else {
+						stage.close();
+					}
+					
 				}
 				
 			} else {

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1043.0" prefWidth="603.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
+   <content>
+      <VBox prefHeight="834.0" prefWidth="571.0" spacing="20">
+         <padding>
+            <Insets bottom="0" left="25.0" right="0" top="25.0" />
+         </padding>
+         <children>
+            <Separator prefWidth="200.0" />
+            <Label contentDisplay="CENTER" text="Fond décran : Téléchargez une image ou choisissez une couleur" />
+            <Separator prefWidth="200.0" />
+            <HBox>
+               <children>
+                  <TextField fx:id="textFieldQuestion" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="telechargerFondEcran" mnemonicParsing="false" text="Télécharger" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <ColorPicker fx:id="CouleurFondEcran" disable="true" prefWidth="157.0" promptText="Choisir une couleur">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </ColorPicker>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <Label text="Dialogue avec un personnage" />
+            <Separator prefWidth="200.0" />
+            <HBox alignment="BASELINE_LEFT" spacing="10">
+               <children>
+                  <Label text="Nombre de dialogues :" />
+                  <ComboBox fx:id="ComboBoxNbrDialogue">
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="2" />
+                           <String fx:value="3" />
+                           <String fx:value="4" />
+                           <String fx:value="5" />
+                        </FXCollections>
+                     </items>
+                  </ComboBox>
+               </children>
+            </HBox>
+            <VBox spacing="5">
+               <children>
+                  <Label text="Dialogue 1 :" />
+                  <TextArea fx:id="textAreaRep1" maxHeight="101.0" maxWidth="400.0" prefHeight="101.0" prefWidth="392.0" />
+                  <Label text="Personnage 1 :" />
+                  <HBox>
+                     <children>
+                        <TextField fx:id="textFieldQuestion1" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" text="Télécharger" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox spacing="5">
+               <children>
+                  <Label text="Dialogue 2 :" />
+                  <TextArea fx:id="textAreaRep11" maxHeight="101.0" maxWidth="400.0" prefHeight="101.0" prefWidth="392.0" />
+                  <Label text="Personnage 2 :" />
+                  <HBox>
+                     <children>
+                        <TextField fx:id="textFieldQuestion11" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" text="Télécharger" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox spacing="5">
+               <children>
+                  <Label text="Dialogue 3 :" />
+                  <TextArea fx:id="textAreaRep12" maxHeight="101.0" maxWidth="400.0" prefHeight="101.0" prefWidth="392.0" />
+                  <Label text="Personnage 3 :" />
+                  <HBox>
+                     <children>
+                        <TextField fx:id="textFieldQuestion12" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" text="Télécharger" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox spacing="5">
+               <children>
+                  <Label text="Dialogue 4 :" />
+                  <TextArea fx:id="textAreaRep13" maxHeight="101.0" maxWidth="400.0" prefHeight="101.0" prefWidth="392.0" />
+                  <Label text="Personnage 4 :" />
+                  <HBox>
+                     <children>
+                        <TextField fx:id="textFieldQuestion13" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" text="Télécharger" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="BASELINE_LEFT" spacing="15.0">
+               <padding>
+                  <Insets bottom="25.0" left="0" right="0" top="0" />
+               </padding>
+               <children>
+                  <Button fx:id="btn" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
+                  <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>

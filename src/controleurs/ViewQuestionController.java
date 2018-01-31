@@ -83,6 +83,9 @@ public class ViewQuestionController implements Initializable {
 	private ImageView bulle;
 	
 	private String xml="";
+	private boolean soloBloc=true;
+	private int cmptChronologie=0;
+	private String xmlChronologie="";
 
 	public void initData(Quiz quiz, int cmpt) {
 		this.cmpt = cmpt;
@@ -93,8 +96,14 @@ public class ViewQuestionController implements Initializable {
 			quiz = quiz.convertirXMLToJava(xml);
 
 			if (quiz.getListeQuestions().size() == cmpt) {
-				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-				stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
+				if(soloBloc){
+					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+					stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
+				} else {
+					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+					stage.setScene(new Scene((Parent) JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie), 850, 650));
+				}
+				
 			} else {
 				buttonNextQue.setVisible(Boolean.FALSE);
 				question = quiz.getListeQuestions().get(cmpt);
@@ -105,13 +114,21 @@ public class ViewQuestionController implements Initializable {
 		} else {
 			System.out.println("xml : "+xml);
 		}
-
-		
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		bulle.setVisible(false);
+	}
+	
+	public void setXML(String xml) {
+		this.xml=xml;
+	}
+	
+	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie){
+		this.soloBloc=soloBloc;
+		this.cmptChronologie=cmptChronologie;
+		this.xmlChronologie=xmlChronologie;
 	}
 
 	private void remplissageContentQuestion(Question question) {
@@ -156,7 +173,7 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
 		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
 		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
 	}
 
@@ -244,11 +261,7 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private void ClickButtonNextQue(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		new JFxUtils().loadQuestion(quiz, cmpt + 1, stage,xml);
-	}
-
-	public void setXML(String xml) {
-		this.xml=xml;
+		new JFxUtils().loadQuestion(quiz, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
 	}
 
 }

@@ -210,7 +210,7 @@ public class ViewMainParametresController implements Initializable{
 			Attr attribut1 = XML_Document.createAttribute("pathXML");
 			String path="Games/"+nomJeu;
 			
-			attribut1.setValue(path+"/"+LV_BlcList.getItems().get(i));
+			attribut1.setValue(path+"/"+LV_BlcList.getItems().get(i)+".xml");
 			type.setAttributeNode(attribut1);
 		}
 		

@@ -92,4 +92,9 @@ public class PageExplicationController implements Initializable {
 		this.xml=xml;
 		
 	}
+	
+	@FXML
+	private void ClickBT_Suivant(ActionEvent event){
+		System.out.println("cc");
+	}
 }

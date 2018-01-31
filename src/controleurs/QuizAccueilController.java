@@ -35,7 +35,11 @@ public class QuizAccueilController implements Initializable {
 	private Button ButtonParametrage;
 	@FXML
 	private Button buttonScore;
+	
 	private String xml="";
+	private boolean soloBloc=true;
+	private int cmptChronologie=0;
+	private String xmlChronologie="";
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
@@ -45,12 +49,18 @@ public class QuizAccueilController implements Initializable {
 	public void setXML(String xml) {
 		this.xml=xml;
 	}
+	
+	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie){
+		this.soloBloc=soloBloc;
+		this.cmptChronologie=cmptChronologie;
+		this.xmlChronologie=xmlChronologie;
+	}
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonJouer.getScene().getWindow();
 		//jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
-		new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml);
+		new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml,soloBloc,cmptChronologie, xmlChronologie);
 	}
 
 	@FXML

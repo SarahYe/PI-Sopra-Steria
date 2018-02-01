@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
    <children>
       <ImageView fitHeight="97.0" fitWidth="849.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -254,5 +253,23 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Button fx:id="volumeOn" layoutX="729.0" layoutY="15.0" mnemonicParsing="false" onAction="#SonOff" style="-fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="62.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Images/volume_on.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="volumeOff" layoutX="735.0" layoutY="20.0" mnemonicParsing="false" onAction="#SonOn" style="-fx-background-color: transparent;" visible="false">
+         <graphic>
+            <ImageView fitHeight="57.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Ressources/Images/volume_off.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

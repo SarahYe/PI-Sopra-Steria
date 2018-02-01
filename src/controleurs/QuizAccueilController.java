@@ -43,7 +43,7 @@ public class QuizAccueilController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
+		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 	
 	public void setXML(String xml) {

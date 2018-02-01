@@ -57,6 +57,10 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private Button validerP;
 	@FXML
+	private Button volumeOn;
+	@FXML
+	private Button volumeOff;
+	@FXML
 	private Label justification;
 /*	@FXML
 	private Label reponse1L;
@@ -87,6 +91,7 @@ public class ViewQuestionController implements Initializable {
 	private boolean soloBloc=true;
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
+	private float niveauSon = -30.0f;
 
 	public void initData(Quiz quiz, int cmpt) {
 		this.cmpt = cmpt;
@@ -255,12 +260,12 @@ public class ViewQuestionController implements Initializable {
 			faux.setVisible(true);
 
 			if (cmptTrue == 00 && choice) {
-				QuizAccueilController.jouerAudio("././Ressources/Sons/succes.wav", -25.0f);
+				QuizAccueilController.jouerAudio("././Ressources/Sons/succes.wav", niveauSon);
 				buttonNextQue.setVisible(Boolean.TRUE);
 				faux.setVisible(false);
 				vrai.setVisible(true);
 			} else {
-				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", -25.0f);
+				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);
 			}
 		}
 	}
@@ -271,4 +276,17 @@ public class ViewQuestionController implements Initializable {
 		new JFxUtils().loadQuestion(quiz, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
 	}
 
+	@FXML
+	private void SonOn(ActionEvent event) {
+		niveauSon =  -30.0f;
+		volumeOn.setVisible(true);
+		volumeOff.setVisible(false);
+	}
+	
+	@FXML
+	private void SonOff(ActionEvent event) {
+		niveauSon =  -100000.0f;
+		volumeOff.setVisible(true);
+		volumeOn.setVisible(false);
+	}
 }

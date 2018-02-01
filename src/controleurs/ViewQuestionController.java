@@ -92,6 +92,7 @@ public class ViewQuestionController implements Initializable {
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
 	private float niveauSon = -30.0f;
+	private int score = 0;
 
 	public void initData(Quiz quiz, int cmpt) {
 		this.cmpt = cmpt;
@@ -107,6 +108,7 @@ public class ViewQuestionController implements Initializable {
 					stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
 				} else {
 					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+					//System.out.print(score);
 					Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie);
 					if (node!=null){
 						stage.setScene(new Scene((Parent) node, 850, 650));
@@ -152,13 +154,8 @@ public class ViewQuestionController implements Initializable {
 
 		if (reponses.size() > 0) {
 			intiRep1.setText(reponses.get(0).getIntitule());
-			// justif1.setText(reponses.get(0).getJustification());
-			// justification.setText("");
-			// justification.setText(reponses.get(0).getJustification());
 		} else
 			intiRep1.setVisible(Boolean.FALSE);
-		// justif1.setVisible(Boolean.FALSE);
-		// justification.setVisible(Boolean.FALSE);
 
 		if (reponses.size() > 1) {
 			intiRep2.setText(reponses.get(1).getIntitule());
@@ -261,12 +258,15 @@ public class ViewQuestionController implements Initializable {
 
 			if (cmptTrue == 00 && choice) {
 				QuizAccueilController.jouerAudio("././Ressources/Sons/succes.wav", niveauSon);
-				buttonNextQue.setVisible(Boolean.TRUE);
 				faux.setVisible(false);
 				vrai.setVisible(true);
+				//score++;
+				//System.out.print(score);
 			} else {
 				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);
 			}
+			
+			buttonNextQue.setVisible(Boolean.TRUE);
 		}
 	}
 

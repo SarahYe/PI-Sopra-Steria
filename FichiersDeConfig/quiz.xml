@@ -16,4 +16,19 @@
             </Reponse>
         </Reponses>
     </Question>
+    <Question>
+        <intituleQuestion>Q2</intituleQuestion>
+        <Reponses>
+            <Reponse>
+                <correct>true</correct>
+                <intitule>GVD</intitule>
+                <justification>VGJ</justification>
+            </Reponse>
+            <Reponse>
+                <correct>false</correct>
+                <intitule>CQD</intitule>
+                <justification> DX</justification>
+            </Reponse>
+        </Reponses>
+    </Question>
 </quiz>

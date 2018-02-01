@@ -193,7 +193,7 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="buttonNextQue" layoutX="616.0" layoutY="450.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" prefHeight="77.0" prefWidth="149.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-15.0">
+            <Button fx:id="buttonNextQue" layoutX="616.0" layoutY="450.0" mnemonicParsing="false" onAction="#ClickButtonNextQue" prefHeight="77.0" prefWidth="149.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-15.0">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

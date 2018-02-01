@@ -81,6 +81,21 @@ public class JFxUtils {
 		}
 	}
 	
+	public static Node loadAccueilFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			AccueilController controller = loader.<AccueilController>getController();
+			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setXML(xml);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
+	
 	public static Node loadExplicationParamFxml(String fxml,String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
@@ -123,7 +138,7 @@ public class JFxUtils {
 		}
 	}
 	
-	public  static Node loadAccueilParamFxml(String fxml,String xml) {
+	public static Node loadAccueilParamFxml(String fxml,String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -136,7 +151,8 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-
+	
+	
 	public static Node loadNextBloc(int cmptChronologie, String xmlChronologie) {
 		ArrayList<String> names=new ArrayList<String>();
 		ArrayList<String> path=new ArrayList<String>();
@@ -168,7 +184,5 @@ public class JFxUtils {
 		
 		return null;
 	}
-	
-	
 
 }

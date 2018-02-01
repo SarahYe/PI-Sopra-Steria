@@ -1,29 +1,28 @@
 package controleurs;
 
 
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
-import javax.imageio.ImageIO;
-
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
+import modeles.Accueil;
+import modeles.Titre;
+import modeles.FondEcran;
 
 public class ViewParametresAccueilController implements Initializable{
 
@@ -37,10 +36,16 @@ public class ViewParametresAccueilController implements Initializable{
 	private ColorPicker couleurFondEcran;
 
 	@FXML
+	private Button boutonsupprimerCouleurFDE;
+	
+	@FXML
 	private Button boutonTelechargerImageFDE;
 
 	@FXML
 	private Button boutonApercu;
+	
+	@FXML
+	private Button boutonEffacerNomSG;
 
 	@FXML
 	private Label ZoneApercuNom;
@@ -53,6 +58,9 @@ public class ViewParametresAccueilController implements Initializable{
 
 	@FXML
 	private Button boutonTelechargerImageNomSG;
+	
+	@FXML
+	private Button boutonSupprimerImageNomSG;
 
 	@FXML
 	private TextField imageNomSG;
@@ -62,13 +70,24 @@ public class ViewParametresAccueilController implements Initializable{
 
 	@FXML
 	private Button boutonEnregistrer;
+	
+	@FXML
+	private Label erreur;
 
+	private int modif = 0;
 	private String xml;
+	private String valCouleurFDE;
+	private String lienImageFDE;
+	private String titre;
+	private String police;
+	private String valCouleurSG;
+	private String lienImageNomSG;
+	private Boolean texteNomSG = false;
+	private Boolean couleurFDE = false;
 
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		couleurFondEcran.setDisable(false);
 		policeNomSG.getItems().addAll(Font.getFontNames());
 	}
 	
@@ -85,14 +104,7 @@ public class ViewParametresAccueilController implements Initializable{
 	public void setXML(String xml) {
 		this.xml=xml;
 	}
-	
-	public void activerUnChoixFondEcran() {
-		if (imageFondEcran.getText().length() > 0) {
-			couleurFondEcran.setDisable(true);
-		}
-		
-	    //tester si choix d'une couleur
-	}
+
 
 	@FXML
 	void chargerImageFondEcran(ActionEvent event) {
@@ -109,10 +121,43 @@ public class ViewParametresAccueilController implements Initializable{
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		imageFondEcran.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
 		
-		couleurFondEcran.setDisable(true);
+		modif++;
+		couleurFDE = false;
+		activerCouleur();
+		//couleurFondEcran.setDisable(true);
 		//activerUnChoixFondEcran();
 	}
+	
+	@FXML
+	void supprimerImageFondEcran(ActionEvent event) {
+		imageFondEcran.setText("");
+		couleurFondEcran.setDisable(false);
+		modif--;
+	}
 
+	@FXML
+	void modifierCouleurFondEcran(ActionEvent event) {	
+		couleurFDE = true;
+		activerCouleur();
+		modif++;
+		erreur.setVisible(false);
+		/*imageFondEcran.setDisable(true);
+		boutonsupprimerImageFDE.setDisable(true);
+		boutonTelechargerImageFDE.setDisable(true);*/
+	}
+	
+	@FXML
+	void supprimerCouleurFondEcran(ActionEvent event) {
+		imageFondEcran.setText("");
+		couleurFondEcran.setDisable(false);
+		imageFondEcran.setDisable(false);
+		boutonsupprimerImageFDE.setDisable(false);
+		boutonTelechargerImageFDE.setDisable(false);
+		
+		couleurFDE = false;
+		modif--;
+	}
+	
 	@FXML
 	void chargerImageNomSG(ActionEvent event) {
 		
@@ -127,36 +172,147 @@ public class ViewParametresAccueilController implements Initializable{
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		imageNomSG.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		
+		modif++;
+		erreur.setVisible(false);
+		texteNomSG = false;
+		activerTelechargementNomSG();
+		/*NomSG.setDisable(true);
+		policeNomSG.setDisable(true);
+		couleurNomSG.setDisable(true);
+		boutonApercu.setDisable(true);*/
 
 	}
 
 	@FXML
-	void choisirPoliceNomSG(ActionEvent event) {
+	void supprimerImageNomSG(ActionEvent event) {
+		imageNomSG.setText("");
+		boutonTelechargerImageNomSG.setDisable(false);
+		boutonSupprimerImageNomSG.setDisable(false);
+		imageNomSG.setDisable(false);
 
+		NomSG.setDisable(false);
+		policeNomSG.setDisable(false);
+		couleurNomSG.setDisable(false);
+		boutonApercu.setDisable(false);
+		
+		modif--;
+		texteNomSG = false;
 	}
 
-	@FXML
-	void imageNomSG(ActionEvent event) {
-
-	}
-
-	@FXML
-	void modifierCouleurFondEcran(ActionEvent event) {		
-		imageFondEcran.setDisable(true);
-		boutonsupprimerImageFDE.setDisable(true);
-		boutonTelechargerImageFDE.setDisable(true);
-	}
 
 	@FXML
 	void showNomSG(ActionEvent event) {
-		ZoneApercuNom.setText(NomSG.getText());
-		ZoneApercuNom.setFont(new Font(policeNomSG.getValue(), 20));
-		ZoneApercuNom.setTextFill(couleurNomSG.getValue());
+		if (NomSG.getText().length() > 0) {
+			ZoneApercuNom.setText(NomSG.getText());
+			ZoneApercuNom.setFont(new Font(policeNomSG.getValue(), 20));
+			ZoneApercuNom.setTextFill(couleurNomSG.getValue());
+			
+			modif++;
+			erreur.setVisible(false);
+			texteNomSG = true;
+			activerTelechargementNomSG();
+		} else {
+			ZoneApercuNom.setText("");
+			boutonTelechargerImageNomSG.setDisable(false);
+			boutonSupprimerImageNomSG.setDisable(false);
+			imageNomSG.setDisable(false);
+
+			NomSG.setDisable(false);
+			policeNomSG.setDisable(false);
+			couleurNomSG.setDisable(false);
+			boutonApercu.setDisable(false);
+		}
+		
+	}
+	
+	
+	@FXML
+	void effacerNomSG(ActionEvent event) {
+		NomSG.setText("");
+		ZoneApercuNom.setText("");
+		boutonTelechargerImageNomSG.setDisable(false);
+		boutonSupprimerImageNomSG.setDisable(false);
+		imageNomSG.setDisable(false);
+
+		NomSG.setDisable(false);
+		policeNomSG.setDisable(false);
+		couleurNomSG.setDisable(false);
+		boutonApercu.setDisable(false);
+		
+		modif--;
+	}
+	
+	
+	public void activerTelechargementNomSG() {
+		if (texteNomSG) {
+			boutonTelechargerImageNomSG.setDisable(true);
+			boutonSupprimerImageNomSG.setDisable(true);
+			imageNomSG.setDisable(true);
+		} else {
+			NomSG.setDisable(true);
+			policeNomSG.setDisable(true);
+			couleurNomSG.setDisable(true);
+			boutonApercu.setDisable(true);
+		}
+	}
+	
+	public void activerCouleur() {
+		if (couleurFDE) {
+			imageFondEcran.setDisable(true);
+			boutonsupprimerImageFDE.setDisable(true);
+			boutonTelechargerImageFDE.setDisable(true);;
+			//couleurFDE = false;
+		} else {
+			couleurFondEcran.setDisable(true);
+		}
 	}
 
 	@FXML
-	void supprimerImageFondEcran(ActionEvent event) {
-		imageFondEcran.setText("");
-		couleurFondEcran.setDisable(false);
+	void enregistrer(ActionEvent event) {
+
+		Titre titreObj = new Titre();
+		FondEcran fe = new FondEcran();
+		Accueil accueil = new Accueil();
+		
+		if (modif <= 0) {
+			erreur.setVisible(true);
+		} else {
+			if (couleurFDE) {
+				//valCouleurFDE = couleurFondEcran.getValue().toString();
+				fe.setImageVsCouleur("Couleur");
+				fe.setCouleur(couleurFondEcran.getValue().toString());
+			} else {
+				fe.setImageVsCouleur("Image");
+				fe.setLienImage(imageFondEcran.getText());
+				//lienImageFDE = imageFondEcran.getText();
+			}
+			
+			if (texteNomSG) {
+				//titre = NomSG.getText();
+				//police = policeNomSG.getValue().toString();
+				//valCouleurSG = couleurNomSG.getValue().toString();
+				titreObj.setImageVsTexte("Texte");
+				titreObj.setTexte(NomSG.getText());
+				titreObj.setCouleurTexte(couleurNomSG.getValue().toString());
+				titreObj.setPoliceTexte(policeNomSG.getValue().toString());
+			} else {
+				titreObj.setImageVsTexte("Image");
+				titreObj.setLienImage(imageNomSG.getText());
+				//lienImageNomSG = imageNomSG.getText();
+			}
+			
+			// ecriture xml
+			accueil.setFond(fe);
+			accueil.setTitre(titreObj);
+			accueil.convertirJavaToXML(accueil, "FichiersDeConfig/accueil.xml");
+			
+			//popup de confirmation
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Paramétrage  d'un accueil");
+			alert.setContentText("Le paramétrage a bien été enregistré !");
+			alert.showAndWait();
+		}
 	}
+	
 }

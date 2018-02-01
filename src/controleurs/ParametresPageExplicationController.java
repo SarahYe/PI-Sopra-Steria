@@ -241,15 +241,15 @@ public class ParametresPageExplicationController implements Initializable {
 		else {
 			
 			//Popup pour le nom du fichier
-			TextInputDialog dialog = new TextInputDialog("");
-			dialog.setTitle("Enregistrement du fichier de configuration");
-			dialog.setHeaderText("Entrez le nom du fichier de configuration (sans l'extension)");
+			//TextInputDialog dialog = new TextInputDialog("");
+			//dialog.setTitle("Enregistrement du fichier de configuration");
+			//dialog.setHeaderText("Entrez le nom du fichier de configuration (sans l'extension)");
 			//dialog.setContentText("Entrez le nom du fichier de configuration (sans l'extension) :");
 			
-			Optional<String> result = dialog.showAndWait();
-			if (result.isPresent()){
-			    System.out.println("Nom entré: " + result.get());
-			}
+			//Optional<String> result = dialog.showAndWait();
+			//if (result.isPresent()){
+			//   System.out.println("Nom entré: " + result.get());
+			//}
 			// éléments invisibles
 			champTitre.setVisible(false);
 			champExplication.setVisible(false);

@@ -66,7 +66,7 @@ public class QuizAccueilController implements Initializable {
 	@FXML
 	protected void ClickButtonScore(ActionEvent event) {
 		Stage stage = (Stage) buttonScore.getScene().getWindow();
-		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("vues/ViewScore.fxml"));
+		stage.getScene().setRoot((Parent) JFxUtils.loadFxml("/vues/ViewScore.fxml"));
 		stage.sizeToScene();
 	}
 

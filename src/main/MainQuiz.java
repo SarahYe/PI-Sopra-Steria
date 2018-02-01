@@ -15,7 +15,7 @@ public class MainQuiz extends Application {
 
 		// Font.loadFont(getClass().getResourceAsStream("./Ressources/Polices/GoodMorning.ttf"),
 		// 12);
-		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml","FichiersDeConfig/quiz.xml", true, 1,"Games/test/chronologie_test.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("/vues/QuizAccueil.fxml","FichiersDeConfig/quiz.xml", true, 1,"Games/test/chronologie_test.xml"), 850, 650));
 		stage.setTitle("SeriousSécurité");
 		stage.show();
 		stage.sizeToScene();

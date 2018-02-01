@@ -54,7 +54,7 @@ public class JFxUtils {
 	
 	public Stage loadQuestion(Quiz quiz, int cmpt, Stage stage, String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie) throws IOException {
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewQuestion.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewQuestion.fxml"));
 		stage.setScene(new Scene((Pane) loader.load()));
 
 		ViewQuestionController controller = loader.<ViewQuestionController>getController();
@@ -156,8 +156,8 @@ public class JFxUtils {
 			  } catch (Exception e) { System.err.println(e); System.exit(1); }
 		if (cmptChronologie<names.size()){
 			switch (names.get(cmptChronologie)){
-				case "Quiz" : return loadQuizFxml("../vues/QuizAccueil.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
-				case "PageExpl" : return loadExplicationFxml("../vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
+				case "Quiz" : return loadQuizFxml("/vues/QuizAccueil.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
+				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
 				case "DiagPNJ" :
 				case "Accueil" :
 				case "Intrus" :

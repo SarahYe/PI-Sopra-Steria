@@ -68,10 +68,10 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
-		listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("../vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add(" ");
-		listFxmlBlocsParam.add("../vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("../vues/PageExplicationParametrage.fxml");
+		listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add(" ");
+		listFxmlBlocsParam.add("/vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("/vues/PageExplicationParametrage.fxml");
 		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
-		listFxmlBlocs.add("../vues/QuizAccueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("../vues/PageExplication.fxml");
+		listFxmlBlocs.add("/vues/QuizAccueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("/vues/PageExplication.fxml");
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
 		for (int i=0;i<6;i++)
@@ -268,7 +268,7 @@ public class ViewMainParametresController implements Initializable{
 				 	case 4 :
 						try {
 							loader.setLocation(JFxUtils.class.getResource(fxml));
-							AnchorPane newPane = loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+							AnchorPane newPane = loader.load(controleurs.ViewMainParametresController.class.getResource(fxml).openStream());
 							QuizAccueilController controller = loader.<QuizAccueilController>getController();
 							controller.setXML("FichiersDeConfig/quiz.xml");
 							AP_ConfBlc.getChildren().setAll(newPane);
@@ -280,7 +280,7 @@ public class ViewMainParametresController implements Initializable{
 				 	case 6 :
 						try {
 							loader.setLocation(JFxUtils.class.getResource(fxml));
-							ScrollPane newPane = loader.load(main.MainParametres.class.getResource(fxml).openStream());
+							ScrollPane newPane = loader.load(controleurs.ViewMainParametresController.class.getResource(fxml).openStream());
 							PageExplicationController controller = loader.<PageExplicationController>getController();
 							controller.setXML("FichiersDeConfig/explication.xml");
 							controller.initData();

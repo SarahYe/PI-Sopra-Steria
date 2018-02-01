@@ -11,9 +11,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import modeles.Question;
 import modeles.Quiz;
@@ -122,8 +124,14 @@ public class ViewParametresOddWordOutGameController implements Initializable{
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
 		quiz.convertirJavaToXML(quiz, "FichiersDeConfig/slickGame.xml");
 		
-		Stage stage = (Stage) textFieldQuestion.getScene().getWindow();
-		stage.close();
+		//Stage stage = (Stage) textFieldQuestion.getScene().getWindow();
+		//stage.close();
+		
+		//popup de confirmation
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Paramétrage  d'un jeu de tri");
+		alert.setContentText("Le paramétrage a bien été enregistré !");
+		alert.showAndWait();
 		 
 	 }
 	 

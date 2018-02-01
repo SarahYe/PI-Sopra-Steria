@@ -16,12 +16,14 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -303,6 +305,12 @@ public class ParametresPageExplicationController implements Initializable {
 					ListeLiens, ListeImages);
 			objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/explication.xml");
 			//objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/" + result.get() +".xml");
+			
+			//popup de confirmation
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Paramétrage  d'une page explicative");
+			alert.setContentText("Le paramétrage a bien été enregistré !");
+			alert.showAndWait();
 		}
 
 	}

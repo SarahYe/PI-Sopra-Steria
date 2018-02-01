@@ -11,9 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.MainQuiz;
@@ -90,15 +92,21 @@ public class ViewParametresQuizController implements Initializable{
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
 		quiz.convertirJavaToXML(quiz, "FichiersDeConfig/quiz.xml");
 
-		Stage stage = (Stage) btnSave.getScene().getWindow();
-		stage.close();
+		//Stage stage = (Stage) btnSave.getScene().getWindow();
+		//stage.close();
 		
-		try {
+		/*try {
 			new MainQuiz().start(stage);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-		}
+		}*/
+		
+		//popup de confirmation
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Paramétrage  d'un quiz");
+		alert.setContentText("Le paramétrage a bien été enregistré !");
+		alert.showAndWait();
 	}
 
 	@FXML

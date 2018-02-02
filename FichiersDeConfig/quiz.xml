@@ -2,32 +2,17 @@
 <quiz xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Question" xmlns:ns3="org.arpit.javapostsforlearning.jaxb.Quiz" nomQuiz="Nom du quiz">
     <nom>Nom du quiz</nom>
     <Question>
-        <intituleQuestion>question</intituleQuestion>
+        <intituleQuestion>zdq</intituleQuestion>
         <Reponses>
             <Reponse>
                 <correct>true</correct>
-                <intitule>reponse1</intitule>
-                <justification>just1</justification>
+                <intitule>qd</intitule>
+                <justification>sdq</justification>
             </Reponse>
             <Reponse>
                 <correct>false</correct>
-                <intitule>reponse2</intitule>
-                <justification>just2</justification>
-            </Reponse>
-        </Reponses>
-    </Question>
-    <Question>
-        <intituleQuestion>Q2</intituleQuestion>
-        <Reponses>
-            <Reponse>
-                <correct>true</correct>
-                <intitule>GVD</intitule>
-                <justification>VGJ</justification>
-            </Reponse>
-            <Reponse>
-                <correct>false</correct>
-                <intitule>CQD</intitule>
-                <justification> DX</justification>
+                <intitule>qd</intitule>
+                <justification>qzd</justification>
             </Reponse>
         </Reponses>
     </Question>

@@ -23,7 +23,7 @@ public class MainChronologie extends Application  {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		stage.setScene(new Scene((Parent) JFxUtils.loadNextBloc(1, "Games/test/chronologie_test"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadNextBloc(1, "Games/test/chronologie_test.xml"), 850, 650));
 		stage.setTitle("SériousSécurité");
 		stage.show();
 		stage.sizeToScene();

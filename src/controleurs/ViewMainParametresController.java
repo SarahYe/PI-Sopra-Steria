@@ -248,9 +248,9 @@ public class ViewMainParametresController implements Initializable{
 	}
 	
 	@FXML
-	private void ClickBT_TestGame(ActionEvent event){
+	private void ClickBT_TestGame(ActionEvent event) throws ParserConfigurationException, TransformerException{
 		if(LV_BlcList.getItems().size()>0){
-			String bloc0=(String) LV_BlcList.getItems().get(0);
+			/*String bloc0=(String) LV_BlcList.getItems().get(0);
 			String fxml = null;
 			int cmpt=-1;
 			for (int i=0;i< listTypeBlocs.size();i++){
@@ -294,10 +294,44 @@ public class ViewMainParametresController implements Initializable{
 						
 				 	default :
 				 }
+			}*/
+			
+			//Creation du fichier XML et des differentes instances
+			DocumentBuilderFactory XML_Fabrique_Constructeur = DocumentBuilderFactory.newInstance();
+			DocumentBuilder XML_Constructeur = XML_Fabrique_Constructeur.newDocumentBuilder();
+	 
+			Document XML_Document = XML_Constructeur.newDocument();
+			Element seriousGame = XML_Document.createElement("SeriousGame");
+			XML_Document.appendChild(seriousGame);
+
+			for (int i=0; i<LV_BlcList.getItems().size();i++){
+				int cmpt=0;
+				for(int j=0; j<listTypeBlocs.size();j++){
+					if (((String) LV_BlcList.getItems().get(i)).contains(listTypeBlocs.get(j)))
+						cmpt=j;
+				}
+				Element type = XML_Document.createElement(listXMLBlocs.get(cmpt));
+				seriousGame.appendChild(type);
+				Attr attribut1 = XML_Document.createAttribute("pathXML");
+				String path="Games/temp";
+				
+				attribut1.setValue(path+"/"+LV_BlcList.getItems().get(i)+".xml");
+				type.setAttributeNode(attribut1);
 			}
 			
-			//FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
-			//ScrollPane newPane = loader.load();
+			//Enregistrement du fichier xml
+			TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
+			Transformer XML_Transformeur = XML_Fabrique_Transformeur.newTransformer();
+			DOMSource source = new DOMSource(XML_Document);
+			StreamResult resultat;
+			
+			resultat = new StreamResult(new File("Games/temp/chronologie_temp.xml"));
+			XML_Transformeur.transform(source, resultat); 
+			System.out.println("Le fichier XML a été généré !");
+			
+			Node newPane;
+			newPane= JFxUtils.loadNextBloc(1, "Games/temp/chronologie_temp.xml");
+		 	AP_ConfBlc.getChildren().setAll(newPane);
 			
 		} else{
 			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est présent dans la chronologie", ButtonType.OK);

@@ -90,7 +90,7 @@ public class ViewParametresQuizController implements Initializable{
 		}
 		
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
-		quiz.convertirJavaToXML(quiz, "FichiersDeConfig/quiz.xml");
+		quiz.convertirJavaToXML(quiz, xml);
 
 		//Stage stage = (Stage) btnSave.getScene().getWindow();
 		//stage.close();

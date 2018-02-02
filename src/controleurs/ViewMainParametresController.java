@@ -156,22 +156,25 @@ public class ViewMainParametresController implements Initializable{
 			}
 		}
 		if(fxml.endsWith("fxml")){
+			System.out.println("cmpt="+cmpt);
+			ScrollPane newPane;
 			 switch (cmpt) {
-			 	case 0 : /*stage.setScene(new Scene((Parent) JFxUtils.loadParamQuiz("../vues/ViewParametresQuiz.fxml","FichiersDeConfig/quiz.xml"), 850, 650));
-				stage.setTitle("SeriousSécurité");
-				stage.show();
-				stage.sizeToScene();*/
+			 	case 0 : 
+			 	
 			 	case 1 :
 			 	case 2 :
 			 	case 3 :
+				 	newPane=(ScrollPane) JFxUtils.loadParamQuiz(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
+				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 4 :
 			 	case 5 :
-			 	case 6 :
+			 		newPane=(ScrollPane) JFxUtils.loadExplicationParamFxml(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
+				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	default :
 			 }
-			FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
+			/*FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
 			ScrollPane newPane = loader.load();
-			AP_ConfBlc.getChildren().setAll(newPane);
+			AP_ConfBlc.getChildren().setAll(newPane);*/
 			
 			//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
 			//controller.initData(controller);

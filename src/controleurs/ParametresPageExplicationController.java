@@ -303,7 +303,7 @@ public class ParametresPageExplicationController implements Initializable {
 
 			Explication objetExplication = new Explication(theme.getText(), explication.getText(), source.getText(),
 					ListeLiens, ListeImages);
-			objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/explication.xml");
+			objetExplication.convertirJavaToXML(objetExplication, xml);
 			//objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/" + result.get() +".xml");
 			
 			//popup de confirmation

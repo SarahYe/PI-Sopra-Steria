@@ -64,6 +64,11 @@ public class ViewMainParametresController implements Initializable{
 		//création du dossier temporaire où seront enregistrer tout les xml
 		File dir = new File ("Games/temp");
 		dir.mkdirs();
+		
+		File[] files = dir.listFiles();
+		for(File fichier:files)
+			fichier.delete();
+		
 		System.out.println("ouverture page MainParametre");
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
@@ -77,6 +82,8 @@ public class ViewMainParametresController implements Initializable{
 		for (int i=0;i<6;i++)
 			listCmptBloc.add(0);
 	}
+	
+	
 	
 	/**
 	 * Fonction ajoutant le bloc selectionne dans la liste a gauche
@@ -157,18 +164,18 @@ public class ViewMainParametresController implements Initializable{
 		}
 		if(fxml.endsWith("fxml")){
 			System.out.println("cmpt="+cmpt);
-			ScrollPane newPane;
+			Node newPane;
 			 switch (cmpt) {
 			 	case 0 : 
 			 	
 			 	case 1 :
 			 	case 2 :
 			 	case 3 :
-				 	newPane=(ScrollPane) JFxUtils.loadParamQuiz(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
+				 	newPane= JFxUtils.loadParamQuiz(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
 				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 4 :
 			 	case 5 :
-			 		newPane=(ScrollPane) JFxUtils.loadExplicationParamFxml(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
+			 		newPane= JFxUtils.loadExplicationParamFxml(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
 				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	default :
 			 }
@@ -241,8 +248,13 @@ public class ViewMainParametresController implements Initializable{
 		//Renommage du dossier du jeu
 		File dir = new File("Games/temp");
 	    File newDir = new File(dir.getParent() + "/" + nomJeu);
-	    if(newDir.isDirectory())
+	    if(newDir.isDirectory()){
+	    	File[] files = newDir.listFiles();
+			for(File fichier:files)
+				fichier.delete();
 	    	newDir.delete();
+	    }
+	    	
 	    Boolean rename=dir.renameTo(newDir);
 	    System.out.println("Rename dir ? :"+rename);
 	}
@@ -250,52 +262,6 @@ public class ViewMainParametresController implements Initializable{
 	@FXML
 	private void ClickBT_TestGame(ActionEvent event) throws ParserConfigurationException, TransformerException{
 		if(LV_BlcList.getItems().size()>0){
-			/*String bloc0=(String) LV_BlcList.getItems().get(0);
-			String fxml = null;
-			int cmpt=-1;
-			for (int i=0;i< listTypeBlocs.size();i++){
-				if(bloc0.contains(listTypeBlocs.get(i))){
-					cmpt=i;
-					fxml=listFxmlBlocs.get(i);
-					break;
-				}
-			}
-			
-			FXMLLoader loader = new FXMLLoader();
-			if(fxml.endsWith("fxml")){
-				 switch (cmpt) {
-				 	case 0 : 
-				 	case 1 :
-				 	case 2 :
-				 	case 3 :
-				 	case 4 :
-						try {
-							loader.setLocation(JFxUtils.class.getResource(fxml));
-							AnchorPane newPane = loader.load(controleurs.ViewMainParametresController.class.getResource(fxml).openStream());
-							QuizAccueilController controller = loader.<QuizAccueilController>getController();
-							controller.setXML("FichiersDeConfig/quiz.xml");
-							AP_ConfBlc.getChildren().setAll(newPane);
-						} catch (IOException e) {
-							throw new IllegalStateException("cannot load FXML screen", e);
-						}
-						
-				 	case 5 :
-				 	case 6 :
-						try {
-							loader.setLocation(JFxUtils.class.getResource(fxml));
-							ScrollPane newPane = loader.load(controleurs.ViewMainParametresController.class.getResource(fxml).openStream());
-							PageExplicationController controller = loader.<PageExplicationController>getController();
-							controller.setXML("FichiersDeConfig/explication.xml");
-							controller.initData();
-							AP_ConfBlc.getChildren().setAll(newPane);
-						} catch (IOException e) {
-							throw new IllegalStateException("cannot load FXML screen", e);
-						}
-						
-				 	default :
-				 }
-			}*/
-			
 			//Creation du fichier XML et des differentes instances
 			DocumentBuilderFactory XML_Fabrique_Constructeur = DocumentBuilderFactory.newInstance();
 			DocumentBuilder XML_Constructeur = XML_Fabrique_Constructeur.newDocumentBuilder();

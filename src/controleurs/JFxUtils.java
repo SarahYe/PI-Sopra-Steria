@@ -159,7 +159,7 @@ public class JFxUtils {
 		try {
 			   SAXParserFactory factory = SAXParserFactory.newInstance();
 			   SAXParser parser = factory.newSAXParser();
-			   parser.parse("Games/test/chronologie_test.xml", new DefaultHandler() {
+			   parser.parse(xmlChronologie, new DefaultHandler() {
 			    public void startDocument() throws SAXException {}
 			    public void endDocument() throws SAXException {}
 			    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {

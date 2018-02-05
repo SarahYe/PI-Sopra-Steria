@@ -71,7 +71,7 @@ public class JFxUtils {
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			PageExplicationController controller = loader.<PageExplicationController>getController();
+			ViewPageExplicationController controller = loader.<ViewPageExplicationController>getController();
 			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
 			controller.setXML(xml);
 			controller.initData();
@@ -86,7 +86,7 @@ public class JFxUtils {
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			AccueilController controller = loader.<AccueilController>getController();
+			ViewAccueilController controller = loader.<ViewAccueilController>getController();
 			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
 			controller.setXML(xml);
 			controller.initData();
@@ -102,7 +102,7 @@ public class JFxUtils {
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			ParametresPageExplicationController controller = loader.<ParametresPageExplicationController>getController();
+			ViewParametresPageExplicationController controller = loader.<ViewParametresPageExplicationController>getController();
 			controller.setXML(xml);
 			controller.initData();
 			return root;
@@ -145,6 +145,20 @@ public class JFxUtils {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewParametresAccueilController controller = loader.<ViewParametresAccueilController>getController();
+			controller.setXML(xml);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
+	
+	public static Node loadPNJParamFxml(String fxml,String xml) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewParametresPNJController controller = loader.<ViewParametresPNJController>getController();
 			controller.setXML(xml);
 			controller.initData();
 			return root;

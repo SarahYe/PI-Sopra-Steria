@@ -67,9 +67,9 @@ public class ViewParametresQuizController implements Initializable{
 			for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
 				data.add(quiz2.getListeQuestions().get(i));
 			}
-		} else 
-			System.out.println("xml : "+ xml);
-
+		} else {
+			System.out.println("xml \"" + xml + "\" doesn't exist");
+		}
 		
 	}
 

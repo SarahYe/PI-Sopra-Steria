@@ -6,18 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class ParametresAccueil extends Application {
-	
+public class ParametresPNJ extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-
-		stage.setScene(new Scene((Parent) JFxUtils.loadAccueilParamFxml("../vues/AccueilParametres.fxml","FichiersDeConfig/accueil.xml"), 850, 650));
-		stage.setTitle("Paramétrage d'un accueil");
+		
+		stage.setScene(new Scene((Parent) JFxUtils.loadPNJParamFxml("../vues/ViewPNJParametres.fxml","FichiersDeConfig/pnj.xml"), 850, 650));
+		stage.setTitle("Paramétrage d'un dialogue avec un personnage");
 		stage.show();
 		stage.sizeToScene();
 	}
-
+	
 	/**
 	 * @param args
 	 *            the command line arguments
@@ -25,5 +24,5 @@ public class ParametresAccueil extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 }

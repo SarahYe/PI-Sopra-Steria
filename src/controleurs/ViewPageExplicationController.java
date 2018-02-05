@@ -26,7 +26,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import modeles.Explication;
 
-public class PageExplicationController implements Initializable {
+public class ViewPageExplicationController implements Initializable {
 
 	@FXML
 	private ImageView fondEcran;
@@ -69,12 +69,12 @@ public class PageExplicationController implements Initializable {
 			if (explXml.getListeImages().get(0).contains("icone_image.png")) {
 				image1.setVisible(false);
 			} else
-				image1.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(0)));
+				image1.setImage(ViewParametresPageExplicationController.chargerImage(explXml.getListeImages().get(0)));
 			
 			if (explXml.getListeImages().get(1).contains("icone_image.png")) {
 				image2.setVisible(false);
 			} else
-				image2.setImage(ParametresPageExplicationController.chargerImage(explXml.getListeImages().get(1)));
+				image2.setImage(ViewParametresPageExplicationController.chargerImage(explXml.getListeImages().get(1)));
 			
 			//System.out.println(explXml.getListeLiens().size());
 			if (explXml.getListeLiens().contains("Aucun lien") || explXml.getListeLiens().isEmpty()) {

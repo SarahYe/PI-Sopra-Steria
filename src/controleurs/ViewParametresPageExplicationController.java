@@ -31,7 +31,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.StageStyle;
 import modeles.Explication;
 
-public class ParametresPageExplicationController implements Initializable {
+public class ViewParametresPageExplicationController implements Initializable {
 	
 	private boolean modifierExplication;
 

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
    <content>
       <AnchorPane prefHeight="650.0" prefWidth="850.0">
          <children>
@@ -64,11 +64,7 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <ScrollPane fx:id="AP_">
-                     <content>
-                      <AnchorPane fx:id="AP_ParamDialogue" minHeight="0.0" minWidth="0.0" prefHeight="632.0" prefWidth="337.0" />
-                     </content>
-                  </ScrollPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
               </items>
             </SplitPane>
          </children>

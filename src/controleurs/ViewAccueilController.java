@@ -31,7 +31,7 @@ import modeles.Titre;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
-public class AccueilController implements Initializable{
+public class ViewAccueilController implements Initializable{
 
 
 	@FXML
@@ -74,7 +74,7 @@ public class AccueilController implements Initializable{
 				titreTexte.setVisible(false);
 				
 				//System.out.println("Image");
-				imageTitre.setImage(ParametresPageExplicationController.chargerImage(titre.getLienImage()));
+				imageTitre.setImage(ViewParametresPageExplicationController.chargerImage(titre.getLienImage()));
 			}
 			
 			FondEcran fondEcran = accXML.getFond();
@@ -83,7 +83,7 @@ public class AccueilController implements Initializable{
 				anchor.setStyle("-fx-background-color:transparent;");
 				
 				//System.out.println(fondEcran.getLienImage());
-				imageFDE.setImage(ParametresPageExplicationController.chargerImage(fondEcran.getLienImage()));
+				imageFDE.setImage(ViewParametresPageExplicationController.chargerImage(fondEcran.getLienImage()));
 			} else {
 				imageFDE.setVisible(false);
 				

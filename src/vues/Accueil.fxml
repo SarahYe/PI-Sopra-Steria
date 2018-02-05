@@ -9,7 +9,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="anchorpane_id" fx:id="anchor" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: linear-gradient(to bottom, red, orange);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.AccueilController">
+<AnchorPane id="anchorpane_id" fx:id="anchor" prefHeight="700.0" prefWidth="850.0" style="-fx-background-color: linear-gradient(to bottom, red, orange);" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewAccueilController">
    <children>
       <ImageView fx:id="imageFDE" fitHeight="704.0" fitWidth="854.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="698.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">

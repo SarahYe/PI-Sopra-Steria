@@ -238,6 +238,7 @@ public class ViewParametresAccueilController implements Initializable{
 		policeNomSG.setDisable(false);
 		couleurNomSG.setDisable(false);
 		boutonApercu.setDisable(false);
+		boutonEffacerNomSG.setDisable(false);
 		
 		modif--;
 		texteNomSG = false;
@@ -289,6 +290,7 @@ public class ViewParametresAccueilController implements Initializable{
 	
 	public void activerTelechargementNomSG() {
 		if (texteNomSG) {
+			boutonEffacerNomSG.setDisable(false);
 			boutonTelechargerImageNomSG.setDisable(true);
 			boutonSupprimerImageNomSG.setDisable(true);
 			imageNomSG.setDisable(true);

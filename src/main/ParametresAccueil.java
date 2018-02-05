@@ -12,7 +12,7 @@ public class ParametresAccueil extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		stage.setScene(new Scene((Parent) JFxUtils.loadAccueilParamFxml("../vues/AccueilParametres.fxml","FichiersDeConfig/accueil.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadAccueilParamFxml("../vues/AccueilParametres.fxml","FichiersDeConfig/accueil3.xml"), 850, 650));
 		stage.setTitle("Paramétrage d'un accueil");
 		stage.show();
 		stage.sizeToScene();

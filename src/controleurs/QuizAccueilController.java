@@ -46,6 +46,11 @@ public class QuizAccueilController implements Initializable {
 		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 	
+	public void initData() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void setXML(String xml) {
 		this.xml=xml;
 	}
@@ -113,4 +118,6 @@ public class QuizAccueilController implements Initializable {
 		// String[] args = null;
 		new ParametresQuiz().start(stage);
 	}
+
+	
 }

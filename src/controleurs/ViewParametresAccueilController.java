@@ -2,6 +2,7 @@ package controleurs;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,7 +10,10 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -17,9 +21,13 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
-
+import javafx.stage.Stage;
+import main.MainAccueil;
 import modeles.Accueil;
 import modeles.Titre;
 import modeles.FondEcran;
@@ -31,6 +39,9 @@ public class ViewParametresAccueilController implements Initializable{
 
 	@FXML
 	private Button boutonsupprimerImageFDE;
+	
+	@FXML
+	private Button previsualiser;
 
 	@FXML
 	private ColorPicker couleurFondEcran;
@@ -92,11 +103,43 @@ public class ViewParametresAccueilController implements Initializable{
 	}
 	
 	public void initData() {
+		Accueil accueil = new Accueil();
 		File f =  new File(xml);
+		
 		if (f.exists()) {
+			Accueil accXML = accueil.convertirXMLToJava(xml);
+			Titre titre = accXML.getTitre();
+			
+			if (titre.getImageVsTexte().contains("Texte")) {
+				NomSG.setText(titre.getTexte());
+				policeNomSG.setValue(titre.getPoliceTexte());
+				couleurNomSG.setValue(Color.web(titre.getCouleurTexte().replace("0x", "#")));
+				
+				texteNomSG = true;
+				activerTelechargementNomSG();
+			} else {
+				imageNomSG.setText(titre.getLienImage());
+				
+				texteNomSG = false;
+				activerTelechargementNomSG();
+			}
+			
+			FondEcran fondEcran = accXML.getFond();
+			
+			if (fondEcran.getImageVsCouleur().contains("Image")) {
+				imageFondEcran.setText(fondEcran.getLienImage());
+
+				couleurFDE = false;
+				activerCouleur();
+			} else {
+				couleurFondEcran.setValue(Color.web(fondEcran.getCouleur().replace("0x", "#")));
+				
+				couleurFDE = true;
+				activerCouleur();
+			}
 			
 		} else {
-			System.out.println("xml :"+xml);
+			System.out.println("xml \"" + xml + "\" doesn't exist");
 		}
 		
 	}
@@ -254,6 +297,7 @@ public class ViewParametresAccueilController implements Initializable{
 			policeNomSG.setDisable(true);
 			couleurNomSG.setDisable(true);
 			boutonApercu.setDisable(true);
+			boutonEffacerNomSG.setDisable(true);
 		}
 	}
 	
@@ -312,6 +356,17 @@ public class ViewParametresAccueilController implements Initializable{
 			alert.setTitle("Paramétrage  d'un accueil");
 			alert.setContentText("Le paramétrage a bien été enregistré !");
 			alert.showAndWait();
+		}
+	}
+	
+	@FXML
+	void previsualisation(ActionEvent event) {
+	  
+		Stage stage = (Stage) previsualiser.getScene().getWindow();
+		try {
+			new MainAccueil().start(stage);
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	

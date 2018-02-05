@@ -95,6 +95,7 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
+
 	
 	public static Node loadExplicationParamFxml(String fxml,String xml) {
 		FXMLLoader loader = new FXMLLoader();

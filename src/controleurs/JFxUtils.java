@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import modeles.PNJ;
 import modeles.Quiz;
 
 public class JFxUtils {
@@ -64,6 +65,21 @@ public class JFxUtils {
 
 		stage.show();
 		return stage;
+	}
+	
+	public static Node loadPNJFxml(PNJ pnj, int cmpt, String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewPNJController controller = loader.<ViewPNJController>getController();
+			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setXML(xml);
+			controller.initData(pnj, cmpt);
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
 	}
 	
 	public static Node loadExplicationFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie) {

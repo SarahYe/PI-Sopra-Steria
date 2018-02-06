@@ -5,32 +5,33 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewPNJController">
    <children>
-      <ImageView fitHeight="349.0" fitWidth="167.0" layoutX="436.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+      <ImageView fx:id="anchorImage" fitHeight="652.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fx:id="personnage" fitHeight="349.0" fitWidth="167.0" layoutX="343.0" layoutY="183.0" pickOnBounds="true" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="183.0">
          <image>
             <Image url="@../../Ressources/Images/personnage2.png" />
          </image></ImageView>
-      <ImageView fitHeight="284.0" fitWidth="422.0" layoutX="14.0" layoutY="83.0" pickOnBounds="true" AnchorPane.leftAnchor="10.0">
+      <ImageView fitHeight="245.0" fitWidth="828.0" layoutX="11.0" layoutY="445.0" pickOnBounds="true" AnchorPane.leftAnchor="11.0">
          <image>
             <Image url="@../../Ressources/Images/bulle3.png" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="317.0" layoutY="354.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+      <Button alignment="CENTER" layoutX="709.0" layoutY="584.0" mnemonicParsing="false" onAction="#ClickButtonNext" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <graphic>
-            <ImageView fitHeight="40.0" fitWidth="85.0" pickOnBounds="true">
+            <ImageView fx:id="boutonNext" fitHeight="40.0" fitWidth="85.0" onDragDetected="#ClickButtonNext" pickOnBounds="true">
                <image>
                   <Image url="@../../Ressources/Images/suivant.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <TextFlow layoutX="22.8603515625" layoutY="100.0">
-         <children>
-            <Label prefHeight="197.0" prefWidth="389.0" text="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;?import javafx.scene.control.Label?&gt;&lt;Label prefHeight=&quot;207.0&quot; prefWidth=&quot;381.0&quot; text=&quot;The look and feel of JavaFX applications &amp;quot;                + &amp;quot;can be customized. Cascading Style Sheets (CSS) separate &amp;quot;                + &amp;quot;appearance and style from implementation so that developers can &amp;quot;                + &amp;quot;concentrate on coding. Graphic designers can easily &amp;quot;                + &amp;quot;customize the appearance and style of the application &amp;quot;                + &amp;quot;through the CSS. If you have a web design background,&amp;quot;                + &amp;quot; or if you would like to separate the user interface (UI) &amp;quot;                + &amp;quot;and the back-end logic, then you can develop the presentation&amp;quot;                + &amp;quot; aspects of the UI in the FXML scripting language and use Java &amp;quot;                + &amp;quot;code for the application logic. If you prefer to design UIs &amp;quot;                + &amp;quot;without writing code, then use JavaFX Scene Builder. As you design the UI, &amp;quot;                + &amp;quot;Scene Builder creates FXML markup that can be ported to an Integrated Development &amp;quot;                + &amp;quot;Environment (IDE) so that developers can add the business logic.The look and feel of JavaFX applications &amp;quot;                + &amp;quot;can be customized. Cascading Style Sheets (CSS) separate &amp;quot;                + &amp;quot;appearance and style from implementation so that developers can &amp;quot;                + &amp;quot;concentrate on coding. Graphic designers can easily &amp;quot;                + &amp;quot;customize the appearance and style of the application &amp;quot;                + &amp;quot;through the CSS. If you have a web design background,&amp;quot;                + &amp;quot; or if you would like to separate the user interface (UI) &amp;quot;                + &amp;quot;and the back-end logic, then you can develop the presentation&amp;quot;                + &amp;quot; aspects of the UI in the FXML scripting language and use Java &amp;quot;                + &amp;quot;code for the application logic. If you prefer to design UIs &amp;quot;                + &amp;quot;without writing code, then use JavaFX Scene Builder. As you design the UI, &amp;quot;                + &amp;quot;Scene Builder creates FXML markup that can be ported to an Integrated Development &amp;quot;                + &amp;quot;Environment (IDE) so that developers can aThe look and feel of JavaFX applications &amp;quot;                + &amp;quot;can be customized. Cascading Style Sheets (CSS) separate &amp;quot;                + &amp;quot;appearance and style from implementation so that developers can &amp;quot;                + &amp;quot;concentrate on coding. Graphic designers can easily &amp;quot;                + &amp;quot;customize the appearance and style of the application &amp;quot;                + &amp;quot;through the CSS. If you have a web design background,&amp;quot;                + &amp;quot; or if you would like to separate the user interface (UI) &amp;quot;                + &amp;quot;and the back-end logic, then you can develop the presentation&amp;quot;                + &amp;quot; aspects of the UI in the FXML scripting language and use Java &amp;quot;                + &amp;quot;code for the application logic. If you prefer to design UIs &amp;quot;                + &amp;quot;without writing code, then use JavaFX Scene Builder. As you design the UI, &amp;quot;                + &amp;quot;Scene Builder creates FXML markup that can be ported to an Integrated Development &amp;quot;                + &amp;quot;Environment (IDE) so that developers can add the business logic.The look and feel of JavaFX applications &amp;quot;                + &amp;quot;can be customized. Cascading Style Sheets (CSS) separate &amp;quot;                + &amp;quot;appearance and style from implementation so that developers can &amp;quot;                + &amp;quot;concentrate on coding. Graphic designers can easily &amp;quot;                + &amp;quot;customize the appearance and style of the application &amp;quot;                + &amp;quot;through the CSS. If you have a web design background,&amp;quot;                + &amp;quot; or if you would like to separate the user interface (UI) &amp;quot;                + &amp;quot;and the back-end logic, then you can develop the presentation&amp;quot;                + &amp;quot; aspects of the UI in the FXML scripting language and use Java &amp;quot;                + &amp;quot;code for the application logic. If you prefer to design UIs &amp;quot;                + &amp;quot;without writing code, then use JavaFX Scene Builder. As you design the UI, &amp;quot;                + &amp;quot;Scene Builder creates FXML markup that can be ported to an Integrated Development &amp;quot;                + &amp;quot;Environment (IDE) so that developers can add the business logic.dd the business logic.&quot; wrapText=&quot;true&quot; xmlns=&quot;http://javafx.com/javafx/9&quot; xmlns:fx=&quot;http://javafx.com/fxml/1&quot; /&gt;" wrapText="true" />
-         </children>
-      </TextFlow>
+      <Label fx:id="texte" layoutX="85.0" layoutY="451.0" prefHeight="190.0" prefWidth="623.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper ornare auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus mauris ipsum, molestie auctor bibendum eget, placerat non lorem." wrapText="true">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

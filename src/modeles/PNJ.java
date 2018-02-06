@@ -9,6 +9,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -37,6 +38,7 @@ public class PNJ {
 		this.nomPNJ = nomPNJ;
 	}
 
+	@XmlElementWrapper(name = "Dialogues")
 	@XmlElement(name = "Dialogue")
 	public ArrayList<Dialogue> getListeDialogues() {
 		return ListeDialogues;
@@ -70,7 +72,7 @@ public class PNJ {
 		PNJ ac = new PNJ();
 		
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Accueil.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(PNJ.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
 			File XMLfile = new File(nomFichier);

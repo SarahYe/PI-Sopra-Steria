@@ -181,14 +181,10 @@ public class ViewParametresPNJController implements Initializable {
 	
 	public void setDialogue(int selectedIndex, String text, String imageVsCouleurFDE, String perso, String imFDE, String coulFDE) {
 			table.getItems().set(selectedIndex, new Dialogue (imageVsCouleurFDE, imFDE, coulFDE, text, perso));
-		/*if (imageVsCouleurFDE.contains("Couleur")) {
-			texteCol.setCellValueFactory( new PropertyValueFactory<Dialogue, String>("Texte"));
-		}*/
 	}
 
 	public void addDialogue(String text, String imageVsCouleurFDE, String perso, String imFDE, String coulFDE) {
 		table.getItems().add(new Dialogue (imageVsCouleurFDE, imFDE, coulFDE, text, perso));
-		//table.getColumns().add(fdeCol);
 	}
 
 

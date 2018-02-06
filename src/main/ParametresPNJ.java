@@ -11,7 +11,7 @@ public class ParametresPNJ extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		stage.setScene(new Scene((Parent) JFxUtils.loadPNJParamFxml("../vues/PNJParam.fxml","FichiersDeConfig/pnj.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadPNJParamFxml("../vues/ViewPNJParametres.fxml","FichiersDeConfig/pnj.xml"), 850, 650));
 		stage.setTitle("Paramétrage d'un dialogue avec un personnage");
 		stage.show();
 		stage.sizeToScene();

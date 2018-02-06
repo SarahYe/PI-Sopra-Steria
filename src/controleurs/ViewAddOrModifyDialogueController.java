@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import modeles.Dialogue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -56,7 +57,7 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 	private ViewParametresPNJController mainController;
 	private boolean modifyDialogueInterface;
 	private Boolean couleurFDE = false;
-	private String imageVsCouleurFDE = "";
+	private String imageVsCouleurFDE = "Couleur";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -72,17 +73,24 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 		if (this.modifyDialogueInterface){
 			
 			Dialogue selectedDialogue = tableViewSelectionModel.getSelectedItem();
-			
-			if (selectedDialogue.getImageVsCouleur().contains("Couleur")) {
+			 System.out.println(selectedDialogue.getImageVsCouleur());
+			 System.out.println(selectedDialogue.getImageFondEcran());
+			 System.out.println(selectedDialogue.getCouleurFondEcran());
+			if (!selectedDialogue.getCouleurFondEcran().isEmpty()) {
 				CouleurFondEcran.setValue(Color.web(selectedDialogue.getCouleurFondEcran().replace("0x", "#")));
 				couleurFDE = true;
 				activerCouleur();
-			} else {
+			} 
+			
+			if (!selectedDialogue.getImageFondEcran().isEmpty()){
 				imageFondEcran.setText(selectedDialogue.getImageFondEcran());
 				couleurFDE = false;
 				activerCouleur();
 			}
 			
+			//CouleurFondEcran.setValue(Color.web(selectedDialogue.getCouleurFondEcran().replace("0x", "#")));
+			
+			//imageFondEcran.setText(selectedDialogue.getImageFondEcran());
 			zoneDialogue.setText(selectedDialogue.getIntitule());
 			imagePersonnage.setText(selectedDialogue.getImagePersonnage());
 		}
@@ -120,12 +128,14 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 		else
 			imageVsCouleurFDE = "Image";
 		
-		if(modifyDialogueInterface){	
+		if (modifyDialogueInterface) {	
 			mainController.setDialogue(tableViewSelectionModel.getSelectedIndex(), zoneDialogue.getText(), imageVsCouleurFDE, imagePersonnage.getText(), imageFondEcran.getText(), CouleurFondEcran.getValue().toString());		
 		} else {		
 			mainController.addDialogue(zoneDialogue.getText(), imageVsCouleurFDE, imagePersonnage.getText(),  imageFondEcran.getText(), CouleurFondEcran.getValue().toString());	
 		}
 		
+		 Stage stage = (Stage) boutonSauvegarder.getScene().getWindow();
+		 stage.close();
 	}
 
 	@FXML

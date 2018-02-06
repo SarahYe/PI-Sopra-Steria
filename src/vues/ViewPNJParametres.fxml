@@ -12,6 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
    <content>
@@ -54,9 +55,18 @@
                         <Button fx:id="boutonSupprimer" layoutX="337.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" />
                         <TableView fx:id="table" layoutX="20.0" layoutY="116.0" prefHeight="364.0" prefWidth="450.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="21.0">
                            <columns>
-                              <TableColumn prefWidth="150.0" text="Texte" />
-                              <TableColumn prefWidth="150.0" text="Personnage" />
-                              <TableColumn prefWidth="150.0" text="Fond d'écran" />
+                              <TableColumn prefWidth="225.0" text="Texte">
+                              	<cellValueFactory>
+                                    <PropertyValueFactory property="intitule" />
+                       			</cellValueFactory>
+               			     </TableColumn>
+               			     
+                              <TableColumn prefWidth="225.0" text="Personnage">
+                              	<cellValueFactory>
+                                    <PropertyValueFactory property="imagePersonnage" />
+                       			</cellValueFactory>
+               			     </TableColumn>
+               			     
                            </columns>
                            <items>
                               <FXCollections fx:factory="observableArrayList" />

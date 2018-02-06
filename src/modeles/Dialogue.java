@@ -11,9 +11,9 @@ import javafx.beans.property.SimpleStringProperty;
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.PNJ")
 public class Dialogue {
 	
-	String imageVsCouleur;	
-	String imageFondEcran;
-	String couleurFondEcran;
+	String imageVsCouleur = "";	
+	String imageFondEcran = "";
+	String couleurFondEcran = "";
 	String intitule;
 	SimpleStringProperty intituleProperty;
 	String imagePersonnage;
@@ -29,8 +29,11 @@ public class Dialogue {
 		//super()
 		if (imageVsCouleur.contains("Couleur")) {
 			this.couleurFondEcran = couleurFondEcran;
-		} else 
+			this.imageFondEcran = "";
+		} else {
 			this.imageFondEcran = imageFondEcran;
+			this.couleurFondEcran = "";
+		}
 		
 		this.intitule = intitule;
 		this.intituleProperty = new SimpleStringProperty(intitule);

@@ -25,8 +25,6 @@ import modeles.Reponse;
 
 public class ViewParametresQuizController implements Initializable{
 
-	
-
 	@FXML
 	private Button btnSave;
 	@FXML

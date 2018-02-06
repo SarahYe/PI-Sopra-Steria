@@ -8,14 +8,19 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView.TableViewSelectionModel;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import modeles.Dialogue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 
 public class ViewAddOrModifyDialogueController implements Initializable {
@@ -49,8 +54,10 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 
 	private TableViewSelectionModel<Dialogue> tableViewSelectionModel;
 	private ViewParametresPNJController mainController;
+	private boolean modifyDialogueInterface;
 	private Boolean couleurFDE = false;
-
+	private String imageVsCouleurFDE = "";
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -58,8 +65,27 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 	}
 
 	public void initData(boolean modifyDialogueInterface, TableViewSelectionModel<Dialogue> tableViewSelectionModel,ViewParametresPNJController controller) {
-		// TODO Auto-generated method stub
-
+		this.modifyDialogueInterface = modifyDialogueInterface;
+		this.tableViewSelectionModel = tableViewSelectionModel;
+		mainController = controller;
+		
+		if (this.modifyDialogueInterface){
+			
+			Dialogue selectedDialogue = tableViewSelectionModel.getSelectedItem();
+			
+			if (selectedDialogue.getImageVsCouleur().contains("Couleur")) {
+				CouleurFondEcran.setValue(Color.web(selectedDialogue.getCouleurFondEcran().replace("0x", "#")));
+				couleurFDE = true;
+				activerCouleur();
+			} else {
+				imageFondEcran.setText(selectedDialogue.getImageFondEcran());
+				couleurFDE = false;
+				activerCouleur();
+			}
+			
+			zoneDialogue.setText(selectedDialogue.getIntitule());
+			imagePersonnage.setText(selectedDialogue.getImagePersonnage());
+		}
 	}
 
 	@FXML
@@ -75,7 +101,31 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 
 	@FXML
 	void sauvegarder(ActionEvent event) {
-
+		if (zoneDialogue.getText().isEmpty()) {
+			//errorLabel.setText("Dialogue vide !");
+			//errorLabel.setVisible(true);			
+			return;	
+		}
+		
+		if (imagePersonnage.getText().isEmpty()) {
+			//popup d'alerte
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Paramétrage  d'un dialogue");
+			alert.setContentText("Vous n'avez pas entré de personnage");
+			alert.showAndWait();
+		}
+		
+		if (couleurFDE)
+			imageVsCouleurFDE = "Couleur";
+		else
+			imageVsCouleurFDE = "Image";
+		
+		if(modifyDialogueInterface){	
+			mainController.setDialogue(tableViewSelectionModel.getSelectedIndex(), zoneDialogue.getText(), imageVsCouleurFDE, imagePersonnage.getText(), imageFondEcran.getText(), CouleurFondEcran.getValue().toString());		
+		} else {		
+			mainController.addDialogue(zoneDialogue.getText(), imageVsCouleurFDE, imagePersonnage.getText(),  imageFondEcran.getText(), CouleurFondEcran.getValue().toString());	
+		}
+		
 	}
 
 	@FXML

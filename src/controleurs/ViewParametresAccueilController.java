@@ -362,14 +362,23 @@ public class ViewParametresAccueilController implements Initializable{
 	}
 	
 	@FXML
-	void previsualisation(ActionEvent event) {
-	  
+	void previsualisation(ActionEvent event) throws IOException {
+	  /*
 		Stage stage = (Stage) previsualiser.getScene().getWindow();
 		try {
 			new MainAccueil().start(stage);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
+		
+		Stage stage = new Stage();
+		stage.setTitle("Prévisualisation");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/Accueil.fxml"));
+		stage.setScene(new Scene(loader.load()));
+		ViewAccueilController controller = loader.<ViewAccueilController>getController();
+		controller.initData("FichiersDeConfig/accueil.xml");
+		stage.show();
+		
 	}
 	
 }

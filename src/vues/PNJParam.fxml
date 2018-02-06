@@ -13,15 +13,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
    <content>
       <AnchorPane prefHeight="650.0" prefWidth="850.0">
          <children>
-            <SplitPane dividerPositions="0.5837264150943396" prefHeight="650.0" prefWidth="850.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.45990566037735847" prefHeight="650.0" prefWidth="850.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="424.0">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="142.0" layoutY="24.0" prefHeight="38.0" prefWidth="199.0" text="Dialogue avec un personnage" textAlignment="CENTER" AnchorPane.topAnchor="20.0">
+                        <Label contentDisplay="CENTER" layoutX="85.0" layoutY="18.0" prefHeight="38.0" prefWidth="199.0" text="Dialogue avec un personnage" textAlignment="CENTER" AnchorPane.topAnchor="18.0">
                            <font>
                               <Font name="Trattatello" size="20.0" />
                            </font>
@@ -29,7 +29,7 @@
                         <Separator layoutY="71.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Label layoutX="15.0" layoutY="81.0" text="Liste des dialogues" />
                         <Separator layoutY="101.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="btn" layoutX="196.0" layoutY="590.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
+                        <Button fx:id="btn" layoutX="142.0" layoutY="590.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
                         <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
                         <Button fx:id="questionUp" layoutX="122.0" layoutY="489.0" mnemonicParsing="false" onAction="#ClickButtonUp">
                            <graphic>
@@ -40,7 +40,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="questionDown" layoutX="308.0" layoutY="490.0" mnemonicParsing="false" onAction="#ClickButtonDown">
+                        <Button fx:id="questionDown" layoutX="218.0" layoutY="490.0" mnemonicParsing="false" onAction="#ClickButtonDown">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -49,14 +49,12 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="boutonAjout" layoutX="52.0" layoutY="542.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" />
-                        <Button fx:id="boutonModifier" layoutX="186.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" />
-                        <Button fx:id="boutonSupprimer" layoutX="337.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" />
-                        <TableView fx:id="table" layoutX="20.0" layoutY="116.0" prefHeight="364.0" prefWidth="450.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="21.0">
+                        <Button fx:id="boutonAjout" layoutX="33.0" layoutY="539.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="boutonModifier" layoutX="137.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="boutonSupprimer" layoutX="263.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" />
+                        <TableView fx:id="table" layoutX="52.0" layoutY="114.0" prefHeight="364.0" prefWidth="300.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="43.0">
                            <columns>
-                              <TableColumn fx:id="texteCol" prefWidth="150.0" text="Texte" />
-                              <TableColumn fx:id="persoCol" prefWidth="150.0" text="Personnage" />
-                              <TableColumn fx:id="fdeCol" prefWidth="150.0" text="Fond d'écran" />
+                              <TableColumn fx:id="texteCol" prefWidth="300.0" text="Texte" />
                            </columns>
                            <items>
                               <FXCollections fx:factory="observableArrayList" />

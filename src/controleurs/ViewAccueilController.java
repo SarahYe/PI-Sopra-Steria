@@ -55,7 +55,7 @@ public class ViewAccueilController implements Initializable{
 		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 	
-	public void initData() {
+	public void initData(String xml) {
 
 		Accueil accueil = new Accueil();
 		File f =  new File(xml);
@@ -115,9 +115,6 @@ public class ViewAccueilController implements Initializable{
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
-		//Stage stage = (Stage) buttonJouer.getScene().getWindow();
-		//jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
-		//new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml,soloBloc,cmptChronologie, xmlChronologie);
 	}
 	
 	public static void jouerAudio(String son, float volumeReduced){

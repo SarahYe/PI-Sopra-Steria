@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import javafx.beans.property.SimpleStringProperty;
+
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.PNJ")
 public class Dialogue {
@@ -12,7 +14,8 @@ public class Dialogue {
 	String imageVsCouleur;	
 	String imageFondEcran;
 	String couleurFondEcran;
-	String intitulé;
+	String intitule;
+	SimpleStringProperty intituleProperty;
 	String imagePersonnage;
 
 	public Dialogue() {
@@ -21,14 +24,25 @@ public class Dialogue {
 	public Dialogue(String string, ArrayList<Dialogue> listeDialogues) {
 	}
 	
-	public Dialogue(String imageVsCouleur, String imageFondEcran, String couleurFondEcran, String intitulé,
+	public Dialogue(String imageVsCouleur, String imageFondEcran, String couleurFondEcran, String intitule,
 			String imagePersonnage) {
-		//super();
-		this.imageVsCouleur = imageVsCouleur;
-		this.imageFondEcran = imageFondEcran;
-		this.couleurFondEcran = couleurFondEcran;
-		this.intitulé = intitulé;
+		//super()
+		if (imageVsCouleur.contains("Couleur")) {
+			this.couleurFondEcran = couleurFondEcran;
+		} else 
+			this.imageFondEcran = imageFondEcran;
+		
+		this.intitule = intitule;
+		this.intituleProperty = new SimpleStringProperty(intitule);
 		this.imagePersonnage = imagePersonnage;
+	}
+
+	public SimpleStringProperty getIntituleProperty() {
+		return intituleProperty;
+	}
+
+	public void setIntituleProperty(SimpleStringProperty intituleProperty) {
+		this.intituleProperty = intituleProperty;
 	}
 
 	@XmlElement
@@ -59,12 +73,12 @@ public class Dialogue {
 	}
 	
 	@XmlElement
-	public String getIntitulé() {
-		return intitulé;
+	public String getIntitule() {
+		return intitule;
 	}
 
-	public void setIntitulé(String intitulé) {
-		this.intitulé = intitulé;
+	public void setIntitule(String intitulé) {
+		this.intitule = intitulé;
 	}
 
 	@XmlElement

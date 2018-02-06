@@ -89,7 +89,7 @@ public class JFxUtils {
 			ViewAccueilController controller = loader.<ViewAccueilController>getController();
 			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
 			controller.setXML(xml);
-			controller.initData();
+			controller.initData(xml);
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);

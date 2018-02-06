@@ -1,20 +1,27 @@
 package controleurs;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import modeles.Dialogue;
 import modeles.PNJ;
 import modeles.Question;
 import modeles.Quiz;
+import modeles.Reponse;
 
 import java.io.File;
 import java.io.IOException;
@@ -51,9 +58,19 @@ public class ViewParametresPNJController implements Initializable {
 	private TableView<Dialogue> table;
 	
 	@FXML
+	private TableColumn texteCol;
+	
+	@FXML
+	private TableColumn persoCol;
+	
+	@FXML
+	private TableColumn fdeCol;
+	
+	@FXML
 	private AnchorPane AP_ParamDialogue;
 
 	private String xml;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -75,11 +92,20 @@ public class ViewParametresPNJController implements Initializable {
 
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamDialogue.getChildren().setAll(newPane);
 		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
+		controller.initData(false, null, this);*/
+		
+		Stage stage = new Stage();
+		stage.setTitle("Nouveau dialogue");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		stage.setScene(new Scene(loader.load()));
+		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
 		controller.initData(false, null, this);
+		stage.show();
+		
 	}
 
 	@FXML
@@ -88,11 +114,18 @@ public class ViewParametresPNJController implements Initializable {
 			return;
 		}
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
 		ScrollPane newPane = loader.load();
-		AP_ParamDialogue.getChildren().setAll(newPane);
 		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
-		controller.initData(true, table.getSelectionModel(),this);
+		controller.initData(true, table.getSelectionModel(), this);*/
+		
+		Stage stage = new Stage();
+		stage.setTitle("Nouveau dialogue");
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		stage.setScene(new Scene(loader.load()));
+		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
+		controller.initData(true, table.getSelectionModel(), this);
+		stage.show();
 	}
 
 	@FXML
@@ -145,5 +178,18 @@ public class ViewParametresPNJController implements Initializable {
 			table.getSelectionModel().select(index + 1);
 		}
 	}
+	
+	public void setDialogue(int selectedIndex, String text, String imageVsCouleurFDE, String perso, String imFDE, String coulFDE) {
+			table.getItems().set(selectedIndex, new Dialogue (imageVsCouleurFDE, imFDE, coulFDE, text, perso));
+		/*if (imageVsCouleurFDE.contains("Couleur")) {
+			texteCol.setCellValueFactory( new PropertyValueFactory<Dialogue, String>("Texte"));
+		}*/
+	}
+
+	public void addDialogue(String text, String imageVsCouleurFDE, String perso, String imFDE, String coulFDE) {
+		table.getItems().add(new Dialogue (imageVsCouleurFDE, imFDE, coulFDE, text, perso));
+		//table.getColumns().add(fdeCol);
+	}
+
 
 }

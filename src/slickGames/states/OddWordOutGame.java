@@ -41,9 +41,11 @@ public class OddWordOutGame extends BasicGameState {
 	public static long chrono = 45000L;
 	public static Clip backgroundClip;
 	public static boolean gameFinished = false;
+	public static boolean gameMuted = false;
 	public long previousTime = 0;
 	public Image flecheVerte;
 	public Image flecheRouge;
+	public Image volumeImg;
 	public EntiteReponse reponseSelected;
 	public Quiz quiz;
 	public ArrayList<Reponse> listeReponses;
@@ -70,6 +72,12 @@ public class OddWordOutGame extends BasicGameState {
 		flecheVerte = new Image("./Ressources/Images/flecheVerte.png");
 		flecheRouge = new Image("./Ressources/Images/flecheRouge.png");
 		
+		if(gameMuted){
+			volumeImg = new Image("./Ressources/Images/volume_off.png");
+		} else {
+			volumeImg = new Image("./Ressources/Images/volume_on.png");
+		}
+		
 		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f, true);
 	}
 
@@ -79,44 +87,62 @@ public class OddWordOutGame extends BasicGameState {
 		
 		//fontConfirmText = FontUtils.loadCustomFont("PressStart2P.ttf",Font.PLAIN,20);
 				
-		g.setBackground(new Color(230, 242, 255));
+		//g.setBackground(new Color(230, 242, 255));
+		g.setBackground(new Color(115, 115, 115));
+		
+		Image bandeVRED = new Image("./Ressources/Images/bandeVRED.png");
+		bandeVRED.draw(0, 45, 107, 605);
+		Image bandeVGREEN = new Image("./Ressources/Images/bandeVGREEN.png");
+		bandeVGREEN.draw(MainOddWordOutGame.longueur-107, 45, 107, 605);
 		
 		g.setColor(Color.black);
 		if (chrono > 0){
 			for (int i = 0; i < reponses.size(); i++){
 				reponses.get(i).render(container, game, g);
 			}
-		}		
+		}
 		
-		g.setColor(new Color(153, 202, 255));
-		g.fillRect(0, 0, MainOddWordOutGame.longueur, 40);
+		/*Image fond3 = new Image("./Ressources/Images/fond3.png");
+		Image fond2 = new Image("./Ressources/Images/fond2.png");
+		fond3.draw(0, 45, 850, 605);
+		fond2.draw(0, 45, 850, 605);*/	
 		
-		Image titre = new Image("./Ressources/Images/titreSeriousGame.png");
-		g.drawImage(titre, (MainOddWordOutGame.longueur - titre.getWidth())/2, 0);		
-
+		//g.setColor(new Color(153, 202, 255));
+		//g.fillRect(0, 0, MainOddWordOutGame.longueur, 40);
+		Image bandeTitre = new Image("./Ressources/Images/bandeTitre.png");
+		bandeTitre.draw(0, 0, MainOddWordOutGame.longueur, 45);
+		
+		//Image titre = new Image("./Ressources/Images/titreSeriousGame.png");
+		Image titre = new Image("./Ressources/Images/SeriousSecurity.png");		
+		//g.drawImage(titre, (MainOddWordOutGame.longueur - titre.getWidth())/2, 0);
+		titre.draw((MainOddWordOutGame.longueur - titre.getWidth()*0.15f)/2, -8, 0.15f);
+		
 		g.setColor(Color.black);
-		
 		g.drawString("Score : "+score+" points", MainOddWordOutGame.longueur - g.getFont().getWidth("Score : "+score+" points") - 20, 10);
 		
-		Image personnage = new Image("./Ressources/Images/personnage1.png");
-		personnage.draw(0, 45, 0.35f);
+		//Image personnage = new Image("./Ressources/Images/personnage1.png");
+		Image personnage = new Image("./Ressources/Images/perso.png");
 		
-		Image bulleDialogue = new Image("./Ressources/Images/bulleDialogue.png");
-		bulleDialogue.draw(personnage.getWidth()*35/100 - 20, 45, 1.0f);
+		//Image bulleDialogue = new Image("./Ressources/Images/bulleDialogue.png");
+		Image bulleDialogue = new Image("./Ressources/Images/bulleDialogue2.png");
+		bulleDialogue.draw(personnage.getWidth()*25/100 - 20, 50, 1.0f);
+		
+		personnage.draw(30, 65, 0.3f);
 			
-		g.setColor(Color.white);
-		drawStrings(quiz.getListeQuestions().get(0).getIntituleQuestion(), 145, 58, g);
+		drawStrings(quiz.getListeQuestions().get(0).getIntituleQuestion(), 145, 63, g);	
 		
-		g.setColor(Color.red);
-		g.fillRect(0, 40, 5, MainOddWordOutGame.hauteur);
-		g.setColor(Color.green);
-		g.fillRect(MainOddWordOutGame.longueur - 6, 40, 6, MainOddWordOutGame.hauteur);
+		//g.setColor(Color.red);
+		//g.fillRect(0, 40, 5, MainOddWordOutGame.hauteur);
+		//g.setColor(Color.green);
+		//g.fillRect(MainOddWordOutGame.longueur - 6, 40, 6, MainOddWordOutGame.hauteur);
 				
 		flecheVerte.draw((MainOddWordOutGame.longueur/2)+15, MainOddWordOutGame.hauteur-posYGreenArrow, 0.65f);
 		flecheRouge.draw((MainOddWordOutGame.longueur/2)-15-flecheRouge.getWidth()*65/100, MainOddWordOutGame.hauteur-posYRedArrow, 0.65f);
 		//g.drawImage(flecheVerte, (MainOddWordOutGame.longueur/2)+10, MainOddWordOutGame.hauteur-100);	
 		//g.drawImage(flecheRouge, (MainOddWordOutGame.longueur/2)-flecheRouge.getWidth()-10, MainOddWordOutGame.hauteur-100);		
 	
+		volumeImg.draw(5, 5, 25, 25);
+		
 		int mins = (int) chrono / (60*1000);
 	    int remainder = (int) chrono/1000 - mins * 60;
 	    int secs = remainder;
@@ -124,7 +150,7 @@ public class OddWordOutGame extends BasicGameState {
 	    String timer = mins+" : ";
 	    if (secs >=0 && secs <10) { timer += "0"; }
 	    timer += secs;
-	    g.setColor(Color.red);
+	    g.setColor(Color.white);
 		g.drawString(timer, (MainOddWordOutGame.longueur-g.getFont().getWidth(timer))/2, MainOddWordOutGame.hauteur-40);
 	
 		if(chrono < 0){
@@ -132,7 +158,8 @@ public class OddWordOutGame extends BasicGameState {
 			backgroundClip.close();
 			gameFinished = true;
 			
-			Image img = new Image("./Ressources/Images/rectangleReponse2.png");
+			//Image img = new Image("./Ressources/Images/rectangleReponse2.png");
+			Image img = new Image("./Ressources/Images/rectReponse.png");
 			
 			String str1 = "Game Over";
 			String str2 = "Votre score : "+score;
@@ -145,7 +172,7 @@ public class OddWordOutGame extends BasicGameState {
 			float middleXstr3 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str3))/2;
 			float middleYstr3 = (MainOddWordOutGame.hauteur-g.getFont().getHeight(str3))/2+30;
 			img.draw(middleXstr2-35, middleXstr2-20-32, g.getFont().getWidth(str2)+70, g.getFont().getHeight(str2)+80);
-			g.setColor(Color.black);
+			g.setColor(Color.white);
 			g.drawString(str1, middleXstr1, middleYstr1);
 			if(score > 0){
 				g.setColor(Color.green);
@@ -215,7 +242,13 @@ public class OddWordOutGame extends BasicGameState {
 	    	} else {
 	    		reponses.get(i).update(container, game, delta);
 	    	}	
-	    }    
+	    }
+	    
+	    if (container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+	    	if(container.getInput().getMouseX() > 5 && container.getInput().getMouseX() < 30 && container.getInput().getMouseY() > 5 && container.getInput().getMouseY() < 30){
+	    		muteUnmuteGame();
+	    	}
+	    }
 			
 	}
 	
@@ -252,6 +285,9 @@ public class OddWordOutGame extends BasicGameState {
 				System.exit(0);
 			}
 			break;
+		case Input.KEY_M:
+			muteUnmuteGame();
+			break;
 		}
 	}
 	
@@ -287,25 +323,51 @@ public class OddWordOutGame extends BasicGameState {
 	}
 	
 	public static void jouerAudio(String son, float volumeReduced, boolean backgroundMusic){
-		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
-			Clip clip = AudioSystem.getClip();
-			clip.open(audioInputStream);
-			if(backgroundMusic){
-				clip.loop(Clip.LOOP_CONTINUOUSLY);
-				backgroundClip = clip;
+		if(!gameMuted){
+			try {
+				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
+				Clip clip = AudioSystem.getClip();
+				clip.open(audioInputStream);
+				FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+				gainControl.setValue(volumeReduced); // Reduce volume by 10 decibels.
+				if(backgroundMusic){				
+					backgroundClip = clip;
+					backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
+					backgroundClip.start();
+				} else {
+					clip.start();
+				}
+				
+			} catch (UnsupportedAudioFileException | IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (LineUnavailableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-			gainControl.setValue(volumeReduced); // Reduce volume by 10 decibels.
-			clip.start();
-			
-		} catch (UnsupportedAudioFileException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (LineUnavailableException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
+	}
+	
+	public void muteUnmuteGame(){
+		if(gameMuted){
+			backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
+			backgroundClip.start();
+			try {
+				volumeImg = new Image("./Ressources/Images/volume_on.png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			backgroundClip.stop();
+			try {
+				volumeImg = new Image("./Ressources/Images/volume_off.png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		gameMuted = !gameMuted;
 	}
 	
 	public static void increaseFallingSpeed(double speedAdded){

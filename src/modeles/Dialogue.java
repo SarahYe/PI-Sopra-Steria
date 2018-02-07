@@ -80,8 +80,8 @@ public class Dialogue {
 		return intitule;
 	}
 
-	public void setIntitule(String intitulé) {
-		this.intitule = intitulé;
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
 	}
 
 	@XmlElement

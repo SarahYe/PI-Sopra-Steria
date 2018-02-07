@@ -29,7 +29,8 @@ public class EntiteReponse {
 		this.textReponse = textReponse;
 		this.x = x;
 		this.direction = 0;
-		this.sprite = new Image("./Ressources/Images/rectangleReponse2.png");
+		//this.sprite = new Image("./Ressources/Images/rectangleReponse2.png");
+		this.sprite = new Image("./Ressources/Images/rectReponse.png");
 		this.speedY = fallingSpeed;
 		this.correct = correct;
 		this.deployed = false;

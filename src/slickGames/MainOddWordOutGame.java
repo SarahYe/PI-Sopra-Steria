@@ -49,7 +49,7 @@ public class MainOddWordOutGame extends StateBasedGame{
 		AppGameContainer app = new AppGameContainer(new MainOddWordOutGame(),longueur, hauteur, false);
 		app.setTargetFrameRate(60);
 		app.setVSync(true);
-		app.setShowFPS(true);
+		app.setShowFPS(false);
 		app.start();
 	
 	}

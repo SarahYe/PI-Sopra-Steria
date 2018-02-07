@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.animation.Animation;
+import javafx.animation.Animation.Status;
+import javafx.animation.Transition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import modeles.Dialogue;
 import modeles.PNJ;
 import modeles.Question;
@@ -45,10 +49,12 @@ public class ViewPNJController implements Initializable {
 	private PNJ pnj = new PNJ();
 	private int cmpt;
 	private Dialogue dial;
+	private Animation animation;
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
+		//boutonNext.setVisible(false);
 	}
 	
 	public void initData(PNJ pnj, int cmpt) {
@@ -76,7 +82,7 @@ public class ViewPNJController implements Initializable {
 					
 				}
 			} else {
-				boutonNext.setVisible(true);
+		      //boutonNext.setVisible(true);
 				dial = pnj.getListeDialogues().get(cmpt);
 				remplissageContentDialogue(dial);
 			}
@@ -96,9 +102,28 @@ public class ViewPNJController implements Initializable {
 		}
 		
 		personnage.setImage(ViewParametresPageExplicationController.chargerImage(dial2.getImagePersonnage()));
-		texte.setText(dial2.getIntitule());
+		AnimateText(texte,dial2.getIntitule());
+		//texte.setText(dial2.getIntitule());
 	}
 
+	public void AnimateText(Label lbl, String descImp) {
+	    String content = descImp;
+	    animation = new Transition() {
+	        {
+	            setCycleDuration(Duration.millis(5000));
+	        }
+	        protected void interpolate(double frac) {
+	            final int length = content.length();
+	            final int n = Math.round(length * (float) frac);
+	            lbl.setText(content.substring(0, n));
+	        }
+	    };
+	    animation.play();
+	    //if (animation.statusProperty().equals(Status.RUNNING)) {
+	    	//   	boutonNext.setVisible(true);
+	    	//}
+	}
+	
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc=soloBloc;
 		this.cmptChronologie=cmptChronologie;
@@ -111,11 +136,18 @@ public class ViewPNJController implements Initializable {
 
 	@FXML
 	private void ClickButtonNext(ActionEvent event) throws IOException {
-		Stage stage = (Stage) boutonNext.getScene().getWindow();
-		stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
-		stage.show();
-		//Stage stage = (Stage) boutonNext.getScene().getWindow();
-		//new JFxUtils().loadDialogue(pnj, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
+		
+		/*if (animation.statusProperty().equals(Status.STOPPED)) {
+			dial = pnj.getListeDialogues().get(cmpt);
+			texte.setText(dial.getIntitule());
+	    	   	boutonNext.setVisible(true);
+	    	} else {*/
+			Stage stage = (Stage) boutonNext.getScene().getWindow();
+			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
+			stage.show();
+			//Stage stage = (Stage) boutonNext.getScene().getWindow();
+			//new JFxUtils().loadDialogue(pnj, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
+	    //	}
 	}
 	
 }

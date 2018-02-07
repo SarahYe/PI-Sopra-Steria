@@ -9,8 +9,8 @@
 
 <AnchorPane fx:id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewPNJController">
    <children>
-      <ImageView fx:id="anchorImage" fitHeight="652.0" fitWidth="850.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fx:id="personnage" fitHeight="349.0" fitWidth="167.0" layoutX="343.0" layoutY="183.0" pickOnBounds="true" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="183.0">
+      <ImageView fx:id="anchorImage" fitHeight="652.0" fitWidth="850.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fx:id="personnage" fitHeight="403.0" fitWidth="400.0" layoutX="223.0" layoutY="155.0" pickOnBounds="true" AnchorPane.leftAnchor="223.0">
          <image>
             <Image url="@../../Ressources/Images/personnage2.png" />
          </image></ImageView>

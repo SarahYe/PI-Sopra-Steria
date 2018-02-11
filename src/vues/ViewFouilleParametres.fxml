@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
+   <content>
+      <AnchorPane prefHeight="700.0" prefWidth="1200.0">
+         <children>
+            <Label contentDisplay="CENTER" layoutX="326.0" prefHeight="38.0" prefWidth="219.0" text="Paramétrage d'un jeu de fouille" textAlignment="CENTER" AnchorPane.leftAnchor="490.5" AnchorPane.rightAnchor="490.5">
+               <font>
+                  <Font name="Trattatello" size="20.0" />
+               </font>
+            </Label>
+            <SplitPane dividerPositions="0.48914858096828046" layoutY="36.0" prefHeight="764.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <Label layoutX="18.0" layoutY="29.0" text="Image de fond" />
+                        <TextField layoutX="128.0" layoutY="26.0" prefHeight="27.0" prefWidth="239.0" />
+                        <Button fx:id="boutonTelechargerFDE" layoutX="376.0" layoutY="24.0" minWidth="74.0" mnemonicParsing="false" onAction="#telechargerImageFDE" prefHeight="29.0" prefWidth="106.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Télécharger" textFill="WHITE" />
+                        <Separator layoutY="175.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Label layoutX="15.0" layoutY="185.0" text="Liste des instructions" />
+                        <Separator layoutY="205.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Button fx:id="btn" layoutX="196.0" layoutY="615.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer le paramétrage" />
+                        <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
+                        <Button fx:id="boutonAjout" layoutX="109.0" layoutY="575.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="boutonModifier" layoutX="235.0" layoutY="575.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" />
+                        <Button fx:id="boutonSupprimer" layoutX="385.0" layoutY="575.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" />
+                        <TableView fx:id="table" layoutX="20.0" layoutY="220.0" prefHeight="334.0" prefWidth="541.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="21.0">
+                           <columns>
+                              <TableColumn prefWidth="170.0" text="Enoncé">
+                              	<cellValueFactory>
+                                    <PropertyValueFactory property="intitule" />
+                       			</cellValueFactory>
+               			     </TableColumn>
+               			     
+                              <TableColumn prefWidth="150.0" text="Image">
+                              	<cellValueFactory>
+                                    <PropertyValueFactory property="imagePersonnage" />
+                       			</cellValueFactory>
+               			     </TableColumn>
+                              <TableColumn prefWidth="100.0" text="Type">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="imagePersonnage" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="60.0" text="Pos X">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="imagePersonnage" />
+                                 </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn prefWidth="60.0" text="Pos Y">
+                                 <cellValueFactory>
+                                    <PropertyValueFactory property="imagePersonnage" />
+                                 </cellValueFactory>
+                              </TableColumn>
+               			     
+                           </columns>
+                           <items>
+                              <FXCollections fx:factory="observableArrayList" />
+                           </items>
+                        </TableView>
+                        <Separator layoutX="10.0" layoutY="78.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Label layoutX="25.0" layoutY="88.0" text="Scoring" />
+                        <Separator layoutX="10.0" layoutY="108.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                        <Label layoutX="25.0" layoutY="135.0" text="BRONZE" />
+                        <Label layoutX="225.0" layoutY="135.0" text="SILVER" />
+                        <Label layoutX="425.0" layoutY="135.0" text="GOLD" />
+                        <TextField layoutX="90.0" layoutY="130.0" prefHeight="27.0" prefWidth="63.0" />
+                        <TextField layoutX="280.0" layoutY="130.0" prefHeight="27.0" prefWidth="63.0" />
+                        <TextField layoutX="470.0" layoutY="130.0" prefHeight="27.0" prefWidth="63.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="654.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true" />
+                     </children></AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

@@ -73,10 +73,10 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
-		listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add(" ");
-		listFxmlBlocsParam.add("/vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add(" ");listFxmlBlocsParam.add("/vues/PageExplicationParametrage.fxml");
-		listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
-		listFxmlBlocs.add("/vues/QuizAccueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("/vues/PageExplication.fxml");
+		listFxmlBlocsParam.add("/vues/AccueilParametres.fxml");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add(" ");
+		listFxmlBlocsParam.add("/vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add("/vues/ViewPNJParametres.fxml");listFxmlBlocsParam.add("/vues/PageExplicationParametrage.fxml");
+		listFxmlBlocs.add("/vues/Accueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
+		listFxmlBlocs.add("/vues/QuizAccueil.fxml");listFxmlBlocs.add("/vues/ViewPNJ.fxml");listFxmlBlocs.add("/vues/PageExplication.fxml");
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
 		for (int i=0;i<6;i++)
@@ -93,6 +93,7 @@ public class ViewMainParametresController implements Initializable{
 	private void ClickBT_AjtBlc(ActionEvent event) {
 		if (blocs.getSelectedToggle()!=null){
 			ToggleButton TBT_test=(ToggleButton) (blocs.getSelectedToggle());
+			TBT_test.setSelected(false);
 			int cmpt=0;
 			for (int i=0;i< listTypeBlocs.size();i++){
 				if(listTypeBlocs.get(i).equals(TBT_test.getText())){
@@ -165,17 +166,21 @@ public class ViewMainParametresController implements Initializable{
 		if(fxml.endsWith("fxml")){
 			System.out.println("cmpt="+cmpt);
 			Node newPane;
+			String xml="Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml";
 			 switch (cmpt) {
-			 	case 0 : 
-			 	
+			 	case 0 :
+			 		newPane= JFxUtils.loadAccueilParamFxml(fxml,xml);
+				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 1 :
 			 	case 2 :
 			 	case 3 :
-				 	newPane= JFxUtils.loadParamQuiz(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
+				 	newPane= JFxUtils.loadParamQuiz(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 4 :
+			 		newPane= JFxUtils.loadPNJParamFxml(fxml, xml);
+			 		AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 5 :
-			 		newPane= JFxUtils.loadExplicationParamFxml(fxml,"Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml");
+			 		newPane= JFxUtils.loadExplicationParamFxml(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	default :
 			 }
@@ -257,6 +262,10 @@ public class ViewMainParametresController implements Initializable{
 	    	
 	    Boolean rename=dir.renameTo(newDir);
 	    System.out.println("Rename dir ? :"+rename);
+	    
+	    Stage st=(Stage) BT_AjtBlc.getScene().getWindow();
+		st.close();
+		System.out.println("cc");
 	}
 	
 	@FXML
@@ -302,8 +311,9 @@ public class ViewMainParametresController implements Initializable{
 		} else{
 			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est présent dans la chronologie", ButtonType.OK);
 			alert.setHeaderText("Information concernant le test");
-			alert.showAndWait();
+			//alert.showAndWait();
 		}
+		
 			
 	}
 	

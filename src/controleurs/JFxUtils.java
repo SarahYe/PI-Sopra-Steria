@@ -205,8 +205,8 @@ public class JFxUtils {
 			switch (names.get(cmptChronologie)){
 				case "Quiz" : return loadQuizFxml("/vues/QuizAccueil.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
 				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
-				case "DiagPNJ" :
-				case "Accueil" :
+				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
+				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie);
 				case "Intrus" :
 				case "Score" :
 			}

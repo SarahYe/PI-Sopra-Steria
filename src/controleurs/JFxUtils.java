@@ -141,6 +141,22 @@ public class JFxUtils {
 		}
 	}
 	
+
+	public static Node loadFouilleParamFxml(String fxml,String xml) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewParametresFouilleController controller = loader.<ViewParametresFouilleController>getController();
+			controller.setXML(xml);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
+	
+	
 	public static Node loadParamOddWordOutGame(String fxml,String xml) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		try {
@@ -215,5 +231,6 @@ public class JFxUtils {
 		
 		return null;
 	}
+
 
 }

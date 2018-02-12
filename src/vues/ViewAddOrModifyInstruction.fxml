@@ -7,8 +7,9 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<ScrollPane prefWidth="502.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewAddOrModifyDialogueController">
+<ScrollPane prefWidth="502.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewAddOrModifyInstructionController">
    <content>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="502.0">
          <children>
@@ -24,6 +25,20 @@
             <Label layoutX="281.0" layoutY="281.0" text="Position Y" />
             <TextField fx:id="zonePosX" layoutX="127.0" layoutY="276.0" prefHeight="27.0" prefWidth="119.0" />
             <TextField fx:id="zonePosY" layoutX="350.0" layoutY="276.0" prefHeight="27.0" prefWidth="119.0" />
+            <Label fx:id="errorLabel" layoutX="183.0" layoutY="431.0" text="Tous les champs sont obligatoires" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font></Label>
+            <Label layoutX="126.0" layoutY="376.0" text="La detection de l'objet rapporte plus de points dans le jeu selon son type">
+               <font>
+                  <Font name="System Italic" size="8.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorPosition" layoutX="61.0" layoutY="306.0" text="Les champs &quot;position&quot; ne peuvent contenir que des valeurs numériques et le symbole &quot;.&quot;" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </content>

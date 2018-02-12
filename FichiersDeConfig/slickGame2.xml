@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:puzzle xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Puzzle">
+    <intitulePuzzle>Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...</intitulePuzzle>
+    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
+    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
+    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
+    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
+    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
+</ns2:puzzle>

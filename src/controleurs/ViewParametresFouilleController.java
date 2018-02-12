@@ -1,6 +1,8 @@
 package controleurs;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -13,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -20,6 +23,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modeles.Instruction;
@@ -64,8 +70,15 @@ public class ViewParametresFouilleController implements Initializable{
 	@FXML
 	private Label errorScore;
 	
+	@FXML
+	private AnchorPane previsualisation;
+	
+	@FXML
+	private ImageView prevFDE;
 
 	private String xml;
+	
+	private ArrayList<ImageView> listeObjets = new ArrayList<ImageView>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -85,8 +98,21 @@ public class ViewParametresFouilleController implements Initializable{
 			Fouille fParam = fouille.convertirXMLToJava(xml);
 			
 			ObservableList<Instruction> data = table.getItems();
-			for (int i = 0; i<fParam.getListeInstructions().size(); i++)
+			for (int i = 0; i<fParam.getListeInstructions().size(); i++) {
 				data.add(fParam.getListeInstructions().get(i));
+				ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(fParam.getListeInstructions().get(i).getImageObjet()));
+				imageView.setPreserveRatio(true);
+				previsualisation.getChildren().add(imageView);
+				imageView.setLayoutX(fParam.getListeInstructions().get(i).getPosX());
+				imageView.setLayoutY(fParam.getListeInstructions().get(i).getPosY());
+				listeObjets.add(i, imageView);
+			}
+			imageFDE.setText(fParam.getFondEcran());
+			silver.setText("" + fParam.getSilver());
+			bronze.setText("" + fParam.getBronze());
+			gold.setText("" + fParam.getGold());
+			//previsualisation.setStyle("-fx-background-image: url('" + fParam.getFondEcran() + "'); ");
+			prevFDE.setImage(ViewParametresPageExplicationController.chargerImage(fParam.getFondEcran()));
 		} else 
 			System.out.println("\"" + xml + "\" doesn't exist");
 	}
@@ -139,8 +165,12 @@ public class ViewParametresFouilleController implements Initializable{
 		if (table.getSelectionModel().isEmpty()) {
 			return;
 		}
-
 		Instruction selectedItem = table.getSelectionModel().getSelectedItem();
+		System.out.println(table.getSelectionModel().getSelectedIndex());
+		//listeObjets.get(table.getSelectionModel().getSelectedIndex()).setImage(null);
+		previsualisation.getChildren().remove(listeObjets.get(table.getSelectionModel().getSelectedIndex()));
+		listeObjets.remove(table.getSelectionModel().getSelectedIndex());
+		System.out.println(listeObjets.size());
 		table.getItems().remove(selectedItem);
 	}
 
@@ -186,14 +216,37 @@ public class ViewParametresFouilleController implements Initializable{
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		imageFDE.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		//previsualisation.setStyle("-fx-background-image: url('" + cheminAbsoluActuel.relativize(cheminAbsoluImage).toString() + "'); ");
+		prevFDE.setImage(ViewParametresPageExplicationController.chargerImage(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
 	}
 
 	public void setInstruction(int selectedIndex, String intitule, String imageObjet, Double posX, Double posY, String type) {
+		
 		table.getItems().set(selectedIndex, new Instruction (intitule, imageObjet, posX, posY, type));
+		
+		previsualisation.getChildren().remove(listeObjets.get(selectedIndex));
+		listeObjets.remove(selectedIndex);
+		//listeObjets.get(selectedIndex).setImage(null);
+		ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(imageObjet));
+		imageView.setPreserveRatio(true);
+		previsualisation.getChildren().add(imageView);
+		imageView.setLayoutX(posX);
+		imageView.setLayoutY(posY);
+		
+		listeObjets.add(selectedIndex, imageView);
+			
 	}
 
 	public void addInstruction( String intitule, String imageObjet, Double posX, Double posY, String type) {
 		table.getItems().add(new Instruction (intitule, imageObjet, posX, posY, type));
+		
+		ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(imageObjet));
+		imageView.setPreserveRatio(true);
+		previsualisation.getChildren().add(imageView);
+		imageView.setLayoutX(posX);
+		imageView.setLayoutY(posY);
+		
+		listeObjets.add(listeObjets.size(),imageView);
 	}
 
 }

@@ -93,9 +93,9 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                <AnchorPane fx:id="previsualisation" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <ImageView fitHeight="654.0" fitWidth="606.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="prevFDE" fitHeight="654.0" fitWidth="606.0" pickOnBounds="true" />
                      </children></AnchorPane>
               </items>
             </SplitPane>

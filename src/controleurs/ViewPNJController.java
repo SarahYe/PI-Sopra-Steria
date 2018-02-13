@@ -65,29 +65,12 @@ public class ViewPNJController implements Initializable {
 		
 		File f =  new File(xml);
 		if (f.exists()){
-			pnj = pnj.convertirXMLToJava(xml);
-			System.out.println(pnj.getListeDialogues().size());
-			if (pnj.getListeDialogues().size() == cmpt) {
-				if(soloBloc){
-					Stage stage = (Stage) boutonNext.getScene().getWindow();
-					stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test",son), 850, 650));
-				} else {
-					Stage stage = (Stage) boutonNext.getScene().getWindow();
-					//System.out.print(score);
-					Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son);
-					
-					if (node != null){
-						stage.setScene(new Scene((Parent) node, 850, 650));
-					} else {
-						stage.close();
-					}
-					
-				}
-			} else {
-		      //boutonNext.setVisible(true);
-				dial = pnj.getListeDialogues().get(cmpt);
-				remplissageContentDialogue(dial);
-			}
+			this.pnj = pnj.convertirXMLToJava(xml);
+			System.out.println(this.pnj.getListeDialogues().size());
+			
+			dial = this.pnj.getListeDialogues().get(cmpt);
+			remplissageContentDialogue(dial);
+			
 		} else {
 			System.out.println("xml : "+xml);
 		}
@@ -138,15 +121,37 @@ public class ViewPNJController implements Initializable {
 
 	@FXML
 	private void ClickButtonNext(ActionEvent event) throws IOException {
+		if (pnj.getListeDialogues().size() == cmpt+1) {
+			if(soloBloc){
+				Stage stage = (Stage) boutonNext.getScene().getWindow();
+				stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test",son), 850, 650));
+			} else {
+				Stage stage = (Stage) boutonNext.getScene().getWindow();
+				//System.out.print(score);
+				Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son);
+				
+				if (node != null){
+					stage.setScene(new Scene((Parent) node, 850, 650));
+				} else {
+					stage.close();
+				}
+				
+			}
+		} else {
+			Stage stage = (Stage) boutonNext.getScene().getWindow();
+			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
+			stage.show();
+		}
+		
 		
 		/*if (animation.statusProperty().equals(Status.STOPPED)) {
 			dial = pnj.getListeDialogues().get(cmpt);
 			texte.setText(dial.getIntitule());
 	    	   	boutonNext.setVisible(true);
 	    	} else {*/
-			Stage stage = (Stage) boutonNext.getScene().getWindow();
-			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
-			stage.show();
+			//Stage stage = (Stage) boutonNext.getScene().getWindow();
+			//stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
+			//stage.show();
 			//Stage stage = (Stage) boutonNext.getScene().getWindow();
 			//new JFxUtils().loadDialogue(pnj, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
 	    //	}

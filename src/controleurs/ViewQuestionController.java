@@ -114,29 +114,12 @@ public class ViewQuestionController implements Initializable {
 		if (f.exists()){
 			this.quiz = quiz.convertirXMLToJava(xml);
 
-			if (this.quiz.getListeQuestions().size() == cmpt) {
-				if(soloBloc){
-					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-					stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
-				} else {
-					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-					//System.out.print(score);
-					Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
-					if (node!=null){
-						stage.setScene(new Scene((Parent) node, 850, 650));
-					} else {
-						stage.close();
-					}
-					
-				}
-				
-			} else {
-				buttonNextQue.setVisible(Boolean.FALSE);
-				question = this.quiz.getListeQuestions().get(cmpt);
-				remplissageContentQuestion(question);
-				//progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
-				progQuiz.setProgress((double) cmpt / this.quiz.getListeQuestions().size());
-			}
+			buttonNextQue.setVisible(Boolean.FALSE);
+			question = this.quiz.getListeQuestions().get(cmpt);
+			remplissageContentQuestion(question);
+			//progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
+			progQuiz.setProgress((double) cmpt / this.quiz.getListeQuestions().size());
+			
 		} else {
 			System.out.println("xml : "+xml);
 		}

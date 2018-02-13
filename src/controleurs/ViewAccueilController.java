@@ -18,6 +18,9 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -25,6 +28,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import modeles.Accueil;
 import modeles.FondEcran;
 import modeles.Titre;
@@ -117,6 +121,18 @@ public class ViewAccueilController implements Initializable{
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
+		if(soloBloc){
+			Stage stage = (Stage) buttonJouer.getScene().getWindow();
+			stage.close();
+		} else {
+			Stage stage = (Stage) buttonJouer.getScene().getWindow();
+			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+			if (node!=null){
+				stage.setScene(new Scene((Parent) node, 850, 650));
+			} else {
+				stage.close();
+			}
+		}
 	}
 	
 	public static void jouerAudio(String son, float volumeReduced){

@@ -50,13 +50,15 @@ public class ViewPageExplicationController implements Initializable {
 	private boolean soloBloc=true;
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
+	private boolean son;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
 	
-	public void initData(){
+	public void initData(boolean son){
+		this.son=son;
 		Explication expl = new Explication();
 		File f =  new File(xml);
 		if (f.exists()){
@@ -101,7 +103,6 @@ public class ViewPageExplicationController implements Initializable {
 
 	public void setXML(String xml) {
 		this.xml=xml;
-		
 	}
 	
 	@FXML
@@ -111,7 +112,7 @@ public class ViewPageExplicationController implements Initializable {
 			stage.close();
 		} else {
 			Stage stage = (Stage) buttonSuivant.getScene().getWindow();
-			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie);
+			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {

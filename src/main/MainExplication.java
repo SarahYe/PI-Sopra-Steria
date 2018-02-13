@@ -11,7 +11,7 @@ public class MainExplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationFxml("/vues/PageExplication.fxml","FichiersDeConfig/explication.xml", true, 0, "Games/test/chronologie_test"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationFxml("/vues/PageExplication.fxml","FichiersDeConfig/explication.xml", true, 0, "Games/test/chronologie_test",true), 850, 650));
 		stage.setTitle("SériousSécurité");
 		stage.show();
 		stage.sizeToScene();

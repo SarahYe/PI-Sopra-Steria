@@ -46,6 +46,7 @@ public class ViewPNJController implements Initializable {
 	private boolean soloBloc=true;
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
+	private boolean son;
 	private PNJ pnj = new PNJ();
 	private int cmpt;
 	private Dialogue dial;
@@ -57,9 +58,10 @@ public class ViewPNJController implements Initializable {
 		//boutonNext.setVisible(false);
 	}
 	
-	public void initData(PNJ pnj, int cmpt) {
+	public void initData(PNJ pnj, int cmpt, boolean son) {
 		this.cmpt = cmpt;
 		this.pnj = pnj; 
+		this.son=son;
 		
 		File f =  new File(xml);
 		if (f.exists()){
@@ -68,11 +70,11 @@ public class ViewPNJController implements Initializable {
 			if (pnj.getListeDialogues().size() == cmpt) {
 				if(soloBloc){
 					Stage stage = (Stage) boutonNext.getScene().getWindow();
-					stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test"), 850, 650));
+					stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test",son), 850, 650));
 				} else {
 					Stage stage = (Stage) boutonNext.getScene().getWindow();
 					//System.out.print(score);
-					Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie);
+					Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son);
 					
 					if (node != null){
 						stage.setScene(new Scene((Parent) node, 850, 650));
@@ -143,7 +145,7 @@ public class ViewPNJController implements Initializable {
 	    	   	boutonNext.setVisible(true);
 	    	} else {*/
 			Stage stage = (Stage) boutonNext.getScene().getWindow();
-			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
+			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
 			stage.show();
 			//Stage stage = (Stage) boutonNext.getScene().getWindow();
 			//new JFxUtils().loadDialogue(pnj, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);

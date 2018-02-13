@@ -122,7 +122,7 @@ public class ViewParametresOddWordOutGameController implements Initializable{
 		listeQuestions.add(new Question(textFieldQuestion.getText(), listeReponses));
 		
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
-		quiz.convertirJavaToXML(quiz, "FichiersDeConfig/slickGame.xml");
+		quiz.convertirJavaToXML(quiz, xml);
 		
 		//Stage stage = (Stage) textFieldQuestion.getScene().getWindow();
 		//stage.close();

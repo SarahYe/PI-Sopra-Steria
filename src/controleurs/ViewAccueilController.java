@@ -49,13 +49,15 @@ public class ViewAccueilController implements Initializable{
 	private boolean soloBloc=true;
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
+	private boolean son;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 	
-	public void initData(String xml) {
+	public void initData(String xml,boolean son) {
+		this.son=son;
 
 		Accueil accueil = new Accueil();
 		File f =  new File(xml);

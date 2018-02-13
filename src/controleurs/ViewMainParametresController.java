@@ -18,6 +18,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.newdawn.slick.SlickException;
 import org.w3c.dom.*;
 
 import javafx.event.ActionEvent;
@@ -172,6 +173,8 @@ public class ViewMainParametresController implements Initializable{
 			 		newPane= JFxUtils.loadAccueilParamFxml(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 1 :
+			 		newPane= JFxUtils.loadParamOddWordOutGame(fxml, xml);
+			 		AP_ConfBlc.getChildren().setAll(newPane);
 			 	case 2 :
 			 	case 3 :
 				 	newPane= JFxUtils.loadParamQuiz(fxml,xml);
@@ -269,7 +272,7 @@ public class ViewMainParametresController implements Initializable{
 	}
 	
 	@FXML
-	private void ClickBT_TestGame(ActionEvent event) throws ParserConfigurationException, TransformerException{
+	private void ClickBT_TestGame(ActionEvent event) throws ParserConfigurationException, TransformerException, SlickException{
 		if(LV_BlcList.getItems().size()>0){
 			//Creation du fichier XML et des differentes instances
 			DocumentBuilderFactory XML_Fabrique_Constructeur = DocumentBuilderFactory.newInstance();
@@ -305,7 +308,7 @@ public class ViewMainParametresController implements Initializable{
 			System.out.println("Le fichier XML a été généré !");
 			
 			Node newPane;
-			newPane= JFxUtils.loadNextBloc(1, "Games/temp/chronologie_temp.xml");
+			newPane= JFxUtils.loadNextBloc(1, "Games/temp/chronologie_temp.xml",true);
 		 	AP_ConfBlc.getChildren().setAll(newPane);
 			
 		} else{

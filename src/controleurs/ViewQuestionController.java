@@ -92,24 +92,36 @@ public class ViewQuestionController implements Initializable {
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
 	private float niveauSon = -30.0f;
+	private boolean son;
 	private int score = 0;
 
-	public void initData(Quiz quiz, int cmpt) {
+	public void initData(Quiz quiz, int cmpt, boolean son) {
 		this.cmpt = cmpt;
 		this.quiz = quiz;
+		this.son=son;
+		if (son){
+			niveauSon =  -30.0f;
+			volumeOn.setVisible(true);
+			volumeOff.setVisible(false);
+		} else {
+			niveauSon =  -100000.0f;
+			volumeOff.setVisible(true);
+			volumeOn.setVisible(false);
+		}
+			
 		
 		File f =  new File(xml);
 		if (f.exists()){
-			quiz = quiz.convertirXMLToJava(xml);
+			this.quiz = quiz.convertirXMLToJava(xml);
 
-			if (quiz.getListeQuestions().size() == cmpt) {
+			if (this.quiz.getListeQuestions().size() == cmpt) {
 				if(soloBloc){
 					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 					stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
 				} else {
 					Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 					//System.out.print(score);
-					Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie);
+					Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
 					if (node!=null){
 						stage.setScene(new Scene((Parent) node, 850, 650));
 					} else {
@@ -120,10 +132,10 @@ public class ViewQuestionController implements Initializable {
 				
 			} else {
 				buttonNextQue.setVisible(Boolean.FALSE);
-				question = quiz.getListeQuestions().get(cmpt);
+				question = this.quiz.getListeQuestions().get(cmpt);
 				remplissageContentQuestion(question);
 				//progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
-				progQuiz.setProgress((double) cmpt / quiz.getListeQuestions().size());
+				progQuiz.setProgress((double) cmpt / this.quiz.getListeQuestions().size());
 			}
 		} else {
 			System.out.println("xml : "+xml);
@@ -272,19 +284,47 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private void ClickButtonNextQue(ActionEvent event) throws IOException {
-		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		new JFxUtils().loadQuestion(quiz, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
+		
+		if (quiz.getListeQuestions().size() == cmpt+1) {
+			if(soloBloc){
+				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+				stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
+			} else {
+				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+				//System.out.print(score);
+				Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+				if (node!=null){
+					stage.setScene(new Scene((Parent) node, 850, 650));
+				} else {
+					stage.close();
+				}
+				
+			}
+			
+		} else {
+			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+			//System.out.print(score);
+			Node node=JFxUtils.loadQuestion(quiz, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son);
+			if (node!=null){
+				stage.setScene(new Scene((Parent) node, 850, 650));
+			} else {
+				stage.close();
+			}
+		}
+		
 	}
 
 	@FXML
 	private void SonOn(ActionEvent event) {
 		niveauSon =  -30.0f;
+		son=true;
 		volumeOn.setVisible(true);
 		volumeOff.setVisible(false);
 	}
 	
 	@FXML
 	private void SonOff(ActionEvent event) {
+		son=false;
 		niveauSon =  -100000.0f;
 		volumeOff.setVisible(true);
 		volumeOn.setVisible(false);

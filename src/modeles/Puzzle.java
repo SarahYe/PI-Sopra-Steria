@@ -17,15 +17,17 @@ public class Puzzle {
 	String intitulePuzzle;
 	ArrayList<String> ListePiecesImages;
 	ArrayList<String> ListePiecesTextes;
+	ArrayList<String> ListeIndices;
 
 	public Puzzle() {
 
 	}
 
-	public Puzzle(String mName, ArrayList<String> mReponsesTxt, ArrayList<String> mReponsesImg) {
+	public Puzzle(String mName, ArrayList<String> mReponsesTxt, ArrayList<String> mReponsesImg, ArrayList<String> mIndices) {
 		this.intitulePuzzle = mName;
 		this.ListePiecesImages = mReponsesImg;
 		this.ListePiecesTextes = mReponsesTxt;
+		this.ListeIndices = mIndices;
 	}
 
 	@XmlElement
@@ -33,7 +35,6 @@ public class Puzzle {
 		return intitulePuzzle;
 	}
 	
-	// @XmlElement
 	public void setIntitulePuzzle(String intitulePuzzle) {
 		this.intitulePuzzle = intitulePuzzle;
 	}
@@ -42,16 +43,24 @@ public class Puzzle {
 		return ListePiecesImages;
 	}
 
-	public void setListePiecesImages(ArrayList<String> reponses) {
-		this.ListePiecesImages = reponses;
+	public void setListePiecesImages(ArrayList<String> ListePiecesImages) {
+		this.ListePiecesImages = ListePiecesImages;
 	}
 	
 	public ArrayList<String> getListePiecesTextes() {
 		return ListePiecesTextes;
 	}
 
-	public void setListePiecesTextes(ArrayList<String> reponses) {
-		this.ListePiecesTextes = reponses;
+	public void setListePiecesTextes(ArrayList<String> ListePiecesTextes) {
+		this.ListePiecesTextes = ListePiecesTextes;
+	}
+	
+	public ArrayList<String> getListeIndices() {
+		return ListeIndices;
+	}
+
+	public void setListeIndices(ArrayList<String> indices) {
+		this.ListeIndices = indices;
 	}
 
 	@Override

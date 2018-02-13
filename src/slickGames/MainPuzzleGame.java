@@ -24,7 +24,10 @@ public class MainPuzzleGame extends StateBasedGame{
 		listeImg.add("./Ressources/Images/boutonBleuP.png");
 		listeImg.add("./Ressources/Images/boutonBleuP.png");
 		listeImg.add("./Ressources/Images/boutonBleuP.png");
-		Puzzle puzzle = new Puzzle("Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...",null,listeImg); 
+		ArrayList<String> listeIndices = new ArrayList<String>();
+		listeIndices.add("Ceci est le premier indice du puzzle.");
+		listeIndices.add("Ceci est le second indice du puzzle.");
+		Puzzle puzzle = new Puzzle("Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...",null,listeImg,listeIndices); 
 		puzzle.convertirJavaToXML(puzzle, "FichiersDeConfig/slickGame2.xml");
 		 
 		

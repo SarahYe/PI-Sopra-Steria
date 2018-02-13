@@ -1,8 +1,6 @@
 package controleurs;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -15,24 +13,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import modeles.Instruction;
-import modeles.Question;
 import modeles.Fouille;
+import modeles.Instruction;
 
-public class ViewParametresFouilleController implements Initializable{
+public class ViewParametresFouilleController implements Initializable {
 
 	@FXML
 	private TextField imageFDE;
@@ -66,18 +61,18 @@ public class ViewParametresFouilleController implements Initializable{
 
 	@FXML
 	private TextField gold;
-	
+
 	@FXML
 	private Label errorScore;
-	
+
 	@FXML
 	private AnchorPane previsualisation;
-	
+
 	@FXML
 	private ImageView prevFDE;
 
 	private String xml;
-	
+
 	private ArrayList<ImageView> listeObjets = new ArrayList<ImageView>();
 
 	@Override
@@ -90,17 +85,18 @@ public class ViewParametresFouilleController implements Initializable{
 	}
 
 	public void initData() {
-		File f =  new File(xml);
+		File f = new File(xml);
 
 		if (f.exists()) {
 			ArrayList<Instruction> list = new ArrayList<Instruction>();
 			Fouille fouille = new Fouille();
 			Fouille fParam = fouille.convertirXMLToJava(xml);
-			
+
 			ObservableList<Instruction> data = table.getItems();
-			for (int i = 0; i<fParam.getListeInstructions().size(); i++) {
+			for (int i = 0; i < fParam.getListeInstructions().size(); i++) {
 				data.add(fParam.getListeInstructions().get(i));
-				ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(fParam.getListeInstructions().get(i).getImageObjet()));
+				ImageView imageView = new ImageView(ViewParametresPageExplicationController
+						.chargerImage(fParam.getListeInstructions().get(i).getImageObjet()));
 				imageView.setPreserveRatio(true);
 				previsualisation.getChildren().add(imageView);
 				imageView.setLayoutX(fParam.getListeInstructions().get(i).getPosX());
@@ -111,9 +107,10 @@ public class ViewParametresFouilleController implements Initializable{
 			silver.setText("" + fParam.getSilver());
 			bronze.setText("" + fParam.getBronze());
 			gold.setText("" + fParam.getGold());
-			//previsualisation.setStyle("-fx-background-image: url('" + fParam.getFondEcran() + "'); ");
+			// previsualisation.setStyle("-fx-background-image: url('" +
+			// fParam.getFondEcran() + "'); ");
 			prevFDE.setImage(ViewParametresPageExplicationController.chargerImage(fParam.getFondEcran()));
-		} else 
+		} else
 			System.out.println("\"" + xml + "\" doesn't exist");
 	}
 
@@ -123,12 +120,16 @@ public class ViewParametresFouilleController implements Initializable{
 
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
-		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialogueFouille.fxml"));
-		ScrollPane newPane = loader.load();
-		AP_ParamDialogue.getChildren().setAll(newPane);
-		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
-		controller.initData(false, null, this);*/
-		
+		/*
+		 * FXMLLoader loader = new
+		 * FXMLLoader(getClass().getResource("../vues/dialogueFouille.fxml"));
+		 * ScrollPane newPane = loader.load();
+		 * AP_ParamDialogue.getChildren().setAll(newPane);
+		 * ViewAddOrModifyDialogueController controller =
+		 * loader.<ViewAddOrModifyDialogueController>getController();
+		 * controller.initData(false, null, this);
+		 */
+
 		Stage stage = new Stage();
 		stage.setTitle("Nouvelle instruction");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyInstruction.fxml"));
@@ -140,16 +141,19 @@ public class ViewParametresFouilleController implements Initializable{
 
 	@FXML
 	void ClickButtonModify(ActionEvent event) throws IOException {
-		
+
 		if (table.getSelectionModel().isEmpty()) {
 			return;
 		}
 
-		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialogueFouille.fxml"));
-		ScrollPane newPane = loader.load();
-		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
-		controller.initData(true, table.getSelectionModel(), this);*/
-		
+		/*
+		 * FXMLLoader loader = new
+		 * FXMLLoader(getClass().getResource("../vues/dialogueFouille.fxml"));
+		 * ScrollPane newPane = loader.load(); ViewAddOrModifyDialogueController
+		 * controller = loader.<ViewAddOrModifyDialogueController>getController();
+		 * controller.initData(true, table.getSelectionModel(), this);
+		 */
+
 		Stage stage = new Stage();
 		stage.setTitle("Nouvelle instruction");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyInstruction.fxml"));
@@ -167,7 +171,7 @@ public class ViewParametresFouilleController implements Initializable{
 		}
 		Instruction selectedItem = table.getSelectionModel().getSelectedItem();
 		System.out.println(table.getSelectionModel().getSelectedIndex());
-		//listeObjets.get(table.getSelectionModel().getSelectedIndex()).setImage(null);
+		// listeObjets.get(table.getSelectionModel().getSelectedIndex()).setImage(null);
 		previsualisation.getChildren().remove(listeObjets.get(table.getSelectionModel().getSelectedIndex()));
 		listeObjets.remove(table.getSelectionModel().getSelectedIndex());
 		System.out.println(listeObjets.size());
@@ -182,15 +186,19 @@ public class ViewParametresFouilleController implements Initializable{
 		for (int i = 0; i < data.size(); i++) {
 			listeInstructions.add(data.get(i));
 		}
-		
+
 		if (imageFDE.getText().isEmpty() || listeInstructions.size() == 0) {
 			errorLabel.setVisible(true);
 		} else {
-		
-			if (ViewAddOrModifyInstructionController.tryParseDouble(gold.getText()) && ViewAddOrModifyInstructionController.tryParseDouble(bronze.getText()) && ViewAddOrModifyInstructionController.tryParseDouble(silver.getText())) {  
-				Fouille f = new Fouille("Nom du bloc", listeInstructions, imageFDE.getText(),  Double.parseDouble(gold.getText()),  Double.parseDouble(bronze.getText()),  Double.parseDouble(silver.getText()));
+
+			if (ViewAddOrModifyInstructionController.tryParseDouble(gold.getText())
+					&& ViewAddOrModifyInstructionController.tryParseDouble(bronze.getText())
+					&& ViewAddOrModifyInstructionController.tryParseDouble(silver.getText())) {
+				Fouille f = new Fouille("Nom du bloc", listeInstructions, imageFDE.getText(),
+						Double.parseDouble(gold.getText()), Double.parseDouble(bronze.getText()),
+						Double.parseDouble(silver.getText()));
 				f.convertirJavaToXML(f, xml);
-				
+
 				// popup de confirmation
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Paramétrage  d'un quiz");
@@ -204,7 +212,7 @@ public class ViewParametresFouilleController implements Initializable{
 
 	@FXML
 	void telechargerImageFDE(ActionEvent event) {
-		
+
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -216,37 +224,40 @@ public class ViewParametresFouilleController implements Initializable{
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		imageFDE.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
-		//previsualisation.setStyle("-fx-background-image: url('" + cheminAbsoluActuel.relativize(cheminAbsoluImage).toString() + "'); ");
-		prevFDE.setImage(ViewParametresPageExplicationController.chargerImage(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		// previsualisation.setStyle("-fx-background-image: url('" +
+		// cheminAbsoluActuel.relativize(cheminAbsoluImage).toString() + "'); ");
+		prevFDE.setImage(ViewParametresPageExplicationController
+				.chargerImage(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
 	}
 
-	public void setInstruction(int selectedIndex, String intitule, String imageObjet, Double posX, Double posY, String type) {
-		
-		table.getItems().set(selectedIndex, new Instruction (intitule, imageObjet, posX, posY, type));
-		
+	public void setInstruction(int selectedIndex, String intitule, String imageObjet, Double posX, Double posY,
+			String type) {
+
+		table.getItems().set(selectedIndex, new Instruction(intitule, imageObjet, posX, posY, type));
+
 		previsualisation.getChildren().remove(listeObjets.get(selectedIndex));
 		listeObjets.remove(selectedIndex);
-		//listeObjets.get(selectedIndex).setImage(null);
+		// listeObjets.get(selectedIndex).setImage(null);
 		ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(imageObjet));
 		imageView.setPreserveRatio(true);
 		previsualisation.getChildren().add(imageView);
 		imageView.setLayoutX(posX);
 		imageView.setLayoutY(posY);
-		
+
 		listeObjets.add(selectedIndex, imageView);
-			
+
 	}
 
-	public void addInstruction( String intitule, String imageObjet, Double posX, Double posY, String type) {
-		table.getItems().add(new Instruction (intitule, imageObjet, posX, posY, type));
-		
+	public void addInstruction(String intitule, String imageObjet, Double posX, Double posY, String type) {
+		table.getItems().add(new Instruction(intitule, imageObjet, posX, posY, type));
+
 		ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(imageObjet));
 		imageView.setPreserveRatio(true);
 		previsualisation.getChildren().add(imageView);
 		imageView.setLayoutX(posX);
 		imageView.setLayoutY(posY);
-		
-		listeObjets.add(listeObjets.size(),imageView);
+
+		listeObjets.add(listeObjets.size(), imageView);
 	}
 
 }

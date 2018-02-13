@@ -65,7 +65,7 @@ public class QuizAccueilController implements Initializable {
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonJouer.getScene().getWindow();
 		//jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
-		new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml,soloBloc,cmptChronologie, xmlChronologie);
+		//new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml,soloBloc,cmptChronologie, xmlChronologie);
 	}
 
 	@FXML

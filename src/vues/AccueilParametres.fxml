@@ -15,7 +15,7 @@
   <content>
       <AnchorPane prefHeight="650.0" prefWidth="850.0">
          <children>
-            <Label layoutX="287.0" layoutY="9.0" prefHeight="46.0" prefWidth="272.0" text="Paramétrage d'une page d'accueil">
+            <Label layoutX="282.0" layoutY="14.0" prefHeight="46.0" prefWidth="321.0" text="Paramétrage d'une page d'accueil">
                <font>
                   <Font name="Trattatello" size="24.0" />
                </font></Label>
@@ -27,7 +27,7 @@
                            <children>
                               <Label layoutX="176.0" layoutY="99.0" text="Image " />
                               <TextField fx:id="imageFondEcran" layoutX="251.0" layoutY="95.0" prefHeight="27.0" prefWidth="259.0" />
-                              <Button fx:id="boutonsupprimerImageFDE" layoutX="404.0" layoutY="146.0" mnemonicParsing="false" onAction="#supprimerImageFondEcran" text="Supprimer" />
+                              <Button fx:id="boutonsupprimerImageFDE" layoutX="404.0" layoutY="144.0" mnemonicParsing="false" onAction="#supprimerImageFondEcran" text="Supprimer" />
                               <Label layoutX="173.0" layoutY="246.0" text="Couleur" />
                               <ColorPicker fx:id="couleurFondEcran" layoutX="254.0" layoutY="241.0" onAction="#modifierCouleurFondEcran" />
                               <Button fx:id="boutonTelechargerImageFDE" layoutX="276.0" layoutY="144.0" mnemonicParsing="false" onAction="#chargerImageFondEcran" text="Télécharger" />
@@ -66,7 +66,7 @@
               </panes>
             </Accordion>
             <Button fx:id="boutonEnregistrer" layoutX="259.0" layoutY="576.0" mnemonicParsing="false" onAction="#enregistrer" stylesheets="@../../Ressources/CSS/button_hover.css" text="Enregistrer" />
-            <Label fx:id="erreur" layoutX="446.0" layoutY="526.0" text="Aucune modification enregistrée" textFill="RED" visible="false" />
+            <Label fx:id="erreur" layoutX="306.0" layoutY="610.0" text="Aucune modification enregistrée" textFill="RED" visible="false" wrapText="true" />
             <Button fx:id="previsualiser" layoutX="463.0" layoutY="576.0" mnemonicParsing="false" onAction="#previsualisation" stylesheets="@../../Ressources/CSS/button_hover.css" text="Prévisualiser" />
          </children>
       </AnchorPane>

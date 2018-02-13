@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import modeles.Quiz;
 
 public class MainQuiz extends Application {
 
@@ -15,7 +16,8 @@ public class MainQuiz extends Application {
 
 		// Font.loadFont(getClass().getResourceAsStream("./Ressources/Polices/GoodMorning.ttf"),
 		// 12);
-		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("/vues/QuizAccueil.fxml","FichiersDeConfig/quiz.xml", true, 1,"Games/test/chronologie_test.xml"), 850, 650));
+		
+		stage.setScene(new Scene((Parent) JFxUtils.loadQuestion(new Quiz(),0,"/vues/ViewQuestion.fxml", "FichiersDeConfig/quiz.xml", true, 1, "Games/test/chronologie_test.xml",true), 850, 650));
 		stage.setTitle("SeriousSécurité");
 		stage.show();
 		stage.sizeToScene();

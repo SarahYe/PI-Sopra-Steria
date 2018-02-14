@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import modeles.Explication;
+import modeles.Puzzle;
 import modeles.Reponse;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
@@ -15,10 +16,19 @@ public class TestParseur {
 
 	public static void main(String[] args) {
 		
-		 ArrayList<String> ListeLiens = new ArrayList<String>();
-		 ListeLiens.add("lien1");
-		 ListeLiens.add("lien2");
-		 ListeLiens.add("lien3");
+		 ArrayList<String> listeIndices = new ArrayList<String>();
+		 listeIndices.add("Indice1");
+		 listeIndices.add("Indice2");
+		 listeIndices.add("Indice3");
+		 
+		 ArrayList<String> listeFragments = new ArrayList<String>();
+		 listeFragments.add("eFrag1");
+		 listeFragments.add("IeFrag2");
+		 listeFragments.add("eFrage3");
+		 
+		 Puzzle p = new Puzzle("Nom", 2500.0, 75.0, 15.0, 400.0, "intitule", "fragmentType", listeIndices, listeFragments);
+		 
+		 p.convertirJavaToXML(p, "FichiersDeConfig/puzzle.xml");
 		 
 		// Explication explication1 = new Explication("Explication 1 ?", "Contenu", "Source", ListeLiens);
 		 

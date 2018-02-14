@@ -7,115 +7,158 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
-@XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Puzzle")
 
+@XmlRootElement
+@XmlType(name = "nom", propOrder = { "nomPuzzle", "score_init", "decr_pts", "decr_sec", "score_min", "intitule",  "fragmentType", "listeFragments", "listeIndices" })
 public class Puzzle {
-
-	String intitulePuzzle;
-	ArrayList<String> ListePiecesImages;
-	ArrayList<String> ListePiecesTextes;
-	ArrayList<String> ListeIndices;
-
-	public Puzzle() {
-
+	
+	@XmlAttribute
+	String nomPuzzle;
+	Double score_init;
+	Double decr_pts;
+	Double decr_sec;
+	Double score_min;
+	String intitule;
+	String fragmentType;
+	ArrayList<String> listeIndices;
+	ArrayList<String> listeFragments;
+	
+	public Puzzle() {}
+	
+	public Puzzle(String nomPuzzle, Double score_init, Double decr_pts, Double decr_sec, Double score_min,
+			String intitule, String fragmentType, ArrayList<String> listeIndices, ArrayList<String> listeFragments) {
+		this.nomPuzzle = nomPuzzle;
+		this.score_init = score_init;
+		this.decr_pts = decr_pts;
+		this.decr_sec = decr_sec;
+		this.score_min = score_min;
+		this.intitule = intitule;
+		this.fragmentType = fragmentType;
+		this.listeIndices = listeIndices;
+		this.listeFragments = listeFragments;
 	}
-
-	public Puzzle(String mName, ArrayList<String> mReponsesTxt, ArrayList<String> mReponsesImg, ArrayList<String> mIndices) {
-		this.intitulePuzzle = mName;
-		this.ListePiecesImages = mReponsesImg;
-		this.ListePiecesTextes = mReponsesTxt;
-		this.ListeIndices = mIndices;
+	
+	public String getNom() {
+		return nomPuzzle;
 	}
-
+	
+	public void setNomPuzzle(String nomPuzzle) {
+		this.nomPuzzle = nomPuzzle;
+	}
+	
 	@XmlElement
-	public String getIntitulePuzzle() {
-		return intitulePuzzle;
+	public Double getScore_init() {
+		return score_init;
 	}
 	
-	public void setIntitulePuzzle(String intitulePuzzle) {
-		this.intitulePuzzle = intitulePuzzle;
-	}
-
-	public ArrayList<String> getListePiecesImages() {
-		return ListePiecesImages;
-	}
-
-	public void setListePiecesImages(ArrayList<String> ListePiecesImages) {
-		this.ListePiecesImages = ListePiecesImages;
+	public void setScore_init(Double score_init) {
+		this.score_init = score_init;
 	}
 	
-	public ArrayList<String> getListePiecesTextes() {
-		return ListePiecesTextes;
-	}
-
-	public void setListePiecesTextes(ArrayList<String> ListePiecesTextes) {
-		this.ListePiecesTextes = ListePiecesTextes;
+	@XmlElement
+	public Double getDecr_pts() {
+		return decr_pts;
 	}
 	
+	public void setDecr_pts(Double decr_pts) {
+		this.decr_pts = decr_pts;
+	}
+	
+	@XmlElement
+	public Double getDecr_sec() {
+		return decr_sec;
+	}
+	
+	public void setDecr_sec(Double decr_sec) {
+		this.decr_sec = decr_sec;
+	}
+	
+	@XmlElement
+	public Double getScore_min() {
+		return score_min;
+	}
+	
+	public void setScore_min(Double score_min) {
+		this.score_min = score_min;
+	}
+	
+	@XmlElement
+	public String getIntitule() {
+		return intitule;
+	}
+	
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+	
+	@XmlElement
+	public String getFragmentType() {
+		return fragmentType;
+	}
+	
+	public void setFragmentType(String fragmentType) {
+		this.fragmentType = fragmentType;
+	}
+	
+	@XmlElementWrapper(name = "Indices")
+	@XmlElement(name = "Indice")
 	public ArrayList<String> getListeIndices() {
-		return ListeIndices;
-	}
-
-	public void setListeIndices(ArrayList<String> indices) {
-		this.ListeIndices = indices;
-	}
-
-	@Override
-	public int hashCode() {
-		return super.hashCode();
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
+		return listeIndices;
 	}
 	
-	public void convertirJavaToXML(Puzzle puzzle, String nomFichier) {
-
+	public void setListeIndices(ArrayList<String> listeIndices) {
+		this.listeIndices = listeIndices;
+	}
+	
+	@XmlElementWrapper(name = "Fragments")
+	@XmlElement(name = "Fragment")
+	public ArrayList<String> getListeFragments() {
+		return listeFragments;
+	}
+	
+	public void setListeFragments(ArrayList<String> listeFragments) {
+		this.listeFragments = listeFragments;
+	}
+	
+	public void convertirJavaToXML(Puzzle dialogue, String nomFichier) {
 		try {
 
-			// create JAXB context and initializing Marshaller
 			JAXBContext jaxbContext = JAXBContext.newInstance(Puzzle.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-			// for getting nice formatted output
 			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
 			File XMLfile = new File(nomFichier);
-			// Writing to XML file
-			jaxbMarshaller.marshal(puzzle, XMLfile);
-
-			// Writing to console
-			System.out.println("Fichier XML cree :\n");
-			jaxbMarshaller.marshal(puzzle, System.out);
+			jaxbMarshaller.marshal(dialogue, XMLfile);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 	
+
 	public Puzzle convertirXMLToJava(String nomFichier) {
 
-		Puzzle puzzle = new Puzzle();
+		Puzzle ac = new Puzzle();
 		
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Puzzle.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(PNJ.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
 			File XMLfile = new File(nomFichier);
-			// this will create Java object - puzzle from the XML file
-			puzzle = (Puzzle) jaxbUnmarshaller.unmarshal(XMLfile);
-
+			ac = (Puzzle) jaxbUnmarshaller.unmarshal(XMLfile);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
 
-		return puzzle;
+		return ac;
 	}
-
 }

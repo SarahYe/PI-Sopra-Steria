@@ -1,6 +1,8 @@
 package controleurs;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -22,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modeles.Fouille;
@@ -66,6 +69,9 @@ public class ViewParametresFouilleController implements Initializable {
 	private Label errorScore;
 
 	@FXML
+	private Label titre;
+	
+	@FXML
 	private AnchorPane previsualisation;
 
 	@FXML
@@ -77,6 +83,14 @@ public class ViewParametresFouilleController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			Font font = Font.loadFont(
+					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+			titre.setFont(font);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		errorLabel.setVisible(false);
 		errorScore.setVisible(false);
 		bronze.setText("25");

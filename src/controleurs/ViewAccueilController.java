@@ -71,10 +71,13 @@ public class ViewAccueilController implements Initializable{
 			
 			if (titre.getImageVsTexte().contains("Texte")) {
 				imageTitre.setVisible(false);
-				
-				//System.out.println("Texte");
 				titreTexte.setText(titre.getTexte());
-				titreTexte.setFont(Font.font(titre.getPoliceTexte(), 60));
+				 try {
+					Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/" + titre.getPoliceTexte() + ".ttf")), 60);
+					titreTexte.setFont(font);
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
 				titreTexte.setStyle("-fx-text-fill:" + titre.getCouleurTexte().replace("0x", "#") + ";");
 			} else {
 				titreTexte.setVisible(false);

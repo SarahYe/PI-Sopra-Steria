@@ -18,7 +18,7 @@
    <content>
       <AnchorPane prefHeight="700.0" prefWidth="1200.0">
          <children>
-            <Label contentDisplay="CENTER" layoutX="326.0" prefHeight="38.0" prefWidth="219.0" text="Paramétrage d'un jeu de fouille" textAlignment="CENTER" AnchorPane.leftAnchor="490.5" AnchorPane.rightAnchor="490.5">
+            <Label fx:id="titre" alignment="CENTER" contentDisplay="CENTER" layoutX="443.0" prefHeight="38.0" prefWidth="353.0" text="Paramétrage d'un jeu de fouille" textAlignment="CENTER" AnchorPane.leftAnchor="423.0" AnchorPane.rightAnchor="424.0">
                <font>
                   <Font name="Trattatello" size="20.0" />
                </font>

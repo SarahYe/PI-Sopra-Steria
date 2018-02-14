@@ -15,7 +15,7 @@
   <content>
       <AnchorPane prefHeight="650.0" prefWidth="850.0">
          <children>
-            <Label layoutX="282.0" layoutY="14.0" prefHeight="46.0" prefWidth="321.0" text="Paramétrage d'une page d'accueil">
+            <Label fx:id="titre" alignment="CENTER" layoutX="282.0" layoutY="14.0" prefHeight="46.0" prefWidth="321.0" text="Paramétrage d'une page d'accueil" AnchorPane.leftAnchor="264.5" AnchorPane.rightAnchor="264.5">
                <font>
                   <Font name="Trattatello" size="24.0" />
                </font></Label>

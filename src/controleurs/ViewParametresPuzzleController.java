@@ -1,6 +1,8 @@
 package controleurs;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,8 +21,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
-import modeles.Puzzle2;
+import modeles.Puzzle;
 
 public class ViewParametresPuzzleController implements Initializable {
 
@@ -350,6 +353,7 @@ public class ViewParametresPuzzleController implements Initializable {
     		btnTelechargerfrag1_6_4.setVisible(false);
     		btnTelechargerfrag1_6_5.setVisible(false);
     		btnTelechargerfrag1_6_6.setVisible(false);
+    		
     		String formatSelect = formatPuzzle.getValue();
     		
     		switch (formatSelect) {
@@ -515,7 +519,7 @@ public class ViewParametresPuzzleController implements Initializable {
 	    			break;
 			}
 		
-	    	Puzzle2 p = new Puzzle2("Nom", Double.parseDouble(score_init.getText().toString()), Double.parseDouble(decr_points.getText().toString()), Double.parseDouble(decr_sec.getText().toString()),Double.parseDouble(score_min.getText().toString()), description.getText().toString(), fragmentType, listeIndices, listeFragments);
+	    	Puzzle p = new Puzzle("Nom", Double.parseDouble(score_init.getText().toString()), Double.parseDouble(decr_points.getText().toString()), Double.parseDouble(decr_sec.getText().toString()),Double.parseDouble(score_min.getText().toString()), description.getText().toString(), fragmentType, listeIndices, listeFragments);
 	    	
 	    	p.convertirJavaToXML(p, "FichiersDeConfig/puzzle.xml");
 	    	// popup de confirmation

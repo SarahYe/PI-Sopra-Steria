@@ -22,7 +22,7 @@
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="142.0" layoutY="24.0" prefHeight="38.0" prefWidth="199.0" text="Dialogue avec un personnage" textAlignment="CENTER" AnchorPane.topAnchor="20.0">
+                        <Label fx:id="titre" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="24.0" prefHeight="38.0" prefWidth="330.0" text="Dialogue avec un personnage" textAlignment="CENTER" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="20.0">
                            <font>
                               <Font name="Trattatello" size="20.0" />
                            </font>

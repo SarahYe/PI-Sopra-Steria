@@ -1,6 +1,8 @@
 package controleurs;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,11 +15,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.MainQuiz;
 import modeles.Question;
@@ -42,10 +46,20 @@ public class ViewParametresQuizController implements Initializable{
 	private TableView<Question> table;
 	@FXML
 	private AnchorPane AP_ParamQuestion;
+	@FXML
+	private Label titre;
 	private String xml;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			Font font = Font.loadFont(
+					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+			titre.setFont(font);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		/*// TODO Auto-generated method stub
 		ArrayList<Question> list = new ArrayList<Question>();
 		Quiz quiz = new Quiz("Nom du quiz", list);

@@ -128,7 +128,7 @@ public class JFxUtils {
 		}
 	}
 	
-	public static Node loadScoreFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son) {
+	public static Node loadScoreFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -138,6 +138,8 @@ public class JFxUtils {
 			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
 			controller.setXML(xml);
 			controller.setSon(son);
+			controller.setScore(score);
+			controller.initData();
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);

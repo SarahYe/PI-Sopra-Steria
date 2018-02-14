@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="770.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.112" fx:controller="controleurs.ViewParametresScoreController">
+  <content>
+    <AnchorPane minHeight="650.0" minWidth="850.0" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Label layoutX="291.0" layoutY="14.0" text="Parametrage d'une page de score">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="88.0" layoutY="80.0" prefHeight="31.0" prefWidth="45.0" text="titre" />
+            <TextField layoutX="163.0" layoutY="83.0" prefHeight="15.0" prefWidth="551.0" />
+            <Label layoutX="75.0" layoutY="145.0" text="Score Faible" />
+            <Label layoutX="72.0" layoutY="289.0" text="Score moyen" />
+            <Label layoutX="76.0" layoutY="460.0" text="Score elevé" />
+            <Label layoutX="107.0" layoutY="200.0" text="Message" />
+            <Label layoutX="94.0" layoutY="349.0" text="Message" />
+            <Label layoutX="94.0" layoutY="509.0" text="Message" />
+            <Label layoutX="79.0" layoutY="241.0" text="image de fond" />
+            <Label layoutX="94.0" layoutY="386.0" text="image de fond" />
+            <Label layoutX="98.0" layoutY="552.0" text="image de fond" />
+            <Label layoutX="111.0" layoutY="484.0" text="Score supérieur à" />
+            <TextField layoutX="217.0" layoutY="480.0" />
+            <Label layoutX="117.0" layoutY="317.0" text="Score compris entre" />
+            <TextField layoutX="238.0" layoutY="313.0" prefHeight="25.0" prefWidth="66.0" />
+            <Label layoutX="323.0" layoutY="317.0" text="et" />
+            <TextField layoutX="351.0" layoutY="313.0" prefHeight="25.0" prefWidth="59.0" />
+            <TextField layoutX="185.0" layoutY="162.0" />
+            <Label layoutX="90.0" layoutY="166.0" text="Score inférieur à" />
+            <TextField layoutX="177.0" layoutY="345.0" />
+            <TextField layoutX="177.0" layoutY="196.0" />
+            <TextField layoutX="185.0" layoutY="237.0" />
+            <TextField layoutX="203.0" layoutY="382.0" />
+            <TextField layoutX="203.0" layoutY="514.0" />
+            <TextField layoutX="203.0" layoutY="548.0" />
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

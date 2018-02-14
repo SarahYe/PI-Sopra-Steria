@@ -127,6 +127,22 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
+	
+	public static Node loadScoreFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			System.out.println(loader);
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewScoreController controller = loader.<ViewScoreController>getController();
+			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setXML(xml);
+			controller.setSon(son);
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
 
 	
 	public static Node loadExplicationParamFxml(String fxml,String xml) {

@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPuzzleController">
   <content>
@@ -118,7 +119,7 @@
                            <HBox.margin>
                               <Insets left="60.0" top="5.0" />
                            </HBox.margin></TextField>
-                        <Button fx:id="btnTelechargerfrag1_6_6" mnemonicParsing="false" onAction="#telechargerfrag1_6_5" text="Parcourir">
+                        <Button fx:id="btnTelechargerfrag1_6_6" mnemonicParsing="false" onAction="#telechargerfrag1_6_6" text="Parcourir">
                            <HBox.margin>
                               <Insets left="30.0" top="5.0" />
                            </HBox.margin>
@@ -127,7 +128,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="frag1_5" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;">
+            <VBox fx:id="frag1_5" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" visible="false">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -212,7 +213,7 @@
                               <Insets left="60.0" top="10.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="frag1_5_5">
                            <HBox.margin>
                               <Insets left="60.0" top="5.0" />
                            </HBox.margin>
@@ -226,7 +227,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="frag1_4" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" visible="false">
+            <VBox fx:id="frag1_4" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -278,7 +279,7 @@
                               <Insets left="60.0" top="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="btnTelechargerfrag1_4_3" mnemonicParsing="false" onAction="#telechargerfrag1_4_2" text="Parcourir">
+                        <Button fx:id="btnTelechargerfrag1_4_3" mnemonicParsing="false" onAction="#telechargerfrag1_4_3" text="Parcourir">
                            <HBox.margin>
                               <Insets left="30.0" top="5.0" />
                            </HBox.margin>
@@ -307,28 +308,48 @@
                </children>
             </VBox>
             <Label layoutX="253.0" layoutY="418.0" text="Nombre d'indices" />
-            <ComboBox fx:id="nbIndices" layoutX="414.0" layoutY="412.0" prefHeight="27.0" prefWidth="59.0" />
+            <ComboBox fx:id="nbIndices" layoutX="414.0" layoutY="412.0" onAction="#handleComboIndice" prefHeight="27.0" prefWidth="59.0" />
             <Label layoutX="309.0" layoutY="449.0" text="Indice 1" />
-            <TextArea fx:id="description1" layoutX="414.0" layoutY="446.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
-            <CheckBox fx:id="puzzleImage" layoutX="263.0" layoutY="65.0" mnemonicParsing="false" text="Puzzle imagé" />
-            <Label layoutX="310.0" layoutY="504.0" text="Indice 2" />
-            <TextArea fx:id="description11" layoutX="414.0" layoutY="497.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
-            <TextArea fx:id="description12" layoutX="414.0" layoutY="547.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
-            <Label layoutX="309.0" layoutY="553.0" text="Indice 3" />
+            <TextArea fx:id="indice1" layoutX="414.0" layoutY="446.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
+            <CheckBox fx:id="puzzleImage" layoutX="263.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCheckboxTypePuzzle" text="Puzzle imagé" />
+            <Label fx:id="lbl_ind2" layoutX="310.0" layoutY="504.0" text="Indice 2" />
+            <TextArea fx:id="indice2" layoutX="414.0" layoutY="497.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
+            <TextArea fx:id="indice3" layoutX="414.0" layoutY="547.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
+            <Label fx:id="lbl_ind3" layoutX="309.0" layoutY="553.0" text="Indice 3" />
             <Separator layoutX="183.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Button layoutX="411.0" layoutY="603.0" mnemonicParsing="false" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" />
-            <CheckBox layoutX="12.0" layoutY="211.0" mnemonicParsing="false" text="Scoring par défaut" />
+            <Button fx:id="btnSauvegarder" layoutX="411.0" layoutY="603.0" mnemonicParsing="false" onAction="#sauvegarder" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" />
+            <CheckBox fx:id="defaultScoring" layoutX="12.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleCheckboxScoring" selected="true" text="Scoring par défaut" />
             <Label layoutX="13.0" layoutY="249.0" text="Score initial" />
-            <TextField layoutX="13.0" layoutY="269.0" prefHeight="25.0" prefWidth="89.0" />
+            <TextField fx:id="score_init" layoutX="13.0" layoutY="269.0" prefHeight="25.0" prefWidth="89.0" />
             <Label layoutX="107.0" layoutY="276.0" text="points" />
             <Label layoutX="13.0" layoutY="309.0" text="Décrémentation" />
-            <TextField layoutX="13.0" layoutY="329.0" prefHeight="25.0" prefWidth="42.0" />
+            <TextField fx:id="decr_points" layoutX="13.0" layoutY="329.0" prefHeight="25.0" prefWidth="42.0" />
             <Label layoutX="58.0" layoutY="336.0" text="points /" />
-            <TextField layoutX="107.0" layoutY="329.0" prefHeight="25.0" prefWidth="42.0" />
+            <TextField fx:id="decr_sec" layoutX="107.0" layoutY="329.0" prefHeight="25.0" prefWidth="42.0" />
             <Label layoutX="152.0" layoutY="336.0" text="sec" />
             <Label layoutX="14.0" layoutY="365.0" text="Score minimal" />
-            <TextField layoutX="12.0" layoutY="383.0" prefHeight="25.0" prefWidth="89.0" />
+            <TextField fx:id="score_min" layoutX="12.0" layoutY="383.0" prefHeight="25.0" prefWidth="89.0" />
             <Label layoutX="106.0" layoutY="389.0" text="points" />
+            <Label fx:id="errorScore" layoutX="17.0" layoutY="416.0" prefHeight="45.0" prefWidth="153.0" text="Tous les champs doivent être renseignés" textFill="RED" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorFragment" layoutX="517.0" layoutY="67.0" text="Tous les fragments ne sont pas renseignés" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorLabel" layoutX="540.0" layoutY="610.0" text="Tous les champs sont obligatoires" textFill="RED">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="errorType" layoutX="16.0" layoutY="416.0" prefHeight="63.0" prefWidth="153.0" text="Les champs de score ne peuvent contenir que des caractères numériques et le caractère &quot;.&quot;" textFill="RED" wrapText="true">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
   </content>
 </ScrollPane>

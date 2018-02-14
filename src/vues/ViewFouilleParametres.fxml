@@ -29,11 +29,11 @@
                      <children>
                         <Label layoutX="18.0" layoutY="29.0" text="Image de fond" />
                         <TextField fx:id="imageFDE" layoutX="128.0" layoutY="26.0" prefHeight="27.0" prefWidth="239.0" />
-                        <Button fx:id="boutonTelechargerFDE" layoutX="376.0" layoutY="24.0" minWidth="74.0" mnemonicParsing="false" onAction="#telechargerImageFDE" prefHeight="29.0" prefWidth="106.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Télécharger" textFill="WHITE" />
+                        <Button fx:id="boutonTelechargerFDE" layoutX="376.0" layoutY="24.0" minWidth="74.0" mnemonicParsing="false" onAction="#telechargerImageFDE" prefHeight="29.0" prefWidth="106.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Parcourir" textFill="WHITE" />
                         <Separator layoutY="175.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Label layoutX="15.0" layoutY="185.0" text="Liste des instructions" />
                         <Separator layoutY="205.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="boutonSave" layoutX="196.0" layoutY="615.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer le paramétrage" />
+                        <Button fx:id="boutonSave" layoutX="242.0" layoutY="615.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
                         <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
                         <Button fx:id="boutonAjout" layoutX="109.0" layoutY="575.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" />
                         <Button fx:id="boutonModifier" layoutX="235.0" layoutY="575.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" />

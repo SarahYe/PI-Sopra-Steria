@@ -19,7 +19,7 @@
             <Label layoutX="19.0" layoutY="49.0" text=" Téléchargez un fond d'écran ou choisissez une couleur" AnchorPane.leftAnchor="20.0" />
             <Separator layoutX="-10.0" layoutY="33.0" prefHeight="0.0" prefWidth="491.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <TextField fx:id="imageFondEcran" layoutX="141.0" layoutY="77.0" prefHeight="27.0" prefWidth="359.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="60.0" />
-            <Button fx:id="boutonTelechargerFondEcran" layoutX="190.0" layoutY="113.0" mnemonicParsing="false" onAction="#telechargerFondEcran" text="Télécharger" AnchorPane.leftAnchor="170.0" />
+            <Button fx:id="boutonTelechargerFondEcran" layoutX="190.0" layoutY="113.0" mnemonicParsing="false" onAction="#telechargerFondEcran" text="Parcourir" AnchorPane.leftAnchor="170.0" />
             <ColorPicker fx:id="CouleurFondEcran" layoutX="181.0" layoutY="153.0" onAction="#modifierCouleurFondEcran" prefHeight="47.0" prefWidth="179.0" promptText="Choisir une couleur" AnchorPane.leftAnchor="120.0">
                <padding>
                   <Insets bottom="10.0" top="10.0" />
@@ -30,7 +30,7 @@
             <TextArea fx:id="zoneDialogue" layoutX="142.0" layoutY="213.0" maxHeight="101.0" maxWidth="400.0" prefHeight="101.0" prefWidth="392.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="60.0" />
             <Label layoutX="45.0" layoutY="355.0" text="Personnage :" AnchorPane.leftAnchor="20.0" />
             <TextField fx:id="imagePersonnage" layoutX="142.0" layoutY="350.0" prefHeight="27.0" prefWidth="265.0" AnchorPane.leftAnchor="120.0" />
-            <Button fx:id="boutonTelechargerPersonnage" layoutX="441.0" layoutY="348.0" mnemonicParsing="false" onAction="#telechargerPersonnage" text="Télécharger" AnchorPane.rightAnchor="10.0" />
+            <Button fx:id="boutonTelechargerPersonnage" layoutX="396.5" layoutY="351.0" mnemonicParsing="false" onAction="#telechargerPersonnage" text="Parcourir" AnchorPane.rightAnchor="27.0" />
             <Label layoutX="45.0" layoutY="223.0" text="Texte :" AnchorPane.leftAnchor="20.0" />
             <Button fx:id="boutonSauvegarder" layoutX="216.0" layoutY="434.0" mnemonicParsing="false" onAction="#sauvegarder" text="Sauvegarder" />
          </children>

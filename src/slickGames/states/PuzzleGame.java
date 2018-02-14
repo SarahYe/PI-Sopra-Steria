@@ -13,6 +13,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import modeles.Puzzle;
+import slickGames.MainOddWordOutGame;
 import slickGames.MainPuzzleGame;
 import slickGames.entite.PuzzlePieceImg;
 
@@ -22,6 +23,8 @@ public class PuzzleGame extends BasicGameState {
 	public static ArrayList<PuzzlePieceImg> piecesImg = new ArrayList<PuzzlePieceImg>();
 	public static long chrono = 0L;
 	public static ArrayList<String> piecesTxt = new ArrayList<String>();
+	public static ArrayList<Integer> currentMatriceOrder = new ArrayList<Integer>();
+	public static boolean gameFinished = false;
 	public int draggedPieceNumber = -1;
 	public int indiceIndex = 0;
 	public Image bandeTitre, titre, personnage, bulleDialogue, puzzleMatrice, boutonIndices;
@@ -42,7 +45,7 @@ public class PuzzleGame extends BasicGameState {
 		flecheReset = new Image("./Ressources/Images/flecheReset.png");
 		
 		ArrayList<String> listeString = new ArrayList<String>();
-		Puzzle puzzle = new Puzzle("",listeString,listeString,listeString);
+		Puzzle puzzle = new Puzzle("","","",listeString,listeString);
 		this.puzzle = puzzle.convertirXMLToJava("FichiersDeConfig/slickGame2.xml");
 		/*for(int i=0; i < this.puzzle.getListePiecesImages().size(); i++){
 			piecesImg.add(new Image(this.puzzle.getListePiecesImages().get(i)));
@@ -50,7 +53,7 @@ public class PuzzleGame extends BasicGameState {
 		/*for(int i=0; i < this.puzzle.getListePiecesTextes().size(); i++){
 			piecesTxt.add(this.puzzle.getListePiecesTextes().get(i));
 		}*/
-		ArrayList<String> list = this.puzzle.getListePiecesImages();
+		ArrayList<String> list = this.puzzle.getListeFragments();
 		PuzzlePieceImg p1 = new PuzzlePieceImg(1, new Image(list.get(0)), MainPuzzleGame.longueur/2-300, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
 		PuzzlePieceImg p2 = new PuzzlePieceImg(2, new Image(list.get(1)), MainPuzzleGame.longueur/2-50, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
 		PuzzlePieceImg p3 = new PuzzlePieceImg(3, new Image(list.get(2)), MainPuzzleGame.longueur/2+200, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
@@ -61,6 +64,10 @@ public class PuzzleGame extends BasicGameState {
 		piecesImg.add(p3);
 		piecesImg.add(p4);
 		piecesImg.add(p5);
+		
+		for (int i = 0; i < this.puzzle.getListeFragments().size(); i++){
+			currentMatriceOrder.add(-1);
+		}
 		
 	}
 
@@ -78,7 +85,7 @@ public class PuzzleGame extends BasicGameState {
 		
 		g.setColor(Color.black);
 		if(!indiceAsked){
-			drawStrings(puzzle.getIntitulePuzzle(), 145, 63, g);
+			drawStrings(puzzle.getIntitule(), 145, 63, g);
 		} else {
 			if(puzzle.getListeIndices().size() >= indiceIndex){
 				drawStrings(puzzle.getListeIndices().get(indiceIndex-1), 145, 63, g);
@@ -102,6 +109,38 @@ public class PuzzleGame extends BasicGameState {
 	    g.setColor(Color.white);
 		g.drawString(timer, (MainPuzzleGame.longueur-g.getFont().getWidth(timer))/2, MainPuzzleGame.hauteur-40);
 		
+		if(isGoodAnswer()){
+			container.pause();
+			//backgroundClip.close();
+			gameFinished = true;
+			
+			String str1 = "Game Over";
+			String str3 = "PRESS ENTER TO EXIT";
+			
+			float middleXstr1 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str1))/2;
+			float middleYstr1 = (MainOddWordOutGame.hauteur-g.getFont().getHeight(str1))/2-50;
+			float middleXstr3 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str3))/2;
+			float middleYstr3 = (MainOddWordOutGame.hauteur-g.getFont().getHeight(str3))/2+30;
+			g.setColor(Color.white);
+			g.drawString(str1, middleXstr1, middleYstr1);
+			
+			g.setColor(Color.white);
+			g.drawString(str3, middleXstr3, middleYstr3);	
+			
+			System.out.println("BONNE REPONSE !");
+		}
+	}
+	
+	public static boolean isGoodAnswer(){
+		int index = 0;
+		for(int i : currentMatriceOrder) {
+			if (i != index) {
+				return false;
+			} else {
+				index++;
+			}
+		}
+	    return true;
 	}
 	
 	public static void drawStrings(String text, int x, int y, Graphics g)
@@ -137,6 +176,9 @@ public class PuzzleGame extends BasicGameState {
     			}
     			indiceAsked = false;
     			indiceIndex = 0;
+    			for (int i = 0; i < this.puzzle.getListeFragments().size(); i++){
+    				currentMatriceOrder.set(i, -1);
+    			}
     		}
     		if (x > (MainPuzzleGame.longueur*3/4 - boutonIndices.getWidth()/2) && x < MainPuzzleGame.longueur*3/4 - boutonIndices.getWidth()/2+boutonIndices.getWidth()*0.7f  && y >(MainPuzzleGame.hauteur - boutonIndices.getHeight())/2-100 && y < (MainPuzzleGame.hauteur - boutonIndices.getHeight())/2-100+boutonIndices.getHeight()*0.7f){
     			indiceAsked = true;
@@ -146,25 +188,69 @@ public class PuzzleGame extends BasicGameState {
         		for (int i = 0; i < piecesImg.size(); i++){
     				if (x > piecesImg.get(i).getX() && x < piecesImg.get(i).getX()+piecesImg.get(i).getWidth() && y > piecesImg.get(i).getY() && y < piecesImg.get(i).getY()+piecesImg.get(i).getHeight()){
     					draggedPieceNumber = i;
+    					
+    					if(y > MainPuzzleGame.hauteur/2-50 && y < MainPuzzleGame.hauteur/2+50){
+    	        			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
+    	        				currentMatriceOrder.set(0, -1);
+    	        				System.out.println("Matrice n°0 vide");
+    	        			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
+    	        				currentMatriceOrder.set(1, -1);
+    	        				System.out.println("Matrice n°1 vide");
+    	        			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
+    	        				currentMatriceOrder.set(2, -1);
+    	        				System.out.println("Matrice n°2 vide");
+    	        			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
+    	        				currentMatriceOrder.set(3, -1);
+    	        				System.out.println("Matrice n°3 vide");
+    	        			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
+    	        				currentMatriceOrder.set(4, -1);
+    	        				System.out.println("Matrice n°4 vide");
+    	        			}
+    	        		}
     				}
     			}
         	} else {
         		if(y > MainPuzzleGame.hauteur/2-50 && y < MainPuzzleGame.hauteur/2+50){
         			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
+        				if (currentMatriceOrder.get(0) != -1){
+        					piecesImg.get(currentMatriceOrder.get(0)).resetPosition();
+        				}
         				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2-250);
         				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
+        				currentMatriceOrder.set(0, draggedPieceNumber);
+        				System.out.println("Matrice n°0 remplie !");
         			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
+        				if (currentMatriceOrder.get(1) != -1){
+        					piecesImg.get(currentMatriceOrder.get(1)).resetPosition();
+        				}
         				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2-150);
         				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
+        				currentMatriceOrder.set(1, draggedPieceNumber);
+        				System.out.println("Matrice n°1 remplie !");
         			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
+        				if (currentMatriceOrder.get(2) != -1){
+        					piecesImg.get(currentMatriceOrder.get(2)).resetPosition();
+        				}
         				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2-50);
         				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
+        				currentMatriceOrder.set(2, draggedPieceNumber);
+        				System.out.println("Matrice n°2 remplie !");
         			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
+        				if (currentMatriceOrder.get(3) != -1){
+        					piecesImg.get(currentMatriceOrder.get(3)).resetPosition();
+        				}
         				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2+50);
         				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
+        				currentMatriceOrder.set(3, draggedPieceNumber);
+        				System.out.println("Matrice n°3 remplie !");
         			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
+        				if (currentMatriceOrder.get(4) != -1){
+        					piecesImg.get(currentMatriceOrder.get(4)).resetPosition();
+        				}
         				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2+150);
         				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
+        				currentMatriceOrder.set(4, draggedPieceNumber);
+        				System.out.println("Matrice n°4 remplie !");
         			}
         		} else if (y < MainPuzzleGame.hauteur/2+50){
         			piecesImg.get(draggedPieceNumber).resetPosition();			
@@ -181,6 +267,16 @@ public class PuzzleGame extends BasicGameState {
         	piecesImg.get(draggedPieceNumber).setY(piecesImg.get(draggedPieceNumber).getY()+newy-oldy);
         }
     }
+	
+	public void keyPressed(int key, char c) {
+		switch (key){
+		case Input.KEY_ENTER:
+			if(gameFinished){
+				System.exit(0);
+			}
+			break;
+		}
+	}
 
 	@Override
 	public int getID() {

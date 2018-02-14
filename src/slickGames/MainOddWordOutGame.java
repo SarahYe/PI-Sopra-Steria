@@ -1,15 +1,10 @@
 package slickGames;
 
-import java.util.ArrayList;
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import modeles.Question;
-import modeles.Quiz;
-import modeles.Reponse;
 import slickGames.states.OddWordOutGame;
 
 

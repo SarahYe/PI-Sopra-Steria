@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<ns2:puzzle xmlns:ns2="org.arpit.javapostsforlearning.jaxb.Puzzle">
-    <intitulePuzzle>Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...</intitulePuzzle>
-    <listeIndices>Ceci est le premier indice du puzzle.</listeIndices>
-    <listeIndices>Ceci est le second indice du puzzle.</listeIndices>
-    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
-    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
-    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
-    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
-    <listePiecesImages>./Ressources/Images/boutonBleuP.png</listePiecesImages>
-</ns2:puzzle>
+<puzzle nomPuzzle="Puzzle Game 1">
+    <score_init>5000.0</score_init>
+    <decr_pts>75.0</decr_pts>
+    <decr_sec>15.0</decr_sec>
+    <score_min>500.0</score_min>
+    <intitule>Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...</intitule>
+    <fragmentType>Image</fragmentType>
+    <Fragments>
+        <Fragment>./Ressources/Images/boutonBleu.png</Fragment>
+        <Fragment>./Ressources/Images/boutonBleuP.png</Fragment>
+        <Fragment>./Ressources/Images/boutonJauneP.png</Fragment>
+        <Fragment>./Ressources/Images/boutonRouge.png</Fragment>
+        <Fragment>./Ressources/Images/boutonRougeP.png</Fragment>
+    </Fragments>
+    <Indices>
+        <Indice>Ceci est le premier indice du puzzle.</Indice>
+        <Indice>Ceci est le second indice du puzzle.</Indice>
+    </Indices>
+</puzzle>

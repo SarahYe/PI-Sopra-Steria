@@ -20,10 +20,10 @@ public class Puzzle {
 	
 	@XmlAttribute
 	String nomPuzzle;
-	Double score_init;
-	Double decr_pts;
-	Double decr_sec;
-	Double score_min;
+	Double score_init = 5000d;
+	Double decr_pts = 75d;
+	Double decr_sec = 15d;
+	Double score_min = 500d;
 	String intitule;
 	String fragmentType;
 	ArrayList<String> listeIndices;
@@ -42,6 +42,14 @@ public class Puzzle {
 		this.fragmentType = fragmentType;
 		this.listeIndices = listeIndices;
 		this.listeFragments = listeFragments;
+	}
+	
+	public Puzzle(String nomPuzzle, String intitule, String fragmentType, ArrayList<String> listeString1, ArrayList<String> listeString2){
+		this.nomPuzzle = nomPuzzle;
+		this.intitule = intitule;
+		this.fragmentType = fragmentType;
+		this.listeIndices = listeString1;
+		this.listeFragments = listeString2;	
 	}
 	
 	public String getNom() {
@@ -126,7 +134,7 @@ public class Puzzle {
 		this.listeFragments = listeFragments;
 	}
 	
-	public void convertirJavaToXML(Puzzle dialogue, String nomFichier) {
+	public void convertirJavaToXML(Puzzle puzzle, String nomFichier) {
 		try {
 
 			JAXBContext jaxbContext = JAXBContext.newInstance(Puzzle.class);
@@ -136,7 +144,7 @@ public class Puzzle {
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
 			File XMLfile = new File(nomFichier);
-			jaxbMarshaller.marshal(dialogue, XMLfile);
+			jaxbMarshaller.marshal(puzzle, XMLfile);
 
 		} catch (JAXBException e) {
 			e.printStackTrace();
@@ -147,18 +155,18 @@ public class Puzzle {
 
 	public Puzzle convertirXMLToJava(String nomFichier) {
 
-		Puzzle ac = new Puzzle();
+		Puzzle puzzle = new Puzzle();
 		
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(PNJ.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(Puzzle.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
 			File XMLfile = new File(nomFichier);
-			ac = (Puzzle) jaxbUnmarshaller.unmarshal(XMLfile);
+			puzzle = (Puzzle) jaxbUnmarshaller.unmarshal(XMLfile);
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
 
-		return ac;
+		return puzzle;
 	}
 }

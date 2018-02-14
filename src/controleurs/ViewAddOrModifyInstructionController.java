@@ -95,15 +95,6 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 		if (zoneEnonce.getText().isEmpty() || imageObjet.getText().isEmpty())
 				errorLabel.setVisible(true);
 		else {
-			/*zonePosX.textProperty().addListener(new ChangeListener<String>() {
-			    @Override
-			    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-			        if (!newValue.matches("\\d*")) {
-			        		zonePosX.setText(newValue.replaceAll("[^\\d]", ""));
-			        }
-			    }
-			});*/
-			
 			
 			if (modifyDialogueInterface) {	
 				if (tryParseDouble(zonePosX.getText()) && tryParseDouble(zonePosY.getText())) {  

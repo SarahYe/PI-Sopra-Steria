@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -93,13 +94,17 @@ public class ViewQuestionController implements Initializable {
 	private String xmlChronologie="";
 	private float niveauSon = -30.0f;
 	private boolean son;
-	private int score = 0;
+	private int score;
+	
+	HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
+	//private ArrayList<String> reponsesJoueur = new ArrayList<String>();
 
-	public void initData(Quiz quiz, int cmpt, boolean son) {
+	public void initData(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, boolean son) {
 		this.cmpt = cmpt;
 		this.quiz = quiz;
 		this.son=son;
-		if (son){
+		this.reponsesJoueur = reponsesJoueur;
+		if (son) {
 			niveauSon =  -30.0f;
 			volumeOn.setVisible(true);
 			volumeOff.setVisible(false);
@@ -261,6 +266,7 @@ public class ViewQuestionController implements Initializable {
 				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);
 			}
 			
+			//System.out.println(reponsesJoueur.);
 			buttonNextQue.setVisible(Boolean.TRUE);
 		}
 	}
@@ -268,8 +274,21 @@ public class ViewQuestionController implements Initializable {
 	@FXML
 	private void ClickButtonNextQue(ActionEvent event) throws IOException {
 		
+		if (intiRep1.isSelected())
+			reponsesJoueur.put(cmpt, intiRep1.getText().toString());
+		if (intiRep2.isSelected())
+			reponsesJoueur.put(cmpt, intiRep2.getText().toString());
+		if (intiRep3.isSelected())
+			reponsesJoueur.put(cmpt, intiRep3.getText().toString());
+		if (intiRep4.isSelected())
+			reponsesJoueur.put(cmpt, intiRep4.getText().toString());
+		if (intiRep5.isSelected())
+			reponsesJoueur.put(cmpt, intiRep5.getText().toString());
+		
 		if (quiz.getListeQuestions().size() == cmpt+1) {
-			if(soloBloc){
+			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "../vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
+			/*if(soloBloc){
 				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 				stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
 			} else {
@@ -282,12 +301,12 @@ public class ViewQuestionController implements Initializable {
 					stage.close();
 				}
 				
-			}
+			}*/
 			
 		} else {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 			//System.out.print(score);
-			Node node=JFxUtils.loadQuestion(quiz, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son);
+			Node node=JFxUtils.loadQuestion(quiz, reponsesJoueur, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {

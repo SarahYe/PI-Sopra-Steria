@@ -2,6 +2,7 @@ package controleurs;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -55,7 +56,7 @@ public class JFxUtils {
 		}
 	}
 	
-	public static Node loadQuestion(Quiz quiz, int cmpt, String fxml, String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie,boolean son) throws IOException {
+	public static Node loadQuestion(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, String fxml, String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie,boolean son) throws IOException {
 
 		FXMLLoader loader = new FXMLLoader();
 		try {
@@ -64,7 +65,7 @@ public class JFxUtils {
 			ViewQuestionController controller = loader.<ViewQuestionController>getController();
 			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
 			controller.setXML(xml);
-			controller.initData(quiz, cmpt,son);
+			controller.initData(quiz,reponsesJoueur, cmpt,son);
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
@@ -81,6 +82,21 @@ public class JFxUtils {
 
 		stage.show();
 		return stage;*/
+	}
+	
+	public static Node loadQuizReviewFxml(HashMap<Integer,String> reponsesJoueur, String fxml, String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewQuizRecapController controller = loader.<ViewQuizRecapController>getController();
+			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setXML(xml);
+			controller.initData(reponsesJoueur, son);
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
 	}
 	
 	public static Node loadPNJFxml(PNJ pnj, int cmpt, String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son) {
@@ -282,7 +298,8 @@ public class JFxUtils {
 		if (cmptChronologie<names.size()){
 			switch (names.get(cmptChronologie)){
 				case "Quiz" : try {
-					return loadQuestion(new Quiz(),0,"/vues/ViewQuestion.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son);
+					HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
+					return loadQuestion(new Quiz(), reponsesJoueur, 0,"/vues/ViewQuestion.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son);
 					} catch (IOException e1) {e1.printStackTrace();}
 				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son);
 				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son);

@@ -1,5 +1,7 @@
 package main;
 
+import java.util.HashMap;
+
 import controleurs.JFxUtils;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -12,12 +14,8 @@ public class MainQuiz extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		//System.setProperty( "file.encoding", "UTF-8" );
-
-		// Font.loadFont(getClass().getResourceAsStream("./Ressources/Polices/GoodMorning.ttf"),
-		// 12);
-		
-		stage.setScene(new Scene((Parent) JFxUtils.loadQuestion(new Quiz(),0,"/vues/ViewQuestion.fxml", "FichiersDeConfig/quiz.xml", true, 1, "Games/test/chronologie_test.xml",true), 850, 650));
+		HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
+		stage.setScene(new Scene((Parent) JFxUtils.loadQuestion(new Quiz(), reponsesJoueur, 0,"/vues/ViewQuestion.fxml", "FichiersDeConfig/quiz.xml", true, 1, "Games/test/chronologie_test.xml",true), 850, 650));
 		stage.setTitle("SeriousSécurité");
 		stage.show();
 		stage.sizeToScene();

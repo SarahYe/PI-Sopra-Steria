@@ -295,7 +295,7 @@ public class JFxUtils {
 					e.printStackTrace();
 				}
 					return null;
-				case "Score" :
+				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0/*score*/);
 			}
 		}
 		

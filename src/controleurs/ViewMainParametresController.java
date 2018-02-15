@@ -74,9 +74,9 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
-		listFxmlBlocsParam.add("/vues/AccueilParametres.fxml");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add(" ");
+		listFxmlBlocsParam.add("/vues/AccueilParametres.fxml");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add("/vues/ViewScoreParametres.fxml");
 		listFxmlBlocsParam.add("/vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add("/vues/ViewPNJParametres.fxml");listFxmlBlocsParam.add("/vues/PageExplicationParametrage.fxml");
-		listFxmlBlocs.add("/vues/Accueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add(" ");
+		listFxmlBlocs.add("/vues/Accueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("/vues/ViewScore.fxml");
 		listFxmlBlocs.add("/vues/QuizAccueil.fxml");listFxmlBlocs.add("/vues/ViewPNJ.fxml");listFxmlBlocs.add("/vues/PageExplication.fxml");
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
@@ -172,19 +172,27 @@ public class ViewMainParametresController implements Initializable{
 			 	case 0 :
 			 		newPane= JFxUtils.loadAccueilParamFxml(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
+				 	break;
 			 	case 1 :
 			 		newPane= JFxUtils.loadParamOddWordOutGame(fxml, xml);
 			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		break;
 			 	case 2 :
+			 		newPane=JFxUtils.loadScoreParam(fxml, xml);
+			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		break;
 			 	case 3 :
 				 	newPane= JFxUtils.loadParamQuiz(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
+				 	break;
 			 	case 4 :
 			 		newPane= JFxUtils.loadPNJParamFxml(fxml, xml);
 			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		break;
 			 	case 5 :
 			 		newPane= JFxUtils.loadExplicationParamFxml(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
+				 	break;
 			 	default :
 			 }
 			/*FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));

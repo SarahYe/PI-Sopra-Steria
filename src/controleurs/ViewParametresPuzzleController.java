@@ -244,7 +244,135 @@ public class ViewParametresPuzzleController implements Initializable {
 	public void initData() {
 		File f =  new File(xml);
 		if (f.exists()) {
-			
+			 defaultScoring.setSelected(false);
+			 Puzzle puzzleFile = new Puzzle();
+			 Puzzle p = puzzleFile.convertirXMLToJava("FichiersDeConfig/puzzle.xml");
+			 decr_points.setText("" + p.getDecr_pts());
+			 decr_points.setDisable(false);
+			 score_init.setText("" + p.getScore_init());
+			 score_init.setDisable(false);
+			 decr_sec.setText("" + p.getDecr_sec());
+			 decr_sec.setDisable(false);
+			 score_min.setText("" + p.getScore_min());
+			 score_min.setDisable(false);
+			 int nbFrag = p.getListeFragments().size();
+			 switch (nbFrag) {
+			 case 4:
+				 formatPuzzle.setValue("1x4");
+				 frag1_4.setVisible(true);
+	    			 frag1_5.setVisible(false);
+	    			 frag1_6.setVisible(false);
+ 
+	    			if (p.getFragmentType().equals("Texte")) {
+		    			puzzleImage.setSelected(false);
+			    		btnTelechargerfrag1_4_1.setVisible(false);
+			    		btnTelechargerfrag1_4_2.setVisible(false);
+			    		btnTelechargerfrag1_4_3.setVisible(false);
+			    		btnTelechargerfrag1_4_4.setVisible(false);
+	    			} else {
+	    				puzzleImage.setSelected(true);
+			    		btnTelechargerfrag1_4_1.setVisible(true);
+			    		btnTelechargerfrag1_4_2.setVisible(true);
+			    		btnTelechargerfrag1_4_3.setVisible(true);
+			    		btnTelechargerfrag1_4_4.setVisible(true);
+	    			}
+		    		
+		    		frag1_4_1.setText(p.getListeFragments().get(0));
+		    		frag1_4_2.setText(p.getListeFragments().get(1));
+		    		frag1_4_3.setText(p.getListeFragments().get(2));
+		    		frag1_4_4.setText(p.getListeFragments().get(3));
+		    		break;
+			 case 5:
+				 formatPuzzle.setValue("1x5");
+				 frag1_4.setVisible(false);
+	    			 frag1_5.setVisible(true);
+	    			 frag1_6.setVisible(false);
+ 
+	    			if (p.getFragmentType().equals("Texte")) {
+		    			puzzleImage.setSelected(false);
+			    		btnTelechargerfrag1_5_1.setVisible(false);
+			    		btnTelechargerfrag1_5_2.setVisible(false);
+			    		btnTelechargerfrag1_5_3.setVisible(false);
+			    		btnTelechargerfrag1_5_4.setVisible(false);
+			    		btnTelechargerfrag1_5_5.setVisible(false);
+	    			} else {
+	    				puzzleImage.setSelected(true);
+			    		btnTelechargerfrag1_5_1.setVisible(true);
+			    		btnTelechargerfrag1_5_2.setVisible(true);
+			    		btnTelechargerfrag1_5_3.setVisible(true);
+			    		btnTelechargerfrag1_5_4.setVisible(true);
+			    		btnTelechargerfrag1_5_5.setVisible(true);
+	    			}
+		    		
+		    		frag1_5_1.setText(p.getListeFragments().get(0));
+		    		frag1_5_2.setText(p.getListeFragments().get(1));
+		    		frag1_5_3.setText(p.getListeFragments().get(2));
+		    		frag1_5_4.setText(p.getListeFragments().get(3));
+		    		frag1_5_5.setText(p.getListeFragments().get(4));
+		    		break;
+			 case 6:
+				 formatPuzzle.setValue("1x6");
+				 frag1_4.setVisible(false);
+	    			 frag1_5.setVisible(false);
+	    			 frag1_6.setVisible(true);
+ 
+	    			if (p.getFragmentType().equals("Texte")) {
+		    			puzzleImage.setSelected(false);
+			    		btnTelechargerfrag1_6_1.setVisible(false);
+			    		btnTelechargerfrag1_6_2.setVisible(false);
+			    		btnTelechargerfrag1_6_3.setVisible(false);
+			    		btnTelechargerfrag1_6_4.setVisible(false);
+			    		btnTelechargerfrag1_6_5.setVisible(false);
+			    		btnTelechargerfrag1_6_6.setVisible(false);
+	    			} else {
+	    				puzzleImage.setSelected(true);
+			    		btnTelechargerfrag1_6_1.setVisible(true);
+			    		btnTelechargerfrag1_6_2.setVisible(true);
+			    		btnTelechargerfrag1_6_3.setVisible(true);
+			    		btnTelechargerfrag1_6_4.setVisible(true);
+			    		btnTelechargerfrag1_6_5.setVisible(true);
+			    		btnTelechargerfrag1_6_6.setVisible(true);
+	    			}
+		    		
+		    		frag1_6_1.setText(p.getListeFragments().get(0));
+		    		frag1_6_2.setText(p.getListeFragments().get(1));
+		    		frag1_6_3.setText(p.getListeFragments().get(2));
+		    		frag1_6_4.setText(p.getListeFragments().get(3));
+		    		frag1_6_5.setText(p.getListeFragments().get(4));
+		    		frag1_6_6.setText(p.getListeFragments().get(4));
+		    		break;
+			 }
+			 
+			 description.setText(p.getIntitule());
+			 switch (p.getListeIndices().size()) {
+			 case 1:
+				 nbIndices.setValue(1);
+				 indice1.setText(p.getListeIndices().get(0));
+	    			lbl_ind2.setVisible(false);
+	    			indice2.setVisible(false);
+	    			lbl_ind3.setVisible(false);
+	    			indice3.setVisible(false);
+				 break;
+			 case 2:
+				 nbIndices.setValue(2);
+				 indice1.setText(p.getListeIndices().get(0));
+				 indice2.setText(p.getListeIndices().get(1));
+	    			lbl_ind2.setVisible(true);
+	    			indice2.setVisible(true);
+	    			lbl_ind3.setVisible(false);
+	    			indice3.setVisible(false);
+				 break;
+			 case 3:
+				 nbIndices.setValue(3);
+				 indice1.setText(p.getListeIndices().get(0));
+				 indice2.setText(p.getListeIndices().get(1));
+				 indice3.setText(p.getListeIndices().get(2));
+	    			lbl_ind2.setVisible(true);
+	    			indice2.setVisible(true);
+	    			lbl_ind3.setVisible(true);
+	    			indice3.setVisible(true);
+			 }
+			 
 		} else {
 			System.out.println("\"" + xml + "\" doesn't exist");
 		}	

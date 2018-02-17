@@ -12,7 +12,7 @@ public class ParametresAccueil extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-
+		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		stage.setScene(new Scene((Parent) JFxUtils.loadAccueilParamFxml("../vues/AccueilParametres.fxml","FichiersDeConfig/accueil.xml"), 850, 650));
 		stage.setTitle("Paramétrage d'un accueil");
 		stage.show();

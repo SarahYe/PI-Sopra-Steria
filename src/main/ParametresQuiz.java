@@ -16,16 +16,7 @@ public class ParametresQuiz extends Application {
 	}
 
 	public void start(Stage stage) throws IOException {
-
-		/*primaryStage.setTitle("Paramétrage d'un quiz");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewParametresQuiz.fxml"));
-		primaryStage.setScene(new Scene(loader.load()));
-		//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
-
-		//controller.initData(controller);
-		primaryStage.show();
-		primaryStage.sizeToScene();*/
-		
+		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		stage.setScene(new Scene((Parent) JFxUtils.loadParamQuiz("/vues/ViewParametresQuiz.fxml","FichiersDeConfig/quiz.xml"), 850, 650));
 		stage.setTitle("SeriousSécurité");
 		stage.show();

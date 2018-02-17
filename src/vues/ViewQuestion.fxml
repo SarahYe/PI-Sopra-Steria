@@ -230,12 +230,12 @@
             <DropShadow />
          </effect>
       </Separator>
-      <ImageView fx:id="faux" fitHeight="99.0" fitWidth="87.0" layoutX="550.0" layoutY="538.7941589355469" pickOnBounds="true" preserveRatio="true" rotate="-56.3" visible="false" AnchorPane.bottomAnchor="69.32733917236328" AnchorPane.rightAnchor="213.0">
+      <ImageView fx:id="faux" fitHeight="99.0" fitWidth="87.0" layoutX="550.0" layoutY="538.7941589355469" pickOnBounds="true" preserveRatio="true" rotate="-56.3" visible="false" AnchorPane.rightAnchor="213.0">
          <image>
             <Image url="@../../Ressources/Images/croixRouge.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="106.0" layoutX="547.0000915527344" layoutY="545.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="77.0" AnchorPane.rightAnchor="204.3060302734375">
+      <ImageView fx:id="vrai" fitHeight="78.0" fitWidth="106.0" layoutX="547.0000915527344" layoutY="545.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="204.3060302734375">
          <image>
             <Image url="@../../Ressources/Images/checkVert.png" />
          </image>

@@ -181,9 +181,21 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
-		Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-		stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
-		//stage.getScene().setRoot((Parent) JFxUtils.loadFxml("../vues/QuizAccueil.fxml"));
+		//Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+		//stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
+		if(soloBloc){
+			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+			stage.close();
+		} else {
+			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+			/****Previous bloc****/
+			/*Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+			if (node!=null){
+				stage.setScene(new Scene((Parent) node, 850, 650));
+			} else {
+				stage.close();
+			}*/
+		}
 	}
 
 	@FXML

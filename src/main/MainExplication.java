@@ -10,7 +10,7 @@ public class MainExplication extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-
+		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationFxml("/vues/PageExplication.fxml","FichiersDeConfig/explication.xml", true, 0, "Games/test/chronologie_test",true), 850, 650));
 		stage.setTitle("SériousSécurité");
 		stage.show();

@@ -66,7 +66,7 @@ public class ViewPNJController implements Initializable {
 		File f =  new File(xml);
 		if (f.exists()){
 			this.pnj = pnj.convertirXMLToJava(xml);
-			System.out.println(this.pnj.getListeDialogues().size());
+			//System.out.println(this.pnj.getListeDialogues().size());
 			
 			dial = this.pnj.getListeDialogues().get(cmpt);
 			remplissageContentDialogue(dial);
@@ -95,7 +95,7 @@ public class ViewPNJController implements Initializable {
 	    String content = descImp;
 	    animation = new Transition() {
 	        {
-	            setCycleDuration(Duration.millis(5000));
+	            setCycleDuration(Duration.millis(content.length() * 50));
 	        }
 	        protected void interpolate(double frac) {
 	            final int length = content.length();

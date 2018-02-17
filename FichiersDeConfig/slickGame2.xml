@@ -4,7 +4,7 @@
     <decr_pts>75.0</decr_pts>
     <decr_sec>15.0</decr_sec>
     <score_min>500.0</score_min>
-    <intitule>Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...</intitule>
+    <intitule>Ceci est la question/intitul�/description de cette instance du jeu de puzzle. Puzzle en cours de d�veloppement, veuillez patienter...</intitule>
     <fragmentType>Image</fragmentType>
     <Fragments>
         <Fragment>./Ressources/Images/boutonBleu.png</Fragment>

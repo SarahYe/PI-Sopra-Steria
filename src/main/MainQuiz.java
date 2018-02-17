@@ -13,7 +13,7 @@ public class MainQuiz extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
 		stage.setScene(new Scene((Parent) JFxUtils.loadQuestion(new Quiz(), reponsesJoueur, 0,"/vues/ViewQuestion.fxml", "FichiersDeConfig/quiz.xml", true, 1, "Games/test/chronologie_test.xml",true), 850, 650));
 		stage.setTitle("SeriousSécurité");

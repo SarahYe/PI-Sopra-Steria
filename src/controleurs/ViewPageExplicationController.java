@@ -51,14 +51,17 @@ public class ViewPageExplicationController implements Initializable {
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
 	private boolean son;
+	private int score;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
 	
-	public void initData(boolean son){
+	public void initData(boolean son, int score){
 		this.son=son;
+		this.score=score;
+		
 		Explication expl = new Explication();
 		File f =  new File(xml);
 		if (f.exists()){
@@ -112,7 +115,7 @@ public class ViewPageExplicationController implements Initializable {
 			stage.close();
 		} else {
 			Stage stage = (Stage) buttonSuivant.getScene().getWindow();
-			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son,score);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {

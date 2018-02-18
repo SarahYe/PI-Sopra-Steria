@@ -72,7 +72,7 @@ public class ViewMainParametresController implements Initializable{
 		
 		System.out.println("ouverture page MainParametre");
 		//Initialisation du contenu des listes servant a faire compteur
-		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score/Resultat Jeu");
+		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
 		listFxmlBlocsParam.add("/vues/AccueilParametres.fxml");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add("/vues/ViewScoreParametres.fxml");
 		listFxmlBlocsParam.add("/vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add("/vues/ViewPNJParametres.fxml");listFxmlBlocsParam.add("/vues/PageExplicationParametrage.fxml");

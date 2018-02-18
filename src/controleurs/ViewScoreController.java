@@ -58,7 +58,7 @@ public class ViewScoreController implements Initializable{
 		try {
 		   SAXParserFactory factory = SAXParserFactory.newInstance();
 		   SAXParser parser = factory.newSAXParser();
-		   parser.parse("FichiersDeConfig/score.xml", new DefaultHandler() {
+		   parser.parse(xml, new DefaultHandler() {
 		    public void startDocument() throws SAXException {}
 		    public void endDocument() throws SAXException {}
 		    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {

@@ -47,6 +47,7 @@ public class ViewPNJController implements Initializable {
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
 	private boolean son;
+	private int score;
 	private PNJ pnj = new PNJ();
 	private int cmpt;
 	private Dialogue dial;
@@ -58,10 +59,11 @@ public class ViewPNJController implements Initializable {
 		//boutonNext.setVisible(false);
 	}
 	
-	public void initData(PNJ pnj, int cmpt, boolean son) {
+	public void initData(PNJ pnj, int cmpt, boolean son, int score) {
 		this.cmpt = cmpt;
 		this.pnj = pnj; 
 		this.son=son;
+		this.score=score;
 		
 		File f =  new File(xml);
 		if (f.exists()){
@@ -124,11 +126,11 @@ public class ViewPNJController implements Initializable {
 		if (pnj.getListeDialogues().size() == cmpt+1) {
 			if(soloBloc){
 				Stage stage = (Stage) boutonNext.getScene().getWindow();
-				stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test",son), 850, 650));
+				stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test",son, score), 850, 650));
 			} else {
 				Stage stage = (Stage) boutonNext.getScene().getWindow();
 				//System.out.print(score);
-				Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son);
+				Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
 				
 				if (node != null){
 					stage.setScene(new Scene((Parent) node, 850, 650));
@@ -139,7 +141,7 @@ public class ViewPNJController implements Initializable {
 			}
 		} else {
 			Stage stage = (Stage) boutonNext.getScene().getWindow();
-			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
+			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
 			stage.show();
 		}
 		

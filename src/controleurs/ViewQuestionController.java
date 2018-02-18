@@ -99,10 +99,11 @@ public class ViewQuestionController implements Initializable {
 	HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
 	//private ArrayList<String> reponsesJoueur = new ArrayList<String>();
 
-	public void initData(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, boolean son) {
+	public void initData(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, boolean son, int score) {
 		this.cmpt = cmpt;
 		this.quiz = quiz;
 		this.son=son;
+		this.score=score;
 		this.reponsesJoueur = reponsesJoueur;
 		if (son) {
 			niveauSon =  -30.0f;
@@ -299,7 +300,7 @@ public class ViewQuestionController implements Initializable {
 		
 		if (quiz.getListeQuestions().size() == cmpt+1) {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "../vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son), 850, 650));
+			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "../vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
 			/*if(soloBloc){
 				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 				stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
@@ -318,7 +319,7 @@ public class ViewQuestionController implements Initializable {
 		} else {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 			//System.out.print(score);
-			Node node=JFxUtils.loadQuestion(quiz, reponsesJoueur, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son);
+			Node node=JFxUtils.loadQuestion(quiz, reponsesJoueur, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {

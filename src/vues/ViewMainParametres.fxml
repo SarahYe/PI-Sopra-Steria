@@ -95,7 +95,7 @@
                                           <ToggleButton fx:id="TBT_BlcAccueil" layoutX="15.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="62.0" prefWidth="98.0" text="Accueil" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                           <ToggleButton layoutX="135.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="62.0" prefWidth="98.0" text="Jeu Cherche l'Intrus" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                           <ToggleButton fx:id="TBT_BlcPNJ" layoutX="495.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="62.0" prefWidth="98.0" text="Dialogue PNJ" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
-                                          <ToggleButton fx:id="TBT_BlcScr" layoutX="255.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="62.0" prefWidth="98.0" text="Score/Resultat Jeu" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
+                                          <ToggleButton fx:id="TBT_BlcScr" layoutX="255.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="62.0" prefWidth="98.0" text="Score" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                           <ToggleButton fx:id="TBT_BlcExpl" layoutX="375.0" layoutY="14.0" mnemonicParsing="false" onAction="#ClickBT_AjtBlc" prefHeight="62.0" prefWidth="98.0" text="Page d'explication" textAlignment="CENTER" toggleGroup="$blocs" wrapText="true" />
                                        </children>
                                     </AnchorPane>

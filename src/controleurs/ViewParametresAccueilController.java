@@ -371,7 +371,7 @@ public class ViewParametresAccueilController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/Accueil.fxml"));
 		stage.setScene(new Scene(loader.load()));
 		ViewAccueilController controller = loader.<ViewAccueilController>getController();
-		controller.initData("FichiersDeConfig/accueil.xml", true);
+		controller.initData("FichiersDeConfig/accueil.xml", true,0);
 		stage.show();
 
 	}

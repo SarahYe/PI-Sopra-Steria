@@ -54,14 +54,16 @@ public class ViewAccueilController implements Initializable{
 	private int cmptChronologie=0;
 	private String xmlChronologie="";
 	private boolean son;
+	private int score;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 	
-	public void initData(String xml,boolean son) {
+	public void initData(String xml,boolean son, int score) {
 		this.son=son;
+		this.score=score;
 
 		Accueil accueil = new Accueil();
 		File f =  new File(xml);
@@ -129,7 +131,7 @@ public class ViewAccueilController implements Initializable{
 			stage.close();
 		} else {
 			Stage stage = (Stage) buttonJouer.getScene().getWindow();
-			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {

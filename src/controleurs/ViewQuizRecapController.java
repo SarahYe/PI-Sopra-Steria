@@ -45,6 +45,7 @@ public class ViewQuizRecapController implements Initializable {
 	private int nbCorrect;
 	private int nbIncorrect;
 	private boolean son;
+	private int score;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -58,10 +59,11 @@ public class ViewQuizRecapController implements Initializable {
 		this.xmlChronologie=xmlChronologie;
 	}
 
-	public void initData(HashMap<Integer,String> reponsesJoueur, boolean son) {
+	public void initData(HashMap<Integer,String> reponsesJoueur, boolean son, int score) {
 		this.reponsesJoueur = reponsesJoueur;
 		//this.quiz = quiz;
 		this.son=son;
+		this.score=score;
 
 		File f =  new File(xml);
 		if (f.exists()){
@@ -146,7 +148,7 @@ public class ViewQuizRecapController implements Initializable {
 			stage.close();
 		} else {
 			Stage stage = (Stage) buttonSuivant.getScene().getWindow();
-			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son,score);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {

@@ -1,8 +1,5 @@
 package slickGames.entite;
 
-import java.util.Random;
-
-import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -51,6 +48,10 @@ public class PuzzlePieceImg {
 		return sprite;
 	}
 	
+	public int getCorrectPos(){
+		return correctPos;
+	}
+	
 	public void setX(float x) {
 		this.x = x;
 	}
@@ -69,6 +70,10 @@ public class PuzzlePieceImg {
 	
 	public void setSprite(Image sprite) {
 		this.sprite = sprite;
+	}
+	
+	public void setCorrectPos(int correctPos) {
+		this.correctPos = correctPos;
 	}
 	
 	public void move(int dt){

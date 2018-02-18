@@ -18,15 +18,14 @@ public class MainPuzzleGame extends StateBasedGame{
 	public static void main(String[] args) throws SlickException {
 			
 		ArrayList<String> listeImg = new ArrayList<String>();
-		listeImg.add("./Ressources/Images/boutonBleu.png");
-		listeImg.add("./Ressources/Images/boutonBleuP.png");
-		listeImg.add("./Ressources/Images/boutonJauneP.png");
-		listeImg.add("./Ressources/Images/boutonRouge.png");
-		listeImg.add("./Ressources/Images/boutonRougeP.png");
+		listeImg.add("./Ressources/Images/flame1.png");
+		listeImg.add("./Ressources/Images/flame2.png");
+		listeImg.add("./Ressources/Images/flame3.png");
+		listeImg.add("./Ressources/Images/flame4.png");
 		ArrayList<String> listeIndices = new ArrayList<String>();
-		listeIndices.add("Ceci est le premier indice du puzzle.");
-		listeIndices.add("Ceci est le second indice du puzzle.");
-		Puzzle puzzle = new Puzzle("Puzzle Game 1", "Ceci est la question/intitulé/description de cette instance du jeu de puzzle. Puzzle en cours de développement, veuillez patienter...","Image",listeIndices, listeImg); 
+		listeIndices.add("Indice n°1 : La flamme la plus proche du jaune indique une température plus faible que les autres flammes.");
+		listeIndices.add("Indice n°2 : La flamme la plus proche du bleu indique une température très élevée !");
+		Puzzle puzzle = new Puzzle("Puzzle Game 1", "Trier les flammes afin d'obtenir celles de plus basse température à gauche et celles correspondantes à des températures plus élevées à droite.","Image",listeIndices, listeImg); 
 		puzzle.convertirJavaToXML(puzzle, "FichiersDeConfig/slickGame2.xml");
 		 
 		

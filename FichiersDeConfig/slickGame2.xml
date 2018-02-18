@@ -4,17 +4,16 @@
     <decr_pts>75.0</decr_pts>
     <decr_sec>15.0</decr_sec>
     <score_min>500.0</score_min>
-    <intitule>Ceci est la question/intitul�/description de cette instance du jeu de puzzle. Puzzle en cours de d�veloppement, veuillez patienter...</intitule>
+    <intitule>Trier les flammes afin d'obtenir celles de plus basse température à gauche et celles correspondantes à des températures plus élevées à droite.</intitule>
     <fragmentType>Image</fragmentType>
     <Fragments>
-        <Fragment>./Ressources/Images/boutonBleu.png</Fragment>
-        <Fragment>./Ressources/Images/boutonBleuP.png</Fragment>
-        <Fragment>./Ressources/Images/boutonJauneP.png</Fragment>
-        <Fragment>./Ressources/Images/boutonRouge.png</Fragment>
-        <Fragment>./Ressources/Images/boutonRougeP.png</Fragment>
+        <Fragment>./Ressources/Images/flame1.png</Fragment>
+        <Fragment>./Ressources/Images/flame2.png</Fragment>
+        <Fragment>./Ressources/Images/flame3.png</Fragment>
+        <Fragment>./Ressources/Images/flame4.png</Fragment>
     </Fragments>
     <Indices>
-        <Indice>Ceci est le premier indice du puzzle.</Indice>
-        <Indice>Ceci est le second indice du puzzle.</Indice>
+        <Indice>Indice n°1 : La flamme la plus proche du jaune indique une température plus faible que les autres flammes.</Indice>
+        <Indice>Indice n°2 : La flamme la plus proche du bleu indique une température très élevée !</Indice>
     </Indices>
 </puzzle>

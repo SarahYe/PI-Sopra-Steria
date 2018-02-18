@@ -3,7 +3,9 @@ package slickGames.states;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -40,6 +42,7 @@ public class PuzzleGame extends BasicGameState {
 	public int indiceIndex = 0;
 	public Image bandeTitre, titre, personnage, bulleDialogue, puzzleMatrice, boutonIndices;
 	public Image flecheReset;
+	public Image volumeImg;
 	public Puzzle puzzle;
 	public boolean indiceAsked = false;
 	
@@ -51,36 +54,72 @@ public class PuzzleGame extends BasicGameState {
 		titre = new Image("./Ressources/Images/SeriousSecurity.png");
 		personnage = new Image("./Ressources/Images/perso.png");
 		bulleDialogue = new Image("./Ressources/Images/bulleDialogue2.png");
-		puzzleMatrice = new Image("./Ressources/Images/puzzleMatrice5.png");
 		boutonIndices = new Image("./Ressources/Images/boutonIndices.png");
 		flecheReset = new Image("./Ressources/Images/flecheReset.png");
 		
 		ArrayList<String> listeString = new ArrayList<String>();
 		Puzzle puzzle = new Puzzle("","","",listeString,listeString);
 		this.puzzle = puzzle.convertirXMLToJava("FichiersDeConfig/slickGame2.xml");
-		/*for(int i=0; i < this.puzzle.getListePiecesImages().size(); i++){
-			piecesImg.add(new Image(this.puzzle.getListePiecesImages().get(i)));
-		}*/
-		/*for(int i=0; i < this.puzzle.getListePiecesTextes().size(); i++){
-			piecesTxt.add(this.puzzle.getListePiecesTextes().get(i));
-		}*/
-		ArrayList<String> list = this.puzzle.getListeFragments();
-		PuzzlePieceImg p1 = new PuzzlePieceImg(1, new Image(list.get(0)), MainPuzzleGame.longueur/2-300, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
-		PuzzlePieceImg p2 = new PuzzlePieceImg(2, new Image(list.get(1)), MainPuzzleGame.longueur/2-50, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
-		PuzzlePieceImg p3 = new PuzzlePieceImg(3, new Image(list.get(2)), MainPuzzleGame.longueur/2+200, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
-		PuzzlePieceImg p4 = new PuzzlePieceImg(4, new Image(list.get(3)), MainPuzzleGame.longueur/2-175, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+220);
-		PuzzlePieceImg p5 = new PuzzlePieceImg(5, new Image(list.get(4)), MainPuzzleGame.longueur/2+75, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+220);
-		piecesImg.add(p1);
-		piecesImg.add(p2);
-		piecesImg.add(p3);
-		piecesImg.add(p4);
-		piecesImg.add(p5);
 		
-		for (int i = 0; i < this.puzzle.getListeFragments().size(); i++){
+		ArrayList<String> list = this.puzzle.getListeFragments();
+		ArrayList<Integer> listCorrectPos = new ArrayList<Integer>();
+		for (int i = 0; i < list.size(); i++){
+			listCorrectPos.add(i);
+		}
+		long seed = System.nanoTime();
+		Collections.shuffle(list, new Random(seed));
+		Collections.shuffle(listCorrectPos, new Random(seed));
+		
+		if(this.puzzle.getFragmentType().equals("Image")){
+			puzzleMatrice = new Image("./Ressources/Images/puzzleMatrice"+list.size()+".png");		
+			if(list.size() <= 4){
+				float partX = MainPuzzleGame.longueur/(2*list.size()+1);
+				int indexX = 1;
+				for (int i = 0; i < list.size(); i++){
+					piecesImg.add(new PuzzlePieceImg(listCorrectPos.get(i), new Image(list.get(i)), partX*indexX, (MainPuzzleGame.hauteur*3)/4-50));
+					System.out.println("Ajout pièce correctPos : "+listCorrectPos.get(i));
+					indexX+=2;
+				}
+			} else if (list.size() == 5){
+				PuzzlePieceImg p1 = new PuzzlePieceImg(listCorrectPos.get(0), new Image(list.get(0)), MainPuzzleGame.longueur/2-300, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
+				PuzzlePieceImg p2 = new PuzzlePieceImg(listCorrectPos.get(1), new Image(list.get(1)), MainPuzzleGame.longueur/2-50, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
+				PuzzlePieceImg p3 = new PuzzlePieceImg(listCorrectPos.get(2), new Image(list.get(2)), MainPuzzleGame.longueur/2+200, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+120);
+				PuzzlePieceImg p4 = new PuzzlePieceImg(listCorrectPos.get(3), new Image(list.get(3)), MainPuzzleGame.longueur/2-175, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+220);
+				PuzzlePieceImg p5 = new PuzzlePieceImg(listCorrectPos.get(4), new Image(list.get(4)), MainPuzzleGame.longueur/2+75, (MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2+220);
+				piecesImg.add(p1);
+				piecesImg.add(p2);
+				piecesImg.add(p3);
+				piecesImg.add(p4);
+				piecesImg.add(p5);
+			} else if (list.size() == 6){
+				float partX = MainPuzzleGame.longueur/(list.size()+1);
+				int indexX1 = 1;
+				int indexX2 = 1;
+				int indexY1 = 4;
+				int indexY2 = 5;
+				for (int i = 0; i < list.size(); i++){
+					if(i < list.size()/2){
+						piecesImg.add(new PuzzlePieceImg(listCorrectPos.get(i), new Image(list.get(i)), partX*indexX1 , (MainPuzzleGame.hauteur*indexY1)/6-50));
+						indexX1+=2;
+					} else {
+						piecesImg.add(new PuzzlePieceImg(listCorrectPos.get(i), new Image(list.get(i)), partX*indexX2 , (MainPuzzleGame.hauteur*indexY2)/6-50));
+						indexX2+=2;
+					}
+					
+				}
+			}
+		}
+		
+		for (int i = 0; i < list.size(); i++){
 			currentMatriceOrder.add(-1);
 		}
 		
-		PuzzleGame.jouerAudio("./Ressources/Sons/musicJeuPuzzle.wav", -18.0f, true);
+		if(gameMuted){
+			volumeImg = new Image("./Ressources/Images/volume_off.png");
+		} else {
+			volumeImg = new Image("./Ressources/Images/volume_on.png");
+			PuzzleGame.jouerAudio("./Ressources/Sons/musicJeuPuzzle.wav", -18.0f, true);
+		}
 		
 	}
 
@@ -92,9 +131,12 @@ public class PuzzleGame extends BasicGameState {
 		titre.draw((MainPuzzleGame.longueur - titre.getWidth()*0.15f)/2, -8, 0.15f);
 		bulleDialogue.draw(personnage.getWidth()*25/100 - 20, 50, 1.0f);
 		personnage.draw(30, 65, 0.3f);
-		puzzleMatrice.draw((MainPuzzleGame.longueur - puzzleMatrice.getWidth())/2,(MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2);
 		boutonIndices.draw(MainPuzzleGame.longueur*3/4 - boutonIndices.getWidth()/2,(MainPuzzleGame.hauteur - boutonIndices.getHeight())/2-100, 0.7f);
 		flecheReset.draw((MainPuzzleGame.longueur - flecheReset.getWidth())/2,(MainPuzzleGame.hauteur - flecheReset.getHeight())/2-100, 0.7f);
+		
+		if(this.puzzle.getFragmentType().equals("Image")){
+			puzzleMatrice.draw((MainPuzzleGame.longueur - puzzleMatrice.getWidth())/2,(MainPuzzleGame.hauteur - puzzleMatrice.getHeight())/2);
+		}
 		
 		g.setColor(Color.black);
 		if(!indiceAsked){
@@ -106,11 +148,12 @@ public class PuzzleGame extends BasicGameState {
 				drawStrings("Il n'y a plus d'indice pour ce puzzle...", 145, 63, g);
 			}		
 		}
-		
-		
+				
 		for (int i = 0; i < piecesImg.size(); i++){
 			piecesImg.get(i).render(container, game, g);
 		}
+		
+		volumeImg.draw(5, 5, 25, 25);
 		
 		int mins = (int) chrono / (60*1000);
 	    int remainder = (int) chrono/1000 - mins * 60;
@@ -194,6 +237,12 @@ public class PuzzleGame extends BasicGameState {
 		
 		chrono += delta;
 		
+		if (container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
+	    	if(container.getInput().getMouseX() > 5 && container.getInput().getMouseX() < 30 && container.getInput().getMouseY() > 5 && container.getInput().getMouseY() < 30){
+	    		muteUnmuteGame();
+	    	}
+	    }
+		
 	}
 	
     @Override
@@ -221,68 +270,13 @@ public class PuzzleGame extends BasicGameState {
 	    					draggedPieceNumber = i;
 	    					PuzzleGame.jouerAudio("./Ressources/Sons/draggedOn.wav", -22.0f, false);
 	    					if(y > MainPuzzleGame.hauteur/2-50 && y < MainPuzzleGame.hauteur/2+50){
-	    	        			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
-	    	        				currentMatriceOrder.set(0, -1);
-	    	        				System.out.println("Matrice n°0 vide");
-	    	        			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
-	    	        				currentMatriceOrder.set(1, -1);
-	    	        				System.out.println("Matrice n°1 vide");
-	    	        			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
-	    	        				currentMatriceOrder.set(2, -1);
-	    	        				System.out.println("Matrice n°2 vide");
-	    	        			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
-	    	        				currentMatriceOrder.set(3, -1);
-	    	        				System.out.println("Matrice n°3 vide");
-	    	        			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
-	    	        				currentMatriceOrder.set(4, -1);
-	    	        				System.out.println("Matrice n°4 vide");
-	    	        			}
+	    						changeMatriceInfos(x);
 	    	        		}
 	    				}
 	    			}
 	        	} else {
 	        		if(y > MainPuzzleGame.hauteur/2-50 && y < MainPuzzleGame.hauteur/2+50){
-	        			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
-	        				if (currentMatriceOrder.get(0) != -1){
-	        					piecesImg.get(currentMatriceOrder.get(0)).resetPosition();
-	        				}
-	        				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2-250);
-	        				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
-	        				currentMatriceOrder.set(0, draggedPieceNumber);
-	        				PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
-	        			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
-	        				if (currentMatriceOrder.get(1) != -1){
-	        					piecesImg.get(currentMatriceOrder.get(1)).resetPosition();
-	        				}
-	        				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2-150);
-	        				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
-	        				currentMatriceOrder.set(1, draggedPieceNumber);
-	        				PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
-	        			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
-	        				if (currentMatriceOrder.get(2) != -1){
-	        					piecesImg.get(currentMatriceOrder.get(2)).resetPosition();
-	        				}
-	        				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2-50);
-	        				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
-	        				currentMatriceOrder.set(2, draggedPieceNumber);
-	        				PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
-	        			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
-	        				if (currentMatriceOrder.get(3) != -1){
-	        					piecesImg.get(currentMatriceOrder.get(3)).resetPosition();
-	        				}
-	        				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2+50);
-	        				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
-	        				currentMatriceOrder.set(3, draggedPieceNumber);
-	        				PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
-	        			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
-	        				if (currentMatriceOrder.get(4) != -1){
-	        					piecesImg.get(currentMatriceOrder.get(4)).resetPosition();
-	        				}
-	        				piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2+150);
-	        				piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
-	        				currentMatriceOrder.set(4, draggedPieceNumber);
-	        				PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
-	        			}
+	        			fillMatricePart(x);
 	        		} else if (y < MainPuzzleGame.hauteur/2+50){
 	        			piecesImg.get(draggedPieceNumber).resetPosition();			
 	        		}
@@ -307,7 +301,119 @@ public class PuzzleGame extends BasicGameState {
 				System.exit(0);
 			}
 			break;
+		case Input.KEY_M:
+			muteUnmuteGame();
+			break;
 		}
+	}
+	
+	public void changeMatriceInfos(int x){
+		if (this.puzzle.getListeFragments().size() == 4){
+			if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
+				currentMatriceOrder.set(0, -1);
+				System.out.println("Matrice n°0 vide");
+			} else if(x > MainPuzzleGame.longueur/2-100 && x < MainPuzzleGame.longueur/2){
+				currentMatriceOrder.set(1, -1);
+				System.out.println("Matrice n°1 vide");
+			} else if(x > MainPuzzleGame.longueur/2 && x < MainPuzzleGame.longueur/2+100){
+				currentMatriceOrder.set(2, -1);
+				System.out.println("Matrice n°2 vide");
+			} else if(x > MainPuzzleGame.longueur/2+100 && x < MainPuzzleGame.longueur/2+200){
+				currentMatriceOrder.set(3, -1);
+				System.out.println("Matrice n°3 vide");
+			}
+		} else if (this.puzzle.getListeFragments().size() == 5){
+			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
+				currentMatriceOrder.set(0, -1);
+				System.out.println("Matrice n°0 vide");
+			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
+				currentMatriceOrder.set(1, -1);
+				System.out.println("Matrice n°1 vide");
+			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
+				currentMatriceOrder.set(2, -1);
+				System.out.println("Matrice n°2 vide");
+			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
+				currentMatriceOrder.set(3, -1);
+				System.out.println("Matrice n°3 vide");
+			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
+				currentMatriceOrder.set(4, -1);
+				System.out.println("Matrice n°4 vide");
+			}
+		} else if (this.puzzle.getListeFragments().size() == 6){
+			if(x > MainPuzzleGame.longueur/2-300 && x < MainPuzzleGame.longueur/2-200){
+				currentMatriceOrder.set(0, -1);
+				System.out.println("Matrice n°0 vide");
+			} else if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
+				currentMatriceOrder.set(1, -1);
+				System.out.println("Matrice n°1 vide");
+			} else if(x > MainPuzzleGame.longueur/2-100 && x < MainPuzzleGame.longueur/2){
+				currentMatriceOrder.set(2, -1);
+				System.out.println("Matrice n°2 vide");
+			} else if(x > MainPuzzleGame.longueur/2 && x < MainPuzzleGame.longueur/2+100){
+				currentMatriceOrder.set(3, -1);
+				System.out.println("Matrice n°3 vide");
+			} else if(x > MainPuzzleGame.longueur/2+100 && x < MainPuzzleGame.longueur/2+200){
+				currentMatriceOrder.set(4, -1);
+				System.out.println("Matrice n°4 vide");
+			} else if(x > MainPuzzleGame.longueur/2+200 && x < MainPuzzleGame.longueur/2+300){
+				currentMatriceOrder.set(5, -1);
+				System.out.println("Matrice n°5 vide");
+			}
+		}		
+	}
+	
+	public void fillMatricePart(int x){
+		if (this.puzzle.getListeFragments().size() == 4){
+			if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
+				placeElementInMatrice(0, -200);
+			} else if(x > MainPuzzleGame.longueur/2-100 && x < MainPuzzleGame.longueur/2){
+				placeElementInMatrice(1, -100);
+			} else if(x > MainPuzzleGame.longueur/2 && x < MainPuzzleGame.longueur/2+100){
+				placeElementInMatrice(2, 0);
+			} else if(x > MainPuzzleGame.longueur/2+100 && x < MainPuzzleGame.longueur/2+200){
+				placeElementInMatrice(3, 100);
+			}
+		} else if (this.puzzle.getListeFragments().size() == 5){
+			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
+				placeElementInMatrice(0, -250);
+			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
+				placeElementInMatrice(1, -150);
+			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
+				placeElementInMatrice(2, -50);
+			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
+				placeElementInMatrice(3, 50);
+			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
+				placeElementInMatrice(4, 150);
+			}
+		} else if (this.puzzle.getListeFragments().size() == 6){
+			if(x > MainPuzzleGame.longueur/2-300 && x < MainPuzzleGame.longueur/2-200){
+				placeElementInMatrice(0, -300);
+			} else if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
+				placeElementInMatrice(1, -200);
+			} else if(x > MainPuzzleGame.longueur/2-100 && x < MainPuzzleGame.longueur/2){
+				placeElementInMatrice(2, -100);
+			} else if(x > MainPuzzleGame.longueur/2 && x < MainPuzzleGame.longueur/2+100){
+				placeElementInMatrice(3, 0);
+			} else if(x > MainPuzzleGame.longueur/2+100 && x < MainPuzzleGame.longueur/2+200){
+				placeElementInMatrice(4, 100);
+			} else if(x > MainPuzzleGame.longueur/2+200 && x < MainPuzzleGame.longueur/2+300){
+				placeElementInMatrice(5, 200);
+			}
+		}
+	}
+	
+	public void placeElementInMatrice(int index, int pos){
+		if (currentMatriceOrder.get(index) != -1){
+			for (int i = 0; i < piecesImg.size(); i++){
+				if(piecesImg.get(i).getCorrectPos() == currentMatriceOrder.get(index)){
+					piecesImg.get(i).resetPosition();
+				}
+			}
+		}
+		piecesImg.get(draggedPieceNumber).setX(MainPuzzleGame.longueur/2+pos);
+		piecesImg.get(draggedPieceNumber).setY(MainPuzzleGame.hauteur/2-50);
+		currentMatriceOrder.set(index, piecesImg.get(draggedPieceNumber).getCorrectPos());
+		PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
 	}
 	
 	public static void jouerAudio(String son, float volumeReduced, boolean backgroundMusic){
@@ -334,6 +440,28 @@ public class PuzzleGame extends BasicGameState {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void muteUnmuteGame(){
+		if(gameMuted){
+			backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
+			backgroundClip.start();
+			try {
+				volumeImg = new Image("./Ressources/Images/volume_on.png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else {
+			backgroundClip.stop();
+			try {
+				volumeImg = new Image("./Ressources/Images/volume_off.png");
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		gameMuted = !gameMuted;
 	}
 
 	@Override

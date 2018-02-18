@@ -5,6 +5,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
+import javafx.application.Application;
+import main.MainChronologie;
+import main.MainExplication;
 import slickGames.states.OddWordOutGame;
 
 
@@ -12,6 +15,12 @@ public class MainOddWordOutGame extends StateBasedGame{
 	
 	public static int longueur=850;
 	public static int hauteur=650;
+	private static String xml="FichiersDeConfig/slickGame.xml";
+	private static boolean soloBloc=true;
+	private static int cmptChronologie;
+	private static String xmlChronologie;
+	private static boolean son=true;
+	private static int score=0;
 	
 	public static void main(String[] args) throws SlickException {
 			
@@ -53,15 +62,41 @@ public class MainOddWordOutGame extends StateBasedGame{
 	public MainOddWordOutGame() {
 		super("Chassez les intrus !");
 	}
+	
+	public void initData(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score){
+		this.xml=xml;
+		this.soloBloc=soloBloc;
+		this.cmptChronologie=cmptChronologie;
+		this.xmlChronologie=xmlChronologie;
+		this.son=son;
+		this.score=score;
+	}
 
 
 
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		//addState(new OddWordOutExplanation());
-		addState(new OddWordOutGame());
+		//container.setForceExit(false);
+		OddWordOutGame oddWordOutGame=new OddWordOutGame();
+		oddWordOutGame.initData(xml,son,score);
+		addState(oddWordOutGame);
 		
 		this.enterState(OddWordOutGame.ID);
+	
 	}
+	
+	@SuppressWarnings("static-access")
+	@Override
+	public boolean closeRequested() {
+		/*System.out.println("close demandé");
+        MainChronologie chronoGame=new MainChronologie();
+        chronoGame.initData(cmptChronologie+1, xmlChronologie, son, score);
+        String[] args={};
+        chronoGame.launch(MainChronologie.class);*/
+        
+		return true;
+    }
+	
 }
 

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -160,6 +161,23 @@ public class JFxUtils {
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
+	}
+	
+	public static void loadOddWordOutGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+		MainOddWordOutGame game=new MainOddWordOutGame();
+		game.initData(xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
+		AppGameContainer app;
+		try {
+			app = new AppGameContainer(game,850, 650, false);
+			app.setTargetFrameRate(60);
+			app.setVSync(true);
+			app.setShowFPS(false);
+			app.start();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	
@@ -344,13 +362,7 @@ public class JFxUtils {
 				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
 				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
 				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
-				case "Intrus" : String[] args={};
-				try {
-					MainOddWordOutGame.main(args);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				case "Intrus" : loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
 					return null;
 				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
 			}

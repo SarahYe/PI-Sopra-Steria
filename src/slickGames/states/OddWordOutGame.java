@@ -48,13 +48,15 @@ public class OddWordOutGame extends BasicGameState {
 	public Quiz quiz;
 	public ArrayList<Reponse> listeReponses;
 	public int previousReponse;
+	
+	public String xml;
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
 		ArrayList<Question> ListeQuestions = new ArrayList<Question>();
 		Quiz quiz = new Quiz ("",ListeQuestions);
-		this.quiz = quiz.convertirXMLToJava("FichiersDeConfig/slickGame.xml");
+		this.quiz = quiz.convertirXMLToJava(xml);
 		
 		listeReponses = this.quiz.getListeQuestions().get(0).getListeReponses();
 		Random rand = new Random();
@@ -77,6 +79,13 @@ public class OddWordOutGame extends BasicGameState {
 		}
 		
 		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f, true);
+	}
+	
+	public void initData(String xml, boolean son, int score){
+		this.xml=xml;
+		this.score=score;
+		this.gameMuted=!son;
+		//muteUnmuteGame();
 	}
 
 	@Override

@@ -300,7 +300,7 @@ public class ViewQuestionController implements Initializable {
 		
 		if (quiz.getListeQuestions().size() == cmpt+1) {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "../vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
+			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "/vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
 			/*if(soloBloc){
 				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 				stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));

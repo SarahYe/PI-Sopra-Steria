@@ -57,6 +57,7 @@ public class MainChronologie extends Application  {
 		Optional<String> result = dialog.showAndWait();
 		if (result.isPresent()){
 		    xmlChronologie="Games/"+result.get()+"/chronologie_"+result.get()+".xml";
+		    System.out.println(xmlChronologie);
 		    
 		    Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
 			if(node!=null){

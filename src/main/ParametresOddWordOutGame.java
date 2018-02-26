@@ -15,7 +15,7 @@ public class ParametresOddWordOutGame extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
-		stage.setScene(new Scene((Parent) JFxUtils.loadParamOddWordOutGame("../vues/ViewParametresOddWordOutGame.fxml","FichiersDeConfig/slickGame.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadParamOddWordOutGame("/vues/ViewParametresOddWordOutGame.fxml","FichiersDeConfig/slickGame.xml"), 850, 650));
 		stage.setTitle("SeriousSécurité");
 		stage.show();
 		stage.sizeToScene();

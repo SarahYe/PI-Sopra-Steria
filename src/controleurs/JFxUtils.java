@@ -13,12 +13,14 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import main.ParametresOddWordOutGame;
 import modeles.PNJ;
 import modeles.Quiz;
 import slickGames.MainOddWordOutGame;
@@ -323,12 +325,7 @@ public class JFxUtils {
 				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
 				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
 				case "Intrus" : String[] args={};
-				try {
-					MainOddWordOutGame.main(args);
-				} catch (SlickException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				Application.launch(ParametresOddWordOutGame.class, args);
 					return null;
 				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0/*score*/);
 			}

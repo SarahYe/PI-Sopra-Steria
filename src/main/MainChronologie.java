@@ -1,6 +1,9 @@
 package main;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -14,6 +17,8 @@ import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
 public class MainChronologie extends Application  {
@@ -37,15 +42,34 @@ public class MainChronologie extends Application  {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
-		if(node!=null){
-			stage.setScene(new Scene((Parent) node, 850, 650));
-			stage.setTitle("SériousSécurité");
-			stage.show();
-			stage.sizeToScene();
-		} else {
-			System.out.println("node null");
+		List<String> choices = new ArrayList<>();
+		File dir = new File("Games");
+		File[] files = dir.listFiles();
+		for(File dossier:files)
+			choices.add(dossier.getName());
+		
+		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
+		dialog.setTitle("SeriousGame");
+		dialog.setHeaderText("Choix du jeu");
+		dialog.setContentText("Veuillez choisir le jeu que vous d�sirez lancer");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    xmlChronologie="Games/"+result.get()+"/chronologie_"+result.get()+".xml";
+		    
+		    Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
+			if(node!=null){
+				stage.setScene(new Scene((Parent) node, 850, 650));
+				stage.setTitle("SériousSécurité");
+				stage.show();
+				stage.sizeToScene();
+			} else {
+				System.out.println("node null");
+			}
 		}
+		
+		
 		
 		
 		/*stage.setScene(new Scene((Parent) JFxUtils.loadNextBloc(1, "Games/test/chronologie_test.xml"), 850, 650));

@@ -4,6 +4,8 @@ package controleurs;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -38,6 +40,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class ViewMainParametresController implements Initializable{
@@ -59,10 +63,11 @@ public class ViewMainParametresController implements Initializable{
 	private AnchorPane AP_ConfBlc;
 	@FXML
 	private TextField TF_GameName;
+	private String gamePath="Games/temp/";
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//crÈation du dossier temporaire o˘ seront enregistrer tout les xml
+		//crÈ•åtion du dossier temporaire oÔøΩ seront enregistrer tout les xml
 		File dir = new File ("Games/temp");
 		dir.mkdirs();
 		
@@ -81,7 +86,7 @@ public class ViewMainParametresController implements Initializable{
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
 		for (int i=0;i<6;i++)
-			listCmptBloc.add(0);
+			listCmptBloc.add(1);
 	}
 	
 	
@@ -102,8 +107,11 @@ public class ViewMainParametresController implements Initializable{
 					break;
 				}
 			}
-			listCmptBloc.set(cmpt,listCmptBloc.get(cmpt)+1);
+			while(LV_BlcList.getItems().contains(TBT_test.getText()+ " " + listCmptBloc.get(cmpt))){
+				listCmptBloc.set(cmpt,listCmptBloc.get(cmpt)+1);
+			}
 			LV_BlcList.getItems().add(TBT_test.getText()+ " " + listCmptBloc.get(cmpt));
+			listCmptBloc.set(cmpt,1);
 		}
 	}
 	
@@ -167,7 +175,7 @@ public class ViewMainParametresController implements Initializable{
 		if(fxml.endsWith("fxml")){
 			System.out.println("cmpt="+cmpt);
 			Node newPane;
-			String xml="Games/temp/"+LV_BlcList.getSelectionModel().getSelectedItem()+".xml";
+			String xml=gamePath+LV_BlcList.getSelectionModel().getSelectedItem()+".xml";
 			 switch (cmpt) {
 			 	case 0 :
 			 		newPane= JFxUtils.loadAccueilParamFxml(fxml,xml);
@@ -202,15 +210,15 @@ public class ViewMainParametresController implements Initializable{
 			//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
 			//controller.initData(controller);
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION, "La page de configuration de ce bloc n'est pas encore implÈmentÈe", ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "La page de configuration de ce bloc n'est pas encore impl√©ment√©", ButtonType.OK);
 			alert.showAndWait();
-			//System.out.println("La page de configuration de ce bloc n'est pas encore implÈmentÈe");
+			//System.out.println("La page de configuration de ce bloc n'est pas encore implÈßëentÈ¶•");
 		}
 	}
 	
 	@FXML
 	private void ClickBT_SaveGame(ActionEvent event) throws ParserConfigurationException, TransformerException {
-		//rÈcupÈration du nom du jeu entrÈ
+		//rÈ¶óupÈßªation du nom du jeu entrÔøΩ
 		String nomJeu;
 		if(!TF_GameName.getText().equals(""))
 			nomJeu=TF_GameName.getText();
@@ -253,30 +261,60 @@ public class ViewMainParametresController implements Initializable{
 		DOMSource source = new DOMSource(XML_Document);
 		StreamResult resultat;
 		
-		resultat = new StreamResult(new File("Games/temp/chronologie_" +nomJeu  + ".xml"));
+		resultat = new StreamResult(new File(gamePath+"chronologie_" +nomJeu  + ".xml"));
 		XML_Transformeur.transform(source, resultat); 
-		System.out.println("Le fichier XML a ÈtÈ gÈnÈrÈ !");
+		System.out.println("Le fichier XML a È®ÅÔøΩ gÈß≠ÈßªÔøΩ !");
 		
-		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a ÈtÈ enregistrÈ.\n\nSon contenu a ÈtÈ enregistrÈ au chemin : \""+ System.getProperty("user.dir")+"\\Games\\"+nomJeu+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
+		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a √©t√© enregistr√©.\n\nSon contenu a √©t√© enregistr√© au chemin : \""+ System.getProperty("user.dir")+"\\Games\\"+nomJeu+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
 		alert.setHeaderText("Information concernant l'enregistrement");
 		alert.showAndWait();
 		
 		//Renommage du dossier du jeu
 		File dir = new File("Games/temp");
 	    File newDir = new File(dir.getParent() + "/" + nomJeu);
-	    if(newDir.isDirectory()){
+	    /*if(newDir.isDirectory()){
 	    	File[] files = newDir.listFiles();
 			for(File fichier:files)
 				fichier.delete();
 	    	newDir.delete();
-	    }
-	    	
+	    }*/
+	    
 	    Boolean rename=dir.renameTo(newDir);
 	    System.out.println("Rename dir ? :"+rename);
 	    
 	    Stage st=(Stage) BT_AjtBlc.getScene().getWindow();
 		st.close();
 		System.out.println("cc");
+	}
+	
+	@FXML
+	private void ClickBT_LoadGame(ActionEvent event) throws ParserConfigurationException, TransformerException, SlickException{
+		File dir = new File("Games");
+		DirectoryChooser dirChooser= new DirectoryChooser();
+		dirChooser.setInitialDirectory(dir);
+
+		// Show open file dialog
+		File dirGame = dirChooser.showDialog(null);
+
+		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
+		Path cheminAbsoluImage = Paths.get(dirGame.getAbsolutePath());
+		String cheminRelatif=cheminAbsoluActuel.relativize(cheminAbsoluImage).toString();
+		TF_GameName.setText(dirGame.getName());
+		gamePath=cheminRelatif+"/";
+		
+		File[] files = dirGame.listFiles();
+		for(File fichier:files){
+			if (!fichier.getName().startsWith("chronologie_"))
+				LV_BlcList.getItems().add(fichier.getName().substring(0, fichier.getName().length()-4));
+			
+			
+			
+			
+		}
+			
+		
+		
+		
 	}
 	
 	@FXML
@@ -313,14 +351,14 @@ public class ViewMainParametresController implements Initializable{
 			
 			resultat = new StreamResult(new File("Games/temp/chronologie_temp.xml"));
 			XML_Transformeur.transform(source, resultat); 
-			System.out.println("Le fichier XML a ÈtÈ gÈnÈrÈ !");
+			System.out.println("Le fichier XML a È®ÅÔøΩ gÈß≠ÈßªÔøΩ !");
 			
 			Node newPane;
 			newPane= JFxUtils.loadNextBloc(1, "Games/temp/chronologie_temp.xml",true);
 		 	AP_ConfBlc.getChildren().setAll(newPane);
 			
 		} else{
-			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est prÈsent dans la chronologie", ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est prÈß∏ent dans la chronologie", ButtonType.OK);
 			alert.setHeaderText("Information concernant le test");
 			//alert.showAndWait();
 		}

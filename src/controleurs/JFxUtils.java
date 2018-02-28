@@ -165,6 +165,24 @@ public class JFxUtils {
 		}
 	}
 	
+	public static Node loadFouilleFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+		FXMLLoader loader = new FXMLLoader();
+		try {
+			loader.setLocation(JFxUtils.class.getResource(fxml));
+			System.out.println(loader);
+			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+			ViewFouilleController controller = loader.<ViewFouilleController>getController();
+			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setXML(xml);
+			controller.setSon(son);
+			controller.setScore(score);
+			controller.initData();
+			return root;
+		} catch (IOException e) {
+			throw new IllegalStateException("cannot load FXML screen", e);
+		}
+	}
+	
 	public static void loadOddWordOutGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
 		MainOddWordOutGame game=new MainOddWordOutGame();
 		game.initData(xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
@@ -179,7 +197,6 @@ public class JFxUtils {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	
@@ -366,6 +383,8 @@ public class JFxUtils {
 		}
 		return null;
 	}
+
+	
 
 
 }

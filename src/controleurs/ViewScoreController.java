@@ -150,8 +150,8 @@ public class ViewScoreController implements Initializable{
             w = img.getWidth() * reducCoeff;
             h = img.getHeight() * reducCoeff;
             
-            System.out.println((imageView.getFitWidth() - w) / 2);
-            System.out.println((imageView.getFitHeight() - h) / 2);
+            //System.out.println((imageView.getFitWidth() - w) / 2);
+            //System.out.println((imageView.getFitHeight() - h) / 2);
             
 
             imageView.setX((imageView.getFitWidth() - w) / 2);

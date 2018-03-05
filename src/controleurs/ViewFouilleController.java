@@ -1,6 +1,10 @@
 package controleurs;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -25,6 +29,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import modeles.Fouille;
 import modeles.Instruction;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 public class ViewFouilleController implements Initializable{
 	
@@ -35,20 +41,24 @@ public class ViewFouilleController implements Initializable{
 	private static boolean son;
 	private static int score;
 	
-	private Fouille fouille;
+	private static Fouille fouille;
 	private static ArrayList<String> intitules= new ArrayList<String>();
 	private static int cmpt=0;
 	
 	@FXML
 	AnchorPane AP_Game,AP_Inventory;
 	@FXML
-	ImageView imageFond;
+	ImageView imageFond,IV_IconeSon;
 	@FXML
-	Label LB_Instruction;
+	Label LB_Instruction,LB_Score;
 	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		if(son)
+			sonOn();
+		else
+			sonOff();
 		
 	}
 	
@@ -86,7 +96,12 @@ public class ViewFouilleController implements Initializable{
 	            	if (LB_Instruction.getText().equals(instruction.getIntitule())){
 	            		AP_Game.getChildren().remove(element);
 	            		AP_Inventory.getChildren().add(element);
+	            		majScorePlus(LB_Score,fouille.getListeInstructions().get(cmpt-1).getType());
 	            		majInstruction(LB_Instruction);
+	            		
+	            	} else{
+	            		//erreur
+	            		majScoreMoins(LB_Score,fouille.getListeInstructions().get(cmpt-1).getType());
 	            	}
 	            	
 	            }
@@ -112,6 +127,7 @@ public class ViewFouilleController implements Initializable{
 	
 	public void setScore(int score){
 		this.score=score;
+		LB_Score.setText("Score : "+Integer.toString(score));
 	}
 	
 	public static void centerImage(ImageView imageView) {
@@ -142,6 +158,30 @@ public class ViewFouilleController implements Initializable{
 
         }
     }
+	
+	private static void majScorePlus(Label LBscore, String typeObjet){
+		if(son)
+			jouerAudio("Ressources/Sons/succes.wav");
+		if(typeObjet.equals("BRONZE"))
+			score=(int) (score+fouille.getBronze());
+		else if (typeObjet.equals("SILVER"))
+			score=(int) (score+fouille.getSilver());
+		else
+			score=(int) (score+fouille.getGold());
+		LBscore.setText("Score : "+Integer.toString(score));
+	}
+	
+	private static void majScoreMoins(Label LBscore, String typeObjet){
+		if(son)
+			jouerAudio("Ressources/Sons/echec1.wav");
+		if(typeObjet.equals("BRONZE"))
+			score=(int) (score-(fouille.getBronze()/2));
+		else if (typeObjet.equals("SILVER"))
+			score=(int) (score-(fouille.getSilver()/2));
+		else
+			score=(int) (score-(fouille.getGold()/2));
+		LBscore.setText("Score : "+Integer.toString(score));
+	}
 
 	public static void majInstruction(Label label){
 		if (cmpt<intitules.size()){
@@ -163,11 +203,43 @@ public class ViewFouilleController implements Initializable{
 					stage.close();
 				}
 			}
-			
-			
 		}
-		
-		
+	}
+	
+	public static void jouerAudio(String son) {
+		InputStream in;
+		try {
+			in = new FileInputStream(son);
+			AudioStream as = new AudioStream(in);
+			AudioPlayer.player.start(as);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void swapSon(MouseEvent t){
+		son=!son;
+		if(son)
+			sonOn();
+		else
+			sonOff();
+	}
+	
+	private void sonOn(){
+		File file = new File("Ressources/Images/volume_on.png");
+		Image image = new Image(file.toURI().toString());
+		IV_IconeSon.setImage(image);
+		centerImage(IV_IconeSon);
+	}
+	
+	private void sonOff(){
+		File file = new File("Ressources/Images/volume_off.png");
+		Image image = new Image(file.toURI().toString());
+		IV_IconeSon.setImage(image);
+		centerImage(IV_IconeSon);
 	}
 
 }

@@ -11,7 +11,7 @@ public class MainFouille extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 
-		stage.setScene(new Scene((Parent) JFxUtils.loadFouilleFxml("/vues/ViewFouille.fxml","FichiersDeConfig/fouille.xml", true, 0, "Games/test/chronologie_test",true,0), 900, 700));
+		stage.setScene(new Scene((Parent) JFxUtils.loadFouilleFxml("/vues/ViewFouille.fxml","FichiersDeConfig/fouille.xml", true, 0, "Games/test/chronologie_test",false,50), 900, 700));
 		stage.setTitle("Jeu de Fouille");
 		stage.show();
 		stage.sizeToScene();

@@ -44,6 +44,7 @@ public class ViewFouilleController implements Initializable{
 	private static Fouille fouille;
 	private static ArrayList<String> intitules= new ArrayList<String>();
 	private static int cmpt=0;
+	private int inventoryX=0,inventoryY=0;
 	
 	@FXML
 	AnchorPane AP_Game,AP_Inventory;
@@ -88,6 +89,8 @@ public class ViewFouilleController implements Initializable{
 			ImageView element=new ImageView(image);
 			element.setX(instruction.getPosX()+imageFond.getX());
 			element.setY(instruction.getPosY()+imageFond.getY());
+			if(element.getImage().getHeight()>inventoryY)
+				inventoryY=(int) element.getImage().getHeight()+1;
 			AP_Game.getChildren().add(element);
 			element.setOnMouseClicked(new EventHandler<MouseEvent>()
 	        {
@@ -95,13 +98,16 @@ public class ViewFouilleController implements Initializable{
 	            public void handle(MouseEvent t) {
 	            	if (LB_Instruction.getText().equals(instruction.getIntitule())){
 	            		AP_Game.getChildren().remove(element);
+	            		
+	            		element.setX(inventoryX);
+	            		inventoryX=(int) (inventoryX+element.getImage().getWidth());
+	            		element.setY((inventoryY-element.getImage().getHeight())/2);
 	            		AP_Inventory.getChildren().add(element);
 	            		majScorePlus(LB_Score,fouille.getListeInstructions().get(cmpt-1).getType());
 	            		majInstruction(LB_Instruction);
-	            		
 	            	} else{
-	            		//erreur
-	            		majScoreMoins(LB_Score,fouille.getListeInstructions().get(cmpt-1).getType());
+	            		if(!AP_Inventory.getChildren().contains(element))
+	            			majScoreMoins(LB_Score,fouille.getListeInstructions().get(cmpt-1).getType());
 	            	}
 	            	
 	            }

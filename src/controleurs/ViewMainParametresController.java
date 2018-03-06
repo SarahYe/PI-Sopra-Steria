@@ -294,50 +294,50 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_LoadGame(ActionEvent event) throws ParserConfigurationException, TransformerException, SlickException{
+		
 		File dir = new File("Games");
 		DirectoryChooser dirChooser= new DirectoryChooser();
 		dirChooser.setInitialDirectory(dir);
 
 		// Show open file dialog
 		File dirGame = dirChooser.showDialog(null);
-
-		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
-		Path cheminAbsoluImage = Paths.get(dirGame.getAbsolutePath());
-		String cheminRelatif=cheminAbsoluActuel.relativize(cheminAbsoluImage).toString();
-		TF_GameName.setText(dirGame.getName());
-		gamePath=cheminRelatif.replace("\\", "/")+"/";
-		
-		/*File[] files = dirGame.listFiles();
-		for(File fichier:files){
-			if (!fichier.getName().startsWith("chronologie_"))
-				LV_BlcList.getItems().add(fichier.getName().substring(0, fichier.getName().length()-4));
-		}*/
-		
-		ArrayList<String> names=new ArrayList<String>();
-		ArrayList<String> path=new ArrayList<String>();
-		try {
-			   SAXParserFactory factory = SAXParserFactory.newInstance();
-			   SAXParser parser = factory.newSAXParser();
-			   System.out.println(gamePath+"chronologie_"+dirGame.getName()+".xml");
-			   parser.parse(gamePath+"chronologie_"+dirGame.getName()+".xml", new DefaultHandler() {
-			    public void startDocument() throws SAXException {}
-			    public void endDocument() throws SAXException {}
-			    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-			    	names.add(qName);
-			    	path.add(attributes.getValue("pathXML"));
-			    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
-			    	}
-			    public void endElement(String uri, String localName, String qName) throws SAXException {}
-			   });  
-			  } catch (Exception e) { System.err.println(e); System.exit(1); }
+		if (dirGame!=null){
+			LV_BlcList.getItems().clear();
+			Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
+			Path cheminAbsoluImage = Paths.get(dirGame.getAbsolutePath());
+			String cheminRelatif=cheminAbsoluActuel.relativize(cheminAbsoluImage).toString();
+			TF_GameName.setText(dirGame.getName());
+			gamePath=cheminRelatif.replace("\\", "/")+"/";
 			
-		for(String chemin:path){
-			if (chemin!=null){
-				chemin=chemin.replace(gamePath, "");
-				LV_BlcList.getItems().add(chemin.substring(0, chemin.length()-4));
-			}
+			ArrayList<String> names=new ArrayList<String>();
+			ArrayList<String> path=new ArrayList<String>();
+			try {
+				   SAXParserFactory factory = SAXParserFactory.newInstance();
+				   SAXParser parser = factory.newSAXParser();
+				   System.out.println(gamePath+"chronologie_"+dirGame.getName()+".xml");
+				   parser.parse(gamePath+"chronologie_"+dirGame.getName()+".xml", new DefaultHandler() {
+				    public void startDocument() throws SAXException {}
+				    public void endDocument() throws SAXException {}
+				    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+				    	names.add(qName);
+				    	path.add(attributes.getValue("pathXML"));
+				    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
+				    	}
+				    public void endElement(String uri, String localName, String qName) throws SAXException {}
+				   });
+				  
 				
+				  } catch (Exception e) { System.err.println(e); }
+				
+			for(String chemin:path){
+				if (chemin!=null){
+					chemin=chemin.replace(gamePath, "");
+					LV_BlcList.getItems().add(chemin.substring(0, chemin.length()-4));
+				}	
+			}
 		}
+
+		
 		
 		
 	}

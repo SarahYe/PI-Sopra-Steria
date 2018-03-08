@@ -646,6 +646,12 @@ public class ViewParametresPuzzleController implements Initializable {
 	        		listeIndices.add(indice3.getText());
 	    			break;
 			}
+			
+		if (puzzleImage.isSelected()) {
+			fragmentType = "Image";
+		} else {
+			fragmentType = "Texte";
+		}
 		
 	    	Puzzle p = new Puzzle("Nom", Double.parseDouble(score_init.getText().toString()), Double.parseDouble(decr_points.getText().toString()), Double.parseDouble(decr_sec.getText().toString()),Double.parseDouble(score_min.getText().toString()), description.getText().toString(), fragmentType, listeIndices, listeFragments);
 	    	

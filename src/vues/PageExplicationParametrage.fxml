@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPageExplicationController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPageExplicationController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="850.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="850.0">
          <children>
             <ImageView fx:id="fondEcran" fitHeight="676.0" fitWidth="821.0" opacity="0.46" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
@@ -32,9 +32,9 @@
             <Label fx:id="source" layoutX="411.0" layoutY="600.0" prefHeight="17.0" prefWidth="350.0" text="Entrez une source" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="555.0" />
             <TextArea fx:id="champHyperlien" layoutX="251.0" layoutY="628.0" prefHeight="43.0" prefWidth="519.0" visible="false" wrapText="true" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="580.0" />
             <Hyperlink fx:id="hyperlien" layoutX="411.0" layoutY="599.0" prefHeight="59.0" prefWidth="690.0" text="Entrez un ou plusieurs lien(s)" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
-            <Button fx:id="enregistrer" layoutX="52.0" layoutY="635.0" mnemonicParsing="false" onAction="#enregistrerParametrage" stylesheets="@../../Ressources/CSS/button_hover.css" text="Enregistrer le paramétrage" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" />
+            <Button fx:id="enregistrer" layoutX="374.0" layoutY="611.0" mnemonicParsing="false" onAction="#enregistrerParametrage" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
             <Label fx:id="label1" layoutX="78.0" layoutY="577.0" prefHeight="17.0" prefWidth="257.0" text="Vous pouvez aussi consulter ce(s) lien(s):" AnchorPane.leftAnchor="80.0" />
-            <Label fx:id="erreur" layoutX="259.0" layoutY="638.0" text="Le champ d'explication est obligatoire" textFill="RED" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="259.0" />
+            <Label fx:id="erreur" layoutX="492.0" layoutY="636.0" text="Le champ d'explication est obligatoire" textFill="RED" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="492.0" />
             <Button fx:id="boutonImage2" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#changerImage2" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
                <graphic>
                   <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">

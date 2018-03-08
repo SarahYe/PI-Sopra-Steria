@@ -21,7 +21,7 @@
                </font></Label>
             <Accordion layoutX="35.0" layoutY="67.0" prefHeight="486.0" prefWidth="799.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="67.0">
               <panes>
-                <TitledPane animated="false" prefWidth="601.0" text="Fond d'écran">
+                <TitledPane prefWidth="601.0" text="Fond d'écran">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -58,14 +58,9 @@
                         </AnchorPane>
                   </content>
                 </TitledPane>
-                <TitledPane animated="false" prefWidth="810.0" text="Bouton jouer">
-                  <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="808.0" />
-                  </content>
-                </TitledPane>
               </panes>
             </Accordion>
-            <Button fx:id="boutonEnregistrer" layoutX="259.0" layoutY="576.0" mnemonicParsing="false" onAction="#enregistrer" stylesheets="@../../Ressources/CSS/button_hover.css" text="Enregistrer" />
+            <Button fx:id="boutonEnregistrer" layoutX="259.0" layoutY="576.0" mnemonicParsing="false" onAction="#enregistrer" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" />
             <Label fx:id="erreur" layoutX="306.0" layoutY="610.0" text="Aucune modification enregistrée" textFill="RED" visible="false" wrapText="true" />
             <Button fx:id="previsualiser" layoutX="463.0" layoutY="576.0" mnemonicParsing="false" onAction="#previsualisation" stylesheets="@../../Ressources/CSS/button_hover.css" text="Prévisualiser" />
          </children>

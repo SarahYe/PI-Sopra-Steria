@@ -2,6 +2,8 @@ package controleurs;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -27,6 +29,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.StageStyle;
 import modeles.Explication;
@@ -88,6 +91,14 @@ public class ViewParametresPageExplicationController implements Initializable {
 		boutonImage2.setDisable(true);
 		messageImage.setVisible(false);
 		
+		try {
+			Font font = Font.loadFont(
+					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 25);
+			theme.setFont(font);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void initData() {
@@ -118,39 +129,6 @@ public class ViewParametresPageExplicationController implements Initializable {
 		
 	}
 	
-	/*public void initData(boolean modification) {
-		this.modifierExplication = modification;
-		
-		if (this.modifierExplication) {
-			Explication expl = new Explication();
-			Explication explXml = expl.convertirXMLToJava("FichiersDeConfig/explication.xml");
-
-			theme.setText(explXml.getTitre());
-			explication.setText(explXml.getContenu());
-			source.setText(explXml.getSource());
-
-			if (explXml.getListeImages().size() == 0) {
-				image1.setImage(chargerImage(cheminImage1));
-				image2.setImage(chargerImage(cheminImage2));
-			} else if (explXml.getListeImages().size() == 1) {
-				image1.setImage(chargerImage(explXml.getListeImages().get(0)));
-				image2.setImage(chargerImage(cheminImage2));
-			} else {
-				image1.setImage(chargerImage(explXml.getListeImages().get(0)));
-				image2.setImage(chargerImage(explXml.getListeImages().get(1)));
-			}
-
-			hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
-		} else {
-			theme.setText("Cliquez moi pour modifier");
-			explication.setText("Explication");
-			source.setText("Source");
-			image1.setImage(chargerImage(cheminImage1));
-			image2.setImage(chargerImage(cheminImage2));
-			hyperlien.setText("Lien");
-		}
-	}
-*/
 	@FXML
 	void changerImage1(ActionEvent event) throws IOException {
 
@@ -273,7 +251,7 @@ public class ViewParametresPageExplicationController implements Initializable {
 			source.setText(champSource.getText());
 
 			// lien(s)
-			if (champHyperlien.getText().length() == 0)
+			if (champHyperlien.getText().length() == 0 ||champHyperlien.getText().equals("Entrez un ou plusieurs lien(s)") || champHyperlien.getText().equals("Aucun lien"))
 				hyperlien.setText("Aucun lien");
 			else
 				hyperlien.setText(champHyperlien.getText());

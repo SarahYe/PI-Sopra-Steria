@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresScoreController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresScoreController">
   <content>
     <AnchorPane minHeight="650.0" minWidth="850.0" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -23,8 +23,8 @@
                   <Font size="16.0" />
                </font></Label>
             <TextField fx:id="TF_title" layoutX="163.0" layoutY="83.0" prefHeight="15.0" prefWidth="551.0" />
-            <Button layoutX="665.0" layoutY="557.0" mnemonicParsing="false" onAction="#ClickBT_Save" text="Enregistrer" />
-            <Accordion layoutX="339.0" layoutY="132.0" prefHeight="233.0" prefWidth="411.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="130.0">
+            <Button layoutX="362.0" layoutY="560.0" mnemonicParsing="false" onAction="#ClickBT_Save" text="Sauvegarder" />
+            <Accordion layoutX="28.0" layoutY="130.0" prefHeight="233.0" prefWidth="411.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="130.0">
               <panes>
                 <TitledPane animated="false" text="Score Faible">
                   <content>

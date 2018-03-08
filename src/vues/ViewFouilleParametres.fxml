@@ -33,7 +33,7 @@
                         <Separator layoutY="175.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Label layoutX="15.0" layoutY="185.0" text="Liste des instructions" />
                         <Separator layoutY="205.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="boutonSave" layoutX="242.0" layoutY="615.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
+                        <Button fx:id="boutonSave" layoutX="230.0" layoutY="615.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Sauvegarder" />
                         <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
                         <Button fx:id="boutonAjout" layoutX="109.0" layoutY="575.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" />
                         <Button fx:id="boutonModifier" layoutX="235.0" layoutY="575.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" />
@@ -86,7 +86,7 @@
                               <Font size="10.0" />
                            </font>
                         </Label>
-                        <Label fx:id="errorLabel" layoutX="392.0" layoutY="622.0" text="Tous les champs sont obligatoires" textFill="RED">
+                        <Label fx:id="errorLabel" layoutX="350.0" layoutY="622.0" text="Tous les champs sont obligatoires" textFill="RED">
                            <font>
                               <Font size="10.0" />
                            </font>

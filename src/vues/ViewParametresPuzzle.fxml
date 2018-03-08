@@ -317,7 +317,7 @@
             <TextArea fx:id="indice3" layoutX="414.0" layoutY="547.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
             <Label fx:id="lbl_ind3" layoutX="309.0" layoutY="553.0" text="Indice 3" />
             <Separator layoutX="183.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Button fx:id="btnSauvegarder" layoutX="411.0" layoutY="603.0" mnemonicParsing="false" onAction="#sauvegarder" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" />
+            <Button fx:id="btnSauvegarder" layoutX="489.0" layoutY="604.0" mnemonicParsing="false" onAction="#sauvegarder" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="259.0" />
             <CheckBox fx:id="defaultScoring" layoutX="12.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleCheckboxScoring" selected="true" text="Scoring par défaut" />
             <Label layoutX="13.0" layoutY="249.0" text="Score initial" />
             <TextField fx:id="score_init" layoutX="13.0" layoutY="269.0" prefHeight="25.0" prefWidth="89.0" />
@@ -340,7 +340,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="errorLabel" layoutX="540.0" layoutY="610.0" text="Tous les champs sont obligatoires" textFill="RED">
+            <Label fx:id="errorLabel" layoutX="604.0" layoutY="610.0" text="Tous les champs sont obligatoires" textFill="RED">
                <font>
                   <Font size="10.0" />
                </font>

@@ -96,8 +96,16 @@
 	      		<padding>
 			      <Insets bottom="25.0" left="0" right="0" top="0" />
 			    </padding>
-	      		<Button fx:id="btn" mnemonicParsing="false" onAction="#ClickButtonSave" text="Enregistrer" />
-				<Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
+   	      		<Button fx:id="btn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#ClickButtonSave" text="OK">
+               <HBox.margin>
+                  <Insets left="170.0" />
+               </HBox.margin>
+            </Button>
+   				<Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" wrapText="true">
+               <HBox.margin>
+                  <Insets top="30.0" />
+               </HBox.margin>
+            </Label>
 			</HBox>	
       	
       	</VBox>

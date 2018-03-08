@@ -4,11 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewMainApplicationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="159.0" prefWidth="267.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewMainApplicationController">
    <children>
-      <Button fx:id="BT_StartGame" layoutX="54.0" layoutY="50.0" mnemonicParsing="false" onAction="#ClickBT_StartGame" text="Lancer un serious game" />
-      <Button layoutX="43.0" layoutY="98.0" mnemonicParsing="false" onAction="#ClickBT_StartParam" text="Paramétrer un serious game" />
-      <Label layoutX="91.0" layoutY="14.0" text="SeriousGame" />
+      <Button fx:id="BT_StartGame" layoutX="54.0" layoutY="50.0" mnemonicParsing="false" onAction="#ClickBT_StartGame" text="Lancer un serious game" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="51.5" />
+      <Button layoutX="30.0" layoutY="98.0" mnemonicParsing="false" onAction="#ClickBT_StartParam" text="Paramétrer un serious game" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+      <Label layoutX="103.0" layoutY="14.0" text="BeSerious" AnchorPane.leftAnchor="102.5" AnchorPane.rightAnchor="102.5" />
    </children>
 </AnchorPane>

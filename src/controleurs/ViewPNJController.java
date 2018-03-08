@@ -90,14 +90,13 @@ public class ViewPNJController implements Initializable {
 		
 		personnage.setImage(ViewParametresPageExplicationController.chargerImage(dial2.getImagePersonnage()));
 		AnimateText(texte,dial2.getIntitule());
-		//texte.setText(dial2.getIntitule());
 	}
 
 	public void AnimateText(Label lbl, String descImp) {
 	    String content = descImp;
 	    animation = new Transition() {
 	        {
-	            setCycleDuration(Duration.millis(content.length() * 50));
+	            setCycleDuration(Duration.millis(content.length() * 80));
 	        }
 	        protected void interpolate(double frac) {
 	            final int length = content.length();
@@ -106,9 +105,6 @@ public class ViewPNJController implements Initializable {
 	        }
 	    };
 	    animation.play();
-	    //if (animation.statusProperty().equals(Status.RUNNING)) {
-	    	//   	boutonNext.setVisible(true);
-	    	//}
 	}
 	
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
@@ -126,7 +122,7 @@ public class ViewPNJController implements Initializable {
 		if (pnj.getListeDialogues().size() == cmpt+1) {
 			if(soloBloc){
 				Stage stage = (Stage) boutonNext.getScene().getWindow();
-				stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", xml, true, 0, "Games/test/chronologie_test",son, score), 850, 650));
+				stage.close();
 			} else {
 				Stage stage = (Stage) boutonNext.getScene().getWindow();
 				//System.out.print(score);

@@ -76,8 +76,26 @@ public class ViewAddOrModifyQuestionController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		//initData(false,null);
+		textFieldQuestion.setPromptText("Entrez votre question");
+		textAreaRep1.setWrapText(true);
+		textAreaRep2.setWrapText(true);
+		textAreaRep3.setWrapText(true);
+		textAreaRep4.setWrapText(true);
+		textAreaRep5.setWrapText(true);
+		/******************************************************
+		 * Limitation des nombres de caractères par champ
+		 ******************************************************/
+		addTextFLimiter(textFieldQuestion, 124);
+		addTextFLimiter(textFieldRep1, 67);
+		addTextFLimiter(textFieldRep2, 67);
+		addTextFLimiter(textFieldRep3, 67);
+		addTextFLimiter(textFieldRep4, 67);
+		addTextFLimiter(textFieldRep5, 67);
+		addTextALimiter(textAreaRep1, 250);
+		addTextALimiter(textAreaRep2, 250);
+		addTextALimiter(textAreaRep3, 250);
+		addTextALimiter(textAreaRep4, 250);
+		addTextALimiter(textAreaRep5, 250);
 	}
 	
 	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel,ViewParametresQuizController controller) {
@@ -91,6 +109,7 @@ public class ViewAddOrModifyQuestionController implements Initializable{
 			Question selectedQuestion = tableViewSelectionModel.getSelectedItem();
 			
 			textFieldQuestion.setText(selectedQuestion.getIntituleQuestion());
+			addTextFLimiter(textFieldQuestion, 124);
 			
 			textFieldRep1.setText(selectedQuestion.getListeReponses().get(0).getIntitule());
 			textFieldRep2.setText(selectedQuestion.getListeReponses().get(1).getIntitule());
@@ -131,6 +150,7 @@ public class ViewAddOrModifyQuestionController implements Initializable{
 			ComboBoxNbrQuestion.setValue("2");			
 			
 		}
+
 		
 		ComboBoxNbrQuestion.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 		    @Override
@@ -168,6 +188,30 @@ public class ViewAddOrModifyQuestionController implements Initializable{
 		    }
 		});
 		
+	}
+	
+	public static void addTextFLimiter(final TextField tf, final int maxLength) {
+	    tf.textProperty().addListener(new ChangeListener<String>() {
+	        @Override
+	        public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+	            if (tf.getText().length() > maxLength) {
+	                String s = tf.getText().substring(0, maxLength);
+	                tf.setText(s);
+	            }
+	        }
+	    });
+	}
+	
+	public static void addTextALimiter(final TextArea ta, final int maxLength) {
+	    ta.textProperty().addListener(new ChangeListener<String>() {
+	        @Override
+	        public void changed(final ObservableValue<? extends String> ov, final String oldValue, final String newValue) {
+	            if (ta.getText().length() > maxLength) {
+	                String s = ta.getText().substring(0, maxLength);
+	                ta.setText(s);
+	            }
+	        }
+	    });
 	}
 	
 	
@@ -234,10 +278,5 @@ public class ViewAddOrModifyQuestionController implements Initializable{
 		} else {		
 			mainController.addQuestion(textFieldQuestion.getText(), listeReponses);		
 		}	
-		
-		//Stage stage = (Stage) btn.getScene().getWindow();
-		//stage.close();
-		
 	}
-	
 }

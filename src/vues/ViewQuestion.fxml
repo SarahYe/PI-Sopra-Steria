@@ -248,9 +248,9 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <Label fx:id="justification" layoutX="223.0" layoutY="506.0" prefHeight="129.0" prefWidth="326.0" text="Justification" visible="false" wrapText="true">
+      <Label fx:id="justification" layoutX="223.0" layoutY="506.0" prefHeight="129.0" prefWidth="326.0" text="Justification" wrapText="true">
          <font>
-            <Font size="20.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Button fx:id="volumeOn" layoutX="729.0" layoutY="15.0" mnemonicParsing="false" onAction="#SonOff" style="-fx-background-color: transparent;">

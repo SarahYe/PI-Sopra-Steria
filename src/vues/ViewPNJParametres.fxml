@@ -14,13 +14,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="993.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
+<ScrollPane prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="994.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0">
          <children>
-            <SplitPane dividerPositions="0.5473790322580645" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="850.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.4643652561247216" prefHeight="650.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="516.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="500.0">
                      <children>
                         <Label fx:id="titre" alignment="CENTER" contentDisplay="CENTER" layoutX="88.0" layoutY="24.0" prefHeight="38.0" prefWidth="330.0" text="Dialogue avec un personnage" textAlignment="CENTER" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="81.0" AnchorPane.topAnchor="20.0">
                            <font>
@@ -30,9 +30,9 @@
                         <Separator layoutY="71.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Label layoutX="15.0" layoutY="81.0" text="Liste des dialogues" />
                         <Separator layoutY="101.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="btn" layoutX="208.0" layoutY="591.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Sauvegarder" />
+                        <Button fx:id="btn" layoutX="208.0" layoutY="591.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Sauvegarder" AnchorPane.leftAnchor="150.0" />
                         <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
-                        <Button fx:id="questionUp" layoutX="122.0" layoutY="489.0" mnemonicParsing="false" onAction="#ClickButtonUp">
+                        <Button fx:id="questionUp" layoutX="122.0" layoutY="489.0" mnemonicParsing="false" onAction="#ClickButtonUp" AnchorPane.leftAnchor="100.0">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -41,7 +41,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="questionDown" layoutX="330.0" layoutY="490.0" mnemonicParsing="false" onAction="#ClickButtonDown">
+                        <Button fx:id="questionDown" layoutX="330.0" layoutY="490.0" mnemonicParsing="false" onAction="#ClickButtonDown" AnchorPane.rightAnchor="100.0">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -50,18 +50,18 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="boutonAjout" layoutX="58.0" layoutY="542.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" />
-                        <Button fx:id="boutonModifier" layoutX="204.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" />
-                        <Button fx:id="boutonSupprimer" layoutX="368.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" />
-                        <TableView fx:id="table" layoutX="53.0" layoutY="120.0" prefHeight="364.0" prefWidth="452.0" stylesheets="@../../Ressources/CSS/tableau_param.css" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="71.0">
+                        <Button fx:id="boutonAjout" layoutX="58.0" layoutY="542.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.leftAnchor="30.0" />
+                        <Button fx:id="boutonModifier" layoutX="204.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="150.0" />
+                        <Button fx:id="boutonSupprimer" layoutX="368.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" AnchorPane.rightAnchor="30.0" />
+                        <TableView fx:id="table" layoutX="17.0" layoutY="120.0" prefHeight="364.0" prefWidth="380.0" stylesheets="@../../Ressources/CSS/tableau_param.css">
                            <columns>
-                              <TableColumn prefWidth="225.0" text="Message">
+                              <TableColumn prefWidth="200.0" text="Message">
                               	<cellValueFactory>
                                     <PropertyValueFactory property="intitule" />
                        			</cellValueFactory>
                			     </TableColumn>
                			     
-                              <TableColumn prefWidth="225.0" text="Personnage">
+                              <TableColumn prefWidth="180.0" text="Personnage">
                               	<cellValueFactory>
                                     <PropertyValueFactory property="imagePersonnage" />
                        			</cellValueFactory>
@@ -74,7 +74,11 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="0.0" minWidth="0.0" prefHeight="648.0" prefWidth="491.0" />
+                  <ScrollPane>
+                     <content>
+                      <AnchorPane fx:id="AP_ParamDialogue" minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="500.0" />
+                     </content>
+                  </ScrollPane>
               </items>
             </SplitPane>
          </children>

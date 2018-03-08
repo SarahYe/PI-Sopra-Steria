@@ -28,7 +28,10 @@ import modeles.Quiz;
 public class ViewPNJController implements Initializable {
 	
 	@FXML
-	private ImageView boutonNext;
+	private Button boutonNext;
+	
+	@FXML
+	private Button boutonPrev;
 	
 	@FXML
 	private AnchorPane anchor;
@@ -68,6 +71,13 @@ public class ViewPNJController implements Initializable {
 			this.pnj = pnj.convertirXMLToJava(xml);
 			
 			dial = this.pnj.getListeDialogues().get(cmpt);
+			
+			if (cmpt == 0) {
+				boutonPrev.setVisible(false);
+			} else {
+				boutonPrev.setVisible(true);
+			}
+			
 			remplissageContentDialogue(dial);
 			
 		} else {
@@ -152,27 +162,10 @@ public class ViewPNJController implements Initializable {
 	    //	}
 	}
 	
-	/*private void ClickButtonPrev(ActionEvent event) throws IOException {
-		if (pnj.getListeDialogues().size() == cmpt1) {
-			if(soloBloc){
-				Stage stage = (Stage) boutonNext.getScene().getWindow();
-				stage.close();
-			} else {
-				Stage stage = (Stage) boutonNext.getScene().getWindow();
-				//System.out.print(score);
-				Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
-				
-				if (node != null){
-					stage.setScene(new Scene((Parent) node, 850, 650));
-				} else {
-					stage.close();
-				}
-				
-			}
-		} else {
-			Stage stage = (Stage) boutonNext.getScene().getWindow();
+	@FXML
+	private void ClickButtonPrev(ActionEvent event) throws IOException {
+			Stage stage = (Stage) boutonPrev.getScene().getWindow();
 			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt - 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
 			stage.show();
-		}*/
-	
+	}
 }

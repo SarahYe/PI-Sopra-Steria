@@ -19,16 +19,25 @@
             <Image url="@../../Ressources/Images/bulle3.png" />
          </image>
       </ImageView>
-      <Button alignment="CENTER" layoutX="709.0" layoutY="584.0" mnemonicParsing="false" onAction="#ClickButtonNext" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+      <Button fx:id="boutonNext" alignment="CENTER" layoutX="719.0" layoutY="594.0" mnemonicParsing="false" onAction="#ClickButtonNext" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" AnchorPane.bottomAnchor="10.0">
          <graphic>
-            <ImageView fx:id="boutonNext" fitHeight="40.0" fitWidth="85.0" onDragDetected="#ClickButtonNext" pickOnBounds="true">
+            <ImageView fitHeight="40.0" fitWidth="85.0" pickOnBounds="true">
                <image>
                   <Image url="@../../Ressources/Images/suivant.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Label fx:id="texte" layoutX="85.0" layoutY="451.0" prefHeight="190.0" prefWidth="623.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper ornare auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus mauris ipsum, molestie auctor bibendum eget, placerat non lorem." wrapText="true">
+      <Button fx:id="boutonPrev" alignment="CENTER" layoutX="695.0" layoutY="584.0" mnemonicParsing="false" onAction="#ClickButtonPrev" prefHeight="52.0" prefWidth="126.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="85.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../Ressources/Images/suivant.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label fx:id="texte" layoutX="112.0" layoutY="451.0" prefHeight="190.0" prefWidth="623.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut semper ornare auctor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus mauris ipsum, molestie auctor bibendum eget, placerat non lorem." wrapText="true">
          <font>
             <Font size="20.0" />
          </font>

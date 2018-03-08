@@ -10,9 +10,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<ScrollPane prefWidth="502.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewAddOrModifyDialogueController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewAddOrModifyDialogueController">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="502.0">
+      <AnchorPane prefHeight="457.0" prefWidth="501.0">
          <children>
             <Separator layoutX="-10.0" layoutY="3.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
             <Label contentDisplay="CENTER" layoutX="5.0" layoutY="13.0" text="Dialogue" />
@@ -32,7 +32,7 @@
             <TextField fx:id="imagePersonnage" layoutX="142.0" layoutY="350.0" prefHeight="27.0" prefWidth="265.0" AnchorPane.leftAnchor="120.0" />
             <Button fx:id="boutonTelechargerPersonnage" layoutX="396.5" layoutY="351.0" mnemonicParsing="false" onAction="#telechargerPersonnage" text="Parcourir" AnchorPane.rightAnchor="27.0" />
             <Label layoutX="45.0" layoutY="223.0" text="Texte :" AnchorPane.leftAnchor="20.0" />
-            <Button fx:id="boutonSauvegarder" layoutX="210.0" layoutY="434.0" mnemonicParsing="false" onAction="#sauvegarder" text="OK" AnchorPane.leftAnchor="230.5" AnchorPane.rightAnchor="230.5" />
+            <Button fx:id="boutonSauvegarder" layoutX="210.0" layoutY="434.0" mnemonicParsing="false" onAction="#sauvegarder" text="OK" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="230.0" />
          </children>
       </AnchorPane>
    </content>

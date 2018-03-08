@@ -125,17 +125,6 @@ public class ViewParametresQuizController implements Initializable{
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
 		controller.initData(true, table.getSelectionModel(),this);
-		
-		/*
-		 * Stage stage = new Stage();
-		stage.setTitle("Modifier une question");
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
-		 * stage.setScene(new Scene(loader.load())); ViewAddOrModifyQuestionController
-		 * controller = loader.<ViewAddOrModifyQuestionController>getController();
-		 * controller.initData(true, table.getSelectionModel(), mainController);
-		 * stage.show();
-		 */
 	}
 
 	@FXML

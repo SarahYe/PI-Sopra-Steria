@@ -1,10 +1,14 @@
 package controleurs;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
 
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView.TableViewSelectionModel;
@@ -61,8 +65,7 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-
+		zoneDialogue.setWrapText(true);
 	}
 
 	public void initData(boolean modifyDialogueInterface, TableViewSelectionModel<Dialogue> tableViewSelectionModel,ViewParametresPNJController controller) {
@@ -145,20 +148,32 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 	}
 
 	@FXML
-	void telechargerFondEcran(ActionEvent event) {
+	void telechargerFondEcran(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
 		fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
 
-		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
-
+		
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		imageFondEcran.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
 		
-
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		
+		imageFondEcran.setText("././Ressources/Images/" + nomImage);
+		//imageFondEcran.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		
 		couleurFDE = false;
 		activerCouleur();
 	}
@@ -170,18 +185,31 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 	}
 	
 	@FXML
-	void telechargerPersonnage(ActionEvent event) {
+	void telechargerPersonnage(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
 		fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
 
-		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		imagePersonnage.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		
+		imagePersonnage.setText("././Ressources/Images/" + nomImage);
 	}
 	
 	public void activerCouleur() {

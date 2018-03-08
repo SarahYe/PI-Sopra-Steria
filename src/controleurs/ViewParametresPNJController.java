@@ -18,6 +18,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
@@ -94,12 +95,12 @@ public class ViewParametresPNJController implements Initializable {
 
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
+		
 		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml")); ScrollPane
-		 * newPane = loader.load(); AP_ParamDialogue.getChildren().setAll(newPane);
-		 * ViewAddOrModifyDialogueController controller =
-		 * loader.<ViewAddOrModifyDialogueController>getController();
+		 * FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml")); 
+		 * ScrollPane newPane = loader.load(); 
+		 * AP_ParamDialogue.getChildren().setAll(newPane);
+		 * ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
 		 * controller.initData(false, null, this);
 		 */
 
@@ -120,10 +121,10 @@ public class ViewParametresPNJController implements Initializable {
 		}
 
 		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml")); ScrollPane
-		 * newPane = loader.load(); ViewAddOrModifyDialogueController controller =
-		 * loader.<ViewAddOrModifyDialogueController>getController();
+		 * FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		 * ScrollPane newPane = loader.load(); 
+		 * AP_ParamDialogue.getChildren().setAll(newPane);
+		 * ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
 		 * controller.initData(true, table.getSelectionModel(), this);
 		 */
 

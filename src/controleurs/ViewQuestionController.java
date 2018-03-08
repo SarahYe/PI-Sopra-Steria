@@ -33,26 +33,6 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private Button buttonNextQue;
-/*	@FXML
-	private Button reponse1;
-	@FXML
-	private Button reponse1P;
-	@FXML
-	private Button reponse2;
-	@FXML
-	private Button reponse2P;
-	@FXML
-	private Button reponse3;
-	@FXML
-	private Button reponse3P;
-	@FXML
-	private Button reponse4;
-	@FXML
-	private Button reponse4P;
-	@FXML
-	private Button reponse5;
-	@FXML
-	private Button reponse5P;*/
 	@FXML
 	private Button valider;
 	@FXML
@@ -63,22 +43,10 @@ public class ViewQuestionController implements Initializable {
 	private Button volumeOff;
 	@FXML
 	private Label justification;
-/*	@FXML
-	private Label reponse1L;
-	@FXML
-	private Label reponse2L;
-	@FXML
-	private Label reponse3L;
-	@FXML
-	private Label reponse4L;
-	@FXML
-	private Label reponse5L;*/
 	@FXML
 	private CheckBox intiRep1, intiRep2, intiRep3, intiRep4, intiRep5;
 	@FXML
 	private Label intiQue;
-	//@FXML
-	//private Label progression;
 	@FXML
 	private ProgressBar progQuiz;
 	@FXML
@@ -97,7 +65,6 @@ public class ViewQuestionController implements Initializable {
 	private int score;
 	
 	HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
-	//private ArrayList<String> reponsesJoueur = new ArrayList<String>();
 
 	public void initData(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, boolean son, int score) {
 		this.cmpt = cmpt;
@@ -293,24 +260,8 @@ public class ViewQuestionController implements Initializable {
 		if (quiz.getListeQuestions().size() == cmpt+1) {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "/vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
-			/*if(soloBloc){
-				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-				stage.setScene(new Scene((Parent) JFxUtils.loadQuizFxml("../vues/QuizAccueil.fxml",xml, soloBloc, cmptChronologie, xmlChronologie), 850, 650));
-			} else {
-				Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-				//System.out.print(score);
-				Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
-				if (node!=null){
-					stage.setScene(new Scene((Parent) node, 850, 650));
-				} else {
-					stage.close();
-				}
-				
-			}*/
-			
 		} else {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			//System.out.print(score);
 			Node node=JFxUtils.loadQuestion(quiz, reponsesJoueur, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));

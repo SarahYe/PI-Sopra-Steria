@@ -59,15 +59,6 @@ public class ViewParametresQuizController implements Initializable{
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
-		/*// TODO Auto-generated method stub
-		ArrayList<Question> list = new ArrayList<Question>();
-		Quiz quiz = new Quiz("Nom du quiz", list);
-		Quiz quiz2 = quiz.convertirXMLToJava("FichiersDeConfig/quiz.xml");
-		ObservableList<Question> data = table.getItems();
-		for (int i = 0; i < quiz2.getListeQuestions().size(); i++) {
-			data.add(quiz2.getListeQuestions().get(i));
-		}*/
 	}
 
 	public void initData() {
@@ -105,16 +96,6 @@ public class ViewParametresQuizController implements Initializable{
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
 		quiz.convertirJavaToXML(quiz, xml);
 
-		//Stage stage = (Stage) btnSave.getScene().getWindow();
-		//stage.close();
-		
-		/*try {
-			new MainQuiz().start(stage);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
-		
 		//popup de confirmation
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Paramétrage  d'un quiz");
@@ -131,14 +112,6 @@ public class ViewParametresQuizController implements Initializable{
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
 		controller.initData(false, null, this);
 		
-		//Stage stage = new Stage();
-		//stage.setTitle("Nouvelle question");
-		// FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
-		// stage.setScene(new Scene(loader.load()));
-		// ViewAddOrModifyQuestionController controller =
-		// newPane.<ViewAddOrModifyQuestionController>getController();
-		// controller.initData(false, null, mainController);
-		// stage.show();
 	}
 
 	@FXML

@@ -1,5 +1,6 @@
 package controleurs;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -10,6 +11,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -102,7 +105,6 @@ public class ViewParametresAccueilController implements Initializable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		//titre.setFont(Font.loadFont(getClass().getResourceAsStream("././Ressources/Polices/Comfortaa_Bold.ttf"), 24));
 		final File dossierPolices = new File("././Ressources/Polices");
 		listerPolices(dossierPolices);
 		Collections.sort(listeNomFonts);
@@ -156,7 +158,7 @@ public class ViewParametresAccueilController implements Initializable {
 	}
 
 	@FXML
-	void chargerImageFondEcran(ActionEvent event) {
+	void chargerImageFondEcran(ActionEvent event) throws IOException {
 
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
@@ -168,13 +170,23 @@ public class ViewParametresAccueilController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		imageFondEcran.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		imageFondEcran.setText("././Ressources/Images/" + nomImage);
 
 		modif++;
 		couleurFDE = false;
 		activerCouleur();
-		// couleurFondEcran.setDisable(true);
-		// activerUnChoixFondEcran();
 	}
 
 	@FXML
@@ -190,10 +202,6 @@ public class ViewParametresAccueilController implements Initializable {
 		activerCouleur();
 		modif++;
 		erreur.setVisible(false);
-		/*
-		 * imageFondEcran.setDisable(true); boutonsupprimerImageFDE.setDisable(true);
-		 * boutonTelechargerImageFDE.setDisable(true);
-		 */
 	}
 
 	@FXML
@@ -209,28 +217,36 @@ public class ViewParametresAccueilController implements Initializable {
 	}
 
 	@FXML
-	void chargerImageNomSG(ActionEvent event) {
+	void chargerImageNomSG(ActionEvent event) throws IOException {
 
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
 		fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
 
-		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		imageNomSG.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		
+		imageNomSG.setText("././Ressources/Images/" + nomImage);
 
 		modif++;
 		erreur.setVisible(false);
 		texteNomSG = false;
 		activerTelechargementNomSG();
-		/*
-		 * NomSG.setDisable(true); policeNomSG.setDisable(true);
-		 * couleurNomSG.setDisable(true); boutonApercu.setDisable(true);
-		 */
 
 	}
 

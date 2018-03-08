@@ -139,7 +139,24 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
-
+		
+		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
+		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+	
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		image1.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
+		cheminImage1 = "././Ressources/Images/" + nomImage;
+/*
 		try {
 			BufferedImage bufferedImage = ImageIO.read(file);
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
@@ -147,11 +164,12 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 			Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 			Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
+			
 			cheminImage1 = cheminAbsoluActuel.relativize(cheminAbsoluImage).toString();
 
 		} catch (IOException ex) {
 			ex.printStackTrace();
-		}
+		}*/
 	}
 
 	@FXML
@@ -164,18 +182,24 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
-
-		try {
-			BufferedImage bufferedImage = ImageIO.read(file);
-			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-			image2.setImage(image);
-
-			Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
-			Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-			cheminImage2 = cheminAbsoluActuel.relativize(cheminAbsoluImage).toString();
-		} catch (IOException ex) {
-			ex.printStackTrace();
+		
+		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
+		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+	
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
 		}
+		image2.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
+		cheminImage2 = "././Ressources/Images/" + nomImage;
+		
 	}
 
 	@FXML
@@ -220,16 +244,6 @@ public class ViewParametresPageExplicationController implements Initializable {
 			erreur.setVisible(true);
 		else {
 			
-			//Popup pour le nom du fichier
-			//TextInputDialog dialog = new TextInputDialog("");
-			//dialog.setTitle("Enregistrement du fichier de configuration");
-			//dialog.setHeaderText("Entrez le nom du fichier de configuration (sans l'extension)");
-			//dialog.setContentText("Entrez le nom du fichier de configuration (sans l'extension) :");
-			
-			//Optional<String> result = dialog.showAndWait();
-			//if (result.isPresent()){
-			//   System.out.println("Nom entré: " + result.get());
-			//}
 			// éléments invisibles
 			champTitre.setVisible(false);
 			champExplication.setVisible(false);
@@ -327,36 +341,5 @@ public class ViewParametresPageExplicationController implements Initializable {
 		this.xml=xml;
 		
 	}
-	
-	
-	/*
-	 * @FXML void validerTitre(KeyEvent event) {
-	 * 
-	 * if (event.getCode().equals(KeyCode.ENTER)) { champTitre.setVisible(false);
-	 * theme.setText(champTitre.getText()); theme.setVisible(true); } }
-	 * 
-	 * @FXML void changerExplication(MouseEvent event) {
-	 * explication.setVisible(false); source.setVisible(false);
-	 * champExplication.setText(explication.getText());
-	 * champExplication.setVisible(true); validerExplication.setVisible(true); }
-	 * 
-	 * @FXML void validerExplication(ActionEvent event) throws IOException {
-	 * champExplication.setVisible(false);
-	 * explication.setText(champExplication.getText());
-	 * explication.setVisible(true); source.setVisible(true);
-	 * validerExplication.setVisible(false); }
-	 * 
-	 * @FXML void changerSource(MouseEvent event) { source.setVisible(false);
-	 * champSource.setText(source.getText()); champSource.setVisible(true); }
-	 * 
-	 * @FXML void validerSource(KeyEvent event) { if
-	 * (event.getCode().equals(KeyCode.ENTER)) { champSource.setVisible(false);
-	 * source.setText(champSource.getText()); source.setVisible(true); } }
-	 * 
-	 * @FXML void changerLien(MouseEvent event) { hyperlien.setVisible(false);
-	 * source.setVisible(false); label1.setVisible(false);
-	 * champHyperlien.setText(hyperlien.getText()); champHyperlien.setVisible(true);
-	 * enregistrer.setVisible(true); }
-	 */
 
 }

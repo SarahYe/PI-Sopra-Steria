@@ -55,8 +55,6 @@ public class ViewPNJController implements Initializable {
 	
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
-		//boutonNext.setVisible(false);
 	}
 	
 	public void initData(PNJ pnj, int cmpt, boolean son, int score) {
@@ -68,7 +66,6 @@ public class ViewPNJController implements Initializable {
 		File f =  new File(xml);
 		if (f.exists()){
 			this.pnj = pnj.convertirXMLToJava(xml);
-			//System.out.println(this.pnj.getListeDialogues().size());
 			
 			dial = this.pnj.getListeDialogues().get(cmpt);
 			remplissageContentDialogue(dial);
@@ -154,5 +151,28 @@ public class ViewPNJController implements Initializable {
 			//new JFxUtils().loadDialogue(pnj, cmpt + 1, stage,xml,soloBloc,cmptChronologie,xmlChronologie);
 	    //	}
 	}
+	
+	/*private void ClickButtonPrev(ActionEvent event) throws IOException {
+		if (pnj.getListeDialogues().size() == cmpt1) {
+			if(soloBloc){
+				Stage stage = (Stage) boutonNext.getScene().getWindow();
+				stage.close();
+			} else {
+				Stage stage = (Stage) boutonNext.getScene().getWindow();
+				//System.out.print(score);
+				Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
+				
+				if (node != null){
+					stage.setScene(new Scene((Parent) node, 850, 650));
+				} else {
+					stage.close();
+				}
+				
+			}
+		} else {
+			Stage stage = (Stage) boutonNext.getScene().getWindow();
+			stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt - 1, "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
+			stage.show();
+		}*/
 	
 }

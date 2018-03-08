@@ -1,5 +1,6 @@
 package controleurs;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,6 +10,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.imageio.ImageIO;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -185,7 +188,6 @@ public class ViewParametresFouilleController implements Initializable {
 		}
 		Instruction selectedItem = table.getSelectionModel().getSelectedItem();
 		System.out.println(table.getSelectionModel().getSelectedIndex());
-		// listeObjets.get(table.getSelectionModel().getSelectedIndex()).setImage(null);
 		previsualisation.getChildren().remove(listeObjets.get(table.getSelectionModel().getSelectedIndex()));
 		listeObjets.remove(table.getSelectionModel().getSelectedIndex());
 		System.out.println(listeObjets.size());
@@ -225,7 +227,7 @@ public class ViewParametresFouilleController implements Initializable {
 	}
 
 	@FXML
-	void telechargerImageFDE(ActionEvent event) {
+	void telechargerImageFDE(ActionEvent event) throws IOException {
 
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
@@ -237,11 +239,21 @@ public class ViewParametresFouilleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		imageFDE.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
-		// previsualisation.setStyle("-fx-background-image: url('" +
-		// cheminAbsoluActuel.relativize(cheminAbsoluImage).toString() + "'); ");
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else 
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		imageFDE.setText("././Ressources/Images/" + nomImage);
 		prevFDE.setImage(ViewParametresPageExplicationController
-				.chargerImage(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+				.chargerImage("././Ressources/Images/" + nomImage));
 	}
 
 	public void setInstruction(int selectedIndex, String intitule, String imageObjet, Double posX, Double posY,

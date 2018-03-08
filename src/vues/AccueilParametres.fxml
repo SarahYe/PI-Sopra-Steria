@@ -19,9 +19,9 @@
                <font>
                   <Font name="Trattatello" size="24.0" />
                </font></Label>
-            <Accordion layoutX="35.0" layoutY="67.0" prefHeight="486.0" prefWidth="799.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="67.0">
+            <Accordion layoutX="35.0" layoutY="67.0" prefHeight="486.0" prefWidth="799.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="67.0" expandedPane="$FDE">
               <panes>
-                <TitledPane prefWidth="601.0" text="Fond d'écran">
+                <TitledPane prefWidth="601.0" text="Fond d'écran" fx:id="FDE">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>

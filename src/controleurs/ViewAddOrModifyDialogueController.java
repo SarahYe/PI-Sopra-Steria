@@ -66,6 +66,7 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		zoneDialogue.setWrapText(true);
+		ViewAddOrModifyQuestionController.addTextALimiter(zoneDialogue, 300);
 	}
 
 	public void initData(boolean modifyDialogueInterface, TableViewSelectionModel<Dialogue> tableViewSelectionModel,ViewParametresPNJController controller) {
@@ -137,8 +138,8 @@ public class ViewAddOrModifyDialogueController implements Initializable {
 			mainController.addDialogue(zoneDialogue.getText(), imageVsCouleurFDE, imagePersonnage.getText(),  imageFondEcran.getText(), CouleurFondEcran.getValue().toString());	
 		}
 		
-		 Stage stage = (Stage) boutonSauvegarder.getScene().getWindow();
-		 stage.close();
+		/* Stage stage = (Stage) boutonSauvegarder.getScene().getWindow();
+		 stage.close();*/
 	}
 
 	@FXML

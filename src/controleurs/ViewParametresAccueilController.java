@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -80,6 +82,9 @@ public class ViewParametresAccueilController implements Initializable {
 
 	@FXML
 	private ComboBox<String> policeNomSG;
+	
+	@FXML
+	private ComboBox<Integer> tailleNomSG;
 
 	@FXML
 	private Button boutonEnregistrer;
@@ -105,10 +110,40 @@ public class ViewParametresAccueilController implements Initializable {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+		ViewAddOrModifyQuestionController.addTextFLimiter(NomSG, 50);
+		
 		final File dossierPolices = new File("././Ressources/Polices");
 		listerPolices(dossierPolices);
 		Collections.sort(listeNomFonts);
 		policeNomSG.getItems().addAll(listeNomFonts);
+		
+		tailleNomSG.getItems().addAll(8,9,10,11,12,14,18,24,30,36,48,60,72,96);
+		tailleNomSG.setValue(60);
+		tailleNomSG.getEditor().textProperty().addListener(new ChangeListener<String> () {
+			String restriction = "[0-9]";
+			int maxLength = 3;
+			private boolean ignore;
+			
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (ignore || newValue == null) {
+                    return;
+                }
+				
+				 if (newValue.length() > maxLength) {
+                     ignore = true;
+                     tailleNomSG.getEditor().setText(
+                             newValue.substring(0, maxLength));
+                     ignore = false;
+                 }
+				
+				if (!newValue.matches(restriction + "*")) {
+                    ignore = true;
+                    tailleNomSG.getEditor().setText(oldValue);
+                    ignore = false;
+                }
+			}
+		});
 	}
 
 	public void initData() {
@@ -123,7 +158,7 @@ public class ViewParametresAccueilController implements Initializable {
 				NomSG.setText(titre.getTexte());
 				policeNomSG.setValue(titre.getPoliceTexte());
 				couleurNomSG.setValue(Color.web(titre.getCouleurTexte().replace("0x", "#")));
-
+				tailleNomSG.setValue(Integer.parseInt(titre.getTaille()));
 				texteNomSG = true;
 				activerTelechargementNomSG();
 			} else {
@@ -362,6 +397,8 @@ public class ViewParametresAccueilController implements Initializable {
 				titreObj.setTexte(NomSG.getText());
 				titreObj.setCouleurTexte(couleurNomSG.getValue().toString());
 				titreObj.setPoliceTexte(policeNomSG.getValue().toString());
+				//System.out.println(Integer.parseInt(tailleNomSG.getValue()));
+				titreObj.setTaille(""+tailleNomSG.getValue());
 			} else {
 				titreObj.setImageVsTexte("Image");
 				titreObj.setLienImage(imageNomSG.getText());

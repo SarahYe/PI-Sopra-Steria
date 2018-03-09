@@ -75,7 +75,7 @@ public class ViewAccueilController implements Initializable{
 				imageTitre.setVisible(false);
 				titreTexte.setText(titre.getTexte());
 				 try {
-					Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/" + titre.getPoliceTexte() + ".ttf")), 60);
+					Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/" + titre.getPoliceTexte() + ".ttf")), Integer.parseInt(titre.getTaille()));
 					titreTexte.setFont(font);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();

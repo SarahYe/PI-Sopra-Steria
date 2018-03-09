@@ -11,6 +11,7 @@ public class Titre {
 	String texte;
 	String couleurTexte;
 	String policeTexte;
+	String tailleTexte;
 
 	public Titre() {}
 
@@ -58,6 +59,14 @@ public class Titre {
 	public void setPoliceTexte(String policeTexte) {
 		this.policeTexte = policeTexte;
 	}
-	
+
+	@XmlElement
+	public String getTaille() {
+		return tailleTexte;
+	}
+
+	public void setTaille(String taille) {
+		this.tailleTexte = taille;
+	}
 	
 }

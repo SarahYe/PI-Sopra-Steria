@@ -46,7 +46,7 @@ public class ViewParametresOddWordOutGameController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		/*****/
+		ViewAddOrModifyQuestionController.addTextFLimiter(textFieldQuestion,150);
 	}
 	
 	public void initData() {

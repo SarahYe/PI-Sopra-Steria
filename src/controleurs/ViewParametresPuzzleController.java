@@ -189,6 +189,12 @@ public class ViewParametresPuzzleController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
+		ViewAddOrModifyQuestionController.addTextALimiter(description,200);
+		ViewAddOrModifyQuestionController.addTextALimiter(indice1,200);
+		ViewAddOrModifyQuestionController.addTextALimiter(indice2,200);
+		ViewAddOrModifyQuestionController.addTextALimiter(indice3,200);
+		
 		 errorScore.setVisible(false);
 		 errorLabel.setVisible(false);
 		 errorFragment.setVisible(false);

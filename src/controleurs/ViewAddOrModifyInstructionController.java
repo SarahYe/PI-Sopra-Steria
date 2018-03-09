@@ -76,6 +76,8 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 			        "OR"
 			    );
 		comboType.setValue("BRONZE");
+		
+		ViewAddOrModifyQuestionController.addTextALimiter(zoneEnonce,150);
 	}
 
 	public void initData(boolean modifyDialogueInterface, TableViewSelectionModel<Instruction> tableViewSelectionModel,

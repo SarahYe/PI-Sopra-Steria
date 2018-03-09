@@ -66,7 +66,7 @@ public class ViewParametresPNJController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 15);
 			titre.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

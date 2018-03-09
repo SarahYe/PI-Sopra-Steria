@@ -1,6 +1,8 @@
 package controleurs;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +17,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.MainChronologie;
 
@@ -22,6 +26,8 @@ public class ViewMainApplicationController implements Initializable{
 	
 	@FXML
 	Button BT_StartGame;
+	@FXML
+	Label nomApp;
 	
 	int cmptChronologie=1;
 	String xmlChronologie="Games/test1/chronologie_test1.xml";
@@ -30,7 +36,13 @@ public class ViewMainApplicationController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		try {
+			Font font = Font.loadFont(
+					new FileInputStream(new File("././Ressources/Polices/Matchmaker.ttf")), 50);
+			nomApp.setFont(font);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
@@ -45,7 +57,7 @@ public class ViewMainApplicationController implements Initializable{
 		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
 		dialog.setTitle("SeriousGame");
 		dialog.setHeaderText("Choix du jeu");
-		dialog.setContentText("Veuillez choisir le jeu que vous désirez lancer");
+		dialog.setContentText("Veuillez choisir le jeu que vous dï¿½sirez lancer");
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();

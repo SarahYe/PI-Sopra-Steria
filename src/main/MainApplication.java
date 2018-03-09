@@ -10,9 +10,9 @@ public class MainApplication extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("/vues/MainApplication.fxml"), 250, 150));
-		stage.setTitle("SeriousGame");
+		setUserAgentStylesheet(STYLESHEET_CASPIAN);
+		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("/vues/MainApplication.fxml"), 800, 600));
+		stage.setTitle("NomApp");
 		stage.show();
 		
 	}

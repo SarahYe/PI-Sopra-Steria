@@ -32,6 +32,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -45,6 +46,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -66,6 +68,8 @@ public class ViewMainParametresController implements Initializable{
 	private ArrayList<Integer> listCmptBloc=new ArrayList<Integer>();
 	@FXML
 	private AnchorPane AP_ConfBlc;
+	@FXML
+	private StackPane SP_ConfBlc;
 	@FXML
 	private TextField TF_GameName;
 	private String gamePath="Games/temp/";
@@ -197,42 +201,45 @@ public class ViewMainParametresController implements Initializable{
 		if(fxml.endsWith("fxml")){
 			System.out.println("cmpt="+cmpt);
 			Node newPane;
+			SP_ConfBlc.setAlignment(Pos.CENTER);
 			String xml=gamePath+LV_BlcList.getSelectionModel().getSelectedItem()+".xml";
 			 switch (cmpt) {
 			 	case 0 :
 			 		newPane= JFxUtils.loadAccueilParamFxml(fxml,xml);
-				 	AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
+			 		
 				 	break;
 			 	case 1 :
 			 		newPane= JFxUtils.loadParamOddWordOutGame(fxml, xml);
-			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
 			 		break;
 			 	case 2 :
 			 		newPane=JFxUtils.loadScoreParam(fxml, xml);
-			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
 			 		break;
 			 	case 3 :
 				 	newPane= JFxUtils.loadParamQuiz(fxml,xml);
-				 	AP_ConfBlc.getChildren().setAll(newPane);
+				 	SP_ConfBlc.getChildren().setAll(newPane);
 				 	break;
 			 	case 4 :
 			 		newPane= JFxUtils.loadPNJParamFxml(fxml, xml);
-			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
 			 		break;
 			 	case 5 :
 			 		newPane= JFxUtils.loadExplicationParamFxml(fxml,xml);
-				 	AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
 				 	break;
 			 	case 6 :
 			 		newPane= JFxUtils.loadFouilleParamFxml(fxml, xml);
-			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
 			 		break;
 			 	case 7 :
 			 		newPane= JFxUtils.loadPuzzleParamFxml(fxml, xml);
-			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		SP_ConfBlc.getChildren().setAll(newPane);
 			 		break;
 			 	default :
 			 }
+			 
 		}
 	}
 	

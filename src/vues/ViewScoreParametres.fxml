@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresScoreController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresScoreController">
   <content>
-    <AnchorPane minHeight="650.0" minWidth="850.0" prefHeight="200.0" prefWidth="200.0">
+    <AnchorPane minHeight="618.0" minWidth="847.0" prefHeight="618.0" prefWidth="847.0">
          <children>
             <Label layoutX="291.0" layoutY="14.0" text="Parametrage d'une page de score">
                <font>

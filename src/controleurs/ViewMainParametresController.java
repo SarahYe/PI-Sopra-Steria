@@ -103,9 +103,10 @@ public class ViewMainParametresController implements Initializable{
 	/**
 	 * Fonction ajoutant le bloc selectionne dans la liste a gauche
 	 * @param event
+	 * @throws IOException 
 	 */
 	@FXML
-	private void ClickBT_AjtBlc(ActionEvent event) {
+	private void ClickBT_AjtBlc(ActionEvent event) throws IOException {
 		if (blocs.getSelectedToggle()!=null){
 			ToggleButton TBT_test=(ToggleButton) (blocs.getSelectedToggle());
 			TBT_test.setSelected(false);
@@ -121,7 +122,15 @@ public class ViewMainParametresController implements Initializable{
 			}
 			LV_BlcList.getItems().add(TBT_test.getText()+ " " + listCmptBloc.get(cmpt));
 			listCmptBloc.set(cmpt,1);
+			
+			String fxml = listFxmlBlocsParam.get(cmpt);
+			
+			loadConfBlc(fxml,cmpt);
+			
 		}
+		
+		
+		
 	}
 	
 	/**
@@ -181,6 +190,10 @@ public class ViewMainParametresController implements Initializable{
 				break;
 			}
 		}
+		loadConfBlc(fxml,cmpt);
+	}
+	
+	private void loadConfBlc(String fxml,int cmpt) throws IOException{
 		if(fxml.endsWith("fxml")){
 			System.out.println("cmpt="+cmpt);
 			Node newPane;
@@ -220,16 +233,6 @@ public class ViewMainParametresController implements Initializable{
 			 		break;
 			 	default :
 			 }
-			/*FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));
-			ScrollPane newPane = loader.load();
-			AP_ConfBlc.getChildren().setAll(newPane);*/
-			
-			//ViewParametresQuizController controller = loader.<ViewParametresQuizController>getController();
-			//controller.initData(controller);
-		} else {
-			Alert alert = new Alert(AlertType.INFORMATION, "La page de configuration de ce bloc n'est pas encore implémenté", ButtonType.OK);
-			alert.showAndWait();
-			//System.out.println("La page de configuration de ce bloc n'est pas encore impl駑ent馥");
 		}
 	}
 	

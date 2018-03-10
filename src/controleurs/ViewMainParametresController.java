@@ -54,7 +54,7 @@ public class ViewMainParametresController implements Initializable{
 	@FXML
 	private ToggleGroup blocs;
 	@FXML
-	private ToggleButton TBT_BlcQuiz,TBT_BlcAccueil,TBT_BlcIntrus,TBT_BlcPNJ,TBT_BlcScr,TBT_BlcExpl;
+	private ToggleButton TBT_BlcQuiz,TBT_BlcAccueil,TBT_BlcIntrus,TBT_BlcPNJ,TBT_BlcScr,TBT_BlcExpl,TBT_BlcPuzzle,TBT_BlcFouille;
 	@FXML
 	private Button BT_AjtBlc; 
 	@FXML
@@ -84,13 +84,17 @@ public class ViewMainParametresController implements Initializable{
 		//Initialisation du contenu des listes servant a faire compteur
 		listTypeBlocs.add("Accueil");listTypeBlocs.add("Jeu Cherche l'Intrus");listTypeBlocs.add("Score");
 		listTypeBlocs.add("Jeu Quiz");listTypeBlocs.add("Dialogue PNJ");listTypeBlocs.add("Page d'explication");
+		listTypeBlocs.add("Jeu Fouille");listTypeBlocs.add("Jeu Puzzle");
 		listFxmlBlocsParam.add("/vues/AccueilParametres.fxml");listFxmlBlocsParam.add("/vues/ViewParametresOddWordOutGame.fxml");listFxmlBlocsParam.add("/vues/ViewScoreParametres.fxml");
 		listFxmlBlocsParam.add("/vues/ViewParametresQuiz.fxml");listFxmlBlocsParam.add("/vues/ViewPNJParametres.fxml");listFxmlBlocsParam.add("/vues/PageExplicationParametrage.fxml");
+		listFxmlBlocsParam.add("/vues/ViewFouilleParametres.fxml");listFxmlBlocsParam.add("/vues/ViewParametresPuzzle.fxml");
 		listFxmlBlocs.add("/vues/Accueil.fxml");listFxmlBlocs.add(" ");listFxmlBlocs.add("/vues/ViewScore.fxml");
 		listFxmlBlocs.add("/vues/QuizAccueil.fxml");listFxmlBlocs.add("/vues/ViewPNJ.fxml");listFxmlBlocs.add("/vues/PageExplication.fxml");
+		listFxmlBlocs.add("/vues/ViewFouille.fxml");listFxmlBlocs.add(" ");
 		listXMLBlocs.add("Accueil");listXMLBlocs.add("Intrus");listXMLBlocs.add("Score");
 		listXMLBlocs.add("Quiz");listXMLBlocs.add("DiagPNJ");listXMLBlocs.add("PageExpl");
-		for (int i=0;i<6;i++)
+		listXMLBlocs.add("Fouille");listXMLBlocs.add("Puzzle");
+		for (int i=0;i<8;i++)
 			listCmptBloc.add(1);
 	}
 	
@@ -206,6 +210,14 @@ public class ViewMainParametresController implements Initializable{
 			 		newPane= JFxUtils.loadExplicationParamFxml(fxml,xml);
 				 	AP_ConfBlc.getChildren().setAll(newPane);
 				 	break;
+			 	case 6 :
+			 		newPane= JFxUtils.loadFouilleParamFxml(fxml, xml);
+			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		break;
+			 	case 7 :
+			 		newPane= JFxUtils.loadPuzzleParamFxml(fxml, xml);
+			 		AP_ConfBlc.getChildren().setAll(newPane);
+			 		break;
 			 	default :
 			 }
 			/*FXMLLoader loader =new FXMLLoader(getClass().getResource(fxml));

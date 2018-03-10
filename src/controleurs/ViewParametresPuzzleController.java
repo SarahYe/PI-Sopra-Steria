@@ -252,7 +252,7 @@ public class ViewParametresPuzzleController implements Initializable {
 		if (f.exists()) {
 			 defaultScoring.setSelected(false);
 			 Puzzle puzzleFile = new Puzzle();
-			 Puzzle p = puzzleFile.convertirXMLToJava("FichiersDeConfig/puzzle.xml");
+			 Puzzle p = puzzleFile.convertirXMLToJava(xml);
 			 decr_points.setText("" + p.getDecr_pts());
 			 decr_points.setDisable(false);
 			 score_init.setText("" + p.getScore_init());
@@ -661,7 +661,7 @@ public class ViewParametresPuzzleController implements Initializable {
 		
 	    	Puzzle p = new Puzzle("Nom", Double.parseDouble(score_init.getText().toString()), Double.parseDouble(decr_points.getText().toString()), Double.parseDouble(decr_sec.getText().toString()),Double.parseDouble(score_min.getText().toString()), description.getText().toString(), fragmentType, listeIndices, listeFragments);
 	    	
-	    	p.convertirJavaToXML(p, "FichiersDeConfig/puzzle.xml");
+	    	p.convertirJavaToXML(p, xml);
 	    	// popup de confirmation
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Paramétrage  d'un puzzle");

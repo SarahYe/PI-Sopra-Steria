@@ -12,7 +12,7 @@ public class MainFouille extends Application {
 	public void start(Stage stage) throws Exception {
 
 		stage.setScene(new Scene((Parent) JFxUtils.loadFouilleFxml("/vues/ViewFouille.fxml","FichiersDeConfig/fouille.xml", true, 0, "Games/test/chronologie_test",false,50), 900, 700));
-		stage.setTitle("Jeu de Fouille");
+		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();
 	}

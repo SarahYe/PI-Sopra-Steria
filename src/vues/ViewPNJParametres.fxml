@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefWidth="900.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
+<ScrollPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPNJController">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="900.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <SplitPane dividerPositions="0.4643652561247216" prefHeight="650.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <SplitPane dividerPositions="0.4643652561247216" prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="500.0">
                      <children>
@@ -30,9 +30,9 @@
                         <Separator layoutY="71.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                         <Label layoutX="15.0" layoutY="81.0" text="Liste des dialogues" />
                         <Separator layoutY="101.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="btn" layoutX="208.0" layoutY="591.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Sauvegarder" AnchorPane.leftAnchor="150.0" />
+                        <Button fx:id="btn" layoutX="172.0" layoutY="564.0" mnemonicParsing="false" onAction="#ClickButtonSave" text="Sauvegarder" AnchorPane.leftAnchor="172.0" />
                         <Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
-                        <Button fx:id="questionUp" layoutX="122.0" layoutY="489.0" mnemonicParsing="false" onAction="#ClickButtonUp" AnchorPane.leftAnchor="100.0">
+                        <Button fx:id="questionUp" layoutX="102.0" layoutY="466.0" mnemonicParsing="false" onAction="#ClickButtonUp" AnchorPane.leftAnchor="102.0">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -41,7 +41,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="questionDown" layoutX="330.0" layoutY="490.0" mnemonicParsing="false" onAction="#ClickButtonDown" AnchorPane.rightAnchor="100.0">
+                        <Button fx:id="questionDown" layoutX="315.0" layoutY="467.0" mnemonicParsing="false" onAction="#ClickButtonDown" AnchorPane.rightAnchor="98.0">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -50,10 +50,10 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="boutonAjout" layoutX="58.0" layoutY="542.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.leftAnchor="30.0" />
-                        <Button fx:id="boutonModifier" layoutX="204.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="150.0" />
-                        <Button fx:id="boutonSupprimer" layoutX="368.0" layoutY="542.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" AnchorPane.rightAnchor="30.0" />
-                        <TableView fx:id="table" layoutX="17.0" layoutY="120.0" prefHeight="364.0" prefWidth="380.0" stylesheets="@../../Ressources/CSS/tableau_param.css">
+                        <Button fx:id="boutonAjout" layoutX="50.0" layoutY="519.0" minWidth="74.0" mnemonicParsing="false" onAction="#ClickButtonAdd" prefHeight="27.0" prefWidth="74.0" stylesheets="@../../Ressources/CSS/button_hover.css" text="Ajouter" textFill="WHITE" AnchorPane.leftAnchor="50.0" />
+                        <Button fx:id="boutonModifier" layoutX="173.0" layoutY="519.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonModify" stylesheets="@../../Ressources/CSS/button_hover.css" text="Modifier" textFill="WHITE" AnchorPane.leftAnchor="173.0" />
+                        <Button fx:id="boutonSupprimer" layoutX="319.0" layoutY="519.0" minWidth="100.0" mnemonicParsing="false" onAction="#ClickButtonRemove" stylesheets="@../../Ressources/CSS/button_hover.css" text="Supprimer" textFill="WHITE" AnchorPane.rightAnchor="41.0" />
+                        <TableView fx:id="table" layoutX="40.0" layoutY="117.0" prefHeight="336.0" prefWidth="380.0" stylesheets="@../../Ressources/CSS/tableau_param.css">
                            <columns>
                               <TableColumn prefWidth="200.0" text="Message">
                               	<cellValueFactory>

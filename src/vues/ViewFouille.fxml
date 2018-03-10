@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewFouilleController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewFouilleController">
    <content>
       <AnchorPane prefHeight="650.0" prefWidth="850.0">
          <children>
@@ -18,7 +18,7 @@
                         <Image url="@../../Ressources/Images/bulleDialogue2.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="LB_Instruction" layoutX="396.0" layoutY="21.0" text="Consigne du jeu à placer" />
+                  <Label fx:id="LB_Instruction" layoutX="396.0" layoutY="21.0" prefHeight="70.0" text="Consigne du jeu à placer" wrapText="true" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="0.0" />
                   <Label fx:id="LB_Score" layoutX="844.0" layoutY="30.0" text="Score : ">
                      <font>
                         <Font name="System Bold" size="12.0" />

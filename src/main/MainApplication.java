@@ -12,7 +12,7 @@ public class MainApplication extends Application {
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("/vues/MainApplication.fxml"), 800, 600));
-		stage.setTitle("NomApp");
+		stage.setTitle("imaGin'S");
 		stage.show();
 		
 	}

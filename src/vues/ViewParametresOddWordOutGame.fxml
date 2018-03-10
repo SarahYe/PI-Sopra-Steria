@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresOddWordOutGameController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresOddWordOutGameController">
    <content>
-   		<VBox prefWidth="750.0" spacing="20">
+   		<VBox prefWidth="1000.0" spacing="20">
    		  <padding>
 	        <Insets bottom="0" left="25.0" right="0" top="25.0" />
 	      </padding>
@@ -25,8 +25,11 @@
 		      	<Label text="Intitulé de la question :" />
 		      	<TextField fx:id="textFieldQuestion" HBox.hgrow="ALWAYS">
                <HBox.margin>
-                  <Insets right="30.0" />
+                  <Insets right="150.0" />
                </HBox.margin></TextField>
+            <VBox.margin>
+               <Insets left="100.0" />
+            </VBox.margin>
 	      	</HBox>
 	      	
 	      	<HBox alignment="BASELINE_LEFT" spacing="20">
@@ -66,17 +69,23 @@
 				          <Button onAction="#ClickButtonSupprBadAnswer" text="Supprimer" />
 				     </HBox>
                	</VBox>
+            <VBox.margin>
+               <Insets left="100.0" />
+            </VBox.margin>
 	      	</HBox>
   	
 	      	<HBox alignment="BASELINE_LEFT" spacing="15">
-	      		<padding>
-			      <Insets bottom="25.0" left="0" right="0" top="0" />
-			    </padding>
 				<Label fx:id="errorLabel" style="-fx-text-fill: red;" visible="false" />
 	      		<Button fx:id="btn" mnemonicParsing="false" onAction="#ClickButtonSave" text="Sauvegarder">
                <HBox.margin>
-                  <Insets left="270.0" top="20.0" />
+                  <Insets left="400.0" />
                </HBox.margin></Button>
+            <padding>
+               <Insets bottom="30.0" />
+            </padding>
+            <VBox.margin>
+               <Insets />
+            </VBox.margin>
 			</HBox>	
       	
       	</VBox>

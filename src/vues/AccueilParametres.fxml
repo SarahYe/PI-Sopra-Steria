@@ -11,15 +11,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresAccueilController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresAccueilController">
   <content>
-      <AnchorPane prefHeight="650.0" prefWidth="850.0">
+      <AnchorPane prefHeight="600.0" prefWidth="1000.0">
          <children>
             <Label fx:id="titre" alignment="CENTER" layoutX="282.0" layoutY="14.0" prefHeight="46.0" prefWidth="321.0" text="Paramétrage d'une page d'accueil" AnchorPane.leftAnchor="264.5" AnchorPane.rightAnchor="264.5">
                <font>
                   <Font name="Trattatello" size="24.0" />
                </font></Label>
-            <Accordion layoutX="35.0" layoutY="67.0" prefHeight="486.0" prefWidth="799.0" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="31.0" AnchorPane.topAnchor="67.0" expandedPane="$FDE">
+            <Accordion layoutX="81.0" layoutY="71.0" prefHeight="460.0" prefWidth="799.0">
               <panes>
                 <TitledPane fx:id="FDE" prefWidth="601.0" text="Fond d'écran">
                   <content>
@@ -62,9 +62,9 @@
                 </TitledPane>
               </panes>
             </Accordion>
-            <Button fx:id="boutonEnregistrer" layoutX="259.0" layoutY="576.0" mnemonicParsing="false" onAction="#enregistrer" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" />
-            <Label fx:id="erreur" layoutX="306.0" layoutY="610.0" text="Aucune modification enregistrée" textFill="RED" visible="false" wrapText="true" />
-            <Button fx:id="previsualiser" layoutX="463.0" layoutY="576.0" mnemonicParsing="false" onAction="#previsualisation" stylesheets="@../../Ressources/CSS/button_hover.css" text="Prévisualiser" />
+            <Button fx:id="boutonEnregistrer" layoutX="347.0" layoutY="552.0" mnemonicParsing="false" onAction="#enregistrer" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" />
+            <Label fx:id="erreur" layoutX="394.0" layoutY="586.0" text="Aucune modification enregistrée" textFill="RED" visible="false" wrapText="true" />
+            <Button fx:id="previsualiser" layoutX="551.0" layoutY="552.0" mnemonicParsing="false" onAction="#previsualisation" stylesheets="@../../Ressources/CSS/button_hover.css" text="Prévisualiser" />
          </children>
       </AnchorPane>
   </content>

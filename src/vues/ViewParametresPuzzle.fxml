@@ -14,15 +14,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPuzzleController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPuzzleController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="649.0" prefWidth="850.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="650.0" prefWidth="1000.0">
          <children>
-            <Label layoutX="261.0" layoutY="31.0" text="Format de puzzle" />
-            <ComboBox fx:id="formatPuzzle" layoutX="414.0" layoutY="26.0" onAction="#choisirFormat" prefWidth="150.0" />
+            <Label layoutX="356.0" layoutY="31.0" text="Format de puzzle" />
+            <ComboBox fx:id="formatPuzzle" layoutX="509.0" layoutY="26.0" onAction="#choisirFormat" prefWidth="150.0" />
             <Label layoutX="293.0" layoutY="347.0" text="Description" />
             <TextArea fx:id="description" layoutX="414.0" layoutY="341.0" prefHeight="59.0" prefWidth="389.0" promptText="Entrez une instruction au joueur ou une description du puzzle ou une question" wrapText="true" />
-            <VBox fx:id="frag1_6" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" visible="false">
+            <VBox fx:id="frag1_6" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" visible="false" AnchorPane.rightAnchor="100.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -128,7 +128,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="frag1_5" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" visible="false">
+            <VBox fx:id="frag1_5" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" visible="false" AnchorPane.rightAnchor="100.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -227,7 +227,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox fx:id="frag1_4" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;">
+            <VBox fx:id="frag1_4" alignment="CENTER" layoutX="220.0" layoutY="86.0" prefHeight="247.0" prefWidth="581.0" style="-fx-border-color: BLACK;" AnchorPane.rightAnchor="100.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -311,12 +311,12 @@
             <ComboBox fx:id="nbIndices" layoutX="414.0" layoutY="412.0" onAction="#handleComboIndice" prefHeight="27.0" prefWidth="59.0" />
             <Label layoutX="309.0" layoutY="449.0" text="Indice 1" />
             <TextArea fx:id="indice1" layoutX="414.0" layoutY="446.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
-            <CheckBox fx:id="puzzleImage" layoutX="263.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCheckboxTypePuzzle" text="Puzzle imagé" />
+            <CheckBox fx:id="puzzleImage" layoutX="358.0" layoutY="65.0" mnemonicParsing="false" onAction="#handleCheckboxTypePuzzle" text="Puzzle imagé" />
             <Label fx:id="lbl_ind2" layoutX="310.0" layoutY="504.0" text="Indice 2" />
             <TextArea fx:id="indice2" layoutX="414.0" layoutY="497.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
             <TextArea fx:id="indice3" layoutX="414.0" layoutY="547.0" prefHeight="42.0" prefWidth="383.0" wrapText="true" />
             <Label fx:id="lbl_ind3" layoutX="309.0" layoutY="553.0" text="Indice 3" />
-            <Separator layoutX="183.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            <Separator layoutX="207.0" orientation="VERTICAL" prefHeight="653.0" prefWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Button fx:id="btnSauvegarder" layoutX="489.0" layoutY="604.0" mnemonicParsing="false" onAction="#sauvegarder" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" AnchorPane.leftAnchor="489.0" AnchorPane.rightAnchor="259.0" />
             <CheckBox fx:id="defaultScoring" layoutX="12.0" layoutY="211.0" mnemonicParsing="false" onAction="#handleCheckboxScoring" selected="true" text="Scoring par défaut" />
             <Label layoutX="13.0" layoutY="249.0" text="Score initial" />
@@ -335,12 +335,12 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="errorFragment" layoutX="517.0" layoutY="67.0" text="Tous les fragments ne sont pas renseignés" textFill="RED">
+            <Label fx:id="errorFragment" layoutX="612.0" layoutY="67.0" text="Tous les fragments ne sont pas renseignés" textFill="RED">
                <font>
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="errorLabel" layoutX="604.0" layoutY="610.0" text="Tous les champs sont obligatoires" textFill="RED">
+            <Label fx:id="errorLabel" layoutX="758.0" layoutY="610.0" text="Tous les champs sont obligatoires" textFill="RED">
                <font>
                   <Font size="10.0" />
                </font>

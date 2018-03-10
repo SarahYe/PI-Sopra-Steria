@@ -14,11 +14,10 @@ public class MainParametres extends Application {
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("/vues/ViewMainParametres.fxml"), 1250, 780));
-		stage.setTitle("Configuration d'un serious game");
+		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();
 		//stage.setMaximized(true);
-		
 	}
 	
 	@Override

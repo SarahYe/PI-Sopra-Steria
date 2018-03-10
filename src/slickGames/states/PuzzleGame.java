@@ -77,7 +77,7 @@ public class PuzzleGame extends BasicGameState {
 				int indexX = 1;
 				for (int i = 0; i < list.size(); i++){
 					piecesImg.add(new PuzzlePieceImg(listCorrectPos.get(i), new Image(list.get(i)), partX*indexX, (MainPuzzleGame.hauteur*3)/4-50));
-					System.out.println("Ajout pièce correctPos : "+listCorrectPos.get(i));
+					System.out.println("Ajout piï¿½ce correctPos : "+listCorrectPos.get(i));
 					indexX+=2;
 				}
 			} else if (list.size() == 5){
@@ -311,53 +311,53 @@ public class PuzzleGame extends BasicGameState {
 		if (this.puzzle.getListeFragments().size() == 4){
 			if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
 				currentMatriceOrder.set(0, -1);
-				System.out.println("Matrice n°0 vide");
+				System.out.println("Matrice nï¿½0 vide");
 			} else if(x > MainPuzzleGame.longueur/2-100 && x < MainPuzzleGame.longueur/2){
 				currentMatriceOrder.set(1, -1);
-				System.out.println("Matrice n°1 vide");
+				System.out.println("Matrice nï¿½1 vide");
 			} else if(x > MainPuzzleGame.longueur/2 && x < MainPuzzleGame.longueur/2+100){
 				currentMatriceOrder.set(2, -1);
-				System.out.println("Matrice n°2 vide");
+				System.out.println("Matrice nï¿½2 vide");
 			} else if(x > MainPuzzleGame.longueur/2+100 && x < MainPuzzleGame.longueur/2+200){
 				currentMatriceOrder.set(3, -1);
-				System.out.println("Matrice n°3 vide");
+				System.out.println("Matrice nï¿½3 vide");
 			}
 		} else if (this.puzzle.getListeFragments().size() == 5){
 			if(x > MainPuzzleGame.longueur/2-250 && x < MainPuzzleGame.longueur/2-150){
 				currentMatriceOrder.set(0, -1);
-				System.out.println("Matrice n°0 vide");
+				System.out.println("Matrice nï¿½0 vide");
 			} else if(x > MainPuzzleGame.longueur/2-150 && x < MainPuzzleGame.longueur/2-50){
 				currentMatriceOrder.set(1, -1);
-				System.out.println("Matrice n°1 vide");
+				System.out.println("Matrice nï¿½1 vide");
 			} else if(x > MainPuzzleGame.longueur/2-50 && x < MainPuzzleGame.longueur/2+50){
 				currentMatriceOrder.set(2, -1);
-				System.out.println("Matrice n°2 vide");
+				System.out.println("Matrice nï¿½2 vide");
 			} else if(x > MainPuzzleGame.longueur/2+50 && x < MainPuzzleGame.longueur/2+150){
 				currentMatriceOrder.set(3, -1);
-				System.out.println("Matrice n°3 vide");
+				System.out.println("Matrice nï¿½3 vide");
 			} else if(x > MainPuzzleGame.longueur/2+150 && x < MainPuzzleGame.longueur/2+250){
 				currentMatriceOrder.set(4, -1);
-				System.out.println("Matrice n°4 vide");
+				System.out.println("Matrice nï¿½4 vide");
 			}
 		} else if (this.puzzle.getListeFragments().size() == 6){
 			if(x > MainPuzzleGame.longueur/2-300 && x < MainPuzzleGame.longueur/2-200){
 				currentMatriceOrder.set(0, -1);
-				System.out.println("Matrice n°0 vide");
+				System.out.println("Matrice nï¿½0 vide");
 			} else if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
 				currentMatriceOrder.set(1, -1);
-				System.out.println("Matrice n°1 vide");
+				System.out.println("Matrice nï¿½1 vide");
 			} else if(x > MainPuzzleGame.longueur/2-100 && x < MainPuzzleGame.longueur/2){
 				currentMatriceOrder.set(2, -1);
-				System.out.println("Matrice n°2 vide");
+				System.out.println("Matrice nï¿½2 vide");
 			} else if(x > MainPuzzleGame.longueur/2 && x < MainPuzzleGame.longueur/2+100){
 				currentMatriceOrder.set(3, -1);
-				System.out.println("Matrice n°3 vide");
+				System.out.println("Matrice nï¿½3 vide");
 			} else if(x > MainPuzzleGame.longueur/2+100 && x < MainPuzzleGame.longueur/2+200){
 				currentMatriceOrder.set(4, -1);
-				System.out.println("Matrice n°4 vide");
+				System.out.println("Matrice nï¿½4 vide");
 			} else if(x > MainPuzzleGame.longueur/2+200 && x < MainPuzzleGame.longueur/2+300){
 				currentMatriceOrder.set(5, -1);
-				System.out.println("Matrice n°5 vide");
+				System.out.println("Matrice nï¿½5 vide");
 			}
 		}		
 	}

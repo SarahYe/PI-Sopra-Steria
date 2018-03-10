@@ -49,9 +49,9 @@ public class MainChronologie extends Application  {
 			choices.add(dossier.getName());
 		
 		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
-		dialog.setTitle("SeriousGame");
-		dialog.setHeaderText("Choix du jeu");
-		dialog.setContentText("Veuillez choisir le jeu que vous d�sirez lancer");
+		dialog.setTitle("imaGin'S");
+		dialog.setHeaderText("Choix du serious game");
+		dialog.setContentText("Choisir un serious game");
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
@@ -62,7 +62,7 @@ public class MainChronologie extends Application  {
 		    Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
 			if(node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
-				stage.setTitle("SériousSécurité");
+				stage.setTitle("imaGin'S");
 				stage.show();
 				stage.sizeToScene();
 			} else {
@@ -70,13 +70,6 @@ public class MainChronologie extends Application  {
 			}
 		}
 		
-		
-		
-		
-		/*stage.setScene(new Scene((Parent) JFxUtils.loadNextBloc(1, "Games/test/chronologie_test.xml"), 850, 650));
-		stage.setTitle("SériousSécurité");
-		stage.show();
-		stage.sizeToScene();*/
 		
 	}
 }

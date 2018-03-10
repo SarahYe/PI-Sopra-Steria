@@ -38,7 +38,7 @@ public class ViewMainApplicationController implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
 			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/Matchmaker.ttf")), 50);
+					new FileInputStream(new File("././Ressources/Polices/Matchmaker.ttf")), 100);
 			nomApp.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -55,9 +55,9 @@ public class ViewMainApplicationController implements Initializable{
 			choices.add(dossier.getName());
 		
 		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
-		dialog.setTitle("SeriousGame");
+		dialog.setTitle("imaGin'S");
 		dialog.setHeaderText("Choix du jeu");
-		dialog.setContentText("Veuillez choisir le jeu que vous d�sirez lancer");
+		dialog.setContentText("Veuillez choisir le jeu que vous désirez lancer");
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
@@ -69,7 +69,7 @@ public class ViewMainApplicationController implements Initializable{
 		    Stage stage = (Stage) BT_StartGame.getScene().getWindow();
 			if(node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
-				stage.setTitle("SériousSécurité");
+				stage.setTitle("imaGin'S");
 				stage.show();
 				stage.sizeToScene();
 			} else {

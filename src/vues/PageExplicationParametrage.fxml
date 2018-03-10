@@ -11,31 +11,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="677.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPageExplicationController">
+<ScrollPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresPageExplicationController">
   <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="674.0" prefWidth="850.0">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <ImageView fx:id="fondEcran" fitHeight="676.0" fitWidth="821.0" opacity="0.46" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <ImageView fx:id="fondEcran" fitHeight="600.0" fitWidth="1000.0" opacity="0.46" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <image>
                   <Image url="@../../Ressources/Images/Cartel%20Nota.png" />
                </image>
             </ImageView>
-            <TextField fx:id="champTitre" layoutX="262.0" layoutY="88.0" prefHeight="63.0" visible="false" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="70.0" />
-            <Label fx:id="theme" alignment="CENTER" layoutX="197.0" layoutY="135.0" onMouseClicked="#changerTitre" prefHeight="63.0" prefWidth="443.0" text="Cliquez pour modifier" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="70.0">
+            <TextField fx:id="champTitre" layoutX="262.0" layoutY="88.0" prefHeight="63.0" visible="false" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="45.0" />
+            <Label fx:id="theme" alignment="CENTER" layoutX="197.0" layoutY="45.0" onMouseClicked="#changerTitre" prefHeight="63.0" prefWidth="443.0" text="Cliquez pour modifier" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="45.0">
                <font>
                   <Font name="Noteworthy Light" size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="champExplication" prefHeight="372.0" prefWidth="430.0" visible="false" wrapText="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0" />
-            <Label fx:id="explication" alignment="CENTER" layoutX="342.0" layoutY="168.0" prefHeight="396.0" prefWidth="430.0" text="Explication                                                                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. Sed congue tellus justo, quis tempus nulla auctor sit amet.Proin mattis mauris sit amet elementum malesuada. Fusce gravida viverra placerat. Maecenas non erat laoreet, tristique libero et, porta mauris. Proin luctus feugiat pellentesque. Mauris ornare, nisl non eleifend ornare, dui enim condimentum ex, ac dapibus diam arcu quis turpis. Nunc condimentum ligula sed nisi aliquam, ac tincidunt metus vulputate. Phasellus bibendum ex dui, eu efficitur nunc venenatis vel. Praesent mattis risus sit amet nunc tincidunt scelerisque. Suspendisse potenti. Praesent a interdum lorem. Vestibulum massa ante, semper cursus pretium vel, pulvinar at velit. In at nibh lorem." wrapText="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0" />
-            <TextField fx:id="champSource" layoutX="411.0" layoutY="595.0" prefHeight="27.0" prefWidth="360.0" visible="false" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="550.0" />
-            <Label fx:id="source" layoutX="411.0" layoutY="600.0" prefHeight="17.0" prefWidth="350.0" text="Entrez une source" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="555.0" />
-            <TextArea fx:id="champHyperlien" layoutX="251.0" layoutY="628.0" prefHeight="43.0" prefWidth="519.0" visible="false" wrapText="true" AnchorPane.leftAnchor="251.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="580.0" />
-            <Hyperlink fx:id="hyperlien" layoutX="411.0" layoutY="599.0" prefHeight="59.0" prefWidth="690.0" text="Entrez un ou plusieurs lien(s)" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" />
+            <TextArea fx:id="champExplication" prefHeight="300.0" prefWidth="430.0" visible="false" wrapText="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0" />
+            <Label fx:id="explication" alignment="CENTER" layoutX="342.0" layoutY="168.0" prefHeight="300.0" prefWidth="430.0" text="Explication                                                                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. Sed congue tellus justo, quis tempus nulla auctor sit amet.Proin mattis mauris sit amet elementum malesuada. Fusce gravida viverra placerat. Maecenas non erat laoreet, tristique libero et, porta mauris. Proin luctus feugiat pellentesque. Mauris ornare, nisl non eleifend ornare, dui enim condimentum ex, ac dapibus diam arcu quis turpis. Nunc condimentum ligula sed nisi aliquam, ac tincidunt metus vulputate. Phasellus bibendum ex dui, eu efficitur nunc venenatis vel. Praesent mattis risus sit amet nunc tincidunt scelerisque. Suspendisse potenti. Praesent a interdum lorem. Vestibulum massa ante, semper cursus pretium vel, pulvinar at velit. In at nibh lorem." wrapText="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="120.0" />
+            <TextField fx:id="champSource" layoutX="411.0" layoutY="595.0" prefHeight="27.0" prefWidth="360.0" visible="false" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="450.0" />
+            <Label fx:id="source" layoutX="411.0" layoutY="600.0" prefHeight="17.0" prefWidth="350.0" text="Entrez une source" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="450.0" />
+            <TextArea fx:id="champHyperlien" layoutX="251.0" layoutY="628.0" prefHeight="43.0" prefWidth="519.0" visible="false" wrapText="true" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="500.0" />
+            <Hyperlink fx:id="hyperlien" layoutX="80.0" layoutY="510.0" prefHeight="40.0" prefWidth="690.0" text="Entrez un ou plusieurs lien(s)" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="500.0" />
             <Button fx:id="enregistrer" layoutX="374.0" layoutY="611.0" mnemonicParsing="false" onAction="#enregistrerParametrage" stylesheets="@../../Ressources/CSS/button_hover.css" text="Sauvegarder" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="374.0" AnchorPane.rightAnchor="374.0" />
-            <Label fx:id="label1" layoutX="78.0" layoutY="577.0" prefHeight="17.0" prefWidth="257.0" text="Vous pouvez aussi consulter ce(s) lien(s):" AnchorPane.leftAnchor="80.0" />
-            <Label fx:id="erreur" layoutX="492.0" layoutY="636.0" text="Le champ d'explication est obligatoire" textFill="RED" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="492.0" />
-            <Button fx:id="boutonImage2" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#changerImage2" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="350.0">
+            <Label fx:id="label1" layoutX="81.0" layoutY="476.0" prefHeight="17.0" prefWidth="257.0" text="Vous pouvez aussi consulter ce(s) lien(s):" AnchorPane.leftAnchor="81.0" />
+            <Label fx:id="erreur" layoutX="493.0" layoutY="569.5" text="Le champ d'explication est obligatoire" textFill="RED" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="650.0" />
+            <Button fx:id="boutonImage2" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#changerImage2" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0">
                <graphic>
                   <ImageView fx:id="image2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -44,7 +44,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="boutonImage1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#changerImage1" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="180.0">
+            <Button fx:id="boutonImage1" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#changerImage1" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-text-fill: transparent;" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="130.0">
                <graphic>
                   <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>

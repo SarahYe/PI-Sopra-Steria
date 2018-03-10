@@ -16,7 +16,7 @@ public class MainQuiz extends Application {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
 		stage.setScene(new Scene((Parent) JFxUtils.loadQuestion(new Quiz(), reponsesJoueur, 0,"/vues/ViewQuestion.fxml", "FichiersDeConfig/quiz.xml", true, 1, "Games/test/chronologie_test.xml",true,0), 850, 650));
-		stage.setTitle("SeriousSécurité");
+		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();
 	}

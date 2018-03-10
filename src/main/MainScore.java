@@ -13,7 +13,7 @@ public class MainScore extends Application {
 	public void start(Stage stage) throws Exception {
 		
 		stage.setScene(new Scene((Parent) JFxUtils.loadScoreFxml("/vues/ViewScore.fxml", "FichiersDeConfig/score.xml", true, 1, "Games/test/chronologie_test.xml",true,100), 850, 650));
-		stage.setTitle("SeriousSécurité");
+		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();
 	}

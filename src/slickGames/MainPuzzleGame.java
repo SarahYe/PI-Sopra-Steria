@@ -17,16 +17,18 @@ public class MainPuzzleGame extends StateBasedGame{
 	
 	public static void main(String[] args) throws SlickException {
 			
-		ArrayList<String> listeImg = new ArrayList<String>();
+		/*ArrayList<String> listeImg = new ArrayList<String>();
 		listeImg.add("./Ressources/Images/flame1.png");
 		listeImg.add("./Ressources/Images/flame2.png");
 		listeImg.add("./Ressources/Images/flame3.png");
 		listeImg.add("./Ressources/Images/flame4.png");
 		ArrayList<String> listeIndices = new ArrayList<String>();
-		listeIndices.add("Indice n°1 : La flamme la plus proche du jaune indique une température plus faible que les autres flammes.");
-		listeIndices.add("Indice n°2 : La flamme la plus proche du bleu indique une température très élevée !");
-		Puzzle puzzle = new Puzzle("Puzzle Game 1", "Trier les flammes afin d'obtenir celles de plus basse température à gauche et celles correspondantes à des températures plus élevées à droite.","Image",listeIndices, listeImg); 
+		listeIndices.add("Indice nï¿½1 : La flamme la plus proche du jaune indique une tempï¿½rature plus faible que les autres flammes.");
+		listeIndices.add("Indice nï¿½2 : La flamme la plus proche du bleu indique une tempï¿½rature trï¿½s ï¿½levï¿½e !");
+		Puzzle puzzle = new Puzzle("Puzzle Game 1", "Trier les flammes afin d'obtenir celles de plus basse tempï¿½rature ï¿½ gauche et celles correspondantes ï¿½ des tempï¿½ratures plus ï¿½levï¿½es ï¿½ droite.","Image",listeIndices, listeImg); 
 		puzzle.convertirJavaToXML(puzzle, "FichiersDeConfig/slickGame2.xml");
+		Puzzle puzzle = new Puzzle();
+		puzzle.convertirJavaToXML(puzzle, "FichiersDeConfig/puzzle.xml");*/
 		 
 		
 		AppGameContainer app = new AppGameContainer(new MainPuzzleGame(),longueur, hauteur, false);

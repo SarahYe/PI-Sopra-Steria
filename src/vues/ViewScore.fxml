@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -25,7 +26,18 @@
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Button fx:id="BT_Suivant" layoutX="672.0" layoutY="512.0" mnemonicParsing="false" onAction="#ClickBT_Suivant" text="Suivant" />
+            <Button fx:id="BT_Suivant" layoutX="579.0" layoutY="474.0" mnemonicParsing="false" onAction="#ClickBT_Suivant" prefHeight="78.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/suivant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>

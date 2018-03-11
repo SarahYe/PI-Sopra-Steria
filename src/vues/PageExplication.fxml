@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewPageExplicationController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewPageExplicationController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="850.0">
          <children>
@@ -37,7 +37,18 @@
                   <Image url="@../../Ressources/Images/personnage5.png" />
                </image>
             </ImageView>
-            <Button fx:id="buttonSuivant" layoutX="761.0" layoutY="626.0" mnemonicParsing="false" onAction="#ClickBT_Suivant" text="Suivant" />
+            <Button fx:id="buttonSuivant" layoutX="671.0" layoutY="609.0" mnemonicParsing="false" onAction="#ClickBT_Suivant" prefHeight="78.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="75.0" fitWidth="114.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Ressources/Images/suivant.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children></AnchorPane>
   </content>
 </ScrollPane>

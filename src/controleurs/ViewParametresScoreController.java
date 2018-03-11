@@ -9,6 +9,7 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -31,6 +32,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,11 +43,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -62,11 +68,20 @@ public class ViewParametresScoreController implements Initializable{
 	@FXML
 	TextField TF_SupScr,TF_SupMsg,TF_SupPict;
 	@FXML
+	ComboBox<String> CB_InfPolice,CB_MedPolice,CB_SupPolice;
+	@FXML
+	ComboBox<Integer> CB_InfTaille,CB_MedTaille,CB_SupTaille;
+	@FXML
+	ColorPicker CP_InfColor,CP_MedColor,CP_SupColor;
+	@FXML
 	Label LB_Title,LB_Warning;
 	@FXML
 	TitledPane TP_Faible;
 	@FXML
 	Accordion AD_Title;
+	
+	private ArrayList<String> listFont = new ArrayList<String>();
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -78,6 +93,94 @@ public class ViewParametresScoreController implements Initializable{
 			LB_Title.setFont(font);
 		} catch (FileNotFoundException e) {}
 		
+		final File dossierPolices = new File("././Ressources/Polices");
+		listerPolices(dossierPolices);
+		Collections.sort(listFont);
+		CB_InfPolice.getItems().addAll(listFont);
+		CB_MedPolice.getItems().addAll(listFont);
+		CB_SupPolice.getItems().addAll(listFont);
+		
+		CB_InfTaille.getItems().addAll(8,9,10,11,12,14,18,24,30,36,48,60,72,96);
+		CB_InfTaille.setValue(60);
+		CB_InfTaille.getEditor().textProperty().addListener(new ChangeListener<String> () {
+			String restriction = "[0-9]";
+			int maxLength = 3;
+			private boolean ignore;
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (ignore || newValue == null) {
+                    return;
+                }
+				
+				 if (newValue.length() > maxLength) {
+                     ignore = true;
+                     CB_InfTaille.getEditor().setText(
+                             newValue.substring(0, maxLength));
+                     ignore = false;
+                 }
+				
+				if (!newValue.matches(restriction + "*")) {
+                    ignore = true;
+                    CB_InfTaille.getEditor().setText(oldValue);
+                    ignore = false;
+                }
+			}
+		});
+		
+		CB_MedTaille.getItems().addAll(8,9,10,11,12,14,18,24,30,36,48,60,72,96);
+		CB_MedTaille.setValue(60);
+		CB_MedTaille.getEditor().textProperty().addListener(new ChangeListener<String> () {
+			String restriction = "[0-9]";
+			int maxLength = 3;
+			private boolean ignore;
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (ignore || newValue == null) {
+                    return;
+                }
+				
+				 if (newValue.length() > maxLength) {
+                     ignore = true;
+                     CB_MedTaille.getEditor().setText(
+                             newValue.substring(0, maxLength));
+                     ignore = false;
+                 }
+				
+				if (!newValue.matches(restriction + "*")) {
+                    ignore = true;
+                    CB_MedTaille.getEditor().setText(oldValue);
+                    ignore = false;
+                }
+			}
+		});
+		
+		CB_SupTaille.getItems().addAll(8,9,10,11,12,14,18,24,30,36,48,60,72,96);
+		CB_SupTaille.setValue(60);
+		CB_SupTaille.getEditor().textProperty().addListener(new ChangeListener<String> () {
+			String restriction = "[0-9]";
+			int maxLength = 3;
+			private boolean ignore;
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+				if (ignore || newValue == null) {
+                    return;
+                }
+				
+				 if (newValue.length() > maxLength) {
+                     ignore = true;
+                     CB_SupTaille.getEditor().setText(
+                             newValue.substring(0, maxLength));
+                     ignore = false;
+                 }
+				
+				if (!newValue.matches(restriction + "*")) {
+                    ignore = true;
+                    CB_SupTaille.getEditor().setText(oldValue);
+                    ignore = false;
+                }
+			}
+		});
+		
 	}
 	
 	public void setXML(String xml) {
@@ -88,6 +191,9 @@ public class ViewParametresScoreController implements Initializable{
 		ArrayList<Integer> bornes=new ArrayList<Integer>();
 		ArrayList<String> msgs=new ArrayList<String>();
 		ArrayList<String> picts=new ArrayList<String>();
+		ArrayList<String> polis=new ArrayList<String>();
+		ArrayList<Integer> tailles=new ArrayList<Integer>();
+		ArrayList<String> colors=new ArrayList<String>();
 		
 		
 		try {
@@ -103,6 +209,12 @@ public class ViewParametresScoreController implements Initializable{
 		    		msgs.add(attributes.getValue("content"));
 		    	if(qName.startsWith("Pict"))
 		    		picts.add(attributes.getValue("content"));
+		    	if(qName.startsWith("Pol"))
+		    		polis.add(attributes.getValue("content"));
+		    	if(qName.startsWith("Tail"))
+		    		tailles.add(Integer.parseInt(attributes.getValue("content")));
+		    	if(qName.startsWith("Col"))
+		    		colors.add(attributes.getValue("content"));
 		    		
 		    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("content")); 
 		    	}
@@ -115,13 +227,22 @@ public class ViewParametresScoreController implements Initializable{
 			TF_InfMsg.setText(msgs.get(0));
 			TF_InfPict.setText(picts.get(0));
 			TF_InfScr.setText(Integer.toString(bornes.get(0)));
+			CB_InfPolice.getSelectionModel().select(polis.get(0));
+			CB_InfTaille.getSelectionModel().select(tailles.get(0));
+			CP_InfColor.setValue(Color.web(colors.get(0)));
 			
 			TF_MedMsg.setText(msgs.get(1));
 			TF_MedPict.setText(picts.get(1));
+			CB_MedPolice.getSelectionModel().select(polis.get(1));
+			CB_MedTaille.getSelectionModel().select(tailles.get(1));
+			CP_MedColor.setValue(Color.web(colors.get(1)));
 			
 			TF_SupMsg.setText(msgs.get(2));
 			TF_SupPict.setText(picts.get(2));
 			TF_SupScr.setText(Integer.toString(bornes.get(1)));
+			CB_SupPolice.getSelectionModel().select(polis.get(2));
+			CB_SupTaille.getSelectionModel().select(tailles.get(2));
+			CP_SupColor.setValue(Color.web(colors.get(2)));
 		}
 		
 	}
@@ -175,8 +296,9 @@ public class ViewParametresScoreController implements Initializable{
 	@FXML
 	public void ClickBT_Save(ActionEvent event) throws ParserConfigurationException, TransformerException{
 		System.out.println(TF_InfMsg.getText());
-		if(!TF_InfMsg.getText().equals("") && !TF_InfPict.getText().equals("") && !TF_InfScr.getText().equals("") && !TF_MedMsg.getText().equals("") && !TF_MedPict.getText().equals("") && 
-				!TF_SupMsg.getText().equals("") && !TF_SupPict.getText().equals("") && !TF_SupScr.getText().equals("")){
+		if(!TF_InfMsg.getText().equals("") && !TF_InfPict.getText().equals("") && !TF_InfScr.getText().equals("") && !CB_InfPolice.getSelectionModel().getSelectedItem().toString().equals("") && !CB_InfTaille.getEditor().getText().equals("")
+				&& !TF_MedMsg.getText().equals("") && !TF_MedPict.getText().equals("") && !CB_MedPolice.getSelectionModel().getSelectedItem().toString().equals("") && !CB_MedTaille.getEditor().getText().equals("")
+				&& !TF_SupMsg.getText().equals("") && !TF_SupPict.getText().equals("") && !TF_SupScr.getText().equals("")&& !CB_SupPolice.getSelectionModel().getSelectedItem().toString().equals("") && !CB_SupTaille.getEditor().getText().equals("")){
 			DocumentBuilderFactory XML_Fabrique_Constructeur = DocumentBuilderFactory.newInstance();
 			DocumentBuilder XML_Constructeur = XML_Fabrique_Constructeur.newDocumentBuilder();
 	 
@@ -201,6 +323,15 @@ public class ViewParametresScoreController implements Initializable{
 			Element pictInf =XML_Document.createElement("PictInf");
 			inf.appendChild(pictInf);
 			pictInf.setAttribute("content", TF_InfPict.getText());
+			Element polInf=XML_Document.createElement("PolInf");
+			inf.appendChild(polInf);
+			polInf.setAttribute("content", CB_InfPolice.getSelectionModel().getSelectedItem().toString());
+			Element tailInf=XML_Document.createElement("TailInf");
+			inf.appendChild(tailInf);
+			tailInf.setAttribute("content",CB_InfTaille.getEditor().getText());
+			Element colInf=XML_Document.createElement("ColInf");
+			inf.appendChild(colInf);
+			colInf.setAttribute("content", CP_InfColor.getValue().toString());
 			
 			//Partie Med
 			Element med = XML_Document.createElement("ScoreMoyen");
@@ -211,6 +342,16 @@ public class ViewParametresScoreController implements Initializable{
 			Element pictMed =XML_Document.createElement("PictMed");
 			med.appendChild(pictMed);
 			pictMed.setAttribute("content", TF_MedPict.getText());
+			Element polMed=XML_Document.createElement("PolMed");
+			med.appendChild(polMed);
+			polMed.setAttribute("content", CB_MedPolice.getSelectionModel().getSelectedItem().toString());
+			Element tailMed=XML_Document.createElement("TailMed");
+			med.appendChild(tailMed);
+			tailMed.setAttribute("content", CB_MedTaille.getEditor().getText());
+			Element colMed=XML_Document.createElement("ColMed");
+			med.appendChild(colMed);
+			colMed.setAttribute("content", CP_MedColor.getValue().toString());
+			
 			
 			//Partie Sup
 			Element sup = XML_Document.createElement("ScoreSup");
@@ -222,6 +363,15 @@ public class ViewParametresScoreController implements Initializable{
 			Element pictSup =XML_Document.createElement("PictSup");
 			sup.appendChild(pictSup);
 			pictSup.setAttribute("content", TF_SupPict.getText());
+			Element polSup=XML_Document.createElement("PolSup");
+			sup.appendChild(polSup);
+			polSup.setAttribute("content", CB_SupPolice.getSelectionModel().getSelectedItem().toString());
+			Element tailSup=XML_Document.createElement("TailSup");
+			sup.appendChild(tailSup);
+			tailSup.setAttribute("content", CB_MedTaille.getEditor().getText());
+			Element colSup=XML_Document.createElement("ColSup");
+			sup.appendChild(colSup);
+			colSup.setAttribute("content", CP_SupColor.getValue().toString());
 			
 			//enregistrement du fichier xml
 			TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
@@ -236,6 +386,7 @@ public class ViewParametresScoreController implements Initializable{
 			Alert alert = new Alert(AlertType.INFORMATION, "Le fichier xml a bien été enregistré\nIl se situe au chemin "+xml, ButtonType.OK);
 			alert.setHeaderText("Information concernant l'enregistrement");
 			alert.showAndWait();
+			LB_Warning.setVisible(false);
 		} else {
 			LB_Warning.setVisible(true);
 		}
@@ -279,6 +430,16 @@ public class ViewParametresScoreController implements Initializable{
 		stage.show();
 	}
 	
-	
+	private void listerPolices(final File dossier) {
+		for (final File police : dossier.listFiles()) {
+			if (police.isDirectory()) {
+				listerPolices(police);
+			} else {
+				if (police.getName().contains(".ttf")) {
+					listFont.add(police.getName().substring(0, police.getName().indexOf(".")));
+				}
+			}
+		}
+	}
 
 }

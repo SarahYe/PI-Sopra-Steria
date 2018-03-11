@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewFouilleController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="953.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewFouilleController">
    <content>
       <AnchorPane prefHeight="650.0" prefWidth="850.0">
          <children>
@@ -31,11 +31,7 @@
                <children>
                   <ImageView fx:id="imageFond" fitHeight="434.0" fitWidth="950.0" pickOnBounds="true" preserveRatio="true" />
                </children></AnchorPane>
-            <AnchorPane fx:id="AP_Inventory" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Label layoutX="353.0" layoutY="33.0" text="Inventaire du jeu à placer" />
-               </children>
-            </AnchorPane>
+            <AnchorPane fx:id="AP_Inventory" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
    </content>

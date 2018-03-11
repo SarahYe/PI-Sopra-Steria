@@ -18,14 +18,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import modeles.Fouille;
 import modeles.Instruction;
@@ -61,6 +66,7 @@ public class ViewFouilleController implements Initializable{
 			sonOn();
 		else
 			sonOff();
+		AP_Inventory.setStyle("-fx-background-color: cyan;");
 		
 	}
 	
@@ -113,6 +119,24 @@ public class ViewFouilleController implements Initializable{
 	            	
 	            }
 	        });
+			element.setOnMouseEntered(new EventHandler<MouseEvent>()
+	        {
+	            @Override
+	            public void handle(MouseEvent t) {
+	            	DropShadow ds = new DropShadow( 20, Color.RED );
+	            	element.setEffect( ds );
+	            	
+	            }
+	            	
+	            });
+			element.setOnMouseExited(new EventHandler<MouseEvent>()
+	        {
+	            @Override
+	            public void handle(MouseEvent t) {
+	            	element.setEffect( null );
+	            }
+	            	
+	            });
 		}
 		
 		majInstruction(LB_Instruction);

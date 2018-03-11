@@ -74,7 +74,7 @@ public class ViewParametresScoreController implements Initializable{
 	@FXML
 	ColorPicker CP_InfColor,CP_MedColor,CP_SupColor;
 	@FXML
-	Label LB_Title,LB_Warning;
+	Label LB_Title,LB_Warning,LB_InfWarning,LB_MedWarning,LB_SupWarning;
 	@FXML
 	TitledPane TP_Faible;
 	@FXML
@@ -394,40 +394,63 @@ public class ViewParametresScoreController implements Initializable{
 	
 	@FXML
 	public void ClickBT_PrevInf(ActionEvent event) throws IOException{
-		Stage stage = new Stage();
-		stage.setTitle("Prévisualisation Score Faible");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
-		stage.setScene(new Scene(loader.load()));
-		ViewScoreController controller = loader.<ViewScoreController>getController();
-		controller.previsualisation(TF_InfPict.getText(), TF_InfMsg.getText());
+		if(!TF_InfMsg.getText().equals("") && !TF_InfPict.getText().equals("") && !TF_InfScr.getText().equals("") 
+				&& !CB_InfPolice.getSelectionModel().getSelectedItem().toString().equals("") && !CB_InfTaille.getEditor().getText().equals("")){
+			Stage stage = new Stage();
+			stage.setTitle("Prévisualisation Score Faible");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
+			stage.setScene(new Scene(loader.load()));
+			ViewScoreController controller = loader.<ViewScoreController>getController();
+			controller.previsualisation(TF_title.getText(),TF_InfPict.getText(), TF_InfMsg.getText(),CB_InfPolice.getSelectionModel().getSelectedItem().toString(),
+					CB_InfTaille.getEditor().getText(),CP_InfColor.getValue());
+			
+			stage.show();
+			LB_InfWarning.setVisible(false);
+		} else {
+			LB_InfWarning.setVisible(true);
+		}
 		
-		stage.show();
 		
 		
 	}
 	
 	@FXML
 	public void ClickBT_PrevMed(ActionEvent event) throws IOException{
-		Stage stage = new Stage();
-		stage.setTitle("Prévisualisation Score Moyen");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
-		stage.setScene(new Scene(loader.load()));
-		ViewScoreController controller = loader.<ViewScoreController>getController();
-		controller.previsualisation(TF_InfPict.getText(), TF_InfMsg.getText());
-		
-		stage.show();
+		if(!TF_MedMsg.getText().equals("") && !TF_MedPict.getText().equals("")
+				&& !CB_MedPolice.getSelectionModel().getSelectedItem().toString().equals("") && !CB_MedTaille.getEditor().getText().equals("")){
+			Stage stage = new Stage();
+			stage.setTitle("Prévisualisation Score Moyen");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
+			stage.setScene(new Scene(loader.load()));
+			ViewScoreController controller = loader.<ViewScoreController>getController();
+			controller.previsualisation(TF_title.getText(),TF_MedPict.getText(), TF_MedMsg.getText(),CB_MedPolice.getSelectionModel().getSelectedItem().toString(),
+					CB_MedTaille.getEditor().getText(),CP_MedColor.getValue());
+			
+			stage.show();
+			LB_MedWarning.setVisible(false);
+		} else {
+			LB_MedWarning.setVisible(true);
+		}
 	}
 	
 	@FXML
 	public void ClickBT_PrevSup(ActionEvent event) throws IOException{
-		Stage stage = new Stage();
-		stage.setTitle("Prévisualisation Score Elevé");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
-		stage.setScene(new Scene(loader.load()));
-		ViewScoreController controller = loader.<ViewScoreController>getController();
-		controller.previsualisation(TF_InfPict.getText(), TF_InfMsg.getText());
+		if(!TF_SupMsg.getText().equals("") && !TF_SupPict.getText().equals("") && !TF_SupScr.getText().equals("") 
+				&& !CB_SupPolice.getSelectionModel().getSelectedItem().toString().equals("") && !CB_SupTaille.getEditor().getText().equals("")){
+			Stage stage = new Stage();
+			stage.setTitle("Prévisualisation Score Elevé");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
+			stage.setScene(new Scene(loader.load()));
+			ViewScoreController controller = loader.<ViewScoreController>getController();
+			controller.previsualisation(TF_title.getText(),TF_SupPict.getText(), TF_SupMsg.getText(),CB_SupPolice.getSelectionModel().getSelectedItem().toString(),
+					CB_SupTaille.getEditor().getText(),CP_SupColor.getValue());
+			
+			stage.show();
+			LB_SupWarning.setVisible(false);
+		} else {
+			LB_SupWarning.setVisible(true);
+		}
 		
-		stage.show();
 	}
 	
 	private void listerPolices(final File dossier) {

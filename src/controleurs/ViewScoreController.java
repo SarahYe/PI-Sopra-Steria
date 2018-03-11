@@ -23,6 +23,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class ViewScoreController implements Initializable{
@@ -35,7 +37,7 @@ public class ViewScoreController implements Initializable{
 	private int score;
 	
 	@FXML
-	Label LB_Msg,LB_NbrPoints;
+	Label LB_Title,LB_Msg,LB_NbrPoints;
 	@FXML
 	ImageView IV_FontPict;
 	@FXML
@@ -160,8 +162,18 @@ public class ViewScoreController implements Initializable{
         }
     }
 	
-	public void previsualisation(String img,String message){
+	public void previsualisation(String title,String img,String message,String police, String taille, Color color){
+		LB_Title.setText(title);
 		LB_Msg.setText(message);
+		Font font=new Font(police, Double.parseDouble(taille));
+		LB_Msg.setTextFill(color);
+		LB_Msg.setFont(font);
+		LB_NbrPoints.setTextFill(color);
+		LB_NbrPoints.setFont(font);
+		
+		LB_Title.setTextFill(color);
+		LB_NbrPoints.setFont(new Font(police, Double.parseDouble(taille)+5));
+		
 		File file = new File(img);
         Image image = new Image(file.toURI().toString());
         IV_FontPict.setImage(image);

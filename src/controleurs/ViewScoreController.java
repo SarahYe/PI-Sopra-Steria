@@ -73,7 +73,7 @@ public class ViewScoreController implements Initializable{
 		    	}
 		    public void endElement(String uri, String localName, String qName) throws SAXException {}
 		   });  
-		  } catch (Exception e) { System.err.println(e); System.exit(1); }
+		  } catch (Exception e) {}
 		
 		//System.out.println(picts.toString());
 		
@@ -159,6 +159,14 @@ public class ViewScoreController implements Initializable{
 
         }
     }
+	
+	public void previsualisation(String img,String message){
+		LB_Msg.setText(message);
+		File file = new File(img);
+        Image image = new Image(file.toURI().toString());
+        IV_FontPict.setImage(image);
+        centerImage(IV_FontPict);
+	}
 
 	
 	

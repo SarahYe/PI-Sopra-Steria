@@ -392,7 +392,7 @@ public class ViewMainParametresController implements Initializable{
 			newPane= JFxUtils.loadNextBloc(1, xmlChronologie,true);
 		 	//AP_ConfBlc.getChildren().setAll(newPane);
 			Stage stage = new Stage();
-			stage.setTitle("Nouvelle instruction");
+			stage.setTitle("Test du jeu");
 			stage.setScene(new Scene((Parent) newPane));
 			stage.show();
 		 	

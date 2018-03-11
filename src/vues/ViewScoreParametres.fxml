@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresScoreController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresScoreController">
   <content>
     <AnchorPane minHeight="650.0" minWidth="850.0" prefHeight="600.0" prefWidth="1000.0">
          <children>
@@ -24,9 +24,9 @@
                </font></Label>
             <TextField fx:id="TF_title" layoutX="163.0" layoutY="83.0" prefHeight="15.0" prefWidth="551.0" />
             <Button layoutX="362.0" layoutY="560.0" mnemonicParsing="false" onAction="#ClickBT_Save" text="Sauvegarder" />
-            <Accordion layoutX="28.0" layoutY="130.0" prefHeight="233.0" prefWidth="411.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="130.0">
+            <Accordion fx:id="AD_Title" layoutX="28.0" layoutY="130.0" prefHeight="233.0" prefWidth="411.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="130.0">
               <panes>
-                <TitledPane animated="false" text="Score Faible">
+                <TitledPane fx:id="TP_Faible" text="Score Faible">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -37,7 +37,7 @@
                               <Label layoutX="29.0" layoutY="116.0" text="Image de fond" />
                               <TextField fx:id="TF_InfPict" layoutX="134.0" layoutY="110.0" />
                               <Button layoutX="322.0" layoutY="110.0" mnemonicParsing="false" onAction="#ClickBT_ajoutPictInf" text="Parcourir" />
-                              <Button layoutX="409.0" layoutY="66.0" mnemonicParsing="false" text="Prévisualiser" />
+                              <Button layoutX="409.0" layoutY="66.0" mnemonicParsing="false" onAction="#ClickBT_PrevInf" text="Prévisualiser" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -45,7 +45,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                 </TitledPane>
-                <TitledPane animated="false" text="Score Moyen">
+                <TitledPane text="Score Moyen">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -54,7 +54,7 @@
                               <Label layoutX="28.0" layoutY="69.0" text="Image de fond" />
                               <TextField fx:id="TF_MedPict" layoutX="122.0" layoutY="63.0" />
                               <Button layoutX="312.0" layoutY="63.0" mnemonicParsing="false" onAction="#ClickBT_ajoutPictMed" text="Parcourir" />
-                              <Button layoutX="431.0" layoutY="39.0" mnemonicParsing="false" text="Prévisualiser" />
+                              <Button layoutX="431.0" layoutY="39.0" mnemonicParsing="false" onAction="#ClickBT_PrevMed" text="Prévisualiser" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -62,7 +62,7 @@
                         <Font name="System Bold" size="18.0" />
                      </font>
                 </TitledPane>
-                <TitledPane animated="false" text="Score Elevé">
+                <TitledPane text="Score Elevé">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -73,7 +73,7 @@
                               <Label layoutX="39.0" layoutY="137.0" text="Image de fond" />
                               <TextField fx:id="TF_SupPict" layoutX="161.0" layoutY="131.0" />
                               <Button layoutX="358.0" layoutY="131.0" mnemonicParsing="false" onAction="#ClickBT_ajoutPictSup" text="Parcourir" />
-                              <Button layoutX="489.0" layoutY="72.0" mnemonicParsing="false" text="Prévisualiser" />
+                              <Button layoutX="489.0" layoutY="72.0" mnemonicParsing="false" onAction="#ClickBT_PrevSup" text="Prévisualiser" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -83,6 +83,7 @@
                 </TitledPane>
               </panes>
             </Accordion>
+            <Label fx:id="LB_Warning" layoutX="472.0" layoutY="564.0" text="Tout les champs sont obligatoires" textFill="RED" visible="false" />
          </children></AnchorPane>
   </content>
 </ScrollPane>

@@ -45,6 +45,7 @@ public class ViewFouilleController implements Initializable{
 	private static ArrayList<String> intitules= new ArrayList<String>();
 	private static int cmpt=0;
 	private int inventoryX=0,inventoryY=0;
+	private static int printScore=0;
 	
 	@FXML
 	AnchorPane AP_Game,AP_Inventory;
@@ -169,24 +170,24 @@ public class ViewFouilleController implements Initializable{
 		if(son)
 			jouerAudio("Ressources/Sons/succes.wav");
 		if(typeObjet.equals("BRONZE"))
-			score=(int) (score+fouille.getBronze());
+			printScore=(int) (printScore+fouille.getBronze());
 		else if (typeObjet.equals("SILVER"))
-			score=(int) (score+fouille.getSilver());
+			printScore=(int) (printScore+fouille.getSilver());
 		else
-			score=(int) (score+fouille.getGold());
-		LBscore.setText("Score : "+Integer.toString(score));
+			printScore=(int) (printScore+fouille.getGold());
+		LBscore.setText("Score : "+Integer.toString(printScore));
 	}
 	
 	private static void majScoreMoins(Label LBscore, String typeObjet){
 		if(son)
 			jouerAudio("Ressources/Sons/echec1.wav");
 		if(typeObjet.equals("BRONZE"))
-			score=(int) (score-(fouille.getBronze()/2));
+			printScore=(int) (printScore-(fouille.getBronze()/2));
 		else if (typeObjet.equals("SILVER"))
-			score=(int) (score-(fouille.getSilver()/2));
+			printScore=(int) (printScore-(fouille.getSilver()/2));
 		else
-			score=(int) (score-(fouille.getGold()/2));
-		LBscore.setText("Score : "+Integer.toString(score));
+			printScore=(int) (printScore-(fouille.getGold()/2));
+		LBscore.setText("Score : "+Integer.toString(printScore));
 	}
 
 	public static void majInstruction(Label label){
@@ -194,7 +195,7 @@ public class ViewFouilleController implements Initializable{
 			label.setText(intitules.get(cmpt));
 			cmpt++;
 		} else {
-			Alert alert = new Alert(AlertType.INFORMATION, "Le jeu fouille est fini.\n Votre Score : "+ score, ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "Le jeu fouille est fini.\n Votre Score : "+ printScore, ButtonType.OK);
 			alert.showAndWait();
 			
 			if(soloBloc){
@@ -202,7 +203,7 @@ public class ViewFouilleController implements Initializable{
 				stage.close();
 			} else {
 				Stage stage = (Stage) label.getScene().getWindow();
-				Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son);
+				Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son,printScore+score);
 				if (node!=null){
 					stage.setScene(new Scene((Parent) node, 850, 650));
 				} else {

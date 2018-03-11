@@ -52,9 +52,13 @@ public class ViewScoreController implements Initializable{
 	}
 	
 	public void initData() {
+		ArrayList<String> title=new ArrayList<String>();
 		ArrayList<Integer> bornes=new ArrayList<Integer>();
 		ArrayList<String> msgs=new ArrayList<String>();
 		ArrayList<String> picts=new ArrayList<String>();
+		ArrayList<String> polis=new ArrayList<String>();
+		ArrayList<String> tailles=new ArrayList<String>();
+		ArrayList<String> colors=new ArrayList<String>();
 		
 		
 		try {
@@ -64,37 +68,45 @@ public class ViewScoreController implements Initializable{
 		    public void startDocument() throws SAXException {}
 		    public void endDocument() throws SAXException {}
 		    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+		    	if(qName.equals("Titre"))
+		    		title.add(attributes.getValue("content"));
 		    	if(qName.equals("ScoreFaible")||qName.equals("ScoreSup"))
 		    		bornes.add(Integer.parseInt(attributes.getValue("borne")));
 		    	if(qName.startsWith("Msg"))
 		    		msgs.add(attributes.getValue("content"));
 		    	if(qName.startsWith("Pict"))
 		    		picts.add(attributes.getValue("content"));
-		    		
-		    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("content")); 
+		    	if(qName.startsWith("Pol"))
+		    		polis.add(attributes.getValue("content"));
+		    	if(qName.startsWith("Tail"))
+		    		tailles.add(attributes.getValue("content"));
+		    	if(qName.startsWith("Col"))
+		    		colors.add(attributes.getValue("content"));
 		    	}
 		    public void endElement(String uri, String localName, String qName) throws SAXException {}
 		   });  
 		  } catch (Exception e) {}
 		
-		//System.out.println(picts.toString());
 		
 		LB_NbrPoints.setText(score + " points");
 		if(bornes.get(0)>score){
-			LB_Msg.setText(msgs.get(0));
+			previsualisation(title.get(0), picts.get(0), msgs.get(0), polis.get(0), tailles.get(0), Color.web(colors.get(0)));
+			/*LB_Msg.setText(msgs.get(0));
 			File file = new File(picts.get(0));
 	        Image image = new Image(file.toURI().toString());
-	        IV_FontPict.setImage(image);
+	        IV_FontPict.setImage(image);*/
 		} else if(bornes.get(1)>score){
-			LB_Msg.setText(msgs.get(1));
+			previsualisation(title.get(0), picts.get(1), msgs.get(1), polis.get(1), tailles.get(1), Color.web(colors.get(1)));
+			/*LB_Msg.setText(msgs.get(1));
 			File file = new File(picts.get(1));
 	        Image image = new Image(file.toURI().toString());
-	        IV_FontPict.setImage(image);
+	        IV_FontPict.setImage(image);*/
 		} else {
-			LB_Msg.setText(msgs.get(2));
+			previsualisation(title.get(0), picts.get(2), msgs.get(2), polis.get(2), tailles.get(2), Color.web(colors.get(2)));
+			/*LB_Msg.setText(msgs.get(2));
 			File file = new File(picts.get(2));
 	        Image image = new Image(file.toURI().toString());
-	        IV_FontPict.setImage(image);
+	        IV_FontPict.setImage(image);*/
 		}
 		centerImage(IV_FontPict);
 	}

@@ -389,7 +389,7 @@ public class ViewMainParametresController implements Initializable{
 			
 			Node newPane;
 			System.out.println(xmlChronologie);
-			newPane= JFxUtils.loadNextBloc(1, xmlChronologie,true);
+			newPane= JFxUtils.loadNextBloc(1, xmlChronologie,true,0);
 		 	//AP_ConfBlc.getChildren().setAll(newPane);
 			Stage stage = new Stage();
 			stage.setTitle("Test du jeu");

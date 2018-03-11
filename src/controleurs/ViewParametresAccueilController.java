@@ -207,7 +207,19 @@ public class ViewParametresAccueilController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		
+		/*System.out.println("cheminAbsoluActuel :"+cheminAbsoluActuel);
+		System.out.println("file.getAbsolutePath() :"+file.getAbsolutePath());
+		System.out.println("cheminAbsoluImage :"+cheminAbsoluImage);
+		System.out.println("cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()"+cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String test=cheminAbsoluImage.toString();
+		System.out.println(test);
+		System.out.println(nomImage.substring(nomImage.lastIndexOf("\\")+1));*/
+		
+		
+		
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 		
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
@@ -407,7 +419,7 @@ public class ViewParametresAccueilController implements Initializable {
 			// ecriture xml
 			accueil.setFond(fe);
 			accueil.setTitre(titreObj);
-			accueil.convertirJavaToXML(accueil, "FichiersDeConfig/accueil.xml");
+			accueil.convertirJavaToXML(accueil, xml);
 
 			// popup de confirmation
 			Alert alert = new Alert(AlertType.INFORMATION);

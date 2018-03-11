@@ -2,6 +2,8 @@ package controleurs;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -43,6 +45,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -59,7 +62,7 @@ public class ViewParametresScoreController implements Initializable{
 	@FXML
 	TextField TF_SupScr,TF_SupMsg,TF_SupPict;
 	@FXML
-	Label LB_Warning;
+	Label LB_Title,LB_Warning;
 	@FXML
 	TitledPane TP_Faible;
 	@FXML
@@ -68,6 +71,13 @@ public class ViewParametresScoreController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		AD_Title.setExpandedPane(TP_Faible);
+		
+		try {
+			Font font = Font.loadFont(
+					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+			LB_Title.setFont(font);
+		} catch (FileNotFoundException e) {}
+		
 	}
 	
 	public void setXML(String xml) {

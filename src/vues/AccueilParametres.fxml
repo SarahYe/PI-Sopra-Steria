@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresAccueilController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresAccueilController">
   <content>
       <AnchorPane prefHeight="600.0" prefWidth="1000.0">
          <children>
@@ -19,7 +19,7 @@
                <font>
                   <Font name="Trattatello" size="24.0" />
                </font></Label>
-            <Accordion layoutX="81.0" layoutY="71.0" prefHeight="460.0" prefWidth="799.0">
+            <Accordion fx:id="AD_Title" layoutX="81.0" layoutY="71.0" prefHeight="460.0" prefWidth="799.0">
               <panes>
                 <TitledPane fx:id="FDE" prefWidth="601.0" text="Fond d'écran">
                   <content>

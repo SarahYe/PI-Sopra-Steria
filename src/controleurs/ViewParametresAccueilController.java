@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Accordion;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -28,6 +29,7 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TitledPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
@@ -94,6 +96,11 @@ public class ViewParametresAccueilController implements Initializable {
 	
 	@FXML
 	private Label titre;
+	
+	@FXML
+	Accordion AD_Title;
+	@FXML
+	TitledPane FDE;
 
 	private int modif = 0;
 	private String xml;
@@ -103,6 +110,7 @@ public class ViewParametresAccueilController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		AD_Title.setExpandedPane(FDE);
 		try {
 			Font font = Font.loadFont(
 					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);

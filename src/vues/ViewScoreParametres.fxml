@@ -13,7 +13,7 @@
   <content>
     <AnchorPane minHeight="650.0" minWidth="850.0" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <Label layoutX="291.0" layoutY="14.0" text="Parametrage d'une page de score">
+            <Label fx:id="LB_Title" layoutX="291.0" layoutY="14.0" text="Parametrage d'une page de score">
                <font>
                   <Font size="18.0" />
                </font>
@@ -37,7 +37,7 @@
                               <Label layoutX="29.0" layoutY="116.0" text="Image de fond" />
                               <TextField fx:id="TF_InfPict" layoutX="134.0" layoutY="110.0" />
                               <Button layoutX="322.0" layoutY="110.0" mnemonicParsing="false" onAction="#ClickBT_ajoutPictInf" text="Parcourir" />
-                              <Button layoutX="409.0" layoutY="66.0" mnemonicParsing="false" onAction="#ClickBT_PrevInf" text="Prévisualiser" />
+                              <Button layoutX="840.0" layoutY="259.0" mnemonicParsing="false" onAction="#ClickBT_PrevInf" text="Prévisualiser" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -54,7 +54,7 @@
                               <Label layoutX="28.0" layoutY="69.0" text="Image de fond" />
                               <TextField fx:id="TF_MedPict" layoutX="122.0" layoutY="63.0" />
                               <Button layoutX="312.0" layoutY="63.0" mnemonicParsing="false" onAction="#ClickBT_ajoutPictMed" text="Parcourir" />
-                              <Button layoutX="431.0" layoutY="39.0" mnemonicParsing="false" onAction="#ClickBT_PrevMed" text="Prévisualiser" />
+                              <Button layoutX="834.0" layoutY="259.0" mnemonicParsing="false" onAction="#ClickBT_PrevMed" text="Prévisualiser" />
                            </children>
                         </AnchorPane>
                   </content>
@@ -73,7 +73,7 @@
                               <Label layoutX="39.0" layoutY="137.0" text="Image de fond" />
                               <TextField fx:id="TF_SupPict" layoutX="161.0" layoutY="131.0" />
                               <Button layoutX="358.0" layoutY="131.0" mnemonicParsing="false" onAction="#ClickBT_ajoutPictSup" text="Parcourir" />
-                              <Button layoutX="489.0" layoutY="72.0" mnemonicParsing="false" onAction="#ClickBT_PrevSup" text="Prévisualiser" />
+                              <Button layoutX="834.0" layoutY="259.0" mnemonicParsing="false" onAction="#ClickBT_PrevSup" text="Prévisualiser" />
                            </children>
                         </AnchorPane>
                   </content>

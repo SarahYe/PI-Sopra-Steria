@@ -4,12 +4,15 @@ import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javax.swing.text.AbstractDocument.LeafElement;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -19,6 +22,9 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +33,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 
 public class ViewParametresScoreController implements Initializable{
@@ -53,7 +60,43 @@ public class ViewParametresScoreController implements Initializable{
 	}
 	
 	public void initData(){
+		ArrayList<Integer> bornes=new ArrayList<Integer>();
+		ArrayList<String> msgs=new ArrayList<String>();
+		ArrayList<String> picts=new ArrayList<String>();
 		
+		
+		try {
+		   SAXParserFactory factory = SAXParserFactory.newInstance();
+		   SAXParser parser = factory.newSAXParser();
+		   parser.parse(xml, new DefaultHandler() {
+		    public void startDocument() throws SAXException {}
+		    public void endDocument() throws SAXException {}
+		    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+		    	if(qName.equals("ScoreFaible")||qName.equals("ScoreSup"))
+		    		bornes.add(Integer.parseInt(attributes.getValue("borne")));
+		    	if(qName.startsWith("Msg"))
+		    		msgs.add(attributes.getValue("content"));
+		    	if(qName.startsWith("Pict"))
+		    		picts.add(attributes.getValue("content"));
+		    		
+		    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("content")); 
+		    	}
+		    public void endElement(String uri, String localName, String qName) throws SAXException {}
+		   });  
+		  } catch (Exception e) { System.err.println(e); System.exit(1); }
+		
+		//System.out.println(picts.toString());
+		
+		TF_InfMsg.setText(msgs.get(0));
+		TF_InfPict.setText(picts.get(0));
+		TF_InfScr.setText(Integer.toString(bornes.get(0)));
+		
+		TF_MedMsg.setText(msgs.get(1));
+		TF_MedPict.setText(picts.get(1));
+		
+		TF_SupMsg.setText(msgs.get(2));
+		TF_SupPict.setText(picts.get(2));
+		TF_SupScr.setText(Integer.toString(bornes.get(1)));
 	}
 	
 	public void ClickBT_ajoutPictInf(ActionEvent event){
@@ -141,9 +184,9 @@ public class ViewParametresScoreController implements Initializable{
 		
 		resultat = new StreamResult(new File(xml));
 		XML_Transformeur.transform(source, resultat); 
-		System.out.println("Le fichier XML a été généré !");
+		System.out.println("Le fichier XML a Ã©tÃ© gÃ©nÃ©rÃ©!");
 		
-		Alert alert = new Alert(AlertType.INFORMATION, "Le fichier xml a bien été enregistré\nIl se situe au chemin "+xml, ButtonType.OK);
+		Alert alert = new Alert(AlertType.INFORMATION, "Le fichier xml a bien Ã©tÃ© enregistrÃ©\nIl se situe au chemin "+xml, ButtonType.OK);
 		alert.setHeaderText("Information concernant l'enregistrement");
 		alert.showAndWait();
 		

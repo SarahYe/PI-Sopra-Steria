@@ -69,6 +69,7 @@ public class ViewMainParametresController implements Initializable{
 	@FXML
 	private TextField TF_GameName;
 	private String gamePath="Games/temp/";
+	private String xmlChronologie="Games/temp/chronologie_temp.xml";
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -124,8 +125,8 @@ public class ViewMainParametresController implements Initializable{
 			listCmptBloc.set(cmpt,1);
 			
 			String fxml = listFxmlBlocsParam.get(cmpt);
-			
-			loadConfBlc(fxml,cmpt);
+			String xml=gamePath+LV_BlcList.getItems().get(LV_BlcList.getItems().size()-1)+".xml";
+			loadConfBlc(fxml,xml,cmpt);
 			
 		}
 		
@@ -190,14 +191,15 @@ public class ViewMainParametresController implements Initializable{
 				break;
 			}
 		}
-		loadConfBlc(fxml,cmpt);
+		String xml=gamePath+LV_BlcList.getSelectionModel().getSelectedItem()+".xml";
+		loadConfBlc(fxml,xml,cmpt);
 	}
 	
-	private void loadConfBlc(String fxml,int cmpt) throws IOException{
+	private void loadConfBlc(String fxml,String xml,int cmpt) throws IOException{
 		if(fxml.endsWith("fxml")){
 			System.out.println("cmpt="+cmpt);
 			Node newPane;
-			String xml=gamePath+LV_BlcList.getSelectionModel().getSelectedItem()+".xml";
+			
 			 switch (cmpt) {
 			 	case 0 :
 			 		newPane= JFxUtils.loadAccueilParamFxml(fxml,xml);
@@ -267,13 +269,6 @@ public class ViewMainParametresController implements Initializable{
 			attribut1.setValue(path+"/"+LV_BlcList.getItems().get(i)+".xml");
 			type.setAttributeNode(attribut1);
 		}
-		
-		/*
-		Element livre = XML_Document.createElement("Livre");
-		site.appendChild(livre);
-		Attr attribut2 = XML_Document.createAttribute("Wikilivre");
-		attribut2.setValue("Java");
-		livre.setAttributeNode(attribut2);*/
 
 		//Enregistrement du fichier xml
 		TransformerFactory XML_Fabrique_Transformeur = TransformerFactory.newInstance();
@@ -281,7 +276,8 @@ public class ViewMainParametresController implements Initializable{
 		DOMSource source = new DOMSource(XML_Document);
 		StreamResult resultat;
 		
-		resultat = new StreamResult(new File(gamePath+"chronologie_" +nomJeu  + ".xml"));
+		xmlChronologie=gamePath+"chronologie_" +nomJeu  + ".xml";
+		resultat = new StreamResult(new File(xmlChronologie));
 		XML_Transformeur.transform(source, resultat); 
 		System.out.println("Le fichier XML a 騁� g駭駻� !");
 		
@@ -292,19 +288,16 @@ public class ViewMainParametresController implements Initializable{
 		//Renommage du dossier du jeu
 		File dir = new File("Games/temp");
 	    File newDir = new File(dir.getParent() + "/" + nomJeu);
-	    /*if(newDir.isDirectory()){
-	    	File[] files = newDir.listFiles();
-			for(File fichier:files)
-				fichier.delete();
-	    	newDir.delete();
-	    }*/
+	    xmlChronologie=nomJeu+"/"+"chronologie_" +nomJeu  + ".xml";
+	    
 	    
 	    Boolean rename=dir.renameTo(newDir);
 	    System.out.println("Rename dir ? :"+rename);
 	    
+	    
+	    
 	    Stage st=(Stage) BT_AjtBlc.getScene().getWindow();
-		st.close();
-		System.out.println("cc");
+		//st.close();
 	}
 	
 	@FXML
@@ -330,7 +323,8 @@ public class ViewMainParametresController implements Initializable{
 				   SAXParserFactory factory = SAXParserFactory.newInstance();
 				   SAXParser parser = factory.newSAXParser();
 				   System.out.println(gamePath+"chronologie_"+dirGame.getName()+".xml");
-				   parser.parse(gamePath+"chronologie_"+dirGame.getName()+".xml", new DefaultHandler() {
+				   xmlChronologie=gamePath+"chronologie_"+dirGame.getName()+".xml";
+				   parser.parse(xmlChronologie, new DefaultHandler() {
 				    public void startDocument() throws SAXException {}
 				    public void endDocument() throws SAXException {}
 				    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -394,8 +388,17 @@ public class ViewMainParametresController implements Initializable{
 			System.out.println("Le fichier XML a 騁� g駭駻� !");
 			
 			Node newPane;
-			newPane= JFxUtils.loadNextBloc(1, "Games/temp/chronologie_temp.xml",true);
-		 	AP_ConfBlc.getChildren().setAll(newPane);
+			System.out.println(xmlChronologie);
+			newPane= JFxUtils.loadNextBloc(1, xmlChronologie,true);
+		 	//AP_ConfBlc.getChildren().setAll(newPane);
+			Stage stage = new Stage();
+			stage.setTitle("Nouvelle instruction");
+			stage.setScene(new Scene((Parent) newPane));
+			stage.show();
+		 	
+		 	
+		 	
+		 	
 			
 		} else{
 			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est pr駸ent dans la chronologie", ButtonType.OK);

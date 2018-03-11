@@ -216,16 +216,7 @@ public class ViewParametresAccueilController implements Initializable {
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
 		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
-		
-		/*System.out.println("cheminAbsoluActuel :"+cheminAbsoluActuel);
-		System.out.println("file.getAbsolutePath() :"+file.getAbsolutePath());
-		System.out.println("cheminAbsoluImage :"+cheminAbsoluImage);
-		System.out.println("cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()"+cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
-		String test=cheminAbsoluImage.toString();
-		System.out.println(test);
-		System.out.println(nomImage.substring(nomImage.lastIndexOf("\\")+1));*/
-		
-		
+
 		
 		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 		

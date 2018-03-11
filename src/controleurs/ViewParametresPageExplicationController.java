@@ -144,7 +144,8 @@ public class ViewParametresPageExplicationController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 	
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
@@ -156,20 +157,7 @@ public class ViewParametresPageExplicationController implements Initializable {
 		}
 		image1.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
 		cheminImage1 = "././Ressources/Images/" + nomImage;
-/*
-		try {
-			BufferedImage bufferedImage = ImageIO.read(file);
-			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-			image1.setImage(image);
 
-			Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
-			Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-			
-			cheminImage1 = cheminAbsoluActuel.relativize(cheminAbsoluImage).toString();
-
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}*/
 	}
 
 	@FXML
@@ -187,7 +175,8 @@ public class ViewParametresPageExplicationController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 	
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));

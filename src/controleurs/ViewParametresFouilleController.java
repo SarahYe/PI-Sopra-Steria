@@ -241,12 +241,9 @@ public class ViewParametresFouilleController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		System.out.println(cheminAbsoluActuel);
-		System.out.println(cheminAbsoluImage);
-		System.out.println(nomImage);
+		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 		
-		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
-		System.out.println(image);
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
 		} else {

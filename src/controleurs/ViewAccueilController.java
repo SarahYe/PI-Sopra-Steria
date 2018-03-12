@@ -164,7 +164,10 @@ public class ViewAccueilController implements Initializable{
 					    public void endElement(String uri, String localName, String qName) throws SAXException {}
 					   });  
 					  } catch (Exception e) { System.err.println(e); System.exit(1); }
-				JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+				if (cmptChronologie<names.size()){
+					JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+			
+				}
 			}
 		}
 	}

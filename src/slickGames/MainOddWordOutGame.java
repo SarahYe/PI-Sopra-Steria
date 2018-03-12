@@ -81,7 +81,7 @@ public class MainOddWordOutGame extends StateBasedGame{
 	
 		//container.setForceExit(false);
 		OddWordOutGame oddWordOutGame=new OddWordOutGame();
-		oddWordOutGame.initData(xml,son,score);
+		oddWordOutGame.initData(xmlChronologie,xml,son,score,cmptChronologie);
 		addState(oddWordOutGame);
 		
 		//PuzzleGame puzzlegame=new PuzzleGame();

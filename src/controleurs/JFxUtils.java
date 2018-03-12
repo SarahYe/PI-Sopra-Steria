@@ -384,6 +384,7 @@ public class JFxUtils {
 			    public void endElement(String uri, String localName, String qName) throws SAXException {}
 			   });  
 			  } catch (Exception e) { System.err.println(e); System.exit(1); }
+		//System.out.println("COMPTEUR : "+cmptChronologie+" | names.size : "+names.size());
 		if (cmptChronologie<names.size()){
 			switch (names.get(cmptChronologie)){
 				case "Quiz" : try {

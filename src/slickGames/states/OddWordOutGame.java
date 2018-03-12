@@ -60,8 +60,13 @@ public class OddWordOutGame extends BasicGameState {
 	public int previousReponse;
 	public boolean exit_flag = false;
 	
-	public String xml;
+	private static String xml="FichiersDeConfig/slickGame.xml";
+	private static boolean soloBloc=true;
+	private static int cmptChronologie;
+	public static String xmlChronologie;
+	public static boolean son=true;
 
+	
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
@@ -93,10 +98,12 @@ public class OddWordOutGame extends BasicGameState {
 		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f, true);
 	}
 	
-	public void initData(String xml, boolean son, int score){
-		this.xml=xml;
+	public void initData(String xml, String xml2, boolean son, int score, int cmptChronologie){
+		this.xmlChronologie=xml;
+		this.xml=xml2;
 		this.score=score;
 		this.gameMuted=!son;
+		this.cmptChronologie=cmptChronologie;
 		//muteUnmuteGame();
 	}
 
@@ -256,7 +263,21 @@ public class OddWordOutGame extends BasicGameState {
 	             Platform.runLater(new Runnable() {
 	                 @Override public void run() {
 	                	
-	                	 JFxUtils.loadTest();
+	                	 //JFxUtils.loadTest();
+	                	 
+	                	 Stage stage = new Stage();
+	                	 System.out.println("compteur : "+cmptChronologie);
+	                	 System.out.println("XML : "+xmlChronologie);
+	                	 System.out.println("son : "+son);
+	                	 System.out.println("score : "+score);
+	                	 Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
+	         			if (node!=null){
+	         				stage.setScene(new Scene((Parent) node, 850, 650));
+	         				stage.show();
+	         			} else {
+	        				System.out.println("node = null");
+	        				stage.close();
+	        			}
 	             		
 	                 }
 	             });

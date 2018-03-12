@@ -8,11 +8,20 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
 import com.sun.javafx.application.HostServicesDelegate;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -128,7 +137,35 @@ public class ViewPageExplicationController implements Initializable {
 			if (node!=null){
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {
+				
+				Platform.setImplicitExit(false);
+				System.out.println("Fermeture du bloc JAVAFX précédent");
 				stage.close();
+				
+				ArrayList<String> names=new ArrayList<String>();
+				ArrayList<String> path=new ArrayList<String>();
+				try {
+					   SAXParserFactory factory = SAXParserFactory.newInstance();
+					   SAXParser parser = factory.newSAXParser();
+					   parser.parse(xmlChronologie, new DefaultHandler() {
+					    public void startDocument() throws SAXException {}
+					    public void endDocument() throws SAXException {}
+					    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+					    	names.add(qName);
+					    	path.add(attributes.getValue("pathXML"));
+					    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
+					    	}
+					    public void endElement(String uri, String localName, String qName) throws SAXException {}
+					   });  
+					  } catch (Exception e) { System.err.println(e); System.exit(1); }
+				if (cmptChronologie<names.size()){
+					switch (names.get(cmptChronologie)){
+						case "Intrus" :
+							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+						case "Puzzle" :
+							//JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+					}
+				}
 			}
 		}
 	}

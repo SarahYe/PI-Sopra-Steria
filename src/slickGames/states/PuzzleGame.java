@@ -23,6 +23,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import controleurs.JFxUtils;
+import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import modeles.Puzzle;
 import slickGames.MainOddWordOutGame;
 import slickGames.MainPuzzleGame;
@@ -45,6 +51,14 @@ public class PuzzleGame extends BasicGameState {
 	public Image volumeImg;
 	public Puzzle puzzle;
 	public boolean indiceAsked = false;
+	public boolean exit_flag = false;
+	
+	public static int score;
+	private static String xml="FichiersDeConfig/slickGame.xml";
+	private static boolean soloBloc=true;
+	private static int cmptChronologie;
+	public static String xmlChronologie;
+	public static boolean son=true;
 	
 	
 	@Override
@@ -122,6 +136,15 @@ public class PuzzleGame extends BasicGameState {
 		}
 		
 	}
+	
+	public void initData(String xml, String xml2, boolean son, int score, int cmptChronologie){
+		this.xmlChronologie=xml;
+		this.xml=xml2;
+		this.score=score;
+		this.gameMuted=!son;
+		this.cmptChronologie=cmptChronologie;
+		//muteUnmuteGame();
+	}
 
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
@@ -172,13 +195,13 @@ public class PuzzleGame extends BasicGameState {
 			
 			Image img = new Image("./Ressources/Images/rectReponse.png");
 			
-			String str1 = "Game Over";
+			String str1 = "Bien joué !";
 			Double score = puzzle.getScore_init() - mins*(60/puzzle.getDecr_sec())*puzzle.getDecr_pts() - ((int) secs/puzzle.getDecr_sec())*puzzle.getDecr_pts();
 			if (score < puzzle.getScore_min()){
 				score = puzzle.getScore_min();
 			}
-			int scoreInt = score.intValue();
-			String str2 = "Votre score : "+scoreInt;
+			this.score = score.intValue();
+			String str2 = "Votre score : "+this.score;
 			String str3 = "PRESS ENTER TO EXIT";
 			
 			float middleXstr1 = (MainOddWordOutGame.longueur-g.getFont().getWidth(str1))/2;
@@ -236,6 +259,54 @@ public class PuzzleGame extends BasicGameState {
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		
 		chrono += delta;
+		
+		if(exit_flag){
+			//game.getCurrentState().leave(container, game);
+			container.setForceExit(false);
+			container.exit();
+			
+			System.out.println("close demandé");
+			
+			//game.enterState(PuzzleGame.ID);
+			
+			/*System.out.println("");
+			Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
+			Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
+			System.out.println(threadArray.length);
+			for(int i=0; i < threadArray.length; i++){
+				System.out.println(threadArray[i]);
+			}
+			System.out.println("");*/
+			
+			//MainPuzzleGame.main(null);
+			
+	             Platform.runLater(new Runnable() {
+	                 @Override public void run() {
+	                	
+	                	 //JFxUtils.loadTest();
+	                	 
+	                	 Stage stage = new Stage();
+	                	 System.out.println("compteur : "+cmptChronologie);
+	                	 System.out.println("XML : "+xmlChronologie);
+	                	 System.out.println("son : "+son);
+	                	 System.out.println("score : "+score);
+	                	 Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
+	         			if (node!=null){
+	         				stage.setScene(new Scene((Parent) node, 850, 650));
+	         				stage.show();
+	         			} else {
+	        				System.out.println("node = null");
+	        				stage.close();
+	        			}
+	             		
+	                 }
+	             });
+	           
+	             //container.setForceExit(true);
+	             //container.exit();
+	    
+	         
+		}
 		
 		if (container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
 	    	if(container.getInput().getMouseX() > 5 && container.getInput().getMouseX() < 30 && container.getInput().getMouseY() > 5 && container.getInput().getMouseY() < 30){
@@ -298,7 +369,8 @@ public class PuzzleGame extends BasicGameState {
 		switch (key){
 		case Input.KEY_ENTER:
 			if(gameFinished){
-				System.exit(0);
+				//System.exit(0);
+				exit_flag = true;
 			}
 			break;
 		case Input.KEY_M:

@@ -169,7 +169,7 @@ public class ViewAccueilController implements Initializable{
 						case "Intrus" :
 							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
 						case "Puzzle" :
-							//JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+							JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
 					}
 				}
 			}

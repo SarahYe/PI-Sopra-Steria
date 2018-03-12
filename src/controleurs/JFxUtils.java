@@ -24,6 +24,8 @@ import main.ParametresOddWordOutGame;
 import modeles.PNJ;
 import modeles.Quiz;
 import slickGames.MainOddWordOutGame;
+import slickGames.MainPuzzleGame;
+import slickGames.states.PuzzleGame;
 
 public class JFxUtils {
 
@@ -185,6 +187,22 @@ public class JFxUtils {
 	
 	public static void loadOddWordOutGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
 		MainOddWordOutGame game=new MainOddWordOutGame();
+		game.initData(xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
+		AppGameContainer app;
+		try {
+			app = new AppGameContainer(game,850, 650, false);
+			app.setTargetFrameRate(60);
+			app.setVSync(true);
+			app.setShowFPS(false);
+			app.start();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void loadPuzzleGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+		MainPuzzleGame game=new MainPuzzleGame();
 		game.initData(xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
 		AppGameContainer app;
 		try {

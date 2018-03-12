@@ -315,6 +315,23 @@ public class JFxUtils {
 	}
 	
 	
+	public static void loadTest(){
+		 System.out.println("runnnnnn");
+   	 Stage stage = new Stage();
+   	 Node node=JFxUtils.loadNextBloc(4, "Games/test3000/chronologie_test3000.xml", false, 0);
+			System.out.println("Chargement du prochain bloc...");
+			if (node!=null){
+				System.out.println("node != null");
+				stage.setScene(new Scene((Parent) node, 850, 650));
+				stage.show();
+				System.out.println("fenetre show fait");
+			} else {
+				System.out.println("node = null");
+				stage.close();
+			}
+	}
+	
+	
 	public static Node loadNextBloc(int cmptChronologie, String xmlChronologie, boolean son) {
 		ArrayList<String> names=new ArrayList<String>();
 		ArrayList<String> path=new ArrayList<String>();
@@ -341,8 +358,8 @@ public class JFxUtils {
 				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
 				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
 				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
-				case "Intrus" : String[] args={};
-				Application.launch(ParametresOddWordOutGame.class, args);
+				case "Intrus" : //String[] args={};
+				//Application.launch(ParametresOddWordOutGame.class, args);
 					return null;
 				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0/*score*/);
 			}
@@ -376,7 +393,8 @@ public class JFxUtils {
 				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
 				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
 				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
-				case "Intrus" : loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+				case "Intrus" : 
+					//loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
 					return null;
 				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
 			}

@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.sound.sampled.*;
 
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -18,10 +20,18 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import controleurs.JFxUtils;
+import javafx.application.Platform;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import main.MainChronologie;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 import slickGames.MainOddWordOutGame;
+import slickGames.MainPuzzleGame;
 import slickGames.entite.EntiteReponse;
 
 //import slickGames.FontUtils;
@@ -48,11 +58,13 @@ public class OddWordOutGame extends BasicGameState {
 	public Quiz quiz;
 	public ArrayList<Reponse> listeReponses;
 	public int previousReponse;
+	public boolean exit_flag = false;
 	
 	public String xml;
 
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
+		
 		
 		ArrayList<Question> ListeQuestions = new ArrayList<Question>();
 		Quiz quiz = new Quiz ("",ListeQuestions);
@@ -190,6 +202,7 @@ public class OddWordOutGame extends BasicGameState {
 			g.setColor(Color.white);
 			g.drawString(str3, middleXstr3, middleYstr3);		
 		}
+		
 	}
 	
 	public static void drawStrings(String text, int x, int y, Graphics g)
@@ -211,6 +224,48 @@ public class OddWordOutGame extends BasicGameState {
 
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
+		
+		Input input = container.getInput();
+        if(input.isKeyPressed( Input.KEY_SPACE ))
+        {
+            game.getCurrentState().init(container, game);
+            game.enterState(game.getCurrentStateID());
+
+        }
+		
+		if(exit_flag){
+			//game.getCurrentState().leave(container, game);
+			container.setForceExit(false);
+			container.exit();
+			
+			System.out.println("close demandé");
+			
+			//game.enterState(PuzzleGame.ID);
+			
+			/*System.out.println("");
+			Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
+			Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
+			System.out.println(threadArray.length);
+			for(int i=0; i < threadArray.length; i++){
+				System.out.println(threadArray[i]);
+			}
+			System.out.println("");*/
+			
+			//MainPuzzleGame.main(null);
+			
+	             Platform.runLater(new Runnable() {
+	                 @Override public void run() {
+	                	
+	                	 JFxUtils.loadTest();
+	             		
+	                 }
+	             });
+	           
+	             //container.setForceExit(true);
+	             //container.exit();
+	    
+	         
+		}
 		
 		long tmp = System.currentTimeMillis();
 	    long customDelta = tmp - previousTime;
@@ -289,7 +344,8 @@ public class OddWordOutGame extends BasicGameState {
 			break;
 		case Input.KEY_ENTER:
 			if(gameFinished){
-				System.exit(0);
+				//System.exit(0);
+				exit_flag = true;
 			}
 			break;
 		case Input.KEY_M:

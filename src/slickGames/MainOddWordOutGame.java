@@ -9,6 +9,7 @@ import javafx.application.Application;
 import main.MainChronologie;
 import main.MainExplication;
 import slickGames.states.OddWordOutGame;
+import slickGames.states.PuzzleGame;
 
 
 public class MainOddWordOutGame extends StateBasedGame{
@@ -18,9 +19,9 @@ public class MainOddWordOutGame extends StateBasedGame{
 	private static String xml="FichiersDeConfig/slickGame.xml";
 	private static boolean soloBloc=true;
 	private static int cmptChronologie;
-	private static String xmlChronologie;
-	private static boolean son=true;
-	private static int score=0;
+	public static String xmlChronologie;
+	public static boolean son=true;
+	public static int score=0;
 	
 	public static void main(String[] args) throws SlickException {
 			
@@ -77,10 +78,14 @@ public class MainOddWordOutGame extends StateBasedGame{
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		//addState(new OddWordOutExplanation());
+	
 		//container.setForceExit(false);
 		OddWordOutGame oddWordOutGame=new OddWordOutGame();
 		oddWordOutGame.initData(xml,son,score);
 		addState(oddWordOutGame);
+		
+		//PuzzleGame puzzlegame=new PuzzleGame();
+ 		//addState(puzzlegame);
 		
 		this.enterState(OddWordOutGame.ID);
 	
@@ -94,6 +99,7 @@ public class MainOddWordOutGame extends StateBasedGame{
         chronoGame.initData(cmptChronologie+1, xmlChronologie, son, score);
         String[] args={};
         chronoGame.launch(MainChronologie.class);*/
+		System.out.println("closerequested");
         
 		return true;
     }

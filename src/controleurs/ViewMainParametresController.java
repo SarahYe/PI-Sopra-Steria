@@ -73,7 +73,7 @@ public class ViewMainParametresController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//cr饌tion du dossier temporaire o� seront enregistrer tout les xml
+		//cré¥Œtion du dossier temporaire oï¿½ seront enregistrer tout les xml
 		File dir = new File ("Games/temp");
 		dir.mkdirs();
 		
@@ -240,7 +240,7 @@ public class ViewMainParametresController implements Initializable{
 	
 	@FXML
 	private void ClickBT_SaveGame(ActionEvent event) throws ParserConfigurationException, TransformerException {
-		//r馗up駻ation du nom du jeu entr�
+		//ré¦—upé§»ation du nom du jeu entrï¿½
 		String nomJeu;
 		if(!TF_GameName.getText().equals(""))
 			nomJeu=TF_GameName.getText();
@@ -279,9 +279,9 @@ public class ViewMainParametresController implements Initializable{
 		xmlChronologie=gamePath+"chronologie_" +nomJeu  + ".xml";
 		resultat = new StreamResult(new File(xmlChronologie));
 		XML_Transformeur.transform(source, resultat); 
-		System.out.println("Le fichier XML a 騁� g駭駻� !");
+		System.out.println("Le fichier XML a é¨�ï¿½ gé§­é§»ï¿½ !");
 		
-		Alert alert = new Alert(AlertType.INFORMATION, "Le jeux \""+ nomJeu +"\" a été enregistré.\n\nSon contenu a été enregistré au chemin : \""+ System.getProperty("user.dir")+"\\Games\\"+nomJeu+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
+		Alert alert = new Alert(AlertType.INFORMATION, "Le jeu \""+ nomJeu +"\" a Ã©tÃ© enregistrÃ©.\n\nSon contenu a Ã©tÃ© enregistrÃ© au chemin : \""+ System.getProperty("user.dir")+"\\Games\\"+nomJeu+"\"\n\nLe fichier contenant la chronologie se nomme \"chronologie_"+nomJeu+".xml\"", ButtonType.OK);
 		alert.setHeaderText("Information concernant l'enregistrement");
 		alert.showAndWait();
 		
@@ -292,6 +292,10 @@ public class ViewMainParametresController implements Initializable{
 	    
 	    
 	    Boolean rename=dir.renameTo(newDir);
+	    if(rename){
+	    	gamePath="Games/"+nomJeu+"/";
+	    	System.out.println(gamePath);
+	    }
 	    System.out.println("Rename dir ? :"+rename);
 	    
 	    
@@ -385,7 +389,7 @@ public class ViewMainParametresController implements Initializable{
 			
 			resultat = new StreamResult(new File("Games/temp/chronologie_temp.xml"));
 			XML_Transformeur.transform(source, resultat); 
-			System.out.println("Le fichier XML a 騁� g駭駻� !");
+			System.out.println("Le fichier XML a é¨�ï¿½ gé§­é§»ï¿½ !");
 			
 			Node newPane;
 			System.out.println(xmlChronologie);
@@ -401,7 +405,7 @@ public class ViewMainParametresController implements Initializable{
 		 	
 			
 		} else{
-			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est pr駸ent dans la chronologie", ButtonType.OK);
+			Alert alert = new Alert(AlertType.INFORMATION, "Aucun bloc n'est pré§¸ent dans la chronologie", ButtonType.OK);
 			alert.setHeaderText("Information concernant le test");
 			//alert.showAndWait();
 		}

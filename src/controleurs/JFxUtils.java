@@ -380,6 +380,8 @@ public class JFxUtils {
 				//Application.launch(ParametresOddWordOutGame.class, args);
 					return null;
 				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0/*score*/);
+				case "Fouille" : return loadFouilleFxml("/vues/ViewFouille.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, 0);
+				case "Puzzle" : return null;
 			}
 		}
 		return null;
@@ -416,6 +418,8 @@ public class JFxUtils {
 					//loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
 					return null;
 				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
+				case "Fouille" : return loadFouilleFxml("/vues/ViewFouille.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, 0);
+				case "Puzzle" : return null;
 			}
 		}
 		return null;

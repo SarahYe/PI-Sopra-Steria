@@ -140,7 +140,9 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 		
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));

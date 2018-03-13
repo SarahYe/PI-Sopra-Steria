@@ -112,7 +112,7 @@ public class ViewPNJController implements Initializable {
 	    String content = descImp;
 	    animation = new Transition() {
 	        {
-	            setCycleDuration(Duration.millis(content.length() * 30));
+	            setCycleDuration(Duration.millis(content.length() * 20));
 	        }
 	        protected void interpolate(double frac) {
 	            final int length = content.length();
@@ -149,7 +149,7 @@ public class ViewPNJController implements Initializable {
 				} else {
 					
 					Platform.setImplicitExit(false);
-					System.out.println("Fermeture du bloc JAVAFX précédent");
+					System.out.println("Fermeture du bloc JAVAFX prÃ©cÃ©dent");
 					stage.close();
 					
 					ArrayList<String> names=new ArrayList<String>();

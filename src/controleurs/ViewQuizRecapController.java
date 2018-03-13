@@ -96,7 +96,7 @@ public class ViewQuizRecapController implements Initializable {
 							HBox hbox2 = new HBox();
 							hbox2.setSpacing(50);
 							Label corRep = new Label();
-							corRep.setText("\tVotre rÃ©ponse :\n\t " + reponsesJoueur.get(i));
+							corRep.setText("\tVotre réponse :\n\t " + reponsesJoueur.get(i));
 							corRep.setWrapText(true);
 							hbox2.getChildren().add(corRep);
 							ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/checkVert_mini.png"));
@@ -117,7 +117,7 @@ public class ViewQuizRecapController implements Initializable {
 							HBox hbox2 = new HBox();
 							hbox2.setSpacing(50);
 							Label rep = new Label();
-							rep.setText("\tVotre rÃ©ponse :\n\t " + reponsesJoueur.get(i));
+							rep.setText("\tVotre réponse :\n\t " + reponsesJoueur.get(i));
 							rep.setWrapText(true);
 							hbox2.getChildren().add(rep);
 							ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/croixRouge_mini.png"));
@@ -128,7 +128,7 @@ public class ViewQuizRecapController implements Initializable {
 							
 							HBox hbox3 = new HBox();
 							Label corRep = new Label();
-							corRep.setText("\tLa bonne rÃ©ponse Ã©tait :\n\t " + correctReponse);
+							corRep.setText("\tLa bonne réponse était :\n\t " + correctReponse);
 							corRep.setWrapText(true);
 							hbox3.getChildren().add(corRep);
 							vbox.getChildren().add(hbox3);

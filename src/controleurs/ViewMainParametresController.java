@@ -56,7 +56,7 @@ public class ViewMainParametresController implements Initializable{
 	@FXML
 	private ToggleButton TBT_BlcQuiz,TBT_BlcAccueil,TBT_BlcIntrus,TBT_BlcPNJ,TBT_BlcScr,TBT_BlcExpl,TBT_BlcPuzzle,TBT_BlcFouille;
 	@FXML
-	private Button BT_AjtBlc; 
+	private Button BT_Save,BT_AjtBlc; 
 	@FXML
 	private ListView LV_BlcList;
 	private ArrayList<String> listTypeBlocs=new ArrayList<String>();
@@ -73,6 +73,7 @@ public class ViewMainParametresController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		//BT_Save.getStylesheets().add(ViewMainParametresController.class.getResource("../../Ressources/CSS/button_hover.css").toExternalForm());		
 		//cré¥Œtion du dossier temporaire oï¿½ seront enregistrer tout les xml
 		File dir = new File ("Games/temp");
 		dir.mkdirs();

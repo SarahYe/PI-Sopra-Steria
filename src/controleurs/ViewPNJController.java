@@ -112,7 +112,7 @@ public class ViewPNJController implements Initializable {
 	    String content = descImp;
 	    animation = new Transition() {
 	        {
-	            setCycleDuration(Duration.millis(content.length() * 80));
+	            setCycleDuration(Duration.millis(content.length() * 30));
 	        }
 	        protected void interpolate(double frac) {
 	            final int length = content.length();

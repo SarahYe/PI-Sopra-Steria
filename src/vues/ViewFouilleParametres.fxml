@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresFouilleController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewParametresFouilleController">
    <content>
       <AnchorPane prefHeight="700.0" prefWidth="1200.0">
          <children>
@@ -95,7 +95,7 @@
                   </AnchorPane>
                 <AnchorPane fx:id="previsualisation" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                      <children>
-                        <ImageView fx:id="prevFDE" fitHeight="654.0" fitWidth="606.0" pickOnBounds="true" />
+                        <ImageView fx:id="prevFDE" fitHeight="434.0" fitWidth="950.0" pickOnBounds="true" />
                      </children></AnchorPane>
               </items>
             </SplitPane>

@@ -168,8 +168,10 @@ public class ViewAccueilController implements Initializable{
 					switch (names.get(cmptChronologie)){
 						case "Intrus" :
 							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+							break;
 						case "Puzzle" :
 							JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+							break;
 					}
 				}
 			}

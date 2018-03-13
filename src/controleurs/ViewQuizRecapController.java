@@ -184,10 +184,12 @@ public class ViewQuizRecapController implements Initializable {
 					  } catch (Exception e) { System.err.println(e); System.exit(1); }
 				if (cmptChronologie<names.size()){
 					switch (names.get(cmptChronologie)){
-						case "Intrus" :
-							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
-						case "Puzzle" :
-							JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+					case "Intrus" :
+						JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+						break;
+					case "Puzzle" :
+						JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+						break;
 					}
 				}
 			}

@@ -13,6 +13,8 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -22,6 +24,9 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import controleurs.JFxUtils;
 import javafx.application.Platform;
@@ -68,8 +73,8 @@ public class PuzzleGame extends BasicGameState {
 		titre = new Image("./Ressources/Images/SeriousSecurity.png");
 		personnage = new Image("./Ressources/Images/perso.png");
 		bulleDialogue = new Image("./Ressources/Images/bulleDialogue2.png");
-		boutonIndices = new Image("./Ressources/Images/boutonIndices.png");
-		flecheReset = new Image("./Ressources/Images/flecheReset.png");
+		boutonIndices = new Image("./Ressources/Images/boutonIndice.png");
+		flecheReset = new Image("./Ressources/Images/boutonReset.png");
 		
 		ArrayList<String> listeString = new ArrayList<String>();
 		Puzzle puzzle = new Puzzle("","","",listeString,listeString);
@@ -279,7 +284,8 @@ public class PuzzleGame extends BasicGameState {
 			System.out.println("");*/
 			
 			//MainPuzzleGame.main(null);
-			
+			System.out.println(Platform.isAccessibilityActive());
+			System.out.println(Platform.isFxApplicationThread());
 	             Platform.runLater(new Runnable() {
 	                 @Override public void run() {
 	                	
@@ -297,6 +303,31 @@ public class PuzzleGame extends BasicGameState {
 	         			} else {
 	        				System.out.println("node = null");
 	        				stage.close();
+	        				
+	        				ArrayList<String> names=new ArrayList<String>();
+	        				ArrayList<String> path=new ArrayList<String>();
+	        				try {
+	        					   SAXParserFactory factory = SAXParserFactory.newInstance();
+	        					   SAXParser parser = factory.newSAXParser();
+	        					   parser.parse(xmlChronologie, new DefaultHandler() {
+	        					    public void startDocument() throws SAXException {}
+	        					    public void endDocument() throws SAXException {}
+	        					    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+	        					    	names.add(qName);
+	        					    	path.add(attributes.getValue("pathXML"));
+	        					    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
+	        					    	}
+	        					    public void endElement(String uri, String localName, String qName) throws SAXException {}
+	        					   });  
+	        					  } catch (Exception e) { System.err.println(e); System.exit(1); }
+	        				if (cmptChronologie<names.size()){
+	        					switch (names.get(cmptChronologie)){
+	        						case "Intrus" :
+	        							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+	        						case "Puzzle" :
+	        							JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
+	        					}
+	        				}
 	        			}
 	             		
 	                 }

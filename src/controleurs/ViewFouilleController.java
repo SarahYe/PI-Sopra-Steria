@@ -56,7 +56,7 @@ public class ViewFouilleController implements Initializable{
 	private static Fouille fouille;
 	private static ArrayList<String> intitules= new ArrayList<String>();
 	private static int cmpt=0;
-	private int inventoryX=0,inventoryY=0;
+	private int inventoryX=5,inventoryY=0;
 	private static int printScore=0;
 	
 	@FXML
@@ -73,7 +73,6 @@ public class ViewFouilleController implements Initializable{
 			sonOn();
 		else
 			sonOff();
-		AP_Inventory.setStyle("-fx-background-color: cyan;");
 		
 	}
 	
@@ -104,7 +103,7 @@ public class ViewFouilleController implements Initializable{
 			element.setX(instruction.getPosX()+imageFond.getX());
 			element.setY(instruction.getPosY()+imageFond.getY());
 			if(element.getImage().getHeight()>inventoryY)
-				inventoryY=(int) element.getImage().getHeight()+1;
+				inventoryY=(int) element.getImage().getHeight()+10;
 			AP_Game.getChildren().add(element);
 			element.setOnMouseClicked(new EventHandler<MouseEvent>()
 	        {
@@ -300,6 +299,8 @@ public class ViewFouilleController implements Initializable{
 		File file = new File("Ressources/Images/volume_on.png");
 		Image image = new Image(file.toURI().toString());
 		IV_IconeSon.setImage(image);
+		IV_IconeSon.setFitHeight(60);
+		IV_IconeSon.setFitWidth(70);
 		centerImage(IV_IconeSon);
 	}
 	
@@ -307,6 +308,8 @@ public class ViewFouilleController implements Initializable{
 		File file = new File("Ressources/Images/volume_off.png");
 		Image image = new Image(file.toURI().toString());
 		IV_IconeSon.setImage(image);
+		IV_IconeSon.setFitHeight(60);
+		IV_IconeSon.setFitWidth(70);
 		centerImage(IV_IconeSon);
 	}
 

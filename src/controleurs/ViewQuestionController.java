@@ -232,7 +232,7 @@ public class ViewQuestionController implements Initializable {
 				QuizAccueilController.jouerAudio("././Ressources/Sons/succes.wav", niveauSon);
 				faux.setVisible(false);
 				vrai.setVisible(true);
-				score += 10;
+				score += 500;
 				System.out.print(score);
 			} else {
 				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewPageExplicationController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewPageExplicationController">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="700.0" prefWidth="850.0">
          <children>
@@ -18,12 +18,15 @@
                   <Image url="@../../Ressources/Images/Cartel%20Nota.png" />
                </image>
             </ImageView>
-            <Label fx:id="theme" alignment="CENTER" layoutX="197.0" layoutY="135.0" prefHeight="63.0" prefWidth="443.0" text="Cliquez pour modifier" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="70.0">
+            <Label fx:id="theme" alignment="CENTER" layoutX="197.0" layoutY="135.0" prefHeight="63.0" prefWidth="443.0" text="Cliquez pour modifier" textAlignment="CENTER" textFill="#bf1414" wrapText="true" AnchorPane.leftAnchor="197.0" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="70.0">
                <font>
                   <Font name="Noteworthy Light" size="30.0" />
                </font>
             </Label>
-            <Label fx:id="explication" alignment="CENTER" layoutX="342.0" layoutY="168.0" prefHeight="396.0" prefWidth="430.0" text="Explication                                                                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. Sed congue tellus justo, quis tempus nulla auctor sit amet.Proin mattis mauris sit amet elementum malesuada. Fusce gravida viverra placerat. Maecenas non erat laoreet, tristique libero et, porta mauris. Proin luctus feugiat pellentesque. Mauris ornare, nisl non eleifend ornare, dui enim condimentum ex, ac dapibus diam arcu quis turpis. Nunc condimentum ligula sed nisi aliquam, ac tincidunt metus vulputate. Phasellus bibendum ex dui, eu efficitur nunc venenatis vel. Praesent mattis risus sit amet nunc tincidunt scelerisque. Suspendisse potenti. Praesent a interdum lorem. Vestibulum massa ante, semper cursus pretium vel, pulvinar at velit. In at nibh lorem." wrapText="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0" />
+            <Label fx:id="explication" alignment="CENTER" layoutX="342.0" layoutY="168.0" prefHeight="396.0" prefWidth="430.0" text="Explication                                                                                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae magna elit. Praesent sit amet urna ipsum. Praesent ultricies, dui at lobortis maximus, lacus est tempor arcu, quis feugiat enim turpis non leo. Etiam id bibendum quam. Phasellus nulla orci, tincidunt consequat sem quis, laoreet aliquam eros. Suspendisse elementum fermentum turpis. Nullam ut quam suscipit, posuere nisi at, viverra nulla. In mattis ante sit amet eros sollicitudin bibendum. Morbi cursus ipsum in sem convallis euismod. Vestibulum in finibus lacus. Integer nec lacus a dui fringilla placerat quis non purus. Vivamus et diam sit amet nulla ornare sollicitudin eget eu felis. Sed congue tellus justo, quis tempus nulla auctor sit amet.Proin mattis mauris sit amet elementum malesuada. Fusce gravida viverra placerat. Maecenas non erat laoreet, tristique libero et, porta mauris. Proin luctus feugiat pellentesque. Mauris ornare, nisl non eleifend ornare, dui enim condimentum ex, ac dapibus diam arcu quis turpis. Nunc condimentum ligula sed nisi aliquam, ac tincidunt metus vulputate. Phasellus bibendum ex dui, eu efficitur nunc venenatis vel. Praesent mattis risus sit amet nunc tincidunt scelerisque. Suspendisse potenti. Praesent a interdum lorem. Vestibulum massa ante, semper cursus pretium vel, pulvinar at velit. In at nibh lorem." wrapText="true" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></Label>
             <ImageView fx:id="image1" fitHeight="150.0" fitWidth="200.0" layoutX="109.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="120.0">
                <image>
                   <Image url="@../../Ressources/Images/personnage3.png" />

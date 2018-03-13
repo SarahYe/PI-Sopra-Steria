@@ -284,8 +284,7 @@ public class PuzzleGame extends BasicGameState {
 			System.out.println("");*/
 			
 			//MainPuzzleGame.main(null);
-			System.out.println(Platform.isAccessibilityActive());
-			System.out.println(Platform.isFxApplicationThread());
+			if(Platform.isFxApplicationThread()){
 	             Platform.runLater(new Runnable() {
 	                 @Override public void run() {
 	                	
@@ -303,35 +302,12 @@ public class PuzzleGame extends BasicGameState {
 	         			} else {
 	        				System.out.println("node = null");
 	        				stage.close();
-	        				
-	        				ArrayList<String> names=new ArrayList<String>();
-	        				ArrayList<String> path=new ArrayList<String>();
-	        				try {
-	        					   SAXParserFactory factory = SAXParserFactory.newInstance();
-	        					   SAXParser parser = factory.newSAXParser();
-	        					   parser.parse(xmlChronologie, new DefaultHandler() {
-	        					    public void startDocument() throws SAXException {}
-	        					    public void endDocument() throws SAXException {}
-	        					    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-	        					    	names.add(qName);
-	        					    	path.add(attributes.getValue("pathXML"));
-	        					    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
-	        					    	}
-	        					    public void endElement(String uri, String localName, String qName) throws SAXException {}
-	        					   });  
-	        					  } catch (Exception e) { System.err.println(e); System.exit(1); }
-	        				if (cmptChronologie<names.size()){
-	        					switch (names.get(cmptChronologie)){
-	        						case "Intrus" :
-	        							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
-	        						case "Puzzle" :
-	        							JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
-	        					}
-	        				}
 	        			}
 	             		
 	                 }
 	             });
+	             
+			}
 	           
 	             //container.setForceExit(true);
 	             //container.exit();

@@ -259,7 +259,7 @@ public class OddWordOutGame extends BasicGameState {
 			System.out.println("");*/
 			
 			//MainPuzzleGame.main(null);
-			
+			if(Platform.isFxApplicationThread()){
 	             Platform.runLater(new Runnable() {
 	                 @Override public void run() {
 	                	
@@ -281,6 +281,7 @@ public class OddWordOutGame extends BasicGameState {
 	             		
 	                 }
 	             });
+			}
 	           
 	             //container.setForceExit(true);
 	             //container.exit();

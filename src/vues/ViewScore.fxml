@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" prefWidth="765.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewScoreController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewScoreController">
   <content>
-    <AnchorPane fx:id="AP_Score" minHeight="600.0" minWidth="800.0" prefHeight="200.0" prefWidth="200.0">
+    <AnchorPane fx:id="AP_Score" minHeight="650.0" minWidth="850.0" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <ImageView fx:id="IV_FontPict" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="IV_FontPict" fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             <Label fx:id="LB_Title" alignment="CENTER" layoutX="191.0" layoutY="-3.0" prefHeight="78.0" prefWidth="800.0" text="Votre Score :" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font name="System Bold" size="25.0" />
@@ -22,11 +22,11 @@
                <font>
                   <Font size="18.0" />
                </font></Label>
-            <Label fx:id="LB_Msg" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="216.0" prefHeight="241.0" prefWidth="503.0" text="Message d'encouragement selon le type de score obtenu" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="LB_Msg" alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="216.0" prefHeight="241.0" prefWidth="503.0" text="Message d'encouragement selon le type de score obtenu" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <Button fx:id="BT_Suivant" layoutX="579.0" layoutY="474.0" mnemonicParsing="false" onAction="#ClickBT_Suivant" prefHeight="78.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE">
+            <Button fx:id="BT_Suivant" layoutX="579.0" layoutY="474.0" mnemonicParsing="false" onAction="#ClickBT_Suivant" prefHeight="78.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" textFill="WHITE" AnchorPane.bottomAnchor="60.0" AnchorPane.rightAnchor="60.0">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>

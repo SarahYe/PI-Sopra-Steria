@@ -57,7 +57,7 @@ public class ViewMainApplicationController implements Initializable{
 		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
 		dialog.setTitle("imaGin'S");
 		dialog.setHeaderText("Choix du jeu");
-		dialog.setContentText("Veuillez choisir le jeu que vous dÃ©sirez lancer");
+		dialog.setContentText("Veuillez choisir le jeu que vous désirez lancer");
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();

@@ -49,6 +49,8 @@ public class ViewScoreController implements Initializable{
 	
 	@Override
     public void initialize(URL url, ResourceBundle rb) {
+		IV_FontPict.fitWidthProperty().bind(AP_Score.widthProperty());
+		IV_FontPict.fitHeightProperty().bind(AP_Score.heightProperty());
    
 	}
 	

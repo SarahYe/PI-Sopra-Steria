@@ -35,7 +35,7 @@ import javafx.stage.StageStyle;
 import modeles.Explication;
 
 public class ViewParametresPageExplicationController implements Initializable {
-	
+
 	private boolean modifierExplication;
 
 	@FXML
@@ -72,7 +72,7 @@ public class ViewParametresPageExplicationController implements Initializable {
 	private Button boutonImage1;
 	@FXML
 	private Button boutonImage2;
-	
+
 	private String xml;
 
 	String cheminImage1 = "Ressources/Images/icone_image.png";
@@ -80,7 +80,7 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		champTitre.setVisible(false);
 		champExplication.setVisible(false);
 		champHyperlien.setVisible(false);
@@ -90,19 +90,19 @@ public class ViewParametresPageExplicationController implements Initializable {
 		boutonImage1.setDisable(true);
 		boutonImage2.setDisable(true);
 		messageImage.setVisible(false);
-		
+
 		try {
-			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 25);
+			Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")),
+					25);
 			theme.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void initData() {
-		File f =  new File(xml);
+		File f = new File(xml);
 		if (f.exists()) {
 			Explication expl = new Explication();
 			Explication explXml = expl.convertirXMLToJava(xml);
@@ -125,10 +125,9 @@ public class ViewParametresPageExplicationController implements Initializable {
 			hyperlien.setText(explXml.getListeLiens().toString().replace("[", "").replace("]", "").replace(", ", "\n"));
 		} else
 			System.out.println("xml :" + xml);
-		
-		
+
 	}
-	
+
 	@FXML
 	void changerImage1(ActionEvent event) throws IOException {
 
@@ -139,20 +138,20 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
-		
+
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
 		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
-	
+
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
 		} else {
 			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
 				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
-			else 
+			else
 				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
 		}
 		image1.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
@@ -170,25 +169,25 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 		// Show open file dialog
 		File file = fileChooser.showOpenDialog(null);
-		
+
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
 		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
-	
+
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
 		} else {
 			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
 				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
-			else 
+			else
 				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
 		}
 		image2.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
 		cheminImage2 = "././Ressources/Images/" + nomImage;
-		
+
 	}
 
 	@FXML
@@ -232,7 +231,7 @@ public class ViewParametresPageExplicationController implements Initializable {
 		if (champExplication.getText().length() == 0)
 			erreur.setVisible(true);
 		else {
-			
+
 			// éléments invisibles
 			champTitre.setVisible(false);
 			champExplication.setVisible(false);
@@ -254,7 +253,9 @@ public class ViewParametresPageExplicationController implements Initializable {
 			source.setText(champSource.getText());
 
 			// lien(s)
-			if (champHyperlien.getText().length() == 0 ||champHyperlien.getText().equals("Entrez un ou plusieurs lien(s)") || champHyperlien.getText().equals("Aucun lien"))
+			if (champHyperlien.getText().length() == 0
+					|| champHyperlien.getText().equals("Entrez un ou plusieurs lien(s)")
+					|| champHyperlien.getText().equals("Aucun lien"))
 				hyperlien.setText("Aucun lien");
 			else
 				hyperlien.setText(champHyperlien.getText());
@@ -285,9 +286,10 @@ public class ViewParametresPageExplicationController implements Initializable {
 			Explication objetExplication = new Explication(theme.getText(), explication.getText(), source.getText(),
 					ListeLiens, ListeImages);
 			objetExplication.convertirJavaToXML(objetExplication, xml);
-			//objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/" + result.get() +".xml");
-			
-			//popup de confirmation
+			// objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/" +
+			// result.get() +".xml");
+
+			// popup de confirmation
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Paramétrage  d'une page explicative");
 			alert.setContentText("Le paramétrage a bien été enregistré !");
@@ -295,7 +297,7 @@ public class ViewParametresPageExplicationController implements Initializable {
 		}
 
 	}
-	
+
 	public void setTitre(String mTitre) {
 		theme.setText(mTitre);
 	}
@@ -303,19 +305,19 @@ public class ViewParametresPageExplicationController implements Initializable {
 	public void setExplication(String mExplication) {
 		explication.setText(mExplication);
 	}
-	
+
 	public void setSource(String mSource) {
 		source.setText(mSource);
 	}
-	
+
 	public void setLien(String mlien) {
 		hyperlien.setText(mlien);
 	}
-	
+
 	public void setImage1(String chemin) {
 		image1.setImage(chargerImage(chemin));
 	}
-	
+
 	public void setImage2(String chemin) {
 		image2.setImage(chargerImage(chemin));
 	}
@@ -327,8 +329,8 @@ public class ViewParametresPageExplicationController implements Initializable {
 	}
 
 	public void setXML(String xml) {
-		this.xml=xml;
-		
+		this.xml = xml;
+
 	}
 
 }

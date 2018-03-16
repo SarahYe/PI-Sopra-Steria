@@ -15,38 +15,37 @@ import sun.audio.AudioStream;
 public class TestParseur {
 
 	public static void main(String[] args) {
-		
-		 ArrayList<String> listeIndices = new ArrayList<String>();
-		 listeIndices.add("Indice1");
-		 listeIndices.add("Indice2");
-		 listeIndices.add("Indice3");
-		 
-		 ArrayList<String> listeFragments = new ArrayList<String>();
-		 listeFragments.add("eFrag1");
-		 listeFragments.add("IeFrag2");
-		 listeFragments.add("eFrage3");
-		 
-		 Puzzle p = new Puzzle("Nom", 2500.0, 75.0, 15.0, 400.0, "intitule", "fragmentType", listeIndices, listeFragments);
-		 
-		 p.convertirJavaToXML(p, "FichiersDeConfig/puzzle.xml");
-		 
-		// Explication explication1 = new Explication("Explication 1 ?", "Contenu", "Source", ListeLiens);
-		 
-		// explication1.convertirJavaToXML(explication1, "FichiersDeConfig/explication.xml");
+
+		ArrayList<String> listeIndices = new ArrayList<String>();
+		listeIndices.add("Indice1");
+		listeIndices.add("Indice2");
+		listeIndices.add("Indice3");
+
+		ArrayList<String> listeFragments = new ArrayList<String>();
+		listeFragments.add("eFrag1");
+		listeFragments.add("IeFrag2");
+		listeFragments.add("eFrage3");
+
+		Puzzle p = new Puzzle("Nom", 2500.0, 75.0, 15.0, 400.0, "intitule", "fragmentType", listeIndices,
+				listeFragments);
+
+		p.convertirJavaToXML(p, "FichiersDeConfig/puzzle.xml");
+
+		// Explication explication1 = new Explication("Explication 1 ?", "Contenu",
+		// "Source", ListeLiens);
+
+		// explication1.convertirJavaToXML(explication1,
+		// "FichiersDeConfig/explication.xml");
 		// quiz.convertirXMLToJava("FichiersDeConfig/explication.xml");
 
-		/*InputStream in;
-		try {
-			in = new FileInputStream("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
-			AudioStream as = new AudioStream(in);
-			AudioPlayer.player.start(as);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
+		/*
+		 * InputStream in; try { in = new FileInputStream(
+		 * "/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav"); AudioStream
+		 * as = new AudioStream(in); AudioPlayer.player.start(as); } catch
+		 * (FileNotFoundException e) { // TODO Auto-generated catch block
+		 * e.printStackTrace(); } catch (IOException e) { // TODO Auto-generated catch
+		 * block e.printStackTrace(); }
+		 */
 
 		/*
 		 * Reponse reponse1 = new Reponse("rep 1 !", Boolean.FALSE, "justification 1");

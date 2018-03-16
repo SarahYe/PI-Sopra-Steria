@@ -28,7 +28,7 @@ import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 
-public class ViewParametresQuizController implements Initializable{
+public class ViewParametresQuizController implements Initializable {
 
 	@FXML
 	private Button btnSave;
@@ -49,12 +49,12 @@ public class ViewParametresQuizController implements Initializable{
 	@FXML
 	private Label titre;
 	private String xml;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+			Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")),
+					20);
 			titre.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -62,7 +62,7 @@ public class ViewParametresQuizController implements Initializable{
 	}
 
 	public void initData() {
-		File f =  new File(xml);
+		File f = new File(xml);
 		if (f.exists()) {
 			ArrayList<Question> list = new ArrayList<Question>();
 			Quiz quiz = new Quiz("Nom du quiz", list);
@@ -74,7 +74,7 @@ public class ViewParametresQuizController implements Initializable{
 		} else {
 			System.out.println("xml \"" + xml + "\" doesn't exist");
 		}
-		
+
 	}
 
 	public void setQuestion(int index, String intitule, ArrayList<Reponse> listeReponses) {
@@ -92,11 +92,11 @@ public class ViewParametresQuizController implements Initializable{
 		for (int i = 0; i < data.size(); i++) {
 			listeQuestions.add(data.get(i));
 		}
-		
+
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
 		quiz.convertirJavaToXML(quiz, xml);
 
-		//popup de confirmation
+		// popup de confirmation
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Paramétrage  d'un quiz");
 		alert.setContentText("Le paramétrage a bien été enregistré !");
@@ -111,7 +111,7 @@ public class ViewParametresQuizController implements Initializable{
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
 		controller.initData(false, null, this);
-		
+
 	}
 
 	@FXML
@@ -124,7 +124,7 @@ public class ViewParametresQuizController implements Initializable{
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
-		controller.initData(true, table.getSelectionModel(),this);
+		controller.initData(true, table.getSelectionModel(), this);
 	}
 
 	@FXML
@@ -138,21 +138,21 @@ public class ViewParametresQuizController implements Initializable{
 	}
 
 	@FXML
-	private void ClickButtonUp (ActionEvent event) {
+	private void ClickButtonUp(ActionEvent event) {
 		int index = table.getSelectionModel().getSelectedIndex();
-		if (index > 0){
-			Question buff = table.getItems().get(index-1);
-			table.getItems().set(index-1, table.getItems().get(index));
+		if (index > 0) {
+			Question buff = table.getItems().get(index - 1);
+			table.getItems().set(index - 1, table.getItems().get(index));
 			table.getItems().set(index, buff);
-			table.getSelectionModel().select(index-1);
+			table.getSelectionModel().select(index - 1);
 		}
 	}
-	
+
 	@FXML
-	private void ClickButtonDown (ActionEvent event) {
+	private void ClickButtonDown(ActionEvent event) {
 		int index = table.getSelectionModel().getSelectedIndex();
-		if (index < table.getItems().size()){
-			Question buff = table.getItems().get(index+1);
+		if (index < table.getItems().size()) {
+			Question buff = table.getItems().get(index + 1);
 			table.getItems().set(index + 1, table.getItems().get(index));
 			table.getItems().set(index, buff);
 			table.getSelectionModel().select(index + 1);
@@ -160,9 +160,8 @@ public class ViewParametresQuizController implements Initializable{
 	}
 
 	public void setXML(String xml) {
-		this.xml=xml;
-		
+		this.xml = xml;
+
 	}
-	
 
 }

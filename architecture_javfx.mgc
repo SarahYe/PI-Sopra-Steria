@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="controleurs.ViewQuestionController" x="678" y="367">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Quiz"
+            endpointName="quiz" kind="Simple"/>
+        <Association destinationClassName="modeles.Question"
+            endpointName="question" kind="Simple"/>
+        <Communication destinationClassName="modeles.Quiz"/>
+        <Communication destinationClassName="controleurs.QuizAccueilController"/>
+        <Communication destinationClassName="modeles.Question"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+        <Communication destinationClassName="modeles.Reponse"/>
+    </Class>
+    <Class name="controleurs.ViewParametresScoreController" x="1760" y="272">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.ViewScoreController"/>
+    </Class>
+    <Class name="controleurs.ViewAddOrModifyDialogueController" x="1248" y="136">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="controleurs.ViewParametresPNJController"
+            endpointName="mainController" kind="Simple"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyQuestionController"/>
+        <Communication destinationClassName="controleurs.ViewParametresPNJController"/>
+    </Class>
+    <Class name="modeles.Titre" x="198" y="178">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="controleurs.JFxUtils" x="1590" y="755">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.ViewQuestionController"/>
+        <Communication destinationClassName="controleurs.ViewScoreController"/>
+        <Communication destinationClassName="controleurs.QuizAccueilController"/>
+        <Communication destinationClassName="controleurs.ViewParametresScoreController"/>
+        <Communication destinationClassName="controleurs.ViewQuizRecapController"/>
+        <Communication destinationClassName="controleurs.ViewFouilleController"/>
+        <Communication destinationClassName="controleurs.ViewParametresQuizController"/>
+        <Communication destinationClassName="controleurs.ViewParametresOddWordOutGameController"/>
+        <Communication destinationClassName="controleurs.ViewParametresAccueilController"/>
+        <Communication destinationClassName="controleurs.ViewParametresPageExplicationController"/>
+        <Communication destinationClassName="controleurs.ViewParametresPuzzleController"/>
+        <Communication destinationClassName="controleurs.ViewAccueilController"/>
+        <Communication destinationClassName="controleurs.ViewParametresFouilleController"/>
+        <Communication destinationClassName="controleurs.ViewPNJController"/>
+        <Communication destinationClassName="controleurs.ViewPageExplicationController"/>
+        <Communication destinationClassName="controleurs.ViewParametresPNJController"/>
+    </Class>
+    <Class name="controleurs.ViewParametresOddWordOutGameController"
+        x="721" y="-61">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="modeles.Quiz"/>
+        <Communication destinationClassName="modeles.Reponse"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyQuestionController"/>
+    </Class>
+    <Class name="controleurs.ViewMainParametresController" x="1760" y="570">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+    </Class>
+    <Class name="modeles.Quiz" x="283" y="290">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Question"
+            endpointName="ListeQuestions" kind="Simple"/>
+    </Class>
+    <Class name="modeles.Question" x="241" y="24">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Reponse"
+            endpointName="ListeReponses" kind="Simple"/>
+    </Class>
+    <Class name="modeles.Puzzle" x="8" y="17">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="modeles.PNJ" x="181" y="406">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Dialogue"
+            endpointName="ListeDialogues" kind="Simple"/>
+    </Class>
+    <Class name="controleurs.ViewAddOrModifyInstructionController"
+        x="1243" y="-63">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="controleurs.ViewParametresFouilleController"
+            endpointName="mainController" kind="Simple"/>
+        <Communication destinationClassName="controleurs.ViewParametresFouilleController"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyQuestionController"/>
+    </Class>
+    <Class name="modeles.Dialogue" x="32" y="358">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="controleurs.ViewPageExplicationController" x="975" y="689">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+        <Communication destinationClassName="modeles.Explication"/>
+    </Class>
+    <Class name="controleurs.ViewScoreController" x="1195" y="716">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+    </Class>
+    <Class name="controleurs.QuizAccueilController" x="1787" y="123">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="controleurs.ViewQuizRecapController" x="705" y="118">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Quiz"
+            endpointName="quiz" kind="Simple"/>
+        <Communication destinationClassName="modeles.Quiz"/>
+        <Communication destinationClassName="controleurs.ViewParametresPageExplicationController"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+        <Communication destinationClassName="modeles.Reponse"/>
+    </Class>
+    <Class name="controleurs.ViewFouilleController" x="1028" y="420">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Fouille"
+            endpointName="fouille" kind="Simple"/>
+        <Communication destinationClassName="modeles.Fouille"/>
+        <Communication destinationClassName="modeles.Instruction"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+    </Class>
+    <Class name="controleurs.ViewParametresQuizController" x="1769" y="783">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="modeles.Quiz"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyQuestionController"/>
+    </Class>
+    <Class name="modeles.Reponse" x="417" y="146">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="modeles.Explication" x="29" y="481">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="modeles.Accueil" x="26" y="285">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Titre"
+            endpointName="titre" kind="Simple"/>
+        <Association destinationClassName="modeles.FondEcran"
+            endpointName="fond" kind="Simple"/>
+    </Class>
+    <Class name="modeles.FondEcran" x="13" y="182">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="controleurs.ViewParametresAccueilController" x="1517" y="840">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="modeles.FondEcran"/>
+        <Communication destinationClassName="controleurs.ViewAccueilController"/>
+        <Communication destinationClassName="modeles.Titre"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyQuestionController"/>
+        <Communication destinationClassName="modeles.Accueil"/>
+    </Class>
+    <Class name="controleurs.ViewParametresPageExplicationController"
+        x="693" y="666">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="modeles.Explication"/>
+    </Class>
+    <Class name="controleurs.ViewParametresPuzzleController" x="1760" y="968">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="modeles.Puzzle"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyInstructionController"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyQuestionController"/>
+    </Class>
+    <Class name="controleurs.ViewMainApplicationController" x="1036" y="567">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+    </Class>
+    <Class name="controleurs.ViewAccueilController" x="1770" y="-61">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+        <Communication destinationClassName="modeles.Accueil"/>
+    </Class>
+    <Class name="controleurs.ViewParametresFouilleController" x="979" y="-64">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.ViewParametresPageExplicationController"/>
+        <Communication destinationClassName="modeles.Fouille"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyInstructionController"/>
+    </Class>
+    <Class name="modeles.Fouille" x="290" y="482">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.Instruction"
+            endpointName="ListeInstructions" kind="Simple"/>
+    </Class>
+    <Class name="modeles.Instruction" x="430" y="378">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="controleurs.ViewPNJController" x="979" y="932">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association destinationClassName="modeles.PNJ"
+            endpointName="pnj" kind="Simple"/>
+        <Association destinationClassName="modeles.Dialogue"
+            endpointName="dial" kind="Simple"/>
+        <Communication destinationClassName="modeles.PNJ"/>
+        <Communication destinationClassName="controleurs.JFxUtils"/>
+    </Class>
+    <Class name="controleurs.ViewAddOrModifyQuestionController" x="1250" y="377">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="controleurs.ViewParametresQuizController"
+            endpointName="mainController" kind="Simple"/>
+        <Communication destinationClassName="controleurs.ViewParametresQuizController"/>
+    </Class>
+    <Class name="controleurs.ViewParametresPNJController" x="1022" y="221">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Communication destinationClassName="controleurs.ViewAddOrModifyDialogueController"/>
+        <Communication destinationClassName="modeles.PNJ"/>
+    </Class>
+</ClassDiagram>

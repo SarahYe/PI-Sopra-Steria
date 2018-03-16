@@ -11,15 +11,16 @@ public class ParametresOddWordOutGame extends Application {
 	public static void main(String[] args) {
 		Application.launch(ParametresOddWordOutGame.class, args);
 	}
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
-		stage.setScene(new Scene((Parent) JFxUtils.loadParamOddWordOutGame("/vues/ViewParametresOddWordOutGame.fxml","FichiersDeConfig/slickGame.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadParamOddWordOutGame("/vues/ViewParametresOddWordOutGame.fxml",
+				"FichiersDeConfig/slickGame.xml"), 850, 650));
 		stage.setTitle("Paramétrage d'un jeu de tri");
 		stage.show();
 		stage.sizeToScene();
-		
+
 	}
 
 }

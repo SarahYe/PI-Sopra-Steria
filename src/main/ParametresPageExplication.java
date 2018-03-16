@@ -11,7 +11,8 @@ public class ParametresPageExplication extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
-		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationParamFxml("/vues/PageExplicationParametrage.fxml","FichiersDeConfig/explication.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadExplicationParamFxml("/vues/PageExplicationParametrage.fxml",
+				"FichiersDeConfig/explication.xml"), 850, 650));
 		stage.setTitle("Paramétrage d'une page d'explication");
 		stage.show();
 		stage.sizeToScene();

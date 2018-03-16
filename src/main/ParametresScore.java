@@ -10,13 +10,15 @@ public class ParametresScore extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		stage.setScene(new Scene((Parent) JFxUtils.loadScoreParam("../vues/ViewScoreParametres.fxml","FichiersDeConfig/score.xml"), 850, 650));
+
+		stage.setScene(new Scene(
+				(Parent) JFxUtils.loadScoreParam("../vues/ViewScoreParametres.fxml", "FichiersDeConfig/score.xml"), 850,
+				650));
 		stage.setTitle("Paramétrage d'un score");
 		stage.show();
 		stage.sizeToScene();
 	}
-	
+
 	/**
 	 * @param args
 	 *            the command line arguments

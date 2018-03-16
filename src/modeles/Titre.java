@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "org.arpit.javapostsforlearning.jaxb.Accueil")
 public class Titre {
-	
+
 	String imageVsTexte;
 	String lienImage;
 	String texte;
@@ -13,7 +13,8 @@ public class Titre {
 	String policeTexte;
 	String tailleTexte;
 
-	public Titre() {}
+	public Titre() {
+	}
 
 	@XmlElement
 	public String getImageVsTexte() {
@@ -23,7 +24,7 @@ public class Titre {
 	public void setImageVsTexte(String imageVsTexte) {
 		this.imageVsTexte = imageVsTexte;
 	}
-	
+
 	@XmlElement
 	public String getLienImage() {
 		return lienImage;
@@ -32,7 +33,7 @@ public class Titre {
 	public void setLienImage(String lienImage) {
 		this.lienImage = lienImage;
 	}
-	
+
 	@XmlElement
 	public String getTexte() {
 		return texte;
@@ -68,5 +69,5 @@ public class Titre {
 	public void setTaille(String taille) {
 		this.tailleTexte = taille;
 	}
-	
+
 }

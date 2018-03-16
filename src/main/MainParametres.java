@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MainParametres extends Application {
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
@@ -17,20 +17,20 @@ public class MainParametres extends Application {
 		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();
-		//stage.setMaximized(true);
+		// stage.setMaximized(true);
 	}
-	
+
 	@Override
-	public void stop(){
-	    System.out.println("Stage is closing");
-	    
-	    File dir = new File ("Games/temp");
+	public void stop() {
+		System.out.println("Stage is closing");
+
+		File dir = new File("Games/temp");
 		dir.mkdirs();
-		
+
 		File[] files = dir.listFiles();
-		for(File fichier:files)
+		for (File fichier : files)
 			fichier.delete();
-		
+
 		dir.delete();
 	}
 

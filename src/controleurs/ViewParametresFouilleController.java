@@ -73,7 +73,7 @@ public class ViewParametresFouilleController implements Initializable {
 
 	@FXML
 	private Label titre;
-	
+
 	@FXML
 	private AnchorPane previsualisation;
 
@@ -87,13 +87,13 @@ public class ViewParametresFouilleController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+			Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")),
+					20);
 			titre.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		errorLabel.setVisible(false);
 		errorScore.setVisible(false);
 		bronze.setText("25");
@@ -241,21 +241,20 @@ public class ViewParametresFouilleController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
 		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
-		
+
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
 		} else {
 			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
 				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
-			else 
+			else
 				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
 		}
-		
+
 		imageFDE.setText("././Ressources/Images/" + nomImage);
-		prevFDE.setImage(ViewParametresPageExplicationController
-				.chargerImage("././Ressources/Images/" + nomImage));
+		prevFDE.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
 	}
 
 	public void setInstruction(int selectedIndex, String intitule, String imageObjet, Double posX, Double posY,

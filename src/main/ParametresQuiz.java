@@ -17,7 +17,9 @@ public class ParametresQuiz extends Application {
 
 	public void start(Stage stage) throws IOException {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
-		stage.setScene(new Scene((Parent) JFxUtils.loadParamQuiz("/vues/ViewParametresQuiz.fxml","FichiersDeConfig/quiz.xml"), 850, 650));
+		stage.setScene(
+				new Scene((Parent) JFxUtils.loadParamQuiz("/vues/ViewParametresQuiz.fxml", "FichiersDeConfig/quiz.xml"),
+						850, 650));
 		stage.setTitle("Paramétrage d'un quiz");
 		stage.show();
 		stage.sizeToScene();

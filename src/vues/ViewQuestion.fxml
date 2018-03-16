@@ -4,48 +4,18 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controleurs.ViewQuestionController">
    <children>
-      <ImageView fitHeight="97.0" fitWidth="849.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="650.0" fitWidth="850.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../Ressources/Images/fond.png" />
-         </image>
-         <effect>
-            <Reflection />
-         </effect>
-      </ImageView>
-      <ImageView fitHeight="135.0" fitWidth="860.0" layoutY="113.0" opacity="0.8" pickOnBounds="true">
-         <image>
-            <Image url="@../../Ressources/Images/fond.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="135.0" fitWidth="954.0" layoutX="-26.0" layoutY="243.0" opacity="0.8" pickOnBounds="true">
-         <image>
-            <Image url="@../../Ressources/Images/fond.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="135.0" fitWidth="931.0" layoutX="-29.0" layoutY="378.0" opacity="0.8" pickOnBounds="true">
-         <image>
-            <Image url="@../../Ressources/Images/fond.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="135.0" fitWidth="1033.0" layoutX="-53.0" layoutY="512.0" opacity="0.8" pickOnBounds="true">
-         <image>
-            <Image url="@../../Ressources/Images/fond.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="135.0" fitWidth="1033.0" layoutX="-76.0" layoutY="647.0" opacity="0.8" pickOnBounds="true">
-         <image>
-            <Image url="@../../Ressources/Images/fond.png" />
+            <Image url="@../../Ressources/Images/BG.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="94.0" fitWidth="362.0" layoutX="260.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -225,11 +195,6 @@
          </image>
       </ImageView>
       <ProgressBar fx:id="progQuiz" layoutX="76.0" layoutY="146.0" opacity="0.89" prefHeight="35.0" prefWidth="697.0" progress="0.0" AnchorPane.leftAnchor="76.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="130.0" />
-      <Separator layoutY="139.0" prefHeight="48.0" prefWidth="850.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="90.0">
-         <effect>
-            <DropShadow />
-         </effect>
-      </Separator>
       <ImageView fx:id="faux" fitHeight="99.0" fitWidth="87.0" layoutX="550.0" layoutY="538.7941589355469" pickOnBounds="true" preserveRatio="true" rotate="-56.3" visible="false" AnchorPane.rightAnchor="213.0">
          <image>
             <Image url="@../../Ressources/Images/croixRouge.png" />

@@ -8,11 +8,12 @@ import javafx.stage.Stage;
 import modeles.Quiz;
 
 public class MainScore extends Application {
-	
+
 	@Override
 	public void start(Stage stage) throws Exception {
-		
-		stage.setScene(new Scene((Parent) JFxUtils.loadScoreFxml("/vues/ViewScore.fxml", "FichiersDeConfig/score.xml", true, 1, "Games/test/chronologie_test.xml",true,100), 850, 650));
+
+		stage.setScene(new Scene((Parent) JFxUtils.loadScoreFxml("/vues/ViewScore.fxml", "FichiersDeConfig/score.xml",
+				true, 1, "Games/test/chronologie_test.xml", true, 100), 850, 650));
 		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();

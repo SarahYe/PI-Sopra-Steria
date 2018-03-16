@@ -46,11 +46,11 @@ public class Quiz {
 	public void setListeQuestions(ArrayList<Question> listeQuestions) {
 		ListeQuestions = listeQuestions;
 	}
-	
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return  "Quiz : \n Nom = " + nomQuiz + "\n Questions = " + ListeQuestions ;
+		return "Quiz : \n Nom = " + nomQuiz + "\n Questions = " + ListeQuestions;
 	}
 
 	/*
@@ -108,47 +108,39 @@ public class Quiz {
 
 	}
 
-	/*public Quiz convertirXMLToJava(Quiz quiz) {
+	/*
+	 * public Quiz convertirXMLToJava(Quiz quiz) {
+	 * 
+	 * try { JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
+	 * Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+	 * 
+	 * File XMLfile = new File("Fichiers XML/quiz.xml"); // this will create Java
+	 * object - quizz from the XML file Quiz quizz = (Quiz)
+	 * jaxbUnmarshaller.unmarshal(XMLfile);
+	 * 
+	 * String nomQuiz = quizz.getNom(); System.out.println("Nom du quiz : " +
+	 * nomQuiz);
+	 * 
+	 * ArrayList<Question> listeQuestions = quizz.getListeQuestions(); int i = 0;
+	 * for (Question q : listeQuestions) { i++; System.out.println("Question " + i +
+	 * " : " + q.getIntituleQuestion() + "\n");
+	 * 
+	 * ArrayList<Reponse> listeReponses = q.getListeReponses(); int j = 0; for
+	 * (Reponse r : listeReponses) { j++; System.out.println("Reponse " + j + " : "
+	 * + r.getIntitule() + " || " + r.getCorrect() + " || " + r.getJustification() +
+	 * "\n"); } }
+	 * 
+	 * return quizz;
+	 * 
+	 * } catch (JAXBException e) { e.printStackTrace(); }
+	 * 
+	 * return quiz; }
+	 */
 
-		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
-			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
-			File XMLfile = new File("Fichiers XML/quiz.xml");
-			// this will create Java object - quizz from the XML file
-			Quiz quizz = (Quiz) jaxbUnmarshaller.unmarshal(XMLfile);
-
-			String nomQuiz = quizz.getNom();
-			System.out.println("Nom du quiz : " + nomQuiz);
-
-			ArrayList<Question> listeQuestions = quizz.getListeQuestions();
-			int i = 0;
-			for (Question q : listeQuestions) {
-				i++;
-				System.out.println("Question " + i + " : " + q.getIntituleQuestion() + "\n");
-
-				ArrayList<Reponse> listeReponses = q.getListeReponses();
-				int j = 0;
-				for (Reponse r : listeReponses) {
-					j++;
-					System.out.println("Reponse " + j + " : " + r.getIntitule() + " || " + r.getCorrect() + " || "
-							+ r.getJustification() + "\n");
-				}
-			}
-
-			return quizz;
-
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
-
-		return quiz;
-	}*/
-	
 	public Quiz convertirXMLToJava(String nomFichier) {
 
 		Quiz quizz = new Quiz();
-		
+
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(Quiz.class);
 			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
@@ -157,25 +149,21 @@ public class Quiz {
 			// this will create Java object - quizz from the XML file
 			quizz = (Quiz) jaxbUnmarshaller.unmarshal(XMLfile);
 
-		/*	String nomQuiz = quizz.getNom();
-			System.out.println("Nom du quiz : " + nomQuiz);
+			/*
+			 * String nomQuiz = quizz.getNom(); System.out.println("Nom du quiz : " +
+			 * nomQuiz);
+			 * 
+			 * ArrayList<Question> listeQuestions = quizz.getListeQuestions(); int i = 0;
+			 * for (Question q : listeQuestions) { i++; System.out.println("Question " + i +
+			 * " : " + q.getIntituleQuestion() + "\n");
+			 * 
+			 * ArrayList<Reponse> listeReponses = q.getListeReponses(); int j = 0; for
+			 * (Reponse r : listeReponses) { j++; System.out.println("Reponse " + j + " : "
+			 * + r.getIntitule() + " || " + r.getCorrect() + " || " + r.getJustification() +
+			 * "\n"); } }
+			 */
 
-			ArrayList<Question> listeQuestions = quizz.getListeQuestions();
-			int i = 0;
-			for (Question q : listeQuestions) {
-				i++;
-				System.out.println("Question " + i + " : " + q.getIntituleQuestion() + "\n");
-
-				ArrayList<Reponse> listeReponses = q.getListeReponses();
-				int j = 0;
-				for (Reponse r : listeReponses) {
-					j++;
-					System.out.println("Reponse " + j + " : " + r.getIntitule() + " || " + r.getCorrect() + " || "
-							+ r.getJustification() + "\n");
-				}
-			}*/
-
-			//return quizz;
+			// return quizz;
 
 		} catch (JAXBException e) {
 			e.printStackTrace();

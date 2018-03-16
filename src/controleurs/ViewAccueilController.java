@@ -43,8 +43,7 @@ import modeles.Titre;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
-public class ViewAccueilController implements Initializable{
-
+public class ViewAccueilController implements Initializable {
 
 	@FXML
 	private Button buttonJouer;
@@ -56,34 +55,36 @@ public class ViewAccueilController implements Initializable{
 	private ImageView imageTitre;
 	@FXML
 	private Label titreTexte;
-	
-	private String xml="";
-	private boolean soloBloc=true;
-	private int cmptChronologie=0;
-	private String xmlChronologie="";
+
+	private String xml = "";
+	private boolean soloBloc = true;
+	private int cmptChronologie = 0;
+	private String xmlChronologie = "";
 	private boolean son;
 	private int score;
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
+		// jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
-	
-	public void initData(String xml,boolean son, int score) {
-		this.son=son;
-		this.score=score;
+
+	public void initData(String xml, boolean son, int score) {
+		this.son = son;
+		this.score = score;
 
 		Accueil accueil = new Accueil();
-		File f =  new File(xml);
+		File f = new File(xml);
 		if (f.exists()) {
 			Accueil accXML = accueil.convertirXMLToJava(xml);
 			Titre titre = accXML.getTitre();
-			
+
 			if (titre.getImageVsTexte().contains("Texte")) {
 				imageTitre.setVisible(false);
 				titreTexte.setText(titre.getTexte());
-				 try {
-					Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/" + titre.getPoliceTexte() + ".ttf")), Integer.parseInt(titre.getTaille()));
+				try {
+					Font font = Font.loadFont(
+							new FileInputStream(new File("././Ressources/Polices/" + titre.getPoliceTexte() + ".ttf")),
+							Integer.parseInt(titre.getTaille()));
 					titreTexte.setFont(font);
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
@@ -91,94 +92,107 @@ public class ViewAccueilController implements Initializable{
 				titreTexte.setStyle("-fx-text-fill:" + titre.getCouleurTexte().replace("0x", "#") + ";");
 			} else {
 				titreTexte.setVisible(false);
-				
-				//System.out.println("Image");
+
+				// System.out.println("Image");
 				imageTitre.setImage(ViewParametresPageExplicationController.chargerImage(titre.getLienImage()));
 			}
-			
+
 			FondEcran fondEcran = accXML.getFond();
-			
+
 			if (fondEcran.getImageVsCouleur().contains("Image")) {
 				anchor.setStyle("-fx-background-color:transparent;");
-				
-				//System.out.println(fondEcran.getLienImage());
+
+				// System.out.println(fondEcran.getLienImage());
 				imageFDE.setImage(ViewParametresPageExplicationController.chargerImage(fondEcran.getLienImage()));
 			} else {
 				imageFDE.setVisible(false);
-				
-				//System.out.println("Couleur");
-				anchor.setStyle("-fx-background-color:"  + fondEcran.getCouleur().replace("0x", "#") + ";");
+
+				// System.out.println("Couleur");
+				anchor.setStyle("-fx-background-color:" + fondEcran.getCouleur().replace("0x", "#") + ";");
 			}
-			
+
 		} else {
 			System.out.println("xml \"" + xml + "\" doesn't exist");
 			imageTitre.setVisible(false);
 			imageFDE.setVisible(false);
-			
+
 			anchor.setStyle("-fx-background-color:transparent;");
 			titreTexte.setText("Nom du serious game");
 			titreTexte.setFont(Font.font("Courier New Bold", 60));
 			titreTexte.setStyle("-fx-text-fill:gray;");
 		}
 	}
-	
+
 	public void setXML(String xml) {
-		this.xml=xml;
+		this.xml = xml;
 	}
-	
-	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie){
-		this.soloBloc=soloBloc;
-		this.cmptChronologie=cmptChronologie;
-		this.xmlChronologie=xmlChronologie;
+
+	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+		this.soloBloc = soloBloc;
+		this.cmptChronologie = cmptChronologie;
+		this.xmlChronologie = xmlChronologie;
 	}
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
-		if(soloBloc){
+		if (soloBloc) {
 			Stage stage = (Stage) buttonJouer.getScene().getWindow();
 			stage.close();
 		} else {
 			Stage stage = (Stage) buttonJouer.getScene().getWindow();
-			Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
-			if (node!=null){
+			Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
+			if (node != null) {
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {
-				
+
 				Platform.setImplicitExit(false);
-				System.out.println("Fermeture du bloc JAVAFX précédent");
+				System.out.println("Fermeture du bloc JAVAFX prï¿½cï¿½dent");
 				stage.close();
-				
-				ArrayList<String> names=new ArrayList<String>();
-				ArrayList<String> path=new ArrayList<String>();
+
+				ArrayList<String> names = new ArrayList<String>();
+				ArrayList<String> path = new ArrayList<String>();
 				try {
-					   SAXParserFactory factory = SAXParserFactory.newInstance();
-					   SAXParser parser = factory.newSAXParser();
-					   parser.parse(xmlChronologie, new DefaultHandler() {
-					    public void startDocument() throws SAXException {}
-					    public void endDocument() throws SAXException {}
-					    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-					    	names.add(qName);
-					    	path.add(attributes.getValue("pathXML"));
-					    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
-					    	}
-					    public void endElement(String uri, String localName, String qName) throws SAXException {}
-					   });  
-					  } catch (Exception e) { System.err.println(e); System.exit(1); }
-				if (cmptChronologie<names.size()){
-					switch (names.get(cmptChronologie)){
-						case "Intrus" :
-							JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
-							break;
-						case "Puzzle" :
-							JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
-							break;
+					SAXParserFactory factory = SAXParserFactory.newInstance();
+					SAXParser parser = factory.newSAXParser();
+					parser.parse(xmlChronologie, new DefaultHandler() {
+						public void startDocument() throws SAXException {
+						}
+
+						public void endDocument() throws SAXException {
+						}
+
+						public void startElement(String uri, String localName, String qName, Attributes attributes)
+								throws SAXException {
+							names.add(qName);
+							path.add(attributes.getValue("pathXML"));
+							// System.out.println("startElement: " + qName + " attributs :
+							// "+attributes.getValue("pathXML"));
+						}
+
+						public void endElement(String uri, String localName, String qName) throws SAXException {
+						}
+					});
+				} catch (Exception e) {
+					System.err.println(e);
+					System.exit(1);
+				}
+				if (cmptChronologie < names.size()) {
+					switch (names.get(cmptChronologie)) {
+					case "Intrus":
+						JFxUtils.loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie + 1,
+								xmlChronologie, son, score);
+						break;
+					case "Puzzle":
+						JFxUtils.loadPuzzleGame(path.get(cmptChronologie), false, cmptChronologie + 1, xmlChronologie,
+								son, score);
+						break;
 					}
 				}
 			}
 		}
 	}
-	
-	public static void jouerAudio(String son, float volumeReduced){
+
+	public static void jouerAudio(String son, float volumeReduced) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
 			Clip clip = AudioSystem.getClip();
@@ -193,5 +207,3 @@ public class ViewAccueilController implements Initializable{
 		}
 	}
 }
-
-	

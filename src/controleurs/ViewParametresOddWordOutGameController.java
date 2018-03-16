@@ -21,41 +21,39 @@ import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 
-public class ViewParametresOddWordOutGameController implements Initializable{
+public class ViewParametresOddWordOutGameController implements Initializable {
 
-	@FXML 
+	@FXML
 	private TextField textFieldQuestion;
-	@FXML 
+	@FXML
 	private TextField TextFieldBRep;
-	@FXML 
+	@FXML
 	private TextField TextFieldMRep;
-	@FXML 
+	@FXML
 	private TableView<String> tableBReps;
-	@FXML 
+	@FXML
 	private TableView<String> tableMReps;
-	@FXML 
+	@FXML
 	private TableColumn<String, String> TableColumnBReps;
-	@FXML 
+	@FXML
 	private TableColumn<String, String> TableColumnMReps;
-	
+
 	private String xml;
-	
+
 	public void setXML(String xml) {
-		this.xml=xml;
+		this.xml = xml;
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ViewAddOrModifyQuestionController.addTextFLimiter(textFieldQuestion,150);
+		ViewAddOrModifyQuestionController.addTextFLimiter(textFieldQuestion, 150);
 	}
-	
+
 	public void initData() {
-		File f =  new File(xml);
+		File f = new File(xml);
 		System.out.println("saluuuut");
-		TableColumnBReps.setCellValueFactory(cellData -> 
-	    			new ReadOnlyStringWrapper(cellData.getValue()));
-		TableColumnMReps.setCellValueFactory(cellData -> 
-	    			new ReadOnlyStringWrapper(cellData.getValue()));
+		TableColumnBReps.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
+		TableColumnMReps.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue()));
 		if (f.exists()) {
 			ArrayList<Question> list = new ArrayList<Question>();
 			Quiz quiz = new Quiz("", list);
@@ -63,76 +61,76 @@ public class ViewParametresOddWordOutGameController implements Initializable{
 			textFieldQuestion.setText(quiz2.getListeQuestions().get(0).getIntituleQuestion());
 			for (int i = 0; i < quiz2.getListeQuestions().get(0).getListeReponses().size(); i++) {
 				Reponse rep = quiz2.getListeQuestions().get(0).getListeReponses().get(i);
-				if(rep.getCorrect()){
+				if (rep.getCorrect()) {
 					tableBReps.getItems().add(rep.getIntitule());
 				} else {
 					tableMReps.getItems().add(rep.getIntitule());
 				}
 			}
-		} else 
-			System.out.println("xml : "+ xml);		
+		} else
+			System.out.println("xml : " + xml);
 	}
-	
+
 	@FXML
 	protected void ClickButtonAddGoodAnswer(ActionEvent event) throws IOException {
-	    ObservableList<String> data = tableBReps.getItems();
-	    data.add(TextFieldBRep.getText());      
-	    TextFieldBRep.setText("");  
-	 }
-	 
-	 @FXML
-	 protected void ClickButtonAddBadAnswer(ActionEvent event) {
-		 ObservableList<String> data = tableMReps.getItems();
-		 data.add(TextFieldMRep.getText());
-	     TextFieldMRep.setText("");  
-	 }
-	 
-	 @FXML
-		protected void ClickButtonSupprGoodAnswer(ActionEvent event) throws IOException {
-		 	if (tableBReps.getSelectionModel().isEmpty()) {
-				return;
-			}
+		ObservableList<String> data = tableBReps.getItems();
+		data.add(TextFieldBRep.getText());
+		TextFieldBRep.setText("");
+	}
 
-			String selectedItem = tableBReps.getSelectionModel().getSelectedItem();
-			tableBReps.getItems().remove(selectedItem); 
-		 }
-	 
-	 @FXML
-		protected void ClickButtonSupprBadAnswer(ActionEvent event) throws IOException {
-		 	if (tableMReps.getSelectionModel().isEmpty()) {
-				return;
-			}
+	@FXML
+	protected void ClickButtonAddBadAnswer(ActionEvent event) {
+		ObservableList<String> data = tableMReps.getItems();
+		data.add(TextFieldMRep.getText());
+		TextFieldMRep.setText("");
+	}
 
-			String selectedItem = tableMReps.getSelectionModel().getSelectedItem();
-			tableMReps.getItems().remove(selectedItem);
-		 }
-	 
-	 @FXML
-	 protected void ClickButtonSave(ActionEvent event) throws IOException {
-		 
-		ArrayList<Reponse> listeReponses = new ArrayList<Reponse>();	
-		for (int i = 0; i < tableBReps.getItems().size(); i++){
+	@FXML
+	protected void ClickButtonSupprGoodAnswer(ActionEvent event) throws IOException {
+		if (tableBReps.getSelectionModel().isEmpty()) {
+			return;
+		}
+
+		String selectedItem = tableBReps.getSelectionModel().getSelectedItem();
+		tableBReps.getItems().remove(selectedItem);
+	}
+
+	@FXML
+	protected void ClickButtonSupprBadAnswer(ActionEvent event) throws IOException {
+		if (tableMReps.getSelectionModel().isEmpty()) {
+			return;
+		}
+
+		String selectedItem = tableMReps.getSelectionModel().getSelectedItem();
+		tableMReps.getItems().remove(selectedItem);
+	}
+
+	@FXML
+	protected void ClickButtonSave(ActionEvent event) throws IOException {
+
+		ArrayList<Reponse> listeReponses = new ArrayList<Reponse>();
+		for (int i = 0; i < tableBReps.getItems().size(); i++) {
 			listeReponses.add(new Reponse(tableBReps.getItems().get(i), true, ""));
 		}
-		for (int i = 0; i < tableMReps.getItems().size(); i++){
+		for (int i = 0; i < tableMReps.getItems().size(); i++) {
 			listeReponses.add(new Reponse(tableMReps.getItems().get(i), false, ""));
 		}
-		
+
 		ArrayList<Question> listeQuestions = new ArrayList<Question>();
 		listeQuestions.add(new Question(textFieldQuestion.getText(), listeReponses));
-		
+
 		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
 		quiz.convertirJavaToXML(quiz, xml);
-		
-		//Stage stage = (Stage) textFieldQuestion.getScene().getWindow();
-		//stage.close();
-		
-		//popup de confirmation
+
+		// Stage stage = (Stage) textFieldQuestion.getScene().getWindow();
+		// stage.close();
+
+		// popup de confirmation
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Paramétrage  d'un jeu de tri");
 		alert.setContentText("Le paramétrage a bien été enregistré !");
 		alert.showAndWait();
-		 
-	 }
-	 
+
+	}
+
 }

@@ -11,12 +11,13 @@ public class ParametresPuzzle extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
-		stage.setScene(new Scene((Parent) JFxUtils.loadPuzzleParamFxml("../vues/ViewParametresPuzzle.fxml","FichiersDeConfig/puzzle.xml"), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadPuzzleParamFxml("../vues/ViewParametresPuzzle.fxml",
+				"FichiersDeConfig/puzzle.xml"), 850, 650));
 		stage.setTitle("Paramétrage d'un puzzle");
 		stage.show();
 		stage.sizeToScene();
 	}
-	
+
 	/**
 	 * @param args
 	 *            the command line arguments
@@ -24,5 +25,5 @@ public class ParametresPuzzle extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 }

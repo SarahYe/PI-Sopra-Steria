@@ -35,37 +35,38 @@ public class QuizAccueilController implements Initializable {
 	private Button ButtonParametrage;
 	@FXML
 	private Button buttonScore;
-	
-	private String xml="";
-	private boolean soloBloc=true;
-	private int cmptChronologie=0;
-	private String xmlChronologie="";
+
+	private String xml = "";
+	private boolean soloBloc = true;
+	private int cmptChronologie = 0;
+	private String xmlChronologie = "";
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		//jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
+		// jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
-	
+
 	public void initData() {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public void setXML(String xml) {
-		this.xml=xml;
+		this.xml = xml;
 	}
-	
-	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie){
-		this.soloBloc=soloBloc;
-		this.cmptChronologie=cmptChronologie;
-		this.xmlChronologie=xmlChronologie;
+
+	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+		this.soloBloc = soloBloc;
+		this.cmptChronologie = cmptChronologie;
+		this.xmlChronologie = xmlChronologie;
 	}
 
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		Stage stage = (Stage) buttonJouer.getScene().getWindow();
-		//jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
-		//new JFxUtils().loadQuestion(new Quiz(), 0, stage,xml,soloBloc,cmptChronologie, xmlChronologie);
+		// jouerAudio("/Users/SarahYe/git/PI-Sopra-Steria/Ressources/Sons/Jouer.wav");
+		// new JFxUtils().loadQuestion(new Quiz(), 0,
+		// stage,xml,soloBloc,cmptChronologie, xmlChronologie);
 	}
 
 	@FXML
@@ -88,7 +89,7 @@ public class QuizAccueilController implements Initializable {
 		}
 	}
 
-	public static void jouerAudio(String son, float volumeReduced){
+	public static void jouerAudio(String son, float volumeReduced) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));
 			Clip clip = AudioSystem.getClip();
@@ -104,6 +105,7 @@ public class QuizAccueilController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
 	@FXML
 	protected void ClickButtonParametrage(ActionEvent event) throws IOException {
 		Stage stage = (Stage) ButtonParametrage.getScene().getWindow();
@@ -119,5 +121,4 @@ public class QuizAccueilController implements Initializable {
 		new ParametresQuiz().start(stage);
 	}
 
-	
 }

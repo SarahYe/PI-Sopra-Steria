@@ -21,33 +21,33 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
-public class MainChronologie extends Application  {
-	
-	int cmptChronologie=1;
-	String xmlChronologie="Games/test1/chronologie_test1.xml";
-	boolean son=true;
-	int score=1000;
-	
+public class MainChronologie extends Application {
+
+	int cmptChronologie = 1;
+	String xmlChronologie = "Games/test1/chronologie_test1.xml";
+	boolean son = true;
+	int score = 1000;
+
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	public void initData(int cmptChronologie, String xmlChronologie, boolean son, int score) {
-		this.cmptChronologie=cmptChronologie;
-		this.xmlChronologie=xmlChronologie;
-		this.son=son;
-		this.score=score;	
+		this.cmptChronologie = cmptChronologie;
+		this.xmlChronologie = xmlChronologie;
+		this.son = son;
+		this.score = score;
 	}
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		
+
 		List<String> choices = new ArrayList<>();
 		File dir = new File("Games");
 		File[] files = dir.listFiles();
-		for(File dossier:files)
+		for (File dossier : files)
 			choices.add(dossier.getName());
-		
+
 		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
 		dialog.setTitle("imaGin'S");
 		dialog.setHeaderText("Choix du serious game");
@@ -55,12 +55,12 @@ public class MainChronologie extends Application  {
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-		    xmlChronologie="Games/"+result.get()+"/chronologie_"+result.get()+".xml";
-		    System.out.println(xmlChronologie);
-		    
-		    Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
-			if(node!=null){
+		if (result.isPresent()) {
+			xmlChronologie = "Games/" + result.get() + "/chronologie_" + result.get() + ".xml";
+			System.out.println(xmlChronologie);
+
+			Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
+			if (node != null) {
 				stage.setScene(new Scene((Parent) node, 850, 650));
 				stage.setTitle("imaGin'S");
 				stage.show();
@@ -69,7 +69,6 @@ public class MainChronologie extends Application  {
 				System.out.println("node null");
 			}
 		}
-		
-		
+
 	}
 }

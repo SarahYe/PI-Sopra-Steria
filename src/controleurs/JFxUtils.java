@@ -46,56 +46,61 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadQuizFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+
+	public static Node loadQuizFxml(String fxml, String xml, boolean soloBloc, int cmptChronologie,
+			String xmlChronologie) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			QuizAccueilController controller = loader.<QuizAccueilController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadQuestion(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, String fxml, String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie,boolean son, int score) throws IOException {
+
+	public static Node loadQuestion(Quiz quiz, HashMap<Integer, String> reponsesJoueur, int cmpt, String fxml,
+			String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score)
+			throws IOException {
 
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewQuestionController controller = loader.<ViewQuestionController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
-			controller.initData(quiz,reponsesJoueur, cmpt,son, score);
+			controller.initData(quiz, reponsesJoueur, cmpt, son, score);
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
-		
-		
-		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewQuestion.fxml"));
-		stage.setScene(new Scene((Pane) loader.load()));
 
-		ViewQuestionController controller = loader.<ViewQuestionController>getController();
-		controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
-		controller.setXML(xml);
-		controller.initData(quiz, cmpt);
-
-		stage.show();
-		return stage;*/
+		/*
+		 * FXMLLoader loader = new
+		 * FXMLLoader(getClass().getResource("/vues/ViewQuestion.fxml"));
+		 * stage.setScene(new Scene((Pane) loader.load()));
+		 * 
+		 * ViewQuestionController controller =
+		 * loader.<ViewQuestionController>getController();
+		 * controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+		 * controller.setXML(xml); controller.initData(quiz, cmpt);
+		 * 
+		 * stage.show(); return stage;
+		 */
 	}
-	
-	public static Node loadQuizReviewFxml(HashMap<Integer,String> reponsesJoueur, String fxml, String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+
+	public static Node loadQuizReviewFxml(HashMap<Integer, String> reponsesJoueur, String fxml, String xml,
+			boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewQuizRecapController controller = loader.<ViewQuizRecapController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
 			controller.initData(reponsesJoueur, son, score);
 			return root;
@@ -103,14 +108,15 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadPNJFxml(PNJ pnj, int cmpt, String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+
+	public static Node loadPNJFxml(PNJ pnj, int cmpt, String fxml, String xml, boolean soloBloc, int cmptChronologie,
+			String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewPNJController controller = loader.<ViewPNJController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
 			controller.initData(pnj, cmpt, son, score);
 			return root;
@@ -118,14 +124,15 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadExplicationFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+
+	public static Node loadExplicationFxml(String fxml, String xml, boolean soloBloc, int cmptChronologie,
+			String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewPageExplicationController controller = loader.<ViewPageExplicationController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
 			controller.initData(son, score);
 			return root;
@@ -133,30 +140,32 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadAccueilFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+
+	public static Node loadAccueilFxml(String fxml, String xml, boolean soloBloc, int cmptChronologie,
+			String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewAccueilController controller = loader.<ViewAccueilController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
-			controller.initData(xml,son,score);
+			controller.initData(xml, son, score);
 			return root;
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadScoreFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+
+	public static Node loadScoreFxml(String fxml, String xml, boolean soloBloc, int cmptChronologie,
+			String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			System.out.println(loader);
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewScoreController controller = loader.<ViewScoreController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
 			controller.setSon(son);
 			controller.setScore(score);
@@ -166,15 +175,16 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadFouilleFxml(String fxml,String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
+
+	public static Node loadFouilleFxml(String fxml, String xml, boolean soloBloc, int cmptChronologie,
+			String xmlChronologie, boolean son, int score) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			System.out.println(loader);
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
 			ViewFouilleController controller = loader.<ViewFouilleController>getController();
-			controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
+			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
 			controller.setXML(xml);
 			controller.setSon(son);
 			controller.setScore(score);
@@ -184,29 +194,14 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static void loadOddWordOutGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
-		MainOddWordOutGame game=new MainOddWordOutGame();
-		game.initData(xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
+
+	public static void loadOddWordOutGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie,
+			boolean son, int score) {
+		MainOddWordOutGame game = new MainOddWordOutGame();
+		game.initData(xml, soloBloc, cmptChronologie, xmlChronologie, son, score);
 		AppGameContainer app;
 		try {
-			app = new AppGameContainer(game,850, 650, false);
-			app.setTargetFrameRate(60);
-			app.setVSync(true);
-			app.setShowFPS(false);
-			app.start();
-		} catch (SlickException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public static void loadPuzzleGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score) {
-		MainPuzzleGame game=new MainPuzzleGame();
-		game.initData(xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
-		AppGameContainer app;
-		try {
-			app = new AppGameContainer(game,850, 650, false);
+			app = new AppGameContainer(game, 850, 650, false);
 			app.setTargetFrameRate(60);
 			app.setVSync(true);
 			app.setShowFPS(false);
@@ -217,13 +212,30 @@ public class JFxUtils {
 		}
 	}
 
-	
-	public static Node loadExplicationParamFxml(String fxml,String xml) {
+	public static void loadPuzzleGame(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie,
+			boolean son, int score) {
+		MainPuzzleGame game = new MainPuzzleGame();
+		game.initData(xml, soloBloc, cmptChronologie, xmlChronologie, son, score);
+		AppGameContainer app;
+		try {
+			app = new AppGameContainer(game, 850, 650, false);
+			app.setTargetFrameRate(60);
+			app.setVSync(true);
+			app.setShowFPS(false);
+			app.start();
+		} catch (SlickException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static Node loadExplicationParamFxml(String fxml, String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			ViewParametresPageExplicationController controller = loader.<ViewParametresPageExplicationController>getController();
+			ViewParametresPageExplicationController controller = loader
+					.<ViewParametresPageExplicationController>getController();
 			controller.setXML(xml);
 			controller.initData();
 			return root;
@@ -231,8 +243,8 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadParamQuiz(String fxml,String xml) throws IOException {
+
+	public static Node loadParamQuiz(String fxml, String xml) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -245,9 +257,8 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
 
-	public static Node loadFouilleParamFxml(String fxml,String xml) {
+	public static Node loadFouilleParamFxml(String fxml, String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -260,14 +271,14 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	
-	public static Node loadParamOddWordOutGame(String fxml,String xml) throws IOException {
+
+	public static Node loadParamOddWordOutGame(String fxml, String xml) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
 			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			ViewParametresOddWordOutGameController controller = loader.<ViewParametresOddWordOutGameController>getController();
+			ViewParametresOddWordOutGameController controller = loader
+					.<ViewParametresOddWordOutGameController>getController();
 			controller.setXML(xml);
 			controller.initData();
 			return root;
@@ -275,8 +286,8 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadAccueilParamFxml(String fxml,String xml) {
+
+	public static Node loadAccueilParamFxml(String fxml, String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -289,8 +300,8 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadPNJParamFxml(String fxml,String xml) {
+
+	public static Node loadPNJParamFxml(String fxml, String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -303,8 +314,8 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	public static Node loadPuzzleParamFxml(String fxml,String xml) {
+
+	public static Node loadPuzzleParamFxml(String fxml, String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
 			loader.setLocation(JFxUtils.class.getResource(fxml));
@@ -317,7 +328,7 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
+
 	public static Node loadScoreParam(String fxml, String xml) {
 		FXMLLoader loader = new FXMLLoader();
 		try {
@@ -331,101 +342,150 @@ public class JFxUtils {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
 	}
-	
-	
-	public static void loadTest(){
-		 System.out.println("runnnnnn");
-   	 Stage stage = new Stage();
-   	 Node node=JFxUtils.loadNextBloc(4, "Games/test3000/chronologie_test3000.xml", false, 0);
-			System.out.println("Chargement du prochain bloc...");
-			if (node!=null){
-				System.out.println("node != null");
-				stage.setScene(new Scene((Parent) node, 850, 650));
-				stage.show();
-				System.out.println("fenetre show fait");
-			} else {
-				System.out.println("node = null");
-				stage.close();
-			}
+
+	public static void loadTest() {
+		System.out.println("runnnnnn");
+		Stage stage = new Stage();
+		Node node = JFxUtils.loadNextBloc(4, "Games/test3000/chronologie_test3000.xml", false, 0);
+		System.out.println("Chargement du prochain bloc...");
+		if (node != null) {
+			System.out.println("node != null");
+			stage.setScene(new Scene((Parent) node, 850, 650));
+			stage.show();
+			System.out.println("fenetre show fait");
+		} else {
+			System.out.println("node = null");
+			stage.close();
+		}
 	}
-	
-	
+
 	public static Node loadNextBloc(int cmptChronologie, String xmlChronologie, boolean son) {
-		ArrayList<String> names=new ArrayList<String>();
-		ArrayList<String> path=new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<String> path = new ArrayList<String>();
 		try {
-			   SAXParserFactory factory = SAXParserFactory.newInstance();
-			   SAXParser parser = factory.newSAXParser();
-			   parser.parse(xmlChronologie, new DefaultHandler() {
-			    public void startDocument() throws SAXException {}
-			    public void endDocument() throws SAXException {}
-			    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-			    	names.add(qName);
-			    	path.add(attributes.getValue("pathXML"));
-			    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
-			    	}
-			    public void endElement(String uri, String localName, String qName) throws SAXException {}
-			   });  
-			  } catch (Exception e) { System.err.println(e); System.exit(1); }
-		if (cmptChronologie<names.size()){
-			switch (names.get(cmptChronologie)){
-				case "Quiz" : try {
-					HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
-					return loadQuestion(new Quiz(), reponsesJoueur, 0,"/vues/ViewQuestion.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
-					} catch (IOException e1) {e1.printStackTrace();}
-				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
-				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
-				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0);
-				case "Intrus" : //String[] args={};
-				//Application.launch(ParametresOddWordOutGame.class, args);
-					return null;
-				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,0/*score*/);
-				case "Fouille" : return loadFouilleFxml("/vues/ViewFouille.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, 0);
-				case "Puzzle" : return null;
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+			parser.parse(xmlChronologie, new DefaultHandler() {
+				public void startDocument() throws SAXException {
+				}
+
+				public void endDocument() throws SAXException {
+				}
+
+				public void startElement(String uri, String localName, String qName, Attributes attributes)
+						throws SAXException {
+					names.add(qName);
+					path.add(attributes.getValue("pathXML"));
+					// System.out.println("startElement: " + qName + " attributs :
+					// "+attributes.getValue("pathXML"));
+				}
+
+				public void endElement(String uri, String localName, String qName) throws SAXException {
+				}
+			});
+		} catch (Exception e) {
+			System.err.println(e);
+			System.exit(1);
+		}
+		if (cmptChronologie < names.size()) {
+			switch (names.get(cmptChronologie)) {
+			case "Quiz":
+				try {
+					HashMap<Integer, String> reponsesJoueur = new HashMap<Integer, String>();
+					return loadQuestion(new Quiz(), reponsesJoueur, 0, "/vues/ViewQuestion.fxml",
+							path.get(cmptChronologie), false, cmptChronologie + 1, xmlChronologie, son, 0);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			case "PageExpl":
+				return loadExplicationFxml("/vues/PageExplication.fxml", path.get(cmptChronologie), false,
+						cmptChronologie + 1, xmlChronologie, son, 0);
+			case "DiagPNJ":
+				return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", path.get(cmptChronologie), false,
+						cmptChronologie + 1, xmlChronologie, son, 0);
+			case "Accueil":
+				return loadAccueilFxml("/vues/Accueil.fxml", path.get(cmptChronologie), false, cmptChronologie + 1,
+						xmlChronologie, son, 0);
+			case "Intrus": // String[] args={};
+				// Application.launch(ParametresOddWordOutGame.class, args);
+				return null;
+			case "Score":
+				return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie + 1,
+						xmlChronologie, son, 0/* score */);
+			case "Fouille":
+				return loadFouilleFxml("/vues/ViewFouille.fxml", path.get(cmptChronologie), false, cmptChronologie + 1,
+						xmlChronologie, son, 0);
+			case "Puzzle":
+				return null;
 			}
 		}
 		return null;
 	}
-	
+
 	public static Node loadNextBloc(int cmptChronologie, String xmlChronologie, boolean son, int score) {
-		ArrayList<String> names=new ArrayList<String>();
-		ArrayList<String> path=new ArrayList<String>();
+		ArrayList<String> names = new ArrayList<String>();
+		ArrayList<String> path = new ArrayList<String>();
 		try {
-			   SAXParserFactory factory = SAXParserFactory.newInstance();
-			   SAXParser parser = factory.newSAXParser();
-			   parser.parse(xmlChronologie, new DefaultHandler() {
-			    public void startDocument() throws SAXException {}
-			    public void endDocument() throws SAXException {}
-			    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-			    	names.add(qName);
-			    	path.add(attributes.getValue("pathXML"));
-			    	//System.out.println("startElement: " + qName + " attributs : "+attributes.getValue("pathXML")); 
-			    	}
-			    public void endElement(String uri, String localName, String qName) throws SAXException {}
-			   });  
-			  } catch (Exception e) { System.err.println(e); System.exit(1); }
-		//System.out.println("COMPTEUR : "+cmptChronologie+" | names.size : "+names.size());
-		if (cmptChronologie<names.size()){
-			switch (names.get(cmptChronologie)){
-				case "Quiz" : try {
-					HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
-					return loadQuestion(new Quiz(), reponsesJoueur, 0,"/vues/ViewQuestion.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
-					} catch (IOException e1) {e1.printStackTrace();}
-				case "PageExpl" : return loadExplicationFxml("/vues/PageExplication.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
-				case "DiagPNJ" : return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son, score);
-				case "Accueil" : return loadAccueilFxml("/vues/Accueil.fxml",path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
-				case "Intrus" : 
-					//loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, score);
-					return null;
-				case "Score" : return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie,son,score);
-				case "Fouille" : return loadFouilleFxml("/vues/ViewFouille.fxml", path.get(cmptChronologie), false, cmptChronologie+1, xmlChronologie, son, 0);
-				case "Puzzle" : return null;
+			SAXParserFactory factory = SAXParserFactory.newInstance();
+			SAXParser parser = factory.newSAXParser();
+			parser.parse(xmlChronologie, new DefaultHandler() {
+				public void startDocument() throws SAXException {
+				}
+
+				public void endDocument() throws SAXException {
+				}
+
+				public void startElement(String uri, String localName, String qName, Attributes attributes)
+						throws SAXException {
+					names.add(qName);
+					path.add(attributes.getValue("pathXML"));
+					// System.out.println("startElement: " + qName + " attributs :
+					// "+attributes.getValue("pathXML"));
+				}
+
+				public void endElement(String uri, String localName, String qName) throws SAXException {
+				}
+			});
+		} catch (Exception e) {
+			System.err.println(e);
+			System.exit(1);
+		}
+		// System.out.println("COMPTEUR : "+cmptChronologie+" | names.size :
+		// "+names.size());
+		if (cmptChronologie < names.size()) {
+			switch (names.get(cmptChronologie)) {
+			case "Quiz":
+				try {
+					HashMap<Integer, String> reponsesJoueur = new HashMap<Integer, String>();
+					return loadQuestion(new Quiz(), reponsesJoueur, 0, "/vues/ViewQuestion.fxml",
+							path.get(cmptChronologie), false, cmptChronologie + 1, xmlChronologie, son, score);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			case "PageExpl":
+				return loadExplicationFxml("/vues/PageExplication.fxml", path.get(cmptChronologie), false,
+						cmptChronologie + 1, xmlChronologie, son, score);
+			case "DiagPNJ":
+				return loadPNJFxml(new PNJ(), 0, "/vues/ViewPNJ.fxml", path.get(cmptChronologie), false,
+						cmptChronologie + 1, xmlChronologie, son, score);
+			case "Accueil":
+				return loadAccueilFxml("/vues/Accueil.fxml", path.get(cmptChronologie), false, cmptChronologie + 1,
+						xmlChronologie, son, score);
+			case "Intrus":
+				// loadOddWordOutGame(path.get(cmptChronologie), false, cmptChronologie+1,
+				// xmlChronologie, son, score);
+				return null;
+			case "Score":
+				return loadScoreFxml("/vues/ViewScore.fxml", path.get(cmptChronologie), false, cmptChronologie + 1,
+						xmlChronologie, son, score);
+			case "Fouille":
+				return loadFouilleFxml("/vues/ViewFouille.fxml", path.get(cmptChronologie), false, cmptChronologie + 1,
+						xmlChronologie, son, 0);
+			case "Puzzle":
+				return null;
 			}
 		}
 		return null;
 	}
-
-	
-
 
 }

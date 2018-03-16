@@ -22,52 +22,51 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.MainChronologie;
 
-public class ViewMainApplicationController implements Initializable{
-	
+public class ViewMainApplicationController implements Initializable {
+
 	@FXML
 	Button BT_StartGame;
 	@FXML
 	Label nomApp;
-	
-	int cmptChronologie=1;
-	String xmlChronologie="Games/test1/chronologie_test1.xml";
-	boolean son=true;
-	int score=0;
+
+	int cmptChronologie = 1;
+	String xmlChronologie = "Games/test1/chronologie_test1.xml";
+	boolean son = true;
+	int score = 0;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
-			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/Matchmaker.ttf")), 100);
+			Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/Matchmaker.ttf")), 100);
 			nomApp.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	@FXML
 	private void ClickBT_StartGame(ActionEvent event) {
 		List<String> choices = new ArrayList<>();
 		File dir = new File("Games");
 		File[] files = dir.listFiles();
-		for(File dossier:files)
+		for (File dossier : files)
 			choices.add(dossier.getName());
-		
+
 		ChoiceDialog<String> dialog = new ChoiceDialog<>(choices.get(0), choices);
 		dialog.setTitle("imaGin'S");
 		dialog.setHeaderText("Choix du jeu");
-		dialog.setContentText("Veuillez choisir le jeu que vous désirez lancer");
+		dialog.setContentText("Veuillez choisir le jeu que vous dï¿½sirez lancer");
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-		    xmlChronologie="Games/"+result.get()+"/chronologie_"+result.get()+".xml";
-		    System.out.println(xmlChronologie);
-		    
-		    Node node=JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie,son,score);
-		    Stage stage = (Stage) BT_StartGame.getScene().getWindow();
-			if(node!=null){
+		if (result.isPresent()) {
+			xmlChronologie = "Games/" + result.get() + "/chronologie_" + result.get() + ".xml";
+			System.out.println(xmlChronologie);
+
+			Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
+			Stage stage = (Stage) BT_StartGame.getScene().getWindow();
+			if (node != null) {
 				stage.setScene(new Scene((Parent) node, 850, 650));
 				stage.setTitle("imaGin'S");
 				stage.show();
@@ -77,7 +76,7 @@ public class ViewMainApplicationController implements Initializable{
 			}
 		}
 	}
-	
+
 	@FXML
 	private void ClickBT_StartParam(ActionEvent event) {
 		Stage stage = (Stage) BT_StartGame.getScene().getWindow();
@@ -87,9 +86,5 @@ public class ViewMainApplicationController implements Initializable{
 		stage.sizeToScene();
 		stage.setMaximized(true);
 	}
-	
-	
-	
-	
 
 }

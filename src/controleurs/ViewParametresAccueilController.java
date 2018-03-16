@@ -84,7 +84,7 @@ public class ViewParametresAccueilController implements Initializable {
 
 	@FXML
 	private ComboBox<String> policeNomSG;
-	
+
 	@FXML
 	private ComboBox<Integer> tailleNomSG;
 
@@ -93,10 +93,10 @@ public class ViewParametresAccueilController implements Initializable {
 
 	@FXML
 	private Label erreur;
-	
+
 	@FXML
 	private Label titre;
-	
+
 	@FXML
 	Accordion AD_Title;
 	@FXML
@@ -112,44 +112,43 @@ public class ViewParametresAccueilController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		AD_Title.setExpandedPane(FDE);
 		try {
-			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 20);
+			Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")),
+					20);
 			titre.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		ViewAddOrModifyQuestionController.addTextFLimiter(NomSG, 50);
-		
+
 		final File dossierPolices = new File("././Ressources/Polices");
 		listerPolices(dossierPolices);
 		Collections.sort(listeNomFonts);
 		policeNomSG.getItems().addAll(listeNomFonts);
-		
-		tailleNomSG.getItems().addAll(8,9,10,11,12,14,18,24,30,36,48,60,72,96);
+
+		tailleNomSG.getItems().addAll(8, 9, 10, 11, 12, 14, 18, 24, 30, 36, 48, 60, 72, 96);
 		tailleNomSG.setValue(60);
-		tailleNomSG.getEditor().textProperty().addListener(new ChangeListener<String> () {
+		tailleNomSG.getEditor().textProperty().addListener(new ChangeListener<String>() {
 			String restriction = "[0-9]";
 			int maxLength = 3;
 			private boolean ignore;
-			
+
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 				if (ignore || newValue == null) {
-                    return;
-                }
-				
-				 if (newValue.length() > maxLength) {
-                     ignore = true;
-                     tailleNomSG.getEditor().setText(
-                             newValue.substring(0, maxLength));
-                     ignore = false;
-                 }
-				
+					return;
+				}
+
+				if (newValue.length() > maxLength) {
+					ignore = true;
+					tailleNomSG.getEditor().setText(newValue.substring(0, maxLength));
+					ignore = false;
+				}
+
 				if (!newValue.matches(restriction + "*")) {
-                    ignore = true;
-                    tailleNomSG.getEditor().setText(oldValue);
-                    ignore = false;
-                }
+					ignore = true;
+					tailleNomSG.getEditor().setText(oldValue);
+					ignore = false;
+				}
 			}
 		});
 	}
@@ -215,17 +214,16 @@ public class ViewParametresAccueilController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		nomImage=nomImage.substring(nomImage.lastIndexOf("\\")+1);
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
 
-		
 		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
-		
+
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
 		} else {
 			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
 				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
-			else 
+			else
 				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
 		}
 		imageFondEcran.setText("././Ressources/Images/" + nomImage);
@@ -277,16 +275,16 @@ public class ViewParametresAccueilController implements Initializable {
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
 		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
-		
+
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
 		} else {
 			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
 				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
-			else 
+			else
 				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
 		}
-		
+
 		imageNomSG.setText("././Ressources/Images/" + nomImage);
 
 		modif++;
@@ -408,8 +406,8 @@ public class ViewParametresAccueilController implements Initializable {
 				titreObj.setTexte(NomSG.getText());
 				titreObj.setCouleurTexte(couleurNomSG.getValue().toString());
 				titreObj.setPoliceTexte(policeNomSG.getValue().toString());
-				//System.out.println(Integer.parseInt(tailleNomSG.getValue()));
-				titreObj.setTaille(""+tailleNomSG.getValue());
+				// System.out.println(Integer.parseInt(tailleNomSG.getValue()));
+				titreObj.setTaille("" + tailleNomSG.getValue());
 			} else {
 				titreObj.setImageVsTexte("Image");
 				titreObj.setLienImage(imageNomSG.getText());
@@ -435,11 +433,10 @@ public class ViewParametresAccueilController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/Accueil.fxml"));
 		stage.setScene(new Scene(loader.load()));
 		ViewAccueilController controller = loader.<ViewAccueilController>getController();
-		controller.initData("FichiersDeConfig/accueil.xml", true,0);
+		controller.initData("FichiersDeConfig/accueil.xml", true, 0);
 		stage.show();
-
 	}
-	
+
 	public void listerPolices(final File dossier) {
 		for (final File police : dossier.listFiles()) {
 			if (police.isDirectory()) {

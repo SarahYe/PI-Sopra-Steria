@@ -38,7 +38,7 @@ public class ViewParametresPNJController implements Initializable {
 
 	@FXML
 	private Label titre;
-	
+
 	@FXML
 	private Button questionUp;
 
@@ -65,17 +65,17 @@ public class ViewParametresPNJController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			Font font = Font.loadFont(
-					new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")), 15);
+			Font font = Font.loadFont(new FileInputStream(new File("././Ressources/Polices/PoetsenOne-Regular.ttf")),
+					15);
 			titre.setFont(font);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void initData() {
-		File f =  new File(xml);
+		File f = new File(xml);
 		if (f.exists()) {
 			ArrayList<Dialogue> list = new ArrayList<Dialogue>();
 			PNJ pnj = new PNJ("Nom du quiz", list);
@@ -95,13 +95,13 @@ public class ViewParametresPNJController implements Initializable {
 
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
-		
-		 FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml")); 
-		 ScrollPane newPane = loader.load(); 
-		 AP_ParamDialogue.getChildren().setAll(newPane);
-		 ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
-		 controller.initData(false, null, this);
-	
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		ScrollPane newPane = loader.load();
+		AP_ParamDialogue.getChildren().setAll(newPane);
+		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
+		controller.initData(false, null, this);
+
 	}
 
 	@FXML
@@ -109,12 +109,12 @@ public class ViewParametresPNJController implements Initializable {
 		if (table.getSelectionModel().isEmpty()) {
 			return;
 		}
-		
-		  FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
-		  ScrollPane newPane = loader.load(); 
-		  AP_ParamDialogue.getChildren().setAll(newPane);
-		  ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
-		  controller.initData(true, table.getSelectionModel(), this);
+
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		ScrollPane newPane = loader.load();
+		AP_ParamDialogue.getChildren().setAll(newPane);
+		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
+		controller.initData(true, table.getSelectionModel(), this);
 	}
 
 	@FXML

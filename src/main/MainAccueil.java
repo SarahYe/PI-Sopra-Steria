@@ -11,7 +11,8 @@ public class MainAccueil extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		setUserAgentStylesheet(STYLESHEET_CASPIAN);
-		stage.setScene(new Scene((Parent) JFxUtils.loadAccueilFxml("/vues/Accueil.fxml","FichiersDeConfig/accueil.xml", true, 0, "Games/test/chronologie_test",true,0), 850, 650));
+		stage.setScene(new Scene((Parent) JFxUtils.loadAccueilFxml("/vues/Accueil.fxml", "FichiersDeConfig/accueil.xml",
+				true, 0, "Games/test/chronologie_test", true, 0), 850, 650));
 		stage.setTitle("imaGin'S");
 		stage.show();
 		stage.sizeToScene();

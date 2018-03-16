@@ -14,9 +14,9 @@ public class MainApplication extends Application {
 		stage.setScene(new Scene((Parent) JFxUtils.loadFxml("/vues/MainApplication.fxml"), 800, 600));
 		stage.setTitle("imaGin'S");
 		stage.show();
-		
+
 	}
-	
+
 	public static void main(String[] args) {
 		launch(args);
 	}

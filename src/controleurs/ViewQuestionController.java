@@ -55,46 +55,45 @@ public class ViewQuestionController implements Initializable {
 	private ImageView faux;
 	@FXML
 	private ImageView bulle;
-	
-	private String xml="";
-	private boolean soloBloc=true;
-	private int cmptChronologie=0;
-	private String xmlChronologie="";
+
+	private String xml = "";
+	private boolean soloBloc = true;
+	private int cmptChronologie = 0;
+	private String xmlChronologie = "";
 	private float niveauSon = -30.0f;
 	private boolean son;
 	private int score;
-	
-	HashMap<Integer,String> reponsesJoueur = new HashMap<Integer,String>();
 
-	public void initData(Quiz quiz, HashMap<Integer,String> reponsesJoueur, int cmpt, boolean son, int score) {
+	HashMap<Integer, String> reponsesJoueur = new HashMap<Integer, String>();
+
+	public void initData(Quiz quiz, HashMap<Integer, String> reponsesJoueur, int cmpt, boolean son, int score) {
 		this.cmpt = cmpt;
 		this.quiz = quiz;
-		this.son=son;
-		this.score=score;
+		this.son = son;
+		this.score = score;
 		this.reponsesJoueur = reponsesJoueur;
 		if (son) {
-			niveauSon =  -30.0f;
+			niveauSon = -30.0f;
 			volumeOn.setVisible(true);
 			volumeOff.setVisible(false);
 		} else {
-			niveauSon =  -100000.0f;
+			niveauSon = -100000.0f;
 			volumeOff.setVisible(true);
 			volumeOn.setVisible(false);
 		}
-			
-		
-		File f =  new File(xml);
-		if (f.exists()){
+
+		File f = new File(xml);
+		if (f.exists()) {
 			this.quiz = quiz.convertirXMLToJava(xml);
 
 			buttonNextQue.setVisible(Boolean.FALSE);
 			question = this.quiz.getListeQuestions().get(cmpt);
 			remplissageContentQuestion(question);
-			//progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
+			// progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
 			progQuiz.setProgress((double) cmpt / this.quiz.getListeQuestions().size());
-			
+
 		} else {
-			System.out.println("xml : "+xml);
+			System.out.println("xml : " + xml);
 		}
 	}
 
@@ -102,15 +101,15 @@ public class ViewQuestionController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 		bulle.setVisible(false);
 	}
-	
+
 	public void setXML(String xml) {
-		this.xml=xml;
+		this.xml = xml;
 	}
-	
-	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie){
-		this.soloBloc=soloBloc;
-		this.cmptChronologie=cmptChronologie;
-		this.xmlChronologie=xmlChronologie;
+
+	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
+		this.soloBloc = soloBloc;
+		this.cmptChronologie = cmptChronologie;
+		this.xmlChronologie = xmlChronologie;
 	}
 
 	private void remplissageContentQuestion(Question question) {
@@ -149,12 +148,12 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
-		if(soloBloc){
+		if (soloBloc) {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
 			stage.close();
 		} else {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			/****Previous bloc****/
+			/**** Previous bloc ****/
 		}
 	}
 
@@ -166,8 +165,9 @@ public class ViewQuestionController implements Initializable {
 		bulle.setVisible(true);
 		justification.setVisible(Boolean.TRUE);
 		justification.setText("");
-		
-		if (!intiRep1.isSelected() && !intiRep2.isSelected() && !intiRep3.isSelected() && !intiRep4.isSelected() && !intiRep5.isSelected()) {
+
+		if (!intiRep1.isSelected() && !intiRep2.isSelected() && !intiRep3.isSelected() && !intiRep4.isSelected()
+				&& !intiRep5.isSelected()) {
 			justification.setText("Cochez au moins une réponse");
 			vrai.setVisible(false);
 			faux.setVisible(false);
@@ -177,7 +177,7 @@ public class ViewQuestionController implements Initializable {
 				if (reponse.getCorrect())
 					cmptTrue++;
 			}
-			
+
 			ArrayList<Reponse> reponses = question.getListeReponses();
 
 			if (reponses.size() > 0 && intiRep1.isSelected()) {
@@ -237,15 +237,15 @@ public class ViewQuestionController implements Initializable {
 			} else {
 				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);
 			}
-			
-			//System.out.println(reponsesJoueur.);
+
+			// System.out.println(reponsesJoueur.);
 			buttonNextQue.setVisible(Boolean.TRUE);
 		}
 	}
 
 	@FXML
 	private void ClickButtonNextQue(ActionEvent event) throws IOException {
-		
+
 		if (intiRep1.isSelected())
 			reponsesJoueur.put(cmpt, intiRep1.getText().toString());
 		if (intiRep2.isSelected())
@@ -256,34 +256,36 @@ public class ViewQuestionController implements Initializable {
 			reponsesJoueur.put(cmpt, intiRep4.getText().toString());
 		if (intiRep5.isSelected())
 			reponsesJoueur.put(cmpt, intiRep5.getText().toString());
-		
-		if (quiz.getListeQuestions().size() == cmpt+1) {
+
+		if (quiz.getListeQuestions().size() == cmpt + 1) {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "/vues/ViewRecapQuiz.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son,score), 850, 650));
+			stage.setScene(new Scene((Parent) JFxUtils.loadQuizReviewFxml(reponsesJoueur, "/vues/ViewRecapQuiz.fxml",
+					xml, soloBloc, cmptChronologie, xmlChronologie, son, score), 850, 650));
 		} else {
 			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			Node node=JFxUtils.loadQuestion(quiz, reponsesJoueur, cmpt + 1, "/vues/ViewQuestion.fxml",xml,soloBloc,cmptChronologie,xmlChronologie, son,score);
-			if (node!=null){
+			Node node = JFxUtils.loadQuestion(quiz, reponsesJoueur, cmpt + 1, "/vues/ViewQuestion.fxml", xml, soloBloc,
+					cmptChronologie, xmlChronologie, son, score);
+			if (node != null) {
 				stage.setScene(new Scene((Parent) node, 850, 650));
 			} else {
 				stage.close();
 			}
 		}
-		
+
 	}
 
 	@FXML
 	private void SonOn(ActionEvent event) {
-		niveauSon =  -30.0f;
-		son=true;
+		niveauSon = -30.0f;
+		son = true;
 		volumeOn.setVisible(true);
 		volumeOff.setVisible(false);
 	}
-	
+
 	@FXML
 	private void SonOff(ActionEvent event) {
-		son=false;
-		niveauSon =  -100000.0f;
+		son = false;
+		niveauSon = -100000.0f;
 		volumeOff.setVisible(true);
 		volumeOn.setVisible(false);
 	}

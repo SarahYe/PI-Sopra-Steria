@@ -1,9 +1,7 @@
 package modeles;
 
-import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javafx.beans.property.SimpleStringProperty;
 
 /**
  * Modèle d'un dialogue unitaire dans le bloc "Dialogue avec un personnage non
@@ -20,19 +18,10 @@ public class Dialogue {
 	String imageFondEcran = "";
 	String couleurFondEcran = "";
 	String intitule;
-	// SimpleStringProperty intituleProperty;
 	String imagePersonnage;
 
 	public Dialogue() {
 	}
-	/*
-		*//**
-			 * 
-			 * @param string
-			 * @param listeDialogues
-			 *//*
-				 * public Dialogue(String string, ArrayList<Dialogue> listeDialogues) { }
-				 */
 
 	/**
 	 * Crée un nouvel objet Dialogue qui représente un dialogue unitaire dans le
@@ -49,10 +38,10 @@ public class Dialogue {
 	 *            Le texte du dialogue.
 	 * @param imagePersonnage
 	 *            Le chemin relatif vers l'image du personnage (format png, ou jpg).
+	 * @see PNJ
 	 */
 	public Dialogue(String imageVsCouleur, String imageFondEcran, String couleurFondEcran, String intitule,
 			String imagePersonnage) {
-		// super()
 		if (imageVsCouleur.contains("Couleur")) {
 			this.couleurFondEcran = couleurFondEcran;
 			this.imageFondEcran = "";
@@ -60,32 +49,14 @@ public class Dialogue {
 			this.imageFondEcran = imageFondEcran;
 			this.couleurFondEcran = "";
 		}
-
 		this.intitule = intitule;
-		// this.intituleProperty = new SimpleStringProperty(intitule);
 		this.imagePersonnage = imagePersonnage;
 	}
-
-	/*	*//**
-			 * 
-			 * @return
-			 */
-	/*
-	 * public SimpleStringProperty getIntituleProperty() { return intituleProperty;
-	 * }
-	 * 
-	 *//**
-		 * 
-		 * @param intituleProperty
-		 *//*
-			 * public void setIntituleProperty(SimpleStringProperty intituleProperty) {
-			 * this.intituleProperty = intituleProperty; }
-			 */
 
 	/**
 	 * Indique si le fond d'écran est une image ou une couleur unie.
 	 * 
-	 * @return les mots "image" ou "couleur".
+	 * @return les valeurs "image" ou "couleur".
 	 */
 	@XmlElement
 	public String getImageVsCouleur() {
@@ -104,9 +75,8 @@ public class Dialogue {
 	}
 
 	/**
-	 * Renvoie le chemin relatif vers l'image utilisée en fond d'écran
 	 * 
-	 * @return actuel chemin relatif vers l'image
+	 * @return Le chemin relatif vers l'image utilisée en fond d'écran.
 	 */
 	@XmlElement
 	public String getImageFondEcran() {
@@ -118,16 +88,14 @@ public class Dialogue {
 	 * d'apparition du dialogue.
 	 * 
 	 * @param imageFondEcran
-	 *            (format png ou jpg)
+	 *            Format png ou jpg
 	 */
 	public void setImageFondEcran(String imageFondEcran) {
 		this.imageFondEcran = imageFondEcran;
 	}
 
 	/**
-	 * Renvoie la couleur du fond d'écran.
-	 * 
-	 * @return actuel couleur du fond d'écran au format hexadécimal 0x00000000.
+	 * @return L'actuel couleur du fond d'écran au format hexadécimal 0x00000000.
 	 */
 	@XmlElement
 	public String getCouleurFondEcran() {
@@ -144,9 +112,7 @@ public class Dialogue {
 	}
 
 	/**
-	 * Renvoie le texte du dialogue.
-	 * 
-	 * @return le texte du dialogue.
+	 * @return Le texte du dialogue.
 	 */
 	@XmlElement
 	public String getIntitule() {
@@ -163,9 +129,8 @@ public class Dialogue {
 	}
 
 	/**
-	 * Renvoie le chemin relatif vers l'image du personnage.
 	 * 
-	 * @return le chemin relatif de l'image (format png ou jpg)
+	 * @return le chemin relatif de l'image du personnage (format png ou jpg)
 	 */
 	@XmlElement
 	public String getImagePersonnage() {

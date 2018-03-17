@@ -1,6 +1,7 @@
 package modeles;
 
 import java.io.File;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -27,11 +28,9 @@ public class Accueil {
 	}
 
 	/**
-	 * Renvoie le titre.
-	 * 
-	 * @return actuel nom du jeu ou du serious game en forme de chemin relatif vers
-	 *         une image ou texte formatté (texte + couleur (format hexadécimal :
-	 *         0x00000000) + taille + police).
+	 * @return L'actuel nom du jeu ou du serious game en forme de chemin relatif
+	 *         vers une image ou texte formatté (texte + couleur (format hexadécimal
+	 *         : 0x00000000) + taille + police).
 	 * @see Titre
 	 */
 	@XmlElement(name = "Titre")
@@ -51,11 +50,9 @@ public class Accueil {
 	}
 
 	/**
-	 * Renvoie le fond d'écran.
-	 * 
-	 * @return actuel fond d'écran utilisé sur l'accueil sous forme de lien vers une
-	 *         image (format png ou jpg) ou de couleur unie (format hexadécimal :
-	 *         0x00000000).
+	 * @return L'actuel fond d'écran utilisé sur l'accueil sous forme de lien vers
+	 *         une image (format png ou jpg) ou de couleur unie (format hexadécimal
+	 *         : 0x00000000).
 	 * @see FondEcran
 	 */
 	@XmlElement(name = "FondEcran")

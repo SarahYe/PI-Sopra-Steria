@@ -14,6 +14,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * Modèle d'un bloc "Page explicative".
+ * 
  * @author YESUFU Sarah
  * @version 1.0
  */
@@ -31,13 +32,20 @@ public class Explication {
 	}
 
 	/**
-	 * Crée un nouvel objet "Explication" qui représente les données paramétrables du bloc "Page explicative".
-	 *  
-	 * @param mTitre Le titre/thème de l'explication.
-	 * @param mContenu L'explication.
-	 * @param mSource L'auteur.
-	 * @param mLiens La liste d'hyperliens permettant d'illustrer l'explication.
-	 * @param mImages La liste de 2 chemins relatifs vers des images décoratives de l'interface.
+	 * Crée un nouvel objet Explication qui représente les données paramétrables du
+	 * bloc "Page explicative".
+	 * 
+	 * @param mTitre
+	 *            Le titre/thème de l'explication.
+	 * @param mContenu
+	 *            L'explication.
+	 * @param mSource
+	 *            L'auteur.
+	 * @param mLiens
+	 *            La liste d'hyperliens permettant d'illustrer l'explication.
+	 * @param mImages
+	 *            La liste de 2 chemins relatifs vers des images décoratives de
+	 *            l'interface.
 	 */
 	public Explication(String mTitre, String mContenu, String mSource, ArrayList<String> mLiens,
 			ArrayList<String> mImages) {
@@ -49,8 +57,6 @@ public class Explication {
 	}
 
 	/**
-	 * Renvoie le titre.
-	 * 
 	 * @return actuel titre de l'explication.
 	 */
 	@XmlElement
@@ -59,8 +65,9 @@ public class Explication {
 	}
 
 	/**
-	 * Le titre est le thème de l'explication, le nom d'un jeu élémentaire paramétré ou du serious game en
-	 * lui-même.
+	 * Le titre est le thème de l'explication, le nom d'un jeu élémentaire paramétré
+	 * ou du serious game en lui-même.
+	 * 
 	 * @param titre
 	 */
 	public void setTitre(String titre) {
@@ -68,8 +75,7 @@ public class Explication {
 	}
 
 	/**
-	 * Renvoie le texte d'explication.
-	 * @return le texte explicatif.
+	 * @return le texte de l'explication.
 	 */
 	@XmlElement
 	public String getContenu() {
@@ -78,6 +84,7 @@ public class Explication {
 
 	/**
 	 * Le contenu est le texte explicatif lui-même.
+	 * 
 	 * @param contenu
 	 */
 	public void setContenu(String contenu) {
@@ -85,8 +92,7 @@ public class Explication {
 	}
 
 	/**
-	 * Renvoie l'auteur de l'explication.
-	 * @return l'auteur
+	 * @return l'auteur de l'explication.
 	 */
 	@XmlElement
 	public String getSource() {
@@ -95,14 +101,14 @@ public class Explication {
 
 	/**
 	 * Permet d'indiquer l'auteur de l'explication.
+	 * 
 	 * @param source
 	 */
 	public void setSource(String source) {
 		this.source = source;
 	}
-	
+
 	/**
-	 * Renvoie la liste des hyperliens.
 	 * @return Une liste d'hyperliens.
 	 */
 	@XmlElementWrapper(name = "Liens")
@@ -110,9 +116,10 @@ public class Explication {
 	public ArrayList<String> getListeLiens() {
 		return listeLiens;
 	}
-	
+
 	/**
-	 * La liste comprend des hyperliens consultables. 
+	 * La liste comprend des hyperliens consultables.
+	 * 
 	 * @param listeLiens
 	 */
 	public void setListeLiens(ArrayList<String> listeLiens) {
@@ -120,8 +127,7 @@ public class Explication {
 	}
 
 	/**
-	 * Renvoie la liste des chemins relatifs vers des images (format png ou jpg).
-	 * @return liste de chemins relatifs vers des images.
+	 * @return la liste des chemins relatifs vers des images (format png ou jpg).
 	 */
 	@XmlElementWrapper(name = "Images")
 	@XmlElement(name = "Image")
@@ -130,8 +136,9 @@ public class Explication {
 	}
 
 	/**
-	 * La liste contient deux chemins relatifs correspondant aux chemins relatifs vers
-	 * des images décoratives sur l'interface d'une page explicative. 
+	 * La liste contient deux chemins relatifs correspondant aux chemins relatifs
+	 * vers des images décoratives sur l'interface d'une page explicative.
+	 * 
 	 * @param listeImages
 	 */
 	public void setListeImages(ArrayList<String> listeImages) {
@@ -139,12 +146,13 @@ public class Explication {
 	}
 
 	/**
-	 * Transforme l'objet "Explication" en XML puis l'écrit dans un fichier avec la même
-	 * extension.
+	 * Transforme l'objet "Explication" en XML puis l'écrit dans un fichier avec la
+	 * même extension.
+	 * 
 	 * @param explication
-	 * 				Classe Explication.
+	 *            Classe Explication.
 	 * @param nomFichier
-	 * 				Chemin vers le fichier xml d'écriture. Le fichier porte déjà
+	 *            Chemin vers le fichier xml d'écriture. Le fichier porte déjà
 	 *            l'extension.
 	 */
 	public void convertirJavaToXML(Explication explication, String nomFichier) {
@@ -166,7 +174,9 @@ public class Explication {
 
 	/**
 	 * Récupère un fichier xml et le transforme en objet Accueil.
-	 * @param nomFichier Chemin vers le fichier xml.
+	 * 
+	 * @param nomFichier
+	 *            Chemin vers le fichier xml.
 	 * @return l'objet "Explication".
 	 * @see Explication
 	 */

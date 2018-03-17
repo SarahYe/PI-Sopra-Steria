@@ -23,7 +23,7 @@ public class FondEcran {
 	/**
 	 * Indique si le fond d'écran est une image ou une couleur unie.
 	 * 
-	 * @return les mots "image" ou "couleur".
+	 * @return les valeurs "image" ou "couleur".
 	 */
 	@XmlElement
 	public String getImageVsCouleur() {
@@ -42,7 +42,7 @@ public class FondEcran {
 	}
 
 	/**
-	 *  Renvoie la couleur du fond d'écran.
+	 * Renvoie la couleur du fond d'écran.
 	 * 
 	 * @return actuel couleur du fond d'écran au format hexadécimal 0x00000000.
 	 */
@@ -52,7 +52,8 @@ public class FondEcran {
 	}
 
 	/**
-	 * Permet d'indiquer la couleur de fond choisie . La couleur est sous la forme 0x00000000.
+	 * Permet d'indiquer la couleur de fond choisie . La couleur est sous la forme
+	 * 0x00000000.
 	 * 
 	 * @param couleurFondEcran
 	 */
@@ -61,8 +62,7 @@ public class FondEcran {
 	}
 
 	/**
-	 * Renvoie le chemin relatif vers l'image pour le fond d'écran.
-	 * @return Le chemin relatif de l'image.
+	 * @return Le chemin relatif de l'image pour le fond d'écran.
 	 */
 	@XmlElement
 	public String getLienImage() {
@@ -70,7 +70,9 @@ public class FondEcran {
 	}
 
 	/**
-	 * Permet de donner un image au fond d'écran. Les images acceptées sont des png ou des jpg;
+	 * Permet de donner un image au fond d'écran. Les images acceptées sont des png
+	 * ou des jpg;
+	 * 
 	 * @param lienImage
 	 */
 	public void setLienImage(String lienImage) {

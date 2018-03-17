@@ -14,11 +14,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- * Modèle d'un bloc de dialogue avec un personnage non joueur.
+ * Modèle d'un bloc "Dialogue avec un personnage non joueur".
  * 
  * @author YESUFU Sarah
  * @version 1.0
  */
+
 @XmlRootElement
 @XmlType(name = "nom", propOrder = { "nomPNJ", "listeDialogues" })
 public class PNJ {
@@ -32,11 +33,14 @@ public class PNJ {
 	}
 
 	/**
-	 * Crée un nouvel objet PNJ représentant un module de Dialogue avec un personnage non joueur.
-	 * L'objet contient les éléments paramétrables du module à savoir le nom du module ainsi que la
-	 * liste des dialogues. 
-	 * @param nomPNJ Le nom du module si l'utilisateur souhaite le personnaliser.
-	 * @param listeDialogues La liste des dialogues.
+	 * Crée un nouvel objet PNJ représentant un module de Dialogue avec un
+	 * personnage non joueur. L'objet contient les éléments paramétrables du module
+	 * à savoir le nom du module ainsi que la liste des dialogues.
+	 * 
+	 * @param nomPNJ
+	 *            Le nom du module si l'utilisateur souhaite le personnaliser.
+	 * @param listeDialogues
+	 *            La liste des dialogues.
 	 */
 	public PNJ(String nomPNJ, ArrayList<Dialogue> listeDialogues) {
 		this.nomPNJ = nomPNJ;
@@ -52,6 +56,7 @@ public class PNJ {
 
 	/**
 	 * Permet d'entrer ou de modifier le nom du module pour une personnalisation.
+	 * 
 	 * @param nomPNJ
 	 */
 	public void setNomPNJ(String nomPNJ) {
@@ -69,8 +74,9 @@ public class PNJ {
 	}
 
 	/**
-	 * La liste des dialogues est l'ensemble comprenant le texte, le personnage à afficher,
-	 * le fond d'écran pour chacun des dialogues.
+	 * La liste des dialogues est l'ensemble comprenant le texte, le personnage à
+	 * afficher, le fond d'écran pour chacun des dialogues.
+	 * 
 	 * @param listeDialogues
 	 * @see Dialogue
 	 */
@@ -82,8 +88,10 @@ public class PNJ {
 	 * Transforme l'objet "PNJ" en XML puis l'écrit dans un fichier avec la même
 	 * extension.
 	 * 
-	 * @param dialogue Classe Dialogue
-	 * @param nomFichier  Chemin vers le fichier xml d'écriture. Le fichier porte déjà
+	 * @param dialogue
+	 *            Classe Dialogue
+	 * @param nomFichier
+	 *            Chemin vers le fichier xml d'écriture. Le fichier porte déjà
 	 *            l'extension.
 	 */
 	public void convertirJavaToXML(PNJ dialogue, String nomFichier) {
@@ -105,8 +113,10 @@ public class PNJ {
 	}
 
 	/**
-	 *  Récupère un fichier xml et le transforme en objet Accueil.
-	 * @param nomFichier Chemin vers le fichier xml.
+	 * Récupère un fichier xml et le transforme en objet Accueil.
+	 * 
+	 * @param nomFichier
+	 *            Chemin vers le fichier xml.
 	 * @return l'objet "PNJ".
 	 * @see PNJ
 	 */

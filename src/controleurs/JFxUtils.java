@@ -13,19 +13,15 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import main.ParametresOddWordOutGame;
 import modeles.PNJ;
 import modeles.Quiz;
 import slickGames.MainOddWordOutGame;
 import slickGames.MainPuzzleGame;
-import slickGames.states.PuzzleGame;
 
 public class JFxUtils {
 
@@ -47,20 +43,18 @@ public class JFxUtils {
 		}
 	}
 
-	public static Node loadQuizFxml(String fxml, String xml, boolean soloBloc, int cmptChronologie,
-			String xmlChronologie) {
-		FXMLLoader loader = new FXMLLoader();
-		try {
-			loader.setLocation(JFxUtils.class.getResource(fxml));
-			Node root = (Node) loader.load(main.MainQuiz.class.getResource(fxml).openStream());
-			QuizAccueilController controller = loader.<QuizAccueilController>getController();
-			controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
-			controller.setXML(xml);
-			return root;
-		} catch (IOException e) {
-			throw new IllegalStateException("cannot load FXML screen", e);
-		}
-	}
+	/*
+	 * public static Node loadQuizFxml(String fxml, String xml, boolean soloBloc,
+	 * int cmptChronologie, String xmlChronologie) { FXMLLoader loader = new
+	 * FXMLLoader(); try { loader.setLocation(JFxUtils.class.getResource(fxml));
+	 * Node root = (Node)
+	 * loader.load(main.MainQuiz.class.getResource(fxml).openStream());
+	 * QuizAccueilController controller =
+	 * loader.<QuizAccueilController>getController();
+	 * controller.setChronologie(soloBloc, cmptChronologie, xmlChronologie);
+	 * controller.setXML(xml); return root; } catch (IOException e) { throw new
+	 * IllegalStateException("cannot load FXML screen", e); } }
+	 */
 
 	public static Node loadQuestion(Quiz quiz, HashMap<Integer, String> reponsesJoueur, int cmpt, String fxml,
 			String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score)
@@ -78,19 +72,6 @@ public class JFxUtils {
 		} catch (IOException e) {
 			throw new IllegalStateException("cannot load FXML screen", e);
 		}
-
-		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("/vues/ViewQuestion.fxml"));
-		 * stage.setScene(new Scene((Pane) loader.load()));
-		 * 
-		 * ViewQuestionController controller =
-		 * loader.<ViewQuestionController>getController();
-		 * controller.setChronologie(soloBloc,cmptChronologie,xmlChronologie);
-		 * controller.setXML(xml); controller.initData(quiz, cmpt);
-		 * 
-		 * stage.show(); return stage;
-		 */
 	}
 
 	public static Node loadQuizReviewFxml(HashMap<Integer, String> reponsesJoueur, String fxml, String xml,

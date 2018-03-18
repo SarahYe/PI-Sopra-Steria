@@ -14,9 +14,8 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import javafx.animation.Animation;
-import javafx.animation.Animation.Status;
-import javafx.application.Platform;
 import javafx.animation.Transition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -31,9 +30,13 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import modeles.Dialogue;
 import modeles.PNJ;
-import modeles.Question;
-import modeles.Quiz;
 
+/**
+ * Controleur de l'interface joueur d'un dialogue avec un PNJ.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewPNJController implements Initializable {
 
 	@FXML
@@ -69,6 +72,22 @@ public class ViewPNJController implements Initializable {
 	public void initialize(URL url, ResourceBundle rb) {
 	}
 
+	/**
+	 * Fonction d'initialisation des données paramétrées d'un dialogue dans le bloc.
+	 * Vérifie l'existence d'un fichier xml correspondant puis recupère les
+	 * informations paramétrées.
+	 * 
+	 * @param pnj
+	 *            Objet PNJ
+	 * @param cmpt
+	 *            Compteur définissant le rang de la question présentée.
+	 * @param son
+	 *            Paramètre d'activation ou non des éléments sonores.
+	 * @param score
+	 *            Score cumulé par le joueur lors des événements antérieurs.
+	 * 
+	 * @see PNJ.
+	 */
 	public void initData(PNJ pnj, int cmpt, boolean son, int score) {
 		this.cmpt = cmpt;
 		this.pnj = pnj;
@@ -95,6 +114,13 @@ public class ViewPNJController implements Initializable {
 
 	}
 
+	/**
+	 * Affiche le fond d'écran, le personnage et le texte de dialogue animé.
+	 * 
+	 * @param dial2
+	 *            Objet Dialogue
+	 * @see Dialogue.
+	 */
 	private void remplissageContentDialogue(Dialogue dial2) {
 		if (!dial2.getImageFondEcran().isEmpty()) {
 			anchorImage.setImage(ViewParametresPageExplicationController.chargerImage(dial2.getImageFondEcran()));
@@ -105,9 +131,18 @@ public class ViewPNJController implements Initializable {
 		}
 
 		personnage.setImage(ViewParametresPageExplicationController.chargerImage(dial2.getImagePersonnage()));
+
 		AnimateText(texte, dial2.getIntitule());
 	}
 
+	/**
+	 * Fonction animant l'apparition du texte de dialogue.
+	 * 
+	 * @param lbl
+	 *            Objet de type Label (voir JavaFX). C'est le conteneur du dialogue.
+	 * @param descImp
+	 *            Texte de dialogue.
+	 */
 	public void AnimateText(Label lbl, String descImp) {
 		String content = descImp;
 		animation = new Transition() {
@@ -124,16 +159,34 @@ public class ViewPNJController implements Initializable {
 		animation.play();
 	}
 
+	/**
+	 * 
+	 * @param soloBloc
+	 * @param cmptChronologie
+	 * @param xmlChronologie
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;
 		this.xmlChronologie = xmlChronologie;
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de quiz.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction permettant de passer au dialogue suivant ou à l'évènement suivant.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	private void ClickButtonNext(ActionEvent event) throws IOException {
 		if (pnj.getListeDialogues().size() == cmpt + 1) {
@@ -142,7 +195,6 @@ public class ViewPNJController implements Initializable {
 				stage.close();
 			} else {
 				Stage stage = (Stage) boutonNext.getScene().getWindow();
-				// System.out.print(score);
 				Node node = JFxUtils.loadNextBloc(cmptChronologie, xmlChronologie, son, score);
 
 				if (node != null) {
@@ -201,23 +253,15 @@ public class ViewPNJController implements Initializable {
 					cmptChronologie, xmlChronologie, son, score), 850, 650));
 			stage.show();
 		}
-
-		/*
-		 * if (animation.statusProperty().equals(Status.STOPPED)) { dial =
-		 * pnj.getListeDialogues().get(cmpt); texte.setText(dial.getIntitule());
-		 * boutonNext.setVisible(true); } else {
-		 */
-		// Stage stage = (Stage) boutonNext.getScene().getWindow();
-		// stage.setScene(new Scene((Parent) JFxUtils.loadPNJFxml(pnj, cmpt + 1,
-		// "/vues/ViewPNJ.fxml", xml, soloBloc, cmptChronologie, xmlChronologie,son),
-		// 850, 650));
-		// stage.show();
-		// Stage stage = (Stage) boutonNext.getScene().getWindow();
-		// new JFxUtils().loadDialogue(pnj, cmpt + 1,
-		// stage,xml,soloBloc,cmptChronologie,xmlChronologie);
-		// }
 	}
 
+	/**
+	 * Fonction d'affichage du dialogue précédent.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	private void ClickButtonPrev(ActionEvent event) throws IOException {
 		Stage stage = (Stage) boutonPrev.getScene().getWindow();

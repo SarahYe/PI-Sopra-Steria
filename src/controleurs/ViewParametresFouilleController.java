@@ -33,6 +33,12 @@ import javafx.stage.Stage;
 import modeles.Fouille;
 import modeles.Instruction;
 
+/**
+ * Controleur de l'interface de paramétrage d'un jeu de fouille.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewParametresFouilleController implements Initializable {
 
 	@FXML
@@ -101,6 +107,12 @@ public class ViewParametresFouilleController implements Initializable {
 		gold.setText("100");
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage du jeu de fouille.
+	 * Vérifie s'il existe un fichier xml pré-configuré . Si oui, recupère les
+	 * informations paramétrées et dans le cas contraire, présente un formulaire de
+	 * paramétrage vide.
+	 */
 	public void initData() {
 		File f = new File(xml);
 
@@ -124,29 +136,30 @@ public class ViewParametresFouilleController implements Initializable {
 			silver.setText("" + fParam.getSilver());
 			bronze.setText("" + fParam.getBronze());
 			gold.setText("" + fParam.getGold());
-			// previsualisation.setStyle("-fx-background-image: url('" +
-			// fParam.getFondEcran() + "'); ");
 			prevFDE.setImage(ViewParametresPageExplicationController.chargerImage(fParam.getFondEcran()));
 		} else
 			System.out.println("\"" + xml + "\" doesn't exist");
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de fouille.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction appelée par le bouton d'ajout d'une nouvelle instruction. Affiche le
+	 * formulaire vide correspondant aux paramètres d'une instruction.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
-		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("../vues/dialogueFouille.fxml"));
-		 * ScrollPane newPane = loader.load();
-		 * AP_ParamDialogue.getChildren().setAll(newPane);
-		 * ViewAddOrModifyDialogueController controller =
-		 * loader.<ViewAddOrModifyDialogueController>getController();
-		 * controller.initData(false, null, this);
-		 */
-
 		Stage stage = new Stage();
 		stage.setTitle("Nouvelle instruction");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyInstruction.fxml"));
@@ -156,20 +169,21 @@ public class ViewParametresFouilleController implements Initializable {
 		stage.show();
 	}
 
+	/**
+	 * Fonction appelée par le bouton de modification d'une instruction. Vérifie si
+	 * une instruction est sélectionnée avant d'afficher le formulaire d'instruction
+	 * avec les informations pré-remplies.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void ClickButtonModify(ActionEvent event) throws IOException {
 
 		if (table.getSelectionModel().isEmpty()) {
 			return;
 		}
-
-		/*
-		 * FXMLLoader loader = new
-		 * FXMLLoader(getClass().getResource("../vues/dialogueFouille.fxml"));
-		 * ScrollPane newPane = loader.load(); ViewAddOrModifyDialogueController
-		 * controller = loader.<ViewAddOrModifyDialogueController>getController();
-		 * controller.initData(true, table.getSelectionModel(), this);
-		 */
 
 		Stage stage = new Stage();
 		stage.setTitle("Nouvelle instruction");
@@ -181,6 +195,13 @@ public class ViewParametresFouilleController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction appelée par le bouton de suppression d'une instruction. Vérifie si
+	 * une instruction est sélectionnée avant de la supprimer.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void ClickButtonRemove(ActionEvent event) {
 		if (table.getSelectionModel().isEmpty()) {
@@ -194,6 +215,13 @@ public class ViewParametresFouilleController implements Initializable {
 		table.getItems().remove(selectedItem);
 	}
 
+	/**
+	 * Fonction de sauvegarde du paramétrage du jeu. Récupère les listes des
+	 * instructions, enregistre le fichier XML puis affiche la popup de confirmation d'enregistrement du fichier.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void ClickButtonSave(ActionEvent event) {
 		ArrayList<Instruction> listeInstructions = new ArrayList<Instruction>();
@@ -210,7 +238,7 @@ public class ViewParametresFouilleController implements Initializable {
 			if (ViewAddOrModifyInstructionController.tryParseDouble(gold.getText())
 					&& ViewAddOrModifyInstructionController.tryParseDouble(bronze.getText())
 					&& ViewAddOrModifyInstructionController.tryParseDouble(silver.getText())) {
-				Fouille f = new Fouille("Nom du bloc", listeInstructions, imageFDE.getText(),
+				Fouille f = new Fouille("Fouille", listeInstructions, imageFDE.getText(),
 						Double.parseDouble(gold.getText()), Double.parseDouble(bronze.getText()),
 						Double.parseDouble(silver.getText()));
 				f.convertirJavaToXML(f, xml);
@@ -226,6 +254,14 @@ public class ViewParametresFouilleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image de décor du jeu de fouille. Affiche
+	 * l'image dans la prévisualisation.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void telechargerImageFDE(ActionEvent event) throws IOException {
 
@@ -257,6 +293,26 @@ public class ViewParametresFouilleController implements Initializable {
 		prevFDE.setImage(ViewParametresPageExplicationController.chargerImage("././Ressources/Images/" + nomImage));
 	}
 
+	/**
+	 * Modifie une instruction dans la liste apparaissant dans le tableau de
+	 * l'interface de parametrage. Repositionne également l'objet dans la zone de
+	 * prévisualisation.
+	 * 
+	 * @param selectedIndex
+	 *            Entier représentant le rang de l'instruction dans le tableau .
+	 *            Première instruction correspondant au rang 0.
+	 * @param intitule
+	 *            Consigne relative à l'image objet.
+	 * @param imageObjet
+	 *            Chemin relatif vers l'image objet.
+	 * @param posX
+	 *            Abscisse de positionnement de l'image objet dans le décor.
+	 * @param posY
+	 *            Ordonnée de positionnement de l'image objet dans le décor.
+	 * @param type
+	 *            Type de l'image objet.
+	 * @see Instruction
+	 */
 	public void setInstruction(int selectedIndex, String intitule, String imageObjet, Double posX, Double posY,
 			String type) {
 
@@ -264,7 +320,6 @@ public class ViewParametresFouilleController implements Initializable {
 
 		previsualisation.getChildren().remove(listeObjets.get(selectedIndex));
 		listeObjets.remove(selectedIndex);
-		// listeObjets.get(selectedIndex).setImage(null);
 		ImageView imageView = new ImageView(ViewParametresPageExplicationController.chargerImage(imageObjet));
 		imageView.setPreserveRatio(true);
 		previsualisation.getChildren().add(imageView);
@@ -275,6 +330,23 @@ public class ViewParametresFouilleController implements Initializable {
 
 	}
 
+	/**
+	 * Ajoute une nouvelle instruction dans la liste apparaissant dans le tableau de
+	 * l'interface de parametrage. Positionne l'objet dans la zone de
+	 * prévisualisation.
+	 * 
+	 * @param intitule
+	 *            Consigne relative à l'image objet.
+	 * @param imageObjet
+	 *            Chemin relatif vers l'image objet.
+	 * @param posX
+	 *            Abscisse de positionnement de l'image objet dans le décor.
+	 * @param posY
+	 *            Ordonnée de positionnement de l'image objet dans le décor.
+	 * @param type
+	 *            Type de l'image objet.
+	 * @see Instruction
+	 */
 	public void addInstruction(String intitule, String imageObjet, Double posX, Double posY, String type) {
 		table.getItems().add(new Instruction(intitule, imageObjet, posX, posY, type));
 

@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -22,11 +21,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import modeles.Dialogue;
 import modeles.PNJ;
-import modeles.Question;
-import modeles.Quiz;
 
 public class ViewParametresPNJController implements Initializable {
 
@@ -74,6 +70,12 @@ public class ViewParametresPNJController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage du bloc de Dialogue avec
+	 * un PNJ. Vérifie s'il existe un fichier xml pré-configuré . Si oui, recupère
+	 * les informations paramétrées et dans le cas contraire, présente un formulaire
+	 * de paramétrage vide.
+	 */
 	public void initData() {
 		File f = new File(xml);
 		if (f.exists()) {
@@ -89,10 +91,23 @@ public class ViewParametresPNJController implements Initializable {
 		}
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de dialogue avec un PNJ.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction appelée par le bouton d'ajout d'un nouveau dialogue. Affiche le
+	 * formulaire vide correspondant aux paramètres d'un dialogue.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
 
@@ -104,6 +119,15 @@ public class ViewParametresPNJController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction appelée par le bouton de modification d'un dialogue. Vérifie si un
+	 * dialogue est sélectionné avant d'afficher le formulaire de dialogue avec les
+	 * informations pré-remplies.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void ClickButtonModify(ActionEvent event) throws IOException {
 		if (table.getSelectionModel().isEmpty()) {
@@ -117,6 +141,13 @@ public class ViewParametresPNJController implements Initializable {
 		controller.initData(true, table.getSelectionModel(), this);
 	}
 
+	/**
+	 * Fonction appelée par le bouton de suppression d'un dialogue. Vérifie si un
+	 * dialogue est sélectionné avant de le supprimer.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void ClickButtonRemove(ActionEvent event) {
 		if (table.getSelectionModel().isEmpty()) {
@@ -127,6 +158,14 @@ public class ViewParametresPNJController implements Initializable {
 		table.getItems().remove(selectedItem);
 	}
 
+	/**
+	 * Fonction de sauvegarde du paramétrage d'un bloc de dialogue avec PNJ.
+	 * Récupère les listes des dialogues, enregistre le fichier XML puis affiche la
+	 * popup de confirmation d'enregistrement du fichier.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void ClickButtonSave(ActionEvent event) {
 		ArrayList<Dialogue> listeDialogues = new ArrayList<Dialogue>();
@@ -136,7 +175,7 @@ public class ViewParametresPNJController implements Initializable {
 			listeDialogues.add(data.get(i));
 		}
 
-		PNJ dialogue = new PNJ("Nom du bloc", listeDialogues);
+		PNJ dialogue = new PNJ("Dialogue avec PNJ", listeDialogues);
 		dialogue.convertirJavaToXML(dialogue, xml);
 
 		// popup de confirmation
@@ -146,6 +185,13 @@ public class ViewParametresPNJController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Fonction permettant de remonter la position d'un dialogue dans une table
+	 * correspondant à l'ordre d'apparition.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void ClickButtonUp(ActionEvent event) {
 		int index = table.getSelectionModel().getSelectedIndex();
@@ -157,6 +203,12 @@ public class ViewParametresPNJController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de descendre la position d'un dialogue dans une table correspondant à l'ordre d'apparition.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void ClickButtonDown(ActionEvent event) {
 		int index = table.getSelectionModel().getSelectedIndex();
@@ -168,11 +220,48 @@ public class ViewParametresPNJController implements Initializable {
 		}
 	}
 
+	/**
+	 * Modifie un dialogue donnée dans la liste apparaissant dans le tableau de
+	 * l'interface de parametrage.
+	 * 
+	 * @param selectedIndex
+	 *            Entier représentant le rang de l'instruction dans le tableau .
+	 *            Première instruction correspondant au rang 0.
+	 * @param text
+	 *            Intitulé du dialogue.
+	 * @param imageVsCouleurFDE
+	 *            Indication d'un fond d'ecran en couleur unie ou d'une image.
+	 * @param perso
+	 *            Chemin relatif vers l'image (format png ou jpg) représentant le
+	 *            personnage.
+	 * @param imFDE
+	 *            Chemin relatif vers l'image (format png ou jpg) représentant le
+	 *            fond d'écran.
+	 * @param coulFDE
+	 *            Couleur de fond d'écran au format 0x00000000.
+	 */
 	public void setDialogue(int selectedIndex, String text, String imageVsCouleurFDE, String perso, String imFDE,
 			String coulFDE) {
 		table.getItems().set(selectedIndex, new Dialogue(imageVsCouleurFDE, imFDE, coulFDE, text, perso));
 	}
 
+	/**
+	 * Ajoute un nouveau dialogue dans la liste apparaissant dans le tableau de
+	 * l'interface de parametrage.
+	 * 
+	 * @param text
+	 *            Intitulé du dialogue.
+	 * @param imageVsCouleurFDE
+	 *            Indication d'un fond d'ecran en couleur unie ou d'une image.
+	 * @param perso
+	 *            Chemin relatif vers l'image (format png ou jpg) représentant le
+	 *            personnage.
+	 * @param imFDE
+	 *            Chemin relatif vers l'image (format png ou jpg) représentant le
+	 *            fond d'écran.
+	 * @param coulFDE
+	 *            Couleur de fond d'écran au format 0x00000000.
+	 */
 	public void addDialogue(String text, String imageVsCouleurFDE, String perso, String imFDE, String coulFDE) {
 		table.getItems().add(new Dialogue(imageVsCouleurFDE, imFDE, coulFDE, text, perso));
 	}

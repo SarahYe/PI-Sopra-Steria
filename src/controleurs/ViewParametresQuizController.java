@@ -14,19 +14,23 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableView;
-import javafx.scene.image.ImageView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
-import main.MainQuiz;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
+
+/**
+ * Controleur de l'interface de paramétrage d'un quiz.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 
 public class ViewParametresQuizController implements Initializable {
 
@@ -61,6 +65,12 @@ public class ViewParametresQuizController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage du quiz. Vérifie s'il
+	 * existe un fichier xml pré-configuré . Si oui, recupère les informations
+	 * paramétrées et dans le cas contraire, présente un formulaire de paramétrage
+	 * vide.
+	 */
 	public void initData() {
 		File f = new File(xml);
 		if (f.exists()) {
@@ -77,14 +87,44 @@ public class ViewParametresQuizController implements Initializable {
 
 	}
 
+	/**
+	 * Modifie une question dans la liste apparaissant dans le tableau de
+	 * l'interface de parametrage.
+	 * 
+	 * @param index
+	 *            Entier représentant le rang de l'instruction dans le tableau .
+	 *            Première instruction correspondant au rang 0.
+	 * @param intitule
+	 *            Intitulé de la question.
+	 * @param listeReponses
+	 *            Liste de propositions de réponses pour la question.
+	 */
 	public void setQuestion(int index, String intitule, ArrayList<Reponse> listeReponses) {
 		table.getItems().set(index, new Question(intitule, listeReponses));
 	}
 
+	/**
+	 * Ajoute une nouvellequestion dans la liste apparaissant dans le tableau de
+	 * l'interface de parametrage.
+	 * 
+	 * @param intitule
+	 *            Intitulé de la question.
+	 * @param listeReponses
+	 *            Liste de propositions de réponses pour la question.
+	 */
 	public void addQuestion(String intitule, ArrayList<Reponse> listeReponses) {
 		table.getItems().add(new Question(intitule, listeReponses));
 	}
 
+	/**
+	 * Fonction de sauvegarde du paramétrage du quiz. Récupère les listes des
+	 * questions, enregistre le fichier XML puis affiche la popup de confirmation
+	 * d'enregistrement du fichier.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	protected void ClickButtonSave(ActionEvent event) throws IOException {
 		ArrayList<Question> listeQuestions = new ArrayList<Question>();
@@ -93,7 +133,7 @@ public class ViewParametresQuizController implements Initializable {
 			listeQuestions.add(data.get(i));
 		}
 
-		Quiz quiz = new Quiz("Nom du quiz", listeQuestions);
+		Quiz quiz = new Quiz("Quiz", listeQuestions);
 		quiz.convertirJavaToXML(quiz, xml);
 
 		// popup de confirmation
@@ -103,6 +143,14 @@ public class ViewParametresQuizController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Fonction appelée par le bouton d'ajout d'une nouvelle question. Affiche le
+	 * formulaire vide correspondant aux paramètres d'une question.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	protected void ClickButtonAdd(ActionEvent event) throws IOException {
 
@@ -114,6 +162,15 @@ public class ViewParametresQuizController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction appelée par le bouton de modification d'une question. Vérifie si une
+	 * question est sélectionnée avant d'afficher le formulaire de question avec les
+	 * informations pré-remplies.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	protected void ClickButtonModify(ActionEvent event) throws IOException {
 		if (table.getSelectionModel().isEmpty()) {
@@ -127,6 +184,14 @@ public class ViewParametresQuizController implements Initializable {
 		controller.initData(true, table.getSelectionModel(), this);
 	}
 
+	/**
+	 * Fonction appelée par le bouton de suppression d'une question. Vérifie si une
+	 * question est sélectionnée avant de la supprimer.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	protected void ClickButtonRemove(ActionEvent event) throws IOException {
 		if (table.getSelectionModel().isEmpty()) {
@@ -137,6 +202,13 @@ public class ViewParametresQuizController implements Initializable {
 		table.getItems().remove(selectedItem);
 	}
 
+	/**
+	 * Fonction permettant de remonter la position d'une question dans une table
+	 * correspondant à l'ordre d'apparition.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	private void ClickButtonUp(ActionEvent event) {
 		int index = table.getSelectionModel().getSelectedIndex();
@@ -148,6 +220,13 @@ public class ViewParametresQuizController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de descendre la position d'un dialogue dans une table
+	 * correspondant à l'ordre d'apparition.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	private void ClickButtonDown(ActionEvent event) {
 		int index = table.getSelectionModel().getSelectedIndex();
@@ -159,6 +238,11 @@ public class ViewParametresQuizController implements Initializable {
 		}
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de quiz.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 

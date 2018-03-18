@@ -23,8 +23,12 @@ import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 
-import controleurs.QuizAccueilController;
-
+/**
+ * Controleur de l'interface joueur d'une question pendant le quiz.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewQuestionController implements Initializable {
 
 	private Quiz quiz = new Quiz();
@@ -66,6 +70,27 @@ public class ViewQuestionController implements Initializable {
 
 	HashMap<Integer, String> reponsesJoueur = new HashMap<Integer, String>();
 
+	/**
+	 * Fonction d'initialisation des données paramétrées d'une question du jeu de
+	 * quiz. Vérifie l'existence d'un fichier xml correspondant puis recupère les
+	 * informations paramétrées.
+	 * 
+	 * Affiche la question et atualise la barre de progression.
+	 * 
+	 * @param quiz
+	 *            Objet quiz.
+	 * @param reponsesJoueur
+	 *            Liste contenant les différentes réponses choisies par le joueur au
+	 *            coursd'un quiz.
+	 * @param cmpt
+	 *            Compteur définissant le rang de la question présentée.
+	 * @param son
+	 *            Paramètre d'activation ou non des éléments sonores.
+	 * @param score
+	 *            Score cumulé par le joueur lors des événements antérieurs.
+	 * 
+	 * @see Quiz.
+	 */
 	public void initData(Quiz quiz, HashMap<Integer, String> reponsesJoueur, int cmpt, boolean son, int score) {
 		this.cmpt = cmpt;
 		this.quiz = quiz;
@@ -89,7 +114,6 @@ public class ViewQuestionController implements Initializable {
 			buttonNextQue.setVisible(Boolean.FALSE);
 			question = this.quiz.getListeQuestions().get(cmpt);
 			remplissageContentQuestion(question);
-			// progression.setText(cmpt + 1 + "/" + quiz.getListeQuestions().size());
 			progQuiz.setProgress((double) cmpt / this.quiz.getListeQuestions().size());
 
 		} else {
@@ -102,16 +126,34 @@ public class ViewQuestionController implements Initializable {
 		bulle.setVisible(false);
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de quiz.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * 
+	 * @param soloBloc
+	 * @param cmptChronologie
+	 * @param xmlChronologie
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;
 		this.xmlChronologie = xmlChronologie;
 	}
 
+	/**
+	 * Affiche les propositions de réponses pour une question.
+	 * 
+	 * @param question
+	 *            Objet question
+	 * @see Question.
+	 */
 	private void remplissageContentQuestion(Question question) {
 
 		intiQue.setText(question.getIntituleQuestion());
@@ -148,15 +190,24 @@ public class ViewQuestionController implements Initializable {
 
 	@FXML
 	private void ClickBackHome(ActionEvent event) {
-		if (soloBloc) {
-			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			stage.close();
-		} else {
-			Stage stage = (Stage) buttonNextQue.getScene().getWindow();
-			/**** Previous bloc ****/
-		}
+		/*
+		 * if (soloBloc) { Stage stage = (Stage) buttonNextQue.getScene().getWindow();
+		 * stage.close(); } else { Stage stage = (Stage)
+		 * buttonNextQue.getScene().getWindow();
+		 *//**** Previous bloc ****//*
+									 * }
+									 */
 	}
 
+	/**
+	 * Fonction gérant la validation d'une réponse. Affiche la justification,
+	 * l'indication d'une réponse correcte ou pas et l'affichage du bouton
+	 * permettant de passer à la question suivante. Gère l'effet sonore et le score
+	 * du joueur.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	private void ClickButtonValider(ActionEvent event) {
 		int cmptTrue = 0;
@@ -229,20 +280,26 @@ public class ViewQuestionController implements Initializable {
 			faux.setVisible(true);
 
 			if (cmptTrue == 00 && choice) {
-				QuizAccueilController.jouerAudio("././Ressources/Sons/succes.wav", niveauSon);
+				ViewAccueilController.jouerAudio("././Ressources/Sons/succes.wav", niveauSon);
 				faux.setVisible(false);
 				vrai.setVisible(true);
 				score += 500;
-				System.out.print(score);
 			} else {
-				QuizAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);
+				ViewAccueilController.jouerAudio("././Ressources/Sons/echec.wav", niveauSon);
 			}
 
-			// System.out.println(reponsesJoueur.);
 			buttonNextQue.setVisible(Boolean.TRUE);
 		}
 	}
 
+	/**
+	 * Fonction permettant de passer à la prochaine question ou au récapitulatif des réponses
+	 * du joueur.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	private void ClickButtonNextQue(ActionEvent event) throws IOException {
 
@@ -274,6 +331,12 @@ public class ViewQuestionController implements Initializable {
 
 	}
 
+	/**
+	 * Active le son.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	private void SonOn(ActionEvent event) {
 		niveauSon = -30.0f;
@@ -282,6 +345,12 @@ public class ViewQuestionController implements Initializable {
 		volumeOff.setVisible(false);
 	}
 
+	/**
+	 * Désactive le son.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	private void SonOff(ActionEvent event) {
 		son = false;

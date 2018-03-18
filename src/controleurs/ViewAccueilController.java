@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -31,18 +30,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import modeles.Accueil;
 import modeles.FondEcran;
 import modeles.Titre;
-import sun.audio.AudioPlayer;
-import sun.audio.AudioStream;
 
+/**
+ * Controleur de l'interface joueur d'un accueil.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewAccueilController implements Initializable {
 
 	@FXML
@@ -65,9 +66,17 @@ public class ViewAccueilController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
-		// jouerAudio("././Ressources/Sons/Jouer.wav", -25.0f);
 	}
 
+	/**
+	 * Fonction d'initialisation des données paramétrées d'un accueil. Vérifie
+	 * l'existence d'un fichier xml correspondant puis recupère les informations
+	 * paramétrées.
+	 * 
+	 * @param xml Chemin vers le fichier xml de paramétrage.
+	 * @param son Paramètre d'activation ou non des éléments sonores.
+	 * @param score Score cumulé par le joueur lors des événements antérieurs.
+	 */
 	public void initData(String xml, boolean son, int score) {
 		this.son = son;
 		this.score = score;
@@ -93,7 +102,6 @@ public class ViewAccueilController implements Initializable {
 			} else {
 				titreTexte.setVisible(false);
 
-				// System.out.println("Image");
 				imageTitre.setImage(ViewParametresPageExplicationController.chargerImage(titre.getLienImage()));
 			}
 
@@ -101,13 +109,9 @@ public class ViewAccueilController implements Initializable {
 
 			if (fondEcran.getImageVsCouleur().contains("Image")) {
 				anchor.setStyle("-fx-background-color:transparent;");
-
-				// System.out.println(fondEcran.getLienImage());
 				imageFDE.setImage(ViewParametresPageExplicationController.chargerImage(fondEcran.getLienImage()));
 			} else {
 				imageFDE.setVisible(false);
-
-				// System.out.println("Couleur");
 				anchor.setStyle("-fx-background-color:" + fondEcran.getCouleur().replace("0x", "#") + ";");
 			}
 
@@ -123,16 +127,32 @@ public class ViewAccueilController implements Initializable {
 		}
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml d'accueil.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * 
+	 * @param soloBloc
+	 * @param cmptChronologie
+	 * @param xmlChronologie
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;
 		this.xmlChronologie = xmlChronologie;
 	}
 
+	/**
+	 * 
+	 * @param event  Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	protected void ClickButtonJouer(ActionEvent event) throws IOException {
 		if (soloBloc) {
@@ -146,7 +166,6 @@ public class ViewAccueilController implements Initializable {
 			} else {
 
 				Platform.setImplicitExit(false);
-				System.out.println("Fermeture du bloc JAVAFX pr�c�dent");
 				stage.close();
 
 				ArrayList<String> names = new ArrayList<String>();
@@ -192,6 +211,14 @@ public class ViewAccueilController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de lecture des éléments sonores avec indication du volume.
+	 * 
+	 * @param son
+	 *            Chemin vers le fichier audio.
+	 * @param volumeReduced
+	 *            Volume de lecture de l'audio (décimal).
+	 */
 	public static void jouerAudio(String son, float volumeReduced) {
 		try {
 			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(son));

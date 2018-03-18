@@ -24,13 +24,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import modeles.Quiz;
 
+/**
+ * Controleur de l'interface joueur de résumé des questions d'un joueur.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewQuizRecapController implements Initializable {
 
 	@FXML
@@ -62,22 +67,38 @@ public class ViewQuizRecapController implements Initializable {
 		nbRepIncorrect.setText("0");
 	}
 
+	/**
+	 * 
+	 * @param soloBloc
+	 * @param cmptChronologie
+	 * @param xmlChronologie
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;
 		this.xmlChronologie = xmlChronologie;
 	}
 
+	/**
+	 * Fonction d'initialisation de la page de récapitulatif des réponses d'un
+	 * utilisatuer lors d'une partie de quiz. Vérifie l'existence d'un fichier xml
+	 * correspondant puis recupère les informations paramétrées.
+	 * 
+	 * @param reponsesJoueur
+	 *            Liste des réponses du joueur.
+	 * @param son
+	 *            Paramètre d'activation ou non des éléments sonores.
+	 * @param score
+	 *            Score cumulé par le joueur lors des événements antérieurs.
+	 */
 	public void initData(HashMap<Integer, String> reponsesJoueur, boolean son, int score) {
 		this.reponsesJoueur = reponsesJoueur;
-		// this.quiz = quiz;
 		this.son = son;
 		this.score = score;
 
 		File f = new File(xml);
 		if (f.exists()) {
 			quiz = quiz.convertirXMLToJava(xml);
-			// System.out.println(reponsesJoueur.values());
 			for (int i = 0; i < quiz.getListeQuestions().size(); i++) {
 				for (int j = 0; j < quiz.getListeQuestions().get(i).getListeReponses().size(); j++) {
 					if (quiz.getListeQuestions().get(i).getListeReponses().get(j).getCorrect()) {
@@ -138,7 +159,6 @@ public class ViewQuizRecapController implements Initializable {
 							hbox3.getChildren().add(corRep);
 							vbox.getChildren().add(hbox3);
 						}
-						// System.out.println("Correct :" + nbCorrect + "\nIncorrect:" + nbIncorrect);
 					}
 
 				}
@@ -151,10 +171,22 @@ public class ViewQuizRecapController implements Initializable {
 
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml d'accueil.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction permettant de passer à l'évènement suivant.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	private void ClickButtonNext(ActionEvent event) throws IOException {
 		if (soloBloc) {
@@ -187,8 +219,6 @@ public class ViewQuizRecapController implements Initializable {
 								throws SAXException {
 							names.add(qName);
 							path.add(attributes.getValue("pathXML"));
-							// System.out.println("startElement: " + qName + " attributs :
-							// "+attributes.getValue("pathXML"));
 						}
 
 						public void endElement(String uri, String localName, String qName) throws SAXException {

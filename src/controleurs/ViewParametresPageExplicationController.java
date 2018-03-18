@@ -9,30 +9,33 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
-import javafx.stage.StageStyle;
 import modeles.Explication;
+
+/**
+ * Controleur de l'interface de paramétrage d'une page explicative.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 
 public class ViewParametresPageExplicationController implements Initializable {
 
@@ -101,6 +104,12 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage d'une page explicative.
+	 * Vérifie s'il existe un fichier xml pré-configuré . Si oui, recupère les
+	 * informations paramétrées et dans le cas contraire, présente un formulaire de
+	 * paramétrage vide.
+	 */
 	public void initData() {
 		File f = new File(xml);
 		if (f.exists()) {
@@ -128,6 +137,14 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction de téléchargement et d'affichage d'une image décorative ou
+	 * illustrative . Affiche
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void changerImage1(ActionEvent event) throws IOException {
 
@@ -159,6 +176,14 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction de téléchargement et d'affichage d'une image décorative ou
+	 * illustrative . Affiche
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void changerImage2(ActionEvent event) throws IOException {
 
@@ -190,6 +215,13 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction d'apparition du formulaire d'enregistrement d'une explication.
+	 * Désactive le mode prévisualisation puis active le mode d'édition.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void changerTitre(MouseEvent event) {
 
@@ -225,6 +257,16 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction de sauvegarde du paramétrage de la page explicative. Récupère les
+	 * paramètres de ladite interface, enregistre le fichier xml puis affiche la
+	 * popup de confirmation d'enregistrement du fichier xml. Active le mode de
+	 * prévisualisation.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void enregistrerParametrage(ActionEvent event) throws IOException {
 
@@ -260,10 +302,6 @@ public class ViewParametresPageExplicationController implements Initializable {
 			else
 				hyperlien.setText(champHyperlien.getText());
 
-			// image1
-
-			// image2
-
 			// éléments visibles
 			theme.setVisible(true);
 			explication.setVisible(true);
@@ -286,8 +324,6 @@ public class ViewParametresPageExplicationController implements Initializable {
 			Explication objetExplication = new Explication(theme.getText(), explication.getText(), source.getText(),
 					ListeLiens, ListeImages);
 			objetExplication.convertirJavaToXML(objetExplication, xml);
-			// objetExplication.convertirJavaToXML(objetExplication, "FichiersDeConfig/" +
-			// result.get() +".xml");
 
 			// popup de confirmation
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -298,39 +334,44 @@ public class ViewParametresPageExplicationController implements Initializable {
 
 	}
 
-	public void setTitre(String mTitre) {
-		theme.setText(mTitre);
-	}
-
-	public void setExplication(String mExplication) {
-		explication.setText(mExplication);
-	}
-
-	public void setSource(String mSource) {
-		source.setText(mSource);
-	}
-
-	public void setLien(String mlien) {
-		hyperlien.setText(mlien);
-	}
-
-	public void setImage1(String chemin) {
-		image1.setImage(chargerImage(chemin));
-	}
-
-	public void setImage2(String chemin) {
-		image2.setImage(chargerImage(chemin));
-	}
-
+	/**
+	 * Fonction de conversion d'un chemin au format Image.
+	 * 
+	 * @param chemin
+	 *            Chemin vers une image.
+	 * @return Un objet Image.
+	 * @see Image.
+	 */
 	public static Image chargerImage(String chemin) {
 		File file = new File(chemin);
 		Image image = new Image(file.toURI().toString());
 		return image;
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de page explicative.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
-
 	}
+
+	/*
+	 * public void setTitre(String mTitre) { theme.setText(mTitre); }
+	 * 
+	 * public void setExplication(String mExplication) {
+	 * explication.setText(mExplication); }
+	 * 
+	 * public void setSource(String mSource) { source.setText(mSource); }
+	 * 
+	 * public void setLien(String mlien) { hyperlien.setText(mlien); }
+	 * 
+	 * public void setImage1(String chemin) { image1.setImage(chargerImage(chemin));
+	 * }
+	 * 
+	 * public void setImage2(String chemin) { image2.setImage(chargerImage(chemin));
+	 * }
+	 */
 
 }

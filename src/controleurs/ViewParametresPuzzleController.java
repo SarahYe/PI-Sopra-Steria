@@ -1,29 +1,37 @@
 package controleurs;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import modeles.Puzzle;
+
+/**
+ * Controleur de l'interface de paramétrage d'un jeu de puzzle.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 
 public class ViewParametresPuzzleController implements Initializable {
 
@@ -244,6 +252,12 @@ public class ViewParametresPuzzleController implements Initializable {
 		btnTelechargerfrag1_6_6.setVisible(false);
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage du jeu de puzzle.
+	 * Vérifie s'il existe un fichier xml pré-configuré . Si oui, recupère les
+	 * informations paramétrées et dans le cas contraire, présente un formulaire de
+	 * paramétrage vide.
+	 */
 	public void initData() {
 		File f = new File(xml);
 		if (f.exists()) {
@@ -258,6 +272,7 @@ public class ViewParametresPuzzleController implements Initializable {
 			decr_sec.setDisable(false);
 			score_min.setText("" + p.getScore_min());
 			score_min.setDisable(false);
+
 			int nbFrag = p.getListeFragments().size();
 			switch (nbFrag) {
 			case 4:
@@ -381,10 +396,21 @@ public class ViewParametresPuzzleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml de puzzle.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction d'activation et de désactivation du scoring par défaut.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un checkbox.
+	 */
 	@FXML
 	void handleCheckboxScoring(ActionEvent event) {
 		if (defaultScoring.isSelected()) {
@@ -405,6 +431,14 @@ public class ViewParametresPuzzleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de changement du type de puzzle. Affiche et faire disparaitre les
+	 * boutons de téléchargement d'image utilisés pour le type "Image".
+	 * 
+	 * @param event
+	 *            Listener d'action sur un checkbox.
+	 * @see Puzzle.
+	 */
 	@FXML
 	void handleCheckboxTypePuzzle(ActionEvent event) {
 
@@ -464,6 +498,12 @@ public class ViewParametresPuzzleController implements Initializable {
 
 	}
 
+	/**
+	 * Modifie le format d'un puzzle avec adaptation du formulaire.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void choisirFormat(ActionEvent event) {
 		puzzleImage.setSelected(false);
@@ -506,6 +546,13 @@ public class ViewParametresPuzzleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Permet de modifier le nombre d'indices pour une partie de puzzle avec
+	 * adaptation du formulaire.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un combobox.
+	 */
 	@FXML
 	void handleComboIndice(ActionEvent event) {
 		int nbIndiceSelect = nbIndices.getValue();
@@ -532,6 +579,14 @@ public class ViewParametresPuzzleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de vérification de la cohérence au niveau des saisies: les champs à
+	 * caractère numérique, la correspondance nombre de pièces/format du puzzle et
+	 * celle nombre d'indices/liste d'indices indiqués
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void sauvegarder(ActionEvent event) {
 		if (score_init.getText().isEmpty() || decr_points.getText().isEmpty() || decr_sec.getText().isEmpty()
@@ -555,9 +610,9 @@ public class ViewParametresPuzzleController implements Initializable {
 					} else {
 						if (nbIndices.getValue().equals(1) && !indice1.getText().isEmpty()
 								|| nbIndices.getValue().equals(2) && !indice1.getText().isEmpty()
-										&& !indice2.getText().isEmpty()
+								&& !indice2.getText().isEmpty()
 								|| nbIndices.getValue().equals(3) && !indice1.getText().isEmpty()
-										&& !indice2.getText().isEmpty() && !indice3.getText().isEmpty()) {
+								&& !indice2.getText().isEmpty() && !indice3.getText().isEmpty()) {
 							if (description.getText().isEmpty())
 								errorLabel.setVisible(true);
 							else
@@ -575,9 +630,9 @@ public class ViewParametresPuzzleController implements Initializable {
 					} else {
 						if (nbIndices.getValue().equals(1) && !indice1.getText().isEmpty()
 								|| nbIndices.getValue().equals(2) && !indice1.getText().isEmpty()
-										&& !indice2.getText().isEmpty()
+								&& !indice2.getText().isEmpty()
 								|| nbIndices.getValue().equals(3) && !indice1.getText().isEmpty()
-										&& !indice2.getText().isEmpty() && !indice3.getText().isEmpty()) {
+								&& !indice2.getText().isEmpty() && !indice3.getText().isEmpty()) {
 							if (description.getText().isEmpty())
 								errorLabel.setVisible(true);
 							else
@@ -596,9 +651,9 @@ public class ViewParametresPuzzleController implements Initializable {
 					} else {
 						if (nbIndices.getValue().equals(1) && !indice1.getText().isEmpty()
 								|| nbIndices.getValue().equals(2) && !indice1.getText().isEmpty()
-										&& !indice2.getText().isEmpty()
+								&& !indice2.getText().isEmpty()
 								|| nbIndices.getValue().equals(3) && !indice1.getText().isEmpty()
-										&& !indice2.getText().isEmpty() && !indice3.getText().isEmpty()) {
+								&& !indice2.getText().isEmpty() && !indice3.getText().isEmpty()) {
 							if (description.getText().isEmpty())
 								errorLabel.setVisible(true);
 							else
@@ -613,6 +668,12 @@ public class ViewParametresPuzzleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de sauvegarde du paramétrage du puzzle. Récupère les listes des
+	 * pièces du puzzle, la système de gestion du score, la liste des indices,
+	 * enregistre le fichier XML puis affiche la popup de confirmation
+	 * d'enregistrement du fichier.
+	 */
 	private void creerXML() {
 
 		ArrayList<String> listeIndices = new ArrayList<String>();
@@ -680,8 +741,15 @@ public class ViewParametresPuzzleController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 1 du format 1x4.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_4_1(ActionEvent event) {
+	void telechargerfrag1_4_1(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -692,11 +760,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_4_1.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_4_1.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 2 du format 1x4.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_4_2(ActionEvent event) {
+	void telechargerfrag1_4_2(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -707,11 +795,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_4_2.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_4_2.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 3 du format 1x4.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_4_3(ActionEvent event) {
+	void telechargerfrag1_4_3(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -722,11 +830,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_4_3.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_4_3.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 4 du format 1x4.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_4_4(ActionEvent event) {
+	void telechargerfrag1_4_4(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -737,11 +865,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_4_4.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_4_4.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 1 du format 1x5.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_5_1(ActionEvent event) {
+	void telechargerfrag1_5_1(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -752,11 +900,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_5_1.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_5_1.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 2 du format 1x5.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_5_2(ActionEvent event) {
+	void telechargerfrag1_5_2(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -767,11 +935,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_5_2.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_5_2.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 3 du format 1x5.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_5_3(ActionEvent event) {
+	void telechargerfrag1_5_3(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -782,11 +970,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_5_3.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_5_3.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 4 du format 1x5.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_5_4(ActionEvent event) {
+	void telechargerfrag1_5_4(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -797,11 +1005,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_5_4.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_5_4.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 5 du format 1x5.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_5_5(ActionEvent event) {
+	void telechargerfrag1_5_5(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -812,11 +1040,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_5_5.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_5_5.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 1 du format 1x6.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_6_1(ActionEvent event) {
+	void telechargerfrag1_6_1(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -827,11 +1075,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_6_1.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_6_1.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 2 du format 1x6.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_6_2(ActionEvent event) {
+	void telechargerfrag1_6_2(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -842,11 +1110,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_6_2.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_6_2.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 3 du format 1x6.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_6_3(ActionEvent event) {
+	void telechargerfrag1_6_3(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -857,11 +1145,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_6_3.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_6_3.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 4 du format 1x6.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_6_4(ActionEvent event) {
+	void telechargerfrag1_6_4(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -872,11 +1180,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_6_4.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_6_4.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 5 du format 1x6.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_6_5(ActionEvent event) {
+	void telechargerfrag1_6_5(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -887,11 +1215,31 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_6_5.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_6_5.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image représentant la pièce 6 du format 1x6.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
-	void telechargerfrag1_6_6(ActionEvent event) {
+	void telechargerfrag1_6_6(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
 		FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
@@ -902,7 +1250,20 @@ public class ViewParametresPuzzleController implements Initializable {
 
 		Path cheminAbsoluActuel = Paths.get("").toAbsolutePath();
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
-		frag1_6_6.setText(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString());
+		String[] s = cheminAbsoluImage.toString().split("/");
+		String nomImage = s[s.length - 1];
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
+
+		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
+			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
+		} else {
+			if (nomImage.contains(".jpg") || nomImage.contains(".JPG"))
+				ImageIO.write(image, "jpg", new File("././Ressources/Images/" + nomImage));
+			else
+				ImageIO.write(image, "jpeg", new File("././Ressources/Images/" + nomImage));
+		}
+		frag1_6_6.setText("././Ressources/Images/" + nomImage);
 	}
 
 }

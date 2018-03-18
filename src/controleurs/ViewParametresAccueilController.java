@@ -38,6 +38,13 @@ import modeles.Accueil;
 import modeles.FondEcran;
 import modeles.Titre;
 
+/**
+ * Controleur de l'interface de paramétrage d'un accueil.
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
+
 public class ViewParametresAccueilController implements Initializable {
 
 	@FXML
@@ -153,6 +160,12 @@ public class ViewParametresAccueilController implements Initializable {
 		});
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage d'un accueil. Vérifie
+	 * s'il existe un fichier xml pré-configuré . Si oui, recupère les informations
+	 * paramétrées et dans le cas contraire, présente un formulaire de paramétrage
+	 * vide.
+	 */
 	public void initData() {
 		Accueil accueil = new Accueil();
 		File f = new File(xml);
@@ -195,10 +208,22 @@ public class ViewParametresAccueilController implements Initializable {
 
 	}
 
+	/**
+	 * Modifie le chemin relatif vers le fichier xml d'accueil.
+	 * 
+	 * @param xml
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction de téléchargement de l'image en fond d'écran de l'accueil.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void chargerImageFondEcran(ActionEvent event) throws IOException {
 
@@ -233,6 +258,12 @@ public class ViewParametresAccueilController implements Initializable {
 		activerCouleur();
 	}
 
+	/**
+	 * Fonction de suppression de l'image de fond d'écran.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void supprimerImageFondEcran(ActionEvent event) {
 		imageFondEcran.setText("");
@@ -240,6 +271,12 @@ public class ViewParametresAccueilController implements Initializable {
 		modif--;
 	}
 
+	/**
+	 * Fonction de modification d'une couleur unie pour le fond d'écran.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void modifierCouleurFondEcran(ActionEvent event) {
 		couleurFDE = true;
@@ -248,6 +285,12 @@ public class ViewParametresAccueilController implements Initializable {
 		erreur.setVisible(false);
 	}
 
+	/**
+	 * Fonction de suppression d'une couleur unie pour le fond d'écran.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void supprimerCouleurFondEcran(ActionEvent event) {
 		imageFondEcran.setText("");
@@ -260,6 +303,13 @@ public class ViewParametresAccueilController implements Initializable {
 		modif--;
 	}
 
+	/**
+	 * Fonction de téléchargement d'une image pour le titre de l'accueil.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @see Titre
+	 */
 	@FXML
 	void chargerImageNomSG(ActionEvent event) throws IOException {
 
@@ -274,7 +324,8 @@ public class ViewParametresAccueilController implements Initializable {
 		Path cheminAbsoluImage = Paths.get(file.getAbsolutePath());
 		String[] s = cheminAbsoluImage.toString().split("/");
 		String nomImage = s[s.length - 1];
-		BufferedImage image = ImageIO.read(new File(cheminAbsoluActuel.relativize(cheminAbsoluImage).toString()));
+		nomImage = nomImage.substring(nomImage.lastIndexOf("\\") + 1);
+		BufferedImage image = ImageIO.read(new File(cheminAbsoluImage.toString()));
 
 		if (nomImage.contains(".png") || nomImage.contains(".PNG")) {
 			ImageIO.write(image, "png", new File("././Ressources/Images/" + nomImage));
@@ -294,6 +345,12 @@ public class ViewParametresAccueilController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction de suppression de l'image pour le titre de l'accueil.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void supprimerImageNomSG(ActionEvent event) {
 		imageNomSG.setText("");
@@ -311,6 +368,13 @@ public class ViewParametresAccueilController implements Initializable {
 		texteNomSG = false;
 	}
 
+	/**
+	 * Fonction de prévisualisation du texte formatté pour le titre de l'accueil.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @see Titre.
+	 */
 	@FXML
 	void showNomSG(ActionEvent event) {
 		if (NomSG.getText().length() > 0) {
@@ -342,6 +406,12 @@ public class ViewParametresAccueilController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction de suppression du texte formatté.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void effacerNomSG(ActionEvent event) {
 		NomSG.setText("");
@@ -358,6 +428,10 @@ public class ViewParametresAccueilController implements Initializable {
 		modif--;
 	}
 
+	/**
+	 * Fonction permettant de switcher entre le mode "Image" et le mode "Texte
+	 * formatté" pour le titre.
+	 */
 	public void activerTelechargementNomSG() {
 		if (texteNomSG) {
 			boutonEffacerNomSG.setDisable(false);
@@ -368,6 +442,7 @@ public class ViewParametresAccueilController implements Initializable {
 			NomSG.setDisable(true);
 			policeNomSG.setDisable(true);
 			couleurNomSG.setDisable(true);
+			tailleNomSG.setDisable(true);
 			boutonApercu.setDisable(true);
 			boutonEffacerNomSG.setDisable(true);
 		}
@@ -383,6 +458,14 @@ public class ViewParametresAccueilController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de sauvegarde du paramétrage de l'accueil. Récupère les paramètres
+	 * pour le titre et le fond d'écran. Ecrit le fichier xml puis affiche la popup
+	 * de confirmation de son enregistrement.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 */
 	@FXML
 	void enregistrer(ActionEvent event) {
 
@@ -406,7 +489,6 @@ public class ViewParametresAccueilController implements Initializable {
 				titreObj.setTexte(NomSG.getText());
 				titreObj.setCouleurTexte(couleurNomSG.getValue().toString());
 				titreObj.setPoliceTexte(policeNomSG.getValue().toString());
-				// System.out.println(Integer.parseInt(tailleNomSG.getValue()));
 				titreObj.setTaille("" + tailleNomSG.getValue());
 			} else {
 				titreObj.setImageVsTexte("Image");
@@ -426,6 +508,13 @@ public class ViewParametresAccueilController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de prévisualisation de l'accueil paramétré.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	void previsualisation(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
@@ -433,10 +522,17 @@ public class ViewParametresAccueilController implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/Accueil.fxml"));
 		stage.setScene(new Scene(loader.load()));
 		ViewAccueilController controller = loader.<ViewAccueilController>getController();
-		controller.initData("FichiersDeConfig/accueil.xml", true, 0);
+		controller.initData(xml, true, 0);
 		stage.show();
 	}
 
+	/**
+	 * Permet de lister toutes les polices de caractères au format TTF issues d'un
+	 * dosssier.
+	 * 
+	 * @param dossier
+	 *            chemin vers le dossier.
+	 */
 	public void listerPolices(final File dossier) {
 		for (final File police : dossier.listFiles()) {
 			if (police.isDirectory()) {

@@ -18,10 +18,16 @@ import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import modeles.Question;
 import modeles.Reponse;
 
+/**
+ * Controleur de l'interface d'ajout et de modification d'une question dans le
+ * bloc "Quiz".
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewAddOrModifyQuestionController implements Initializable {
 
 	private boolean modifyQuestionInterface;
@@ -97,6 +103,21 @@ public class ViewAddOrModifyQuestionController implements Initializable {
 		addTextALimiter(textAreaRep5, 250);
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage d'un dialogue dans le
+	 * bloc correspondant. Vérifie s'il s'agit d'un nouvel ajout ou d'une
+	 * modification et selon le cas, affiche le formulaire avec les informations
+	 * paramétrées.
+	 * 
+	 * @param modifyQuestionInterface
+	 *            boolean permettant d'indiquer s'il s'agit d'un ajout (FALSE) ou
+	 *            d'une modification (TRUE).
+	 * @param tableViewSelectionModel
+	 *            TableViewSelectionModel.
+	 * @param controller
+	 *            ViewParametresQuizController
+	 * @see ViewParametresQuizController
+	 */
 	public void initData(boolean modifyQuestionInterface, TableViewSelectionModel<Question> tableViewSelectionModel,
 			ViewParametresQuizController controller) {
 
@@ -193,6 +214,15 @@ public class ViewAddOrModifyQuestionController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant de limiter le nombre de caractères dans un objet
+	 * TextField.
+	 * 
+	 * @param tf
+	 *            Objet TextField
+	 * @param maxLength
+	 *            Nombre de caractères maximum (entier).
+	 */
 	public static void addTextFLimiter(final TextField tf, final int maxLength) {
 		tf.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -206,6 +236,15 @@ public class ViewAddOrModifyQuestionController implements Initializable {
 		});
 	}
 
+	/**
+	 * Fonction permettant de limiter le nombre de caractères dans un objet
+	 * TextArea.
+	 * 
+	 * @param ta
+	 *            Objet TextArea
+	 * @param maxLength
+	 *            Nombre de caractères maximum (entier).
+	 */
 	public static void addTextALimiter(final TextArea ta, final int maxLength) {
 		ta.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -219,6 +258,15 @@ public class ViewAddOrModifyQuestionController implements Initializable {
 		});
 	}
 
+	/**
+	 * Fonction d'ajout ou de modification d'une question. Vérifie la cohérence des
+	 * saisies : existence d'une question et de propositions de réponse, indication
+	 * d'une bonne réponse.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @throws IOException
+	 */
 	@FXML
 	protected void ClickButtonSave(ActionEvent event) throws IOException {
 

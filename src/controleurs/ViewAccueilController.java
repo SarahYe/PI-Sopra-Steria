@@ -149,7 +149,7 @@ public class ViewAccueilController implements Initializable {
 	}
 
 	/**
-	 * 
+	 * Appelle l'évènement suivant. 
 	 * @param event  Listener d'action sur un bouton.
 	 * @throws IOException
 	 */

@@ -10,24 +10,26 @@ import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import modeles.Instruction;
 
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-
+/**
+ * Controleur de l'interface d'ajout et de modification d'une instruction dans
+ * le bloc "Jeu de fouille".
+ * 
+ * @author YESUFU Sarah
+ * @version 1.0
+ */
 public class ViewAddOrModifyInstructionController implements Initializable {
 
 	@FXML
@@ -76,6 +78,21 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 		ViewAddOrModifyQuestionController.addTextALimiter(zoneEnonce, 150);
 	}
 
+	/**
+	 * Fonction d'initialisation des données de paramétrage d'une instruction dans
+	 * le bloc correspondant. Vérifie s'il s'agit d'un nouvel ajout ou d'une
+	 * modification et selon le cas, affiche le formulaire avec les informations
+	 * paramétrées.
+	 * 
+	 * @param modifyDialogueInterface
+	 *            boolean permettant d'indiquer s'il s'agit d'un ajout (FALSE) ou
+	 *            d'une modification (TRUE).
+	 * @param tableViewSelectionModel
+	 *            TableViewSelectionModel.
+	 * @param controller
+	 *            ViewParametresFouilleController.
+	 * @see ViewParametresFouilleController.
+	 */
 	public void initData(boolean modifyDialogueInterface, TableViewSelectionModel<Instruction> tableViewSelectionModel,
 			ViewParametresFouilleController controller) {
 		this.modifyDialogueInterface = modifyDialogueInterface;
@@ -92,6 +109,13 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction d'ajout ou de modification d'une instruction.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @see Instruction
+	 */
 	@FXML
 	void sauvegarder(ActionEvent event) {
 
@@ -126,6 +150,16 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction de téléchargement d'une image pour le paramètre "objet à trouver" du
+	 * jeu de fouille.
+	 * 
+	 * @param event
+	 *            Listener d'action sur un bouton.
+	 * @param event
+	 * @throws IOException
+	 * @see Instruction.
+	 */
 	@FXML
 	void telechargerObjet(ActionEvent event) throws IOException {
 		FileChooser fileChooser = new FileChooser();
@@ -155,6 +189,13 @@ public class ViewAddOrModifyInstructionController implements Initializable {
 		imageObjet.setText("././Ressources/Images/" + nomImage);
 	}
 
+	/**
+	 * Fonction de parsage d'une chaine de caractères en décimal.
+	 * 
+	 * @param value
+	 *            texte à convertir
+	 * @return Décimal
+	 */
 	static boolean tryParseDouble(String value) {
 		try {
 			Double.parseDouble(value);

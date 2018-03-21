@@ -48,6 +48,10 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * Controlleur de l'interface de paramétrage globale
+ *
+ */
 public class ViewMainParametresController implements Initializable {
 
 	@FXML
@@ -202,6 +206,11 @@ public class ViewMainParametresController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction affichant l'interface de paramétrage du bloc selectionné à droite de l'interface
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	private void ClickBT_ConfBlc(ActionEvent event) throws IOException {
 		int index = LV_BlcList.getSelectionModel().getSelectedIndex();
@@ -218,6 +227,13 @@ public class ViewMainParametresController implements Initializable {
 		loadConfBlc(fxml, xml, cmpt);
 	}
 
+	/**
+	 * Fonction chargeant l'interface de paramétrage désiré
+	 * @param fxml fxml du bloc à charger
+	 * @param xml xml du bloc à charger
+	 * @param cmpt compteur permettant de définir le type de bloc à appeler
+	 * @throws IOException
+	 */
 	private void loadConfBlc(String fxml, String xml, int cmpt) throws IOException {
 		if (fxml.endsWith("fxml")) {
 			System.out.println("cmpt=" + cmpt);
@@ -261,6 +277,12 @@ public class ViewMainParametresController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de sauvegarder un jeu
+	 * @param event
+	 * @throws ParserConfigurationException
+	 * @throws TransformerException
+	 */
 	@FXML
 	private void ClickBT_SaveGame(ActionEvent event) throws ParserConfigurationException, TransformerException {
 		// ré¦—upé§»ation du nom du jeu entrï¿½
@@ -328,6 +350,13 @@ public class ViewMainParametresController implements Initializable {
 		// st.close();
 	}
 
+	/**
+	 * Fonction permettant de charger un jeu donné
+	 * @param event
+	 * @throws ParserConfigurationException
+	 * @throws TransformerException
+	 * @throws SlickException
+	 */
 	@FXML
 	private void ClickBT_LoadGame(ActionEvent event)
 			throws ParserConfigurationException, TransformerException, SlickException {
@@ -386,6 +415,13 @@ public class ViewMainParametresController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant de tester un jeu donné
+	 * @param event
+	 * @throws ParserConfigurationException
+	 * @throws TransformerException
+	 * @throws SlickException
+	 */
 	@FXML
 	private void ClickBT_TestGame(ActionEvent event)
 			throws ParserConfigurationException, TransformerException, SlickException {

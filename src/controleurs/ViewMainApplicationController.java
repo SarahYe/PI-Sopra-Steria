@@ -22,6 +22,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import main.MainChronologie;
 
+/**
+ * Controleur de la page d'accueil de l'application
+ *
+ */
 public class ViewMainApplicationController implements Initializable {
 
 	@FXML
@@ -45,6 +49,10 @@ public class ViewMainApplicationController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant de lancer un jeu
+	 * @param event
+	 */
 	@FXML
 	private void ClickBT_StartGame(ActionEvent event) {
 		List<String> choices = new ArrayList<>();
@@ -77,6 +85,10 @@ public class ViewMainApplicationController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant d'acceder à l'interface de paramétrage globale
+	 * @param event
+	 */
 	@FXML
 	private void ClickBT_StartParam(ActionEvent event) {
 		Stage stage = (Stage) BT_StartGame.getScene().getWindow();

@@ -44,6 +44,10 @@ import modeles.Instruction;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
 
+/**
+ * Controlleur de l'interface joueur du jeu de fouille
+ *
+ */
 public class ViewFouilleController implements Initializable {
 
 	private String xml = "";
@@ -75,6 +79,9 @@ public class ViewFouilleController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant d'initaliser le jeu de fouille
+	 */
 	public void initData() {
 
 		try {
@@ -142,25 +149,47 @@ public class ViewFouilleController implements Initializable {
 		majInstruction(LB_Instruction);
 	}
 
+	/**
+	 * Definie le chemin relatif du fichier xml du bloc fouille
+	 * @param xml 
+	 */
 	public void setXML(String xml) {
 		this.xml = xml;
 	}
-
+	
+	/**
+	 * Definie la chronologie ainsi que son avancement
+	 * @param soloBloc boolean indiquant si le bloc est seul ou fait partie d'une chronologie
+	 * @param cmptChronologie compteur de l'avancement dans la chronologie
+	 * @param xmlChronologie chronologie xml sur laquelle le jeu se base
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;
 		this.xmlChronologie = xmlChronologie;
 	}
-
+	
+	/**
+	 * Definie si le son est actif ou non
+	 * @param son
+	 */
 	public void setSon(boolean son) {
 		this.son = son;
 	}
 
+	/**
+	 * Defini le score du joueur
+	 * @param score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 		LB_Score.setText("Score : " + Integer.toString(score));
 	}
 
+	/**
+	 * Fonction permettant de centrer une imageView
+	 * @param imageView imageView à centrer
+	 */
 	public static void centerImage(ImageView imageView) {
 		Image img = imageView.getImage();
 		if (img != null) {
@@ -189,6 +218,11 @@ public class ViewFouilleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de mettre à jour le score suite à une bonne réponse
+	 * @param LBscore label du score à mettre à jour
+	 * @param typeObjet rang de l'objet selectionné
+	 */
 	private static void majScorePlus(Label LBscore, String typeObjet) {
 		if (son)
 			jouerAudio("Ressources/Sons/succes.wav");
@@ -201,6 +235,11 @@ public class ViewFouilleController implements Initializable {
 		LBscore.setText("Score : " + Integer.toString(printScore));
 	}
 
+	/**
+	 * Fonction permettant de mettre à jour le score suite à une mauvaise réponse
+	 * @param LBscore label du score à mettre à jour
+	 * @param typeObjet rang de l'objet selectionné
+	 */
 	private static void majScoreMoins(Label LBscore, String typeObjet) {
 		if (son)
 			jouerAudio("Ressources/Sons/echec1.wav");
@@ -213,6 +252,10 @@ public class ViewFouilleController implements Initializable {
 		LBscore.setText("Score : " + Integer.toString(printScore));
 	}
 
+	/**
+	 * Fonction permettant de mettre à jour l'instruction suite à une bonne réponse (ou passer au bloc suivant si fin du bloc)
+	 * @param label label affichant les instructions
+	 */
 	public static void majInstruction(Label label) {
 		if (cmpt < intitules.size()) {
 			label.setText(intitules.get(cmpt));
@@ -280,6 +323,10 @@ public class ViewFouilleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de joueur un son audio
+	 * @param son chemin du fichier audio à lire
+	 */
 	public static void jouerAudio(String son) {
 		InputStream in;
 		try {
@@ -293,6 +340,10 @@ public class ViewFouilleController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant d'activer ou désactiver le son
+	 * @param t
+	 */
 	@FXML
 	public void swapSon(MouseEvent t) {
 		son = !son;
@@ -302,6 +353,9 @@ public class ViewFouilleController implements Initializable {
 			sonOff();
 	}
 
+	/**
+	 * fonction activant le son
+	 */
 	private void sonOn() {
 		File file = new File("Ressources/Images/volume_on.png");
 		Image image = new Image(file.toURI().toString());
@@ -311,6 +365,9 @@ public class ViewFouilleController implements Initializable {
 		centerImage(IV_IconeSon);
 	}
 
+	/**
+	 * fonction désactivant le son
+	 */
 	private void sonOff() {
 		File file = new File("Ressources/Images/volume_off.png");
 		Image image = new Image(file.toURI().toString());

@@ -116,8 +116,15 @@ public class ViewFouilleController implements Initializable {
 						AP_Game.getChildren().remove(element);
 
 						element.setX(inventoryX);
-						inventoryX = (int) (inventoryX + element.getImage().getWidth());
-						element.setY((inventoryY - element.getImage().getHeight()) / 2);
+						
+						element.setY(0);
+						
+						element.setFitHeight(100);
+						element.setPreserveRatio(true);
+						element.setFitWidth(100);
+						
+						inventoryX = (int) (inventoryX + 100);
+						
 						AP_Inventory.getChildren().add(element);
 						majScorePlus(LB_Score, fouille.getListeInstructions().get(cmpt - 1).getType());
 						majInstruction(LB_Instruction);

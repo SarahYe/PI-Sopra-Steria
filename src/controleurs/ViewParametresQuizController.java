@@ -154,7 +154,7 @@ public class ViewParametresQuizController implements Initializable {
 	@FXML
 	protected void ClickButtonAdd(ActionEvent event) throws IOException {
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewAddOrModifyQuestion.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();
@@ -177,7 +177,7 @@ public class ViewParametresQuizController implements Initializable {
 			return;
 		}
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyQuestion.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewAddOrModifyQuestion.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamQuestion.getChildren().setAll(newPane);
 		ViewAddOrModifyQuestionController controller = loader.<ViewAddOrModifyQuestionController>getController();

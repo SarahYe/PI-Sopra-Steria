@@ -162,7 +162,7 @@ public class ViewParametresFouilleController implements Initializable {
 	void ClickButtonAdd(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 		stage.setTitle("Nouvelle instruction");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyInstruction.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewAddOrModifyInstruction.fxml"));
 		stage.setScene(new Scene(loader.load()));
 		ViewAddOrModifyInstructionController controller = loader.<ViewAddOrModifyInstructionController>getController();
 		controller.initData(false, null, this);
@@ -187,7 +187,7 @@ public class ViewParametresFouilleController implements Initializable {
 
 		Stage stage = new Stage();
 		stage.setTitle("Nouvelle instruction");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewAddOrModifyInstruction.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewAddOrModifyInstruction.fxml"));
 		stage.setScene(new Scene(loader.load()));
 		ViewAddOrModifyInstructionController controller = loader.<ViewAddOrModifyInstructionController>getController();
 		controller.initData(true, table.getSelectionModel(), this);

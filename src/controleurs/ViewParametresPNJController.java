@@ -114,7 +114,7 @@ public class ViewParametresPNJController implements Initializable {
 	@FXML
 	void ClickButtonAdd(ActionEvent event) throws IOException {
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/dialoguePNJ.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamDialogue.getChildren().setAll(newPane);
 		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();
@@ -137,7 +137,7 @@ public class ViewParametresPNJController implements Initializable {
 			return;
 		}
 
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/dialoguePNJ.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/dialoguePNJ.fxml"));
 		ScrollPane newPane = loader.load();
 		AP_ParamDialogue.getChildren().setAll(newPane);
 		ViewAddOrModifyDialogueController controller = loader.<ViewAddOrModifyDialogueController>getController();

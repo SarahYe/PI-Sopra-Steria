@@ -450,7 +450,7 @@ public class ViewParametresScoreController implements Initializable {
 				&& !CB_InfTaille.getEditor().getText().equals("")) {
 			Stage stage = new Stage();
 			stage.setTitle("Prévisualisation Score Faible");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewScore.fxml"));
 			stage.setScene(new Scene(loader.load()));
 			ViewScoreController controller = loader.<ViewScoreController>getController();
 			controller.previsualisation(TF_title.getText(), TF_InfPict.getText(), TF_InfMsg.getText(),
@@ -477,7 +477,7 @@ public class ViewParametresScoreController implements Initializable {
 				&& !CB_MedTaille.getEditor().getText().equals("")) {
 			Stage stage = new Stage();
 			stage.setTitle("Prévisualisation Score Moyen");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewScore.fxml"));
 			stage.setScene(new Scene(loader.load()));
 			ViewScoreController controller = loader.<ViewScoreController>getController();
 			controller.previsualisation(TF_title.getText(), TF_MedPict.getText(), TF_MedMsg.getText(),
@@ -503,7 +503,7 @@ public class ViewParametresScoreController implements Initializable {
 				&& !CB_SupTaille.getEditor().getText().equals("")) {
 			Stage stage = new Stage();
 			stage.setTitle("Prévisualisation Score Elevé");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vues/ViewScore.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/vues/ViewScore.fxml"));
 			stage.setScene(new Scene(loader.load()));
 			ViewScoreController controller = loader.<ViewScoreController>getController();
 			controller.previsualisation(TF_title.getText(), TF_SupPict.getText(), TF_SupMsg.getText(),

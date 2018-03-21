@@ -21,6 +21,10 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
+/**
+ * Classe permettant de lancer un jeu depuis une chronologie
+ *
+ */
 public class MainChronologie extends Application {
 
 	int cmptChronologie = 1;

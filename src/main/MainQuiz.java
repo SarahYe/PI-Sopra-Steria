@@ -9,6 +9,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modeles.Quiz;
 
+/**
+ * Classe permettant de lancer un bloc quiz
+ *
+ */
 public class MainQuiz extends Application {
 
 	@Override

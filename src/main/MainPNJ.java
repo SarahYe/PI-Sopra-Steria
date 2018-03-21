@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modeles.PNJ;
 
+/**
+ * Classe permettant de lancer un bloc PNJ
+ *
+ */
 public class MainPNJ extends Application {
 
 	@Override

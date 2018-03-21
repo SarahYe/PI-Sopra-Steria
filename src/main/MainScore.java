@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import modeles.Quiz;
 
+/**
+ * Fonction permettant de lancer un bloc score
+ *
+ */
 public class MainScore extends Application {
 
 	@Override

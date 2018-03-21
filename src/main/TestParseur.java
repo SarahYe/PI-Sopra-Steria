@@ -11,7 +11,10 @@ import modeles.Puzzle;
 import modeles.Reponse;
 import sun.audio.AudioPlayer;
 import sun.audio.AudioStream;
-
+/**
+ * Classe utilisée pour effectuer des tests sur les parseurs xml
+ *
+ */
 public class TestParseur {
 
 	public static void main(String[] args) {

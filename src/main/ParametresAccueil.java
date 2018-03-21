@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * Classe permettant de lancer l'interface de paramétrage du bloc Accueil
+ *
+ */
 public class ParametresAccueil extends Application {
 
 	@Override

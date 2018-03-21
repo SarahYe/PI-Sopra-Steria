@@ -8,6 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Classe permettant de lancer l'interface de parametrage globale
+ *
+ */
 public class MainParametres extends Application {
 
 	@Override

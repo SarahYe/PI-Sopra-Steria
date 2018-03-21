@@ -6,6 +6,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Classe permettant de lancer le bloc Accueil
+ *
+ */
 public class MainAccueil extends Application {
 
 	@Override

@@ -55,6 +55,10 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * Controleur de l'interface de paramétrage du score
+ *
+ */
 public class ViewParametresScoreController implements Initializable {
 
 	private String xml;
@@ -187,6 +191,9 @@ public class ViewParametresScoreController implements Initializable {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction permettant d'initaliser l'interface de paramétrage du score
+	 */
 	public void initData() {
 		ArrayList<Integer> bornes = new ArrayList<Integer>();
 		ArrayList<String> msgs = new ArrayList<String>();
@@ -255,20 +262,40 @@ public class ViewParametresScoreController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant de définir l'image de fond si le score est faible
+	 * @param event
+	 * @throws IOException
+	 */
 	public void ClickBT_ajoutPictInf(ActionEvent event) throws IOException {
 		TF_InfPict.setText(getParcourirImage());
 	}
 
+	/**
+	 * Fonction permettant de définir l'image de fond si le score est moyen
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ClickBT_ajoutPictMed(ActionEvent event) throws IOException {
 		TF_MedPict.setText(getParcourirImage());
 	}
 
+	/**
+	 * Fonction permettant de définir l'image de fond si le score est élevé
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ClickBT_ajoutPictSup(ActionEvent event) throws IOException {
 		TF_SupPict.setText(getParcourirImage());
 	}
 
+	/**
+	 * Fonction permettantd'ouvrir un explorateur de fichier et de récupérer le chemin de l'image selectionné ainsi que de copier celle-ci dans le dossier Ressources
+	 * @return chemin relatif de l'image selectionné
+	 * @throws IOException
+	 */
 	public String getParcourirImage() throws IOException {
 		FileChooser fileChooser = new FileChooser();
 		FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
@@ -300,6 +327,12 @@ public class ViewParametresScoreController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant de sauvegarder la configuration du bloc dans le fichier xml
+	 * @param event
+	 * @throws ParserConfigurationException
+	 * @throws TransformerException
+	 */
 	@FXML
 	public void ClickBT_Save(ActionEvent event) throws ParserConfigurationException, TransformerException {
 		System.out.println(TF_InfMsg.getText());
@@ -405,6 +438,11 @@ public class ViewParametresScoreController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction affichant une prévisualisation de la page de score si le score est faible
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ClickBT_PrevInf(ActionEvent event) throws IOException {
 		if (!TF_InfMsg.getText().equals("") && !TF_InfPict.getText().equals("") && !TF_InfScr.getText().equals("")
@@ -427,6 +465,11 @@ public class ViewParametresScoreController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction affichant une prévisualisation de la page de score si le score est moyen
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ClickBT_PrevMed(ActionEvent event) throws IOException {
 		if (!TF_MedMsg.getText().equals("") && !TF_MedPict.getText().equals("")
@@ -448,6 +491,11 @@ public class ViewParametresScoreController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction affichant une prévisualisation de la page de score si le score est élevé
+	 * @param event
+	 * @throws IOException
+	 */
 	@FXML
 	public void ClickBT_PrevSup(ActionEvent event) throws IOException {
 		if (!TF_SupMsg.getText().equals("") && !TF_SupPict.getText().equals("") && !TF_SupScr.getText().equals("")
@@ -470,6 +518,10 @@ public class ViewParametresScoreController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant de récupérer toutes les polices présentes dans le dossier mis en argument
+	 * @param dossier dossier dans lequel toutes les polices à lister sont présentes
+	 */
 	private void listerPolices(final File dossier) {
 		for (final File police : dossier.listFiles()) {
 			if (police.isDirectory()) {

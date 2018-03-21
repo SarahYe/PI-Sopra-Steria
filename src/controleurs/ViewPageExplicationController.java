@@ -36,6 +36,10 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import modeles.Explication;
 
+/**
+ * Controller de la page d'explication
+ *
+ */
 public class ViewPageExplicationController implements Initializable {
 
 	@FXML
@@ -74,6 +78,11 @@ public class ViewPageExplicationController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant d'effectuer l'initialisation de la page
+	 * @param son booleen signifiant si le son est actif ou non
+	 * @param score score obtenu par le joueur
+	 */
 	public void initData(boolean son, int score) {
 		this.son = son;
 		this.score = score;
@@ -125,6 +134,10 @@ public class ViewPageExplicationController implements Initializable {
 		this.xml = xml;
 	}
 
+	/**
+	 * Fonction permettant de passer au bloc suivant
+	 * @param event
+	 */
 	@FXML
 	private void ClickBT_Suivant(ActionEvent event) {
 		if (soloBloc) {
@@ -184,6 +197,12 @@ public class ViewPageExplicationController implements Initializable {
 		}
 	}
 
+	/**
+	 * Definie la chronologie ainsi que son avancement
+	 * @param soloBloc boolean indiquant si le bloc est seul ou fait partie d'une chronologie
+	 * @param cmptChronologie compteur de l'avancement dans la chronologie
+	 * @param xmlChronologie chronologie xml sur laquelle le jeu se base
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;

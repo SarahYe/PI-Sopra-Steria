@@ -23,7 +23,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import modeles.Dialogue;
 import modeles.PNJ;
-
+/**
+ * Controlleur du bloc pnj
+ *
+ */
 public class ViewParametresPNJController implements Initializable {
 
 	@FXML

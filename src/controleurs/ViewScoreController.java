@@ -28,6 +28,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+/**
+ * Controlleur de la page de score
+ *
+ */
 public class ViewScoreController implements Initializable {
 
 	private String xml = "";
@@ -53,6 +57,9 @@ public class ViewScoreController implements Initializable {
 
 	}
 
+	/**
+	 * Fonction permettant d'initialiser la page de score
+	 */
 	public void initData() {
 		ArrayList<String> title = new ArrayList<String>();
 		ArrayList<Integer> bornes = new ArrayList<Integer>();
@@ -126,6 +133,12 @@ public class ViewScoreController implements Initializable {
 		this.xml = xml;
 	}
 
+	/**
+	 * Definie la chronologie ainsi que son avancement
+	 * @param soloBloc boolean indiquant si le bloc est seul ou fait partie d'une chronologie
+	 * @param cmptChronologie compteur de l'avancement dans la chronologie
+	 * @param xmlChronologie chronologie xml sur laquelle le jeu se base
+	 */
 	public void setChronologie(boolean soloBloc, int cmptChronologie, String xmlChronologie) {
 		this.soloBloc = soloBloc;
 		this.cmptChronologie = cmptChronologie;
@@ -140,6 +153,10 @@ public class ViewScoreController implements Initializable {
 		this.score = score;
 	}
 
+	/**
+	 * Fonction permettant de passer au bloc suivant
+	 * @param event
+	 */
 	@FXML
 	private void ClickBT_Suivant(ActionEvent event) {
 		if (soloBloc) {
@@ -199,6 +216,10 @@ public class ViewScoreController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de centrer une imageView
+	 * @param imageView imageView à centrer
+	 */
 	public static void centerImage(ImageView imageView) {
 		Image img = imageView.getImage();
 		if (img != null) {
@@ -227,6 +248,15 @@ public class ViewScoreController implements Initializable {
 		}
 	}
 
+	/**
+	 * Fonction permettant de prévisualiser une page de score
+	 * @param title titre de la page de score
+	 * @param img image de fond
+	 * @param message contenu du message à afficher
+	 * @param police police à utiliser pour le message
+	 * @param taille taille de police du message
+	 * @param color couleur du message
+	 */
 	public void previsualisation(String title, String img, String message, String police, String taille, Color color) {
 		LB_Title.setText(title);
 		LB_Msg.setText(message);

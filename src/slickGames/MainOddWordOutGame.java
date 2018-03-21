@@ -5,13 +5,17 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import javafx.application.Application;
-import main.MainChronologie;
-import main.MainExplication;
 import slickGames.states.OddWordOutGame;
-import slickGames.states.PuzzleGame;
 
-
+/**
+ * Classe permettant de lancer le jeu de tri via sa fonction main.
+ * 
+ * Cette dernière hérite de la classe StateBasedGame de Slick2D et permet de gérer
+ * un jeu sous Slick2D à l'aide d'états.
+ * Ici, le seul état utilisé par cette classe est l'état de la classe OddWordOutGame 
+ * qui représente le jeu de tri en lui-même.
+ *
+ */
 public class MainOddWordOutGame extends StateBasedGame{
 	
 	public static int longueur=850;
@@ -24,32 +28,6 @@ public class MainOddWordOutGame extends StateBasedGame{
 	public static int score=0;
 	
 	public static void main(String[] args) throws SlickException {
-			
-		  /*Reponse reponse1 = new Reponse("Un casque", Boolean.TRUE, "");
-		  Reponse reponse2 = new Reponse("Un gilet", Boolean.TRUE, "");
-		  Reponse reponse3 = new Reponse("Des lunettes de soleil", Boolean.FALSE, "");
-		  Reponse reponse4 = new Reponse("Des chaussures de sécurité", Boolean.TRUE, "");
-		  Reponse reponse5 = new Reponse("Des tongs", Boolean.FALSE, "");
-		  Reponse reponse6 = new Reponse("Une combinaison", Boolean.TRUE, "");
-		  Reponse reponse7 = new Reponse("Des coquilles anti-bruit", Boolean.TRUE, "");
-		  Reponse reponse8 = new Reponse("Une casquette", Boolean.FALSE, "");
-		  
-		  ArrayList<Reponse> ListeReponses = new ArrayList<Reponse>();
-		  ListeReponses.add(reponse1); ListeReponses.add(reponse2);
-		  ListeReponses.add(reponse3); ListeReponses.add(reponse4);
-		  ListeReponses.add(reponse5); ListeReponses.add(reponse6);
-		  ListeReponses.add(reponse7); ListeReponses.add(reponse8);
-		  
-		  Question question1 = new Question("Dans un chantier, quels équipements suis-je susceptible de porter ? À vous de faire le tri !", ListeReponses);
-		  
-		  ArrayList<Question> ListeQuestions = new ArrayList<Question>();
-		  ListeQuestions.add(question1);
-		  
-		  Quiz quiz = new Quiz ("Test",ListeQuestions);
-		  
-		  quiz.convertirJavaToXML(quiz, "FichiersDeConfig/slickGame.xml");
-		  //quiz.convertirXMLToJava("FichiersDeConfig/slickGame.xml");
-		 */
 		
 		AppGameContainer app = new AppGameContainer(new MainOddWordOutGame(),longueur, hauteur, false);
 		app.setTargetFrameRate(60);
@@ -59,11 +37,26 @@ public class MainOddWordOutGame extends StateBasedGame{
 	
 	}
 	
-
+	/**
+	 * Fonction appelant le constructeur de classe issu de l'héritage
+	 */
 	public MainOddWordOutGame() {
 		super("Chassez les intrus !");
 	}
 	
+	
+	/**
+	 * Fonction initialisant tous les paramètres utiles à la chronologie (enchaînement des
+	 * blocs/modules/jeux/interfaces...)
+	 * 
+	 * 
+	 * @param xml : chemin vers le fichier XML du jeu
+	 * @param soloBloc : vaut true si bloc appelé seul, sinon false.
+	 * @param cmptChronologie : indice correspondant à la position actuelle au sein de la chronologie
+	 * @param xmlChronologie : chemin vers le fichier XML de chronologie des évènements
+	 * @param son : vaut true si le son est activé, sinon false.
+	 * @param score : score global ou points cumulés par l'utilisateur au cours des jeux précédents
+	 */
 	public void initData(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score){
 		this.xml=xml;
 		this.soloBloc=soloBloc;
@@ -74,35 +67,23 @@ public class MainOddWordOutGame extends StateBasedGame{
 	}
 
 
-
+	/**
+	 * Fonction, issue de l'héritage, permettant de gérer les états du jeu.
+	 * 
+	 * Ici, nous n'avons que l'état correspondant au jeu de tri : instance d'OddWordOutGame.
+	 * 
+	 * On transmet aussi les paramètres liés à la chronologie au jeu en lui-même.
+	 */
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
-		//addState(new OddWordOutExplanation());
-	
-		//container.setForceExit(false);
+		
 		OddWordOutGame oddWordOutGame=new OddWordOutGame();
 		oddWordOutGame.initData(xmlChronologie,xml,son,score,cmptChronologie);
 		addState(oddWordOutGame);
-		
-		//PuzzleGame puzzlegame=new PuzzleGame();
- 		//addState(puzzlegame);
-		
+			
 		this.enterState(OddWordOutGame.ID);
 	
 	}
-	
-	@SuppressWarnings("static-access")
-	@Override
-	public boolean closeRequested() {
-		/*System.out.println("close demandé");
-        MainChronologie chronoGame=new MainChronologie();
-        chronoGame.initData(cmptChronologie+1, xmlChronologie, son, score);
-        String[] args={};
-        chronoGame.launch(MainChronologie.class);*/
-		System.out.println("closerequested");
-        
-		return true;
-    }
 	
 }
 

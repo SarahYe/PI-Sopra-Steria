@@ -13,8 +13,6 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.FloatControl;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -24,9 +22,6 @@ import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
 
 import controleurs.JFxUtils;
 import javafx.application.Platform;
@@ -39,6 +34,12 @@ import slickGames.MainOddWordOutGame;
 import slickGames.MainPuzzleGame;
 import slickGames.entite.PuzzlePieceImg;
 
+/**
+ * Classe du jeu de puzzle héritant de la classe BasicGameState issue de Slick2D.
+ * 
+ * Correspond à un état de jeu utilisable par les classes héritant de StateBasedGame.
+ *
+ */
 public class PuzzleGame extends BasicGameState {
 
 	public static int ID = 3;
@@ -65,7 +66,10 @@ public class PuzzleGame extends BasicGameState {
 	public static String xmlChronologie;
 	public static boolean son=true;
 	
-	
+	/**
+	 * Fonction, issue de l'héritage, permettant d'initialiser les variables globales
+	 * et de récupérer l'ensemble du contenu présent au sein du fichier XML correspondant au jeu.
+	 */
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
@@ -142,15 +146,33 @@ public class PuzzleGame extends BasicGameState {
 		
 	}
 	
+	/**
+	 * Fonction initialisant tous les paramètres utiles à la chronologie (enchaînement des
+	 * blocs/modules/jeux/interfaces...)
+	 * 
+	 * 
+	 * @param xml : chemin vers le fichier XML du jeu
+	 * @param soloBloc : vaut true si bloc appelé seul, sinon false.
+	 * @param cmptChronologie : indice correspondant à la position actuelle au sein de la chronologie
+	 * @param xmlChronologie : chemin vers le fichier XML de chronologie des évènements
+	 * @param son : vaut true si le son est activé, sinon false.
+	 * @param score : score global ou points cumulés par l'utilisateur au cours des jeux précédents
+	 */
 	public void initData(String xml, String xml2, boolean son, int score, int cmptChronologie){
 		this.xmlChronologie=xml;
 		this.xml=xml2;
 		this.score=score;
 		this.gameMuted=!son;
 		this.cmptChronologie=cmptChronologie;
-		//muteUnmuteGame();
 	}
 
+	/**
+	 * Fonction, issue de l'héritage, gérant l'affichage globale du jeu de puzzle et appelée à chaque frame.
+	 * 
+	 * @param container : correspond à la fenêtre du jeu Slick2D
+	 * @param game : correspond au jeu Slick2D en lui-même
+	 * @param g : correspond au gestionnaire des éléments graphiques du jeu Slick2D
+	 */
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
 		
@@ -231,6 +253,11 @@ public class PuzzleGame extends BasicGameState {
 		}
 	}
 	
+	/**
+	 * Fonction permettant de vérifier si le joueur a correctement placé l'ensemble des pièces de puzzle.
+	 * 
+	 * @return true en cas de réussite du joueur, false sinon.
+	 */
 	public static boolean isGoodAnswer(){
 		int index = 0;
 		for(int i : currentMatriceOrder) {
@@ -243,6 +270,15 @@ public class PuzzleGame extends BasicGameState {
 	    return true;
 	}
 	
+	/**
+	 * Fonction permettant d'afficher l'intitulé de la question au sein de la bulle de dialogue.
+	 * Une fois le 68ème caractère atteint, saute à la ligne suivante.
+	 * 
+	 * @param text : texte de l'intitulé de la question à afficher
+	 * @param x : position X de l'affichage
+	 * @param y : position Y de l'affichage
+	 * @param g : gestionnaire des éléments graphiques d'un jeu Slick2D
+	 */
 	public static void drawStrings(String text, int x, int y, Graphics g)
     {
 		List<String> parts = new ArrayList<>();
@@ -260,36 +296,27 @@ public class PuzzleGame extends BasicGameState {
 	    }
     }
 
+	/**
+	 * Fonction permettant de :
+	 * 		- gérer l'arrêt complet du jeu en cas de fin de jeu
+	 * 		- appeler l'évènement/bloc/module suivant en cas de fin de jeu
+	 * 		- gérer le chronomètre
+	 * 		- mettre à jour l'ensemble des éléments affichés
+	 * 		- gérer les clics de souris relatifs à l'activation/désactivation du son du jeu
+	 */
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		
 		chrono += delta;
 		
 		if(exit_flag){
-			//game.getCurrentState().leave(container, game);
 			container.setForceExit(false);
 			container.exit();
 			
-			System.out.println("close demandé");
-			
-			//game.enterState(PuzzleGame.ID);
-			
-			/*System.out.println("");
-			Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
-			Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
-			System.out.println(threadArray.length);
-			for(int i=0; i < threadArray.length; i++){
-				System.out.println(threadArray[i]);
-			}
-			System.out.println("");*/
-			
-			//MainPuzzleGame.main(null);
 			if(Platform.isFxApplicationThread()){
 	             Platform.runLater(new Runnable() {
 	                 @Override public void run() {
 	                	
-	                	 //JFxUtils.loadTest();
-	                	 
 	                	 Stage stage = new Stage();
 	                	 System.out.println("compteur : "+cmptChronologie);
 	                	 System.out.println("XML : "+xmlChronologie);
@@ -308,11 +335,6 @@ public class PuzzleGame extends BasicGameState {
 	             });
 	             
 			}
-	           
-	             //container.setForceExit(true);
-	             //container.exit();
-	    
-	         
 		}
 		
 		if (container.getInput().isMousePressed(Input.MOUSE_LEFT_BUTTON)) {
@@ -323,6 +345,9 @@ public class PuzzleGame extends BasicGameState {
 		
 	}
 	
+	/**
+	 * Fonction, issue de l'héritage, gérant les inputs provenant de la souris.
+	 */
     @Override
     public void mouseReleased(int button, int x, int y) {
     	if(button == Input.MOUSE_LEFT_BUTTON) {
@@ -364,6 +389,9 @@ public class PuzzleGame extends BasicGameState {
         }
     }
     
+    /**
+	 * Fonction, issue de l'héritage, gérant les évènements relatifs aux déplacements de la souris.
+	 */
 	@Override
     public void mouseMoved(int oldx, int oldy, int newx, int newy) {
         if (draggedPieceNumber != -1) {
@@ -372,6 +400,9 @@ public class PuzzleGame extends BasicGameState {
         }
     }
 	
+	/**
+	 * Fonction, issue de l'héritage, gérant les inputs clavier.
+	 */
 	public void keyPressed(int key, char c) {
 		switch (key){
 		case Input.KEY_ENTER:
@@ -386,6 +417,12 @@ public class PuzzleGame extends BasicGameState {
 		}
 	}
 	
+	/**
+	 * Fonction mettant à jour les informations relatives à la matrice du puzzle à compléter par le joueur
+	 * en cas de retrait d'une pièce de puzzle.
+	 * 
+	 * @param x : position X de l'élément retiré
+	 */
 	public void changeMatriceInfos(int x){
 		if (this.puzzle.getListeFragments().size() == 4){
 			if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
@@ -441,6 +478,11 @@ public class PuzzleGame extends BasicGameState {
 		}		
 	}
 	
+	/**
+	 * Fonction gérant l'ensemble des cas de placement de pièces de puzzle au sein de la matrice à compléter par le joueur
+	 * 
+	 * @param x : position X de la souris à la fin du drag and drop.
+	 */
 	public void fillMatricePart(int x){
 		if (this.puzzle.getListeFragments().size() == 4){
 			if(x > MainPuzzleGame.longueur/2-200 && x < MainPuzzleGame.longueur/2-100){
@@ -481,6 +523,13 @@ public class PuzzleGame extends BasicGameState {
 		}
 	}
 	
+	/**
+	 * Fonction permettant de placer correctement une pièce de puzzle à la fin d'un drag and drop de cette dernière au sein de la matrice à compléter par le joueur.
+	 * Si un élément est déjà présent à l'endroit désiré, réinitialise sa position et le nouvel élément prend sa place au sein de la matrice.
+	 * 
+	 * @param index : indice correspondant à la position au sein de la matrice où l'élément est ajouté
+	 * @param pos : position X où l'élément doit être placé
+	 */
 	public void placeElementInMatrice(int index, int pos){
 		if (currentMatriceOrder.get(index) != -1){
 			for (int i = 0; i < piecesImg.size(); i++){
@@ -495,6 +544,13 @@ public class PuzzleGame extends BasicGameState {
 		PuzzleGame.jouerAudio("./Ressources/Sons/draggedOff.wav", -22.0f, false);
 	}
 	
+	/**
+	 * Fonction permettant de lire un élément audio.
+	 * 
+	 * @param son : chemin vers le fichier audio
+	 * @param volumeReduced : réduction sonore en nombre de décibels
+	 * @param backgroundMusic : vaut true dans le cas d'une musique de fond nécessitant une boucle, vaut false sinon.
+	 */
 	public static void jouerAudio(String son, float volumeReduced, boolean backgroundMusic){
 		if(!gameMuted){
 			try {
@@ -512,15 +568,16 @@ public class PuzzleGame extends BasicGameState {
 				}
 				
 			} catch (UnsupportedAudioFileException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 	
+	/**
+	 * Fonction permettant d'activer ou désactiver le son du jeu selon son état antérieur.
+	 */
 	public void muteUnmuteGame(){
 		if(gameMuted){
 			backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);

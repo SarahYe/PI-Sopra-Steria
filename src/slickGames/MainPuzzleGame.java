@@ -1,15 +1,21 @@
 package slickGames;
 
-import java.util.ArrayList;
-
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import modeles.Puzzle;
 import slickGames.states.PuzzleGame;
 
+/**
+ * Classe permettant de lancer le jeu de puzzle via sa fonction main.
+ * 
+ * Cette dernière hérite de la classe StateBasedGame de Slick2D et permet de gérer
+ * un jeu sous Slick2D à l'aide d'états.
+ * Ici, le seul état utilisé par cette classe est l'état de la classe PuzzleGame 
+ * qui représente le jeu de puzzle en lui-même.
+ *
+ */
 public class MainPuzzleGame extends StateBasedGame{
 	
 	public static int longueur=850;
@@ -22,21 +28,7 @@ public class MainPuzzleGame extends StateBasedGame{
 	public static int score=0;
 	
 	public static void main(String[] args) throws SlickException {
-			
-		/*ArrayList<String> listeImg = new ArrayList<String>();
-		listeImg.add("./Ressources/Images/flame1.png");
-		listeImg.add("./Ressources/Images/flame2.png");
-		listeImg.add("./Ressources/Images/flame3.png");
-		listeImg.add("./Ressources/Images/flame4.png");
-		ArrayList<String> listeIndices = new ArrayList<String>();
-		listeIndices.add("Indice nï¿½1 : La flamme la plus proche du jaune indique une tempï¿½rature plus faible que les autres flammes.");
-		listeIndices.add("Indice nï¿½2 : La flamme la plus proche du bleu indique une tempï¿½rature trï¿½s ï¿½levï¿½e !");
-		Puzzle puzzle = new Puzzle("Puzzle Game 1", "Trier les flammes afin d'obtenir celles de plus basse tempï¿½rature ï¿½ gauche et celles correspondantes ï¿½ des tempï¿½ratures plus ï¿½levï¿½es ï¿½ droite.","Image",listeIndices, listeImg); 
-		puzzle.convertirJavaToXML(puzzle, "FichiersDeConfig/slickGame2.xml");
-		Puzzle puzzle = new Puzzle();
-		puzzle.convertirJavaToXML(puzzle, "FichiersDeConfig/puzzle.xml");*/
-		 
-		
+					
 		AppGameContainer app = new AppGameContainer(new MainPuzzleGame(),longueur, hauteur, false);
 		app.setTargetFrameRate(60);
 		app.setVSync(true);
@@ -45,12 +37,25 @@ public class MainPuzzleGame extends StateBasedGame{
 	
 	}
 	
-
+	/**
+	 * Fonction appelant le constructeur de classe issu de l'héritage
+	 */
 	public MainPuzzleGame() {
 		super("Puzzle Game !");
 	}
 
-	
+	/**
+	 * Fonction initialisant tous les paramètres utiles à la chronologie (enchaînement des
+	 * blocs/modules/jeux/interfaces...)
+	 * 
+	 * 
+	 * @param xml : chemin vers le fichier XML du jeu
+	 * @param soloBloc : vaut true si bloc appelé seul, sinon false.
+	 * @param cmptChronologie : indice correspondant à la position actuelle au sein de la chronologie
+	 * @param xmlChronologie : chemin vers le fichier XML de chronologie des évènements
+	 * @param son : vaut true si le son est activé, sinon false.
+	 * @param score : score global ou points cumulés par l'utilisateur au cours des jeux précédents
+	 */
 	public void initData(String xml, boolean soloBloc, int cmptChronologie, String xmlChronologie, boolean son, int score){
 		this.xml=xml;
 		this.soloBloc=soloBloc;
@@ -60,7 +65,13 @@ public class MainPuzzleGame extends StateBasedGame{
 		this.score=score;
 	}
 
-
+	/**
+	 * Fonction, issue de l'héritage, permettant de gérer les états du jeu.
+	 * 
+	 * Ici, nous n'avons que l'état correspondant au jeu de puzzle : instance de PuzzleGame.
+	 * 
+	 * On transmet aussi les paramètres liés à la chronologie au jeu en lui-même.
+	 */
 	@Override
 	public void initStatesList(GameContainer container) throws SlickException {
 		

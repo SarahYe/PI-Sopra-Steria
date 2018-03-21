@@ -6,11 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
 
 import javax.sound.sampled.*;
 
-import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -26,16 +24,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.MainChronologie;
 import modeles.Question;
 import modeles.Quiz;
 import modeles.Reponse;
 import slickGames.MainOddWordOutGame;
-import slickGames.MainPuzzleGame;
 import slickGames.entite.EntiteReponse;
 
-//import slickGames.FontUtils;
 
+/**
+ * Classe du jeu de tri héritant de la classe BasicGameState issue de Slick2D.
+ * 
+ * Correspond à un état de jeu utilisable par les classes héritant de StateBasedGame.
+ *
+ */
 public class OddWordOutGame extends BasicGameState {
 	
 	public static int ID = 2;
@@ -66,7 +67,10 @@ public class OddWordOutGame extends BasicGameState {
 	public static String xmlChronologie;
 	public static boolean son=true;
 
-	
+	/**
+	 * Fonction, issue de l'héritage, permettant d'initialiser les variables globales
+	 * et de récupérer l'ensemble du contenu présent au sein du fichier XML correspondant au jeu.
+	 */
 	@Override
 	public void init(GameContainer container, StateBasedGame game) throws SlickException {
 		
@@ -98,22 +102,36 @@ public class OddWordOutGame extends BasicGameState {
 		OddWordOutGame.jouerAudio("./Ressources/Sons/musicJeuIntrus.wav", -18.0f, true);
 	}
 	
+	/**
+	 * Fonction initialisant tous les paramètres utiles à la chronologie (enchaînement des
+	 * blocs/modules/jeux/interfaces...)
+	 * 
+	 * 
+	 * @param xml : chemin vers le fichier XML du jeu
+	 * @param soloBloc : vaut true si bloc appelé seul, sinon false.
+	 * @param cmptChronologie : indice correspondant à la position actuelle au sein de la chronologie
+	 * @param xmlChronologie : chemin vers le fichier XML de chronologie des évènements
+	 * @param son : vaut true si le son est activé, sinon false.
+	 * @param score : score global ou points cumulés par l'utilisateur au cours des jeux précédents
+	 */
 	public void initData(String xml, String xml2, boolean son, int score, int cmptChronologie){
 		this.xmlChronologie=xml;
 		this.xml=xml2;
 		this.score=score;
 		this.gameMuted=!son;
 		this.cmptChronologie=cmptChronologie;
-		//muteUnmuteGame();
 	}
 
+	/**
+	 * Fonction, issue de l'héritage, gérant l'affichage globale du jeu de tri et appelée à chaque frame.
+	 * 
+	 * @param container : correspond à la fenêtre du jeu Slick2D
+	 * @param game : correspond au jeu Slick2D en lui-même
+	 * @param g : correspond au gestionnaire des éléments graphiques du jeu Slick2D
+	 */
 	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
-		// TODO Auto-generated method stub
 		
-		//fontConfirmText = FontUtils.loadCustomFont("PressStart2P.ttf",Font.PLAIN,20);
-				
-		//g.setBackground(new Color(230, 242, 255));
 		g.setBackground(new Color(115, 115, 115));
 		
 		Image bandeVRED = new Image("./Ressources/Images/bandeVRED.png");
@@ -128,28 +146,17 @@ public class OddWordOutGame extends BasicGameState {
 			}
 		}
 		
-		/*Image fond3 = new Image("./Ressources/Images/fond3.png");
-		Image fond2 = new Image("./Ressources/Images/fond2.png");
-		fond3.draw(0, 45, 850, 605);
-		fond2.draw(0, 45, 850, 605);*/	
-		
-		//g.setColor(new Color(153, 202, 255));
-		//g.fillRect(0, 0, MainOddWordOutGame.longueur, 40);
 		Image bandeTitre = new Image("./Ressources/Images/bandeTitre.png");
 		bandeTitre.draw(0, 0, MainOddWordOutGame.longueur, 45);
 		
-		//Image titre = new Image("./Ressources/Images/titreSeriousGame.png");
 		Image titre = new Image("./Ressources/Images/SeriousSecurity.png");		
-		//g.drawImage(titre, (MainOddWordOutGame.longueur - titre.getWidth())/2, 0);
 		titre.draw((MainOddWordOutGame.longueur - titre.getWidth()*0.15f)/2, -8, 0.15f);
 		
 		g.setColor(Color.black);
 		g.drawString("Score : "+score+" points", MainOddWordOutGame.longueur - g.getFont().getWidth("Score : "+score+" points") - 20, 10);
 		
-		//Image personnage = new Image("./Ressources/Images/personnage1.png");
 		Image personnage = new Image("./Ressources/Images/perso.png");
 		
-		//Image bulleDialogue = new Image("./Ressources/Images/bulleDialogue.png");
 		Image bulleDialogue = new Image("./Ressources/Images/bulleDialogue2.png");
 		bulleDialogue.draw(personnage.getWidth()*25/100 - 20, 50, 1.0f);
 		
@@ -157,16 +164,9 @@ public class OddWordOutGame extends BasicGameState {
 			
 		drawStrings(quiz.getListeQuestions().get(0).getIntituleQuestion(), 145, 63, g);	
 		
-		//g.setColor(Color.red);
-		//g.fillRect(0, 40, 5, MainOddWordOutGame.hauteur);
-		//g.setColor(Color.green);
-		//g.fillRect(MainOddWordOutGame.longueur - 6, 40, 6, MainOddWordOutGame.hauteur);
-				
 		flecheVerte.draw((MainOddWordOutGame.longueur/2)+15, MainOddWordOutGame.hauteur-posYGreenArrow, 0.65f);
 		flecheRouge.draw((MainOddWordOutGame.longueur/2)-15-flecheRouge.getWidth()*65/100, MainOddWordOutGame.hauteur-posYRedArrow, 0.65f);
-		//g.drawImage(flecheVerte, (MainOddWordOutGame.longueur/2)+10, MainOddWordOutGame.hauteur-100);	
-		//g.drawImage(flecheRouge, (MainOddWordOutGame.longueur/2)-flecheRouge.getWidth()-10, MainOddWordOutGame.hauteur-100);		
-	
+		
 		volumeImg.draw(5, 5, 25, 25);
 		
 		int mins = (int) chrono / (60*1000);
@@ -184,7 +184,6 @@ public class OddWordOutGame extends BasicGameState {
 			backgroundClip.close();
 			gameFinished = true;
 			
-			//Image img = new Image("./Ressources/Images/rectangleReponse2.png");
 			Image img = new Image("./Ressources/Images/rectReponse.png");
 			
 			String str1 = "Game Over";
@@ -212,6 +211,15 @@ public class OddWordOutGame extends BasicGameState {
 		
 	}
 	
+	/**
+	 * Fonction permettant d'afficher l'intitulé de la question au sein de la bulle de dialogue.
+	 * Une fois le 68ème caractère atteint, saute à la ligne suivante.
+	 * 
+	 * @param text : texte de l'intitulé de la question à afficher
+	 * @param x : position X de l'affichage
+	 * @param y : position Y de l'affichage
+	 * @param g : gestionnaire des éléments graphiques d'un jeu Slick2D
+	 */
 	public static void drawStrings(String text, int x, int y, Graphics g)
     {
 		List<String> parts = new ArrayList<>();
@@ -229,41 +237,24 @@ public class OddWordOutGame extends BasicGameState {
 	    }
     }
 
+	/**
+	 * Fonction permettant de :
+	 * 		- gérer l'arrêt complet du jeu en cas de fin de jeu
+	 * 		- appeler l'évènement/bloc/module suivant en cas de fin de jeu
+	 * 		- gérer le chronomètre
+	 * 		- mettre à jour l'ensemble des éléments affichés
+	 * 		- gérer les clics de souris relatifs à l'activation/désactivation du son du jeu
+	 */
 	@Override
 	public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {
 		
-		Input input = container.getInput();
-        if(input.isKeyPressed( Input.KEY_SPACE ))
-        {
-            game.getCurrentState().init(container, game);
-            game.enterState(game.getCurrentStateID());
-
-        }
-		
 		if(exit_flag){
-			//game.getCurrentState().leave(container, game);
 			container.setForceExit(false);
 			container.exit();
 			
-			System.out.println("close demandé");
-			
-			//game.enterState(PuzzleGame.ID);
-			
-			/*System.out.println("");
-			Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
-			Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
-			System.out.println(threadArray.length);
-			for(int i=0; i < threadArray.length; i++){
-				System.out.println(threadArray[i]);
-			}
-			System.out.println("");*/
-			
-			//MainPuzzleGame.main(null);
 			if(Platform.isFxApplicationThread()){
 	             Platform.runLater(new Runnable() {
 	                 @Override public void run() {
-	                	
-	                	 //JFxUtils.loadTest();
 	                	 
 	                	 Stage stage = new Stage();
 	                	 System.out.println("compteur : "+cmptChronologie);
@@ -282,11 +273,6 @@ public class OddWordOutGame extends BasicGameState {
 	                 }
 	             });
 			}
-	           
-	             //container.setForceExit(true);
-	             //container.exit();
-	    
-	         
 		}
 		
 		long tmp = System.currentTimeMillis();
@@ -336,6 +322,9 @@ public class OddWordOutGame extends BasicGameState {
 			
 	}
 	
+	/**
+	 * Fonction, issue de l'héritage, gérant les inputs clavier.
+	 */
 	public void keyPressed(int key, char c) {
 		switch (key){
 		case Input.KEY_LEFT:
@@ -376,6 +365,9 @@ public class OddWordOutGame extends BasicGameState {
 		}
 	}
 	
+	/**
+	 * Seconde fonction, issue de l'héritage, gérant les inputs clavier.
+	 */
 	public void keyReleased(int key, char c) {
 		switch (key) {	
 		case Input.KEY_LEFT:
@@ -407,6 +399,13 @@ public class OddWordOutGame extends BasicGameState {
 		}
 	}
 	
+	/**
+	 * Fonction permettant de lire un élément audio.
+	 * 
+	 * @param son : chemin vers le fichier audio
+	 * @param volumeReduced : réduction sonore en nombre de décibels
+	 * @param backgroundMusic : vaut true dans le cas d'une musique de fond nécessitant une boucle, vaut false sinon.
+	 */
 	public static void jouerAudio(String son, float volumeReduced, boolean backgroundMusic){
 		if(!gameMuted){
 			try {
@@ -414,7 +413,7 @@ public class OddWordOutGame extends BasicGameState {
 				Clip clip = AudioSystem.getClip();
 				clip.open(audioInputStream);
 				FloatControl gainControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-				gainControl.setValue(volumeReduced); // Reduce volume by 10 decibels.
+				gainControl.setValue(volumeReduced);
 				if(backgroundMusic){				
 					backgroundClip = clip;
 					backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -424,15 +423,16 @@ public class OddWordOutGame extends BasicGameState {
 				}
 				
 			} catch (UnsupportedAudioFileException | IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 	
+	/**
+	 * Fonction permettant d'activer ou désactiver le son du jeu selon son état antérieur.
+	 */
 	public void muteUnmuteGame(){
 		if(gameMuted){
 			backgroundClip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -455,6 +455,11 @@ public class OddWordOutGame extends BasicGameState {
 		gameMuted = !gameMuted;
 	}
 	
+	/**
+	 * Fonction permettant d'augmenter la vitesse de chute des réponses du jeu.
+	 * 
+	 * @param speedAdded : vitesse ajoutée aux éléments.
+	 */
 	public static void increaseFallingSpeed(double speedAdded){
 		for (int i = 0; i < reponses.size(); i++){
 			reponses.get(i).setSpeedY((float) (reponses.get(i).getSpeedY()+speedAdded));		
@@ -462,10 +467,9 @@ public class OddWordOutGame extends BasicGameState {
 		fallingSpeed += speedAdded;	
 	}
 	
-	/*public static void increaseSidesSpeed(){
-		sidesSpeed += 0.005;	
-	}*/
-	
+	/**
+	 * Fonction permettant de réduire le délai minimal d'apparition des réponses au sein de la fenêtre de jeu.
+	 */
 	public static void decreaseDeployDelay(){
 		if(minDeployDelay > 0.3){
 			minDeployDelay -= 0.025;

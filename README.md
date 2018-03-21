@@ -69,6 +69,13 @@ Dans le package *main*, exécuter la classe **MainChronologie**.
 
 ##### Executable jar :
 Les fichier jar correspondent aux executables des différentes classes. 
+
+## Crédits :
+
+Crédits correspondant aux éléments audio (musiques et SFX) uniquement utilisés au sein du jeu de tri et du jeu de puzzle :
+
+Music by Eric Matyas
+www.soundimage.org
   
 ## Auteurs :
 

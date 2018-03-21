@@ -36,6 +36,10 @@ import slickGames.entite.EntiteReponse;
  * 
  * Correspond à un état de jeu utilisable par les classes héritant de StateBasedGame.
  *
+ * Crédits liés aux musiques et SFX du jeu de tri :
+ * Music by Eric Matyas
+ * www.soundimage.org
+ * 
  */
 public class OddWordOutGame extends BasicGameState {
 	

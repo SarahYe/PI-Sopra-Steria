@@ -39,6 +39,10 @@ import slickGames.entite.PuzzlePieceImg;
  * 
  * Correspond à un état de jeu utilisable par les classes héritant de StateBasedGame.
  *
+ * Crédits liés aux musiques et SFX du jeu de puzzle :
+ * Music by Eric Matyas
+ * www.soundimage.org
+ * 
  */
 public class PuzzleGame extends BasicGameState {
 
